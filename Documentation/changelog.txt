@@ -1,0 +1,712 @@
+=========
+CHANGELOG
+=========
+
+KNOWN ISSUES:
+=============
+    - the text in the different textboxes is align on the right once the .xml file has been read. -> no solution for now [OFFLINE]
+    - after building using Pyinstaller on Linux, the one file sofware generate an Gtk error when used. This error doesn't induce issues with the software or the creation of xml files. -> no solution for now [OFFLINE]
+    - \\URGENT//: add an exception for new created widgets which are empty when saving the xml file. -> !! ON IT !! [OFFLINE]
+    - when a new widget is created by the user, it is not registered in the "modified" function.
+    
+    - in the [ONLINE] version, two lines need to be activated to allow a proper operation of the downloading and uploading servlet, based on the platform for devlopment and production: see in the "Asmm_eufar.java" file, section "open an existing xml file" openFile() and "save an xml file" saveFile(), to comment and uncomment dedicated lines. !!! IMPORTANT !!!
+    
+    
+TO ADD:
+=======
+    - add the instrument tab [ONLINE][OFFLINE].
+    - rework "Quality and Validity" window [ONLINE][OFFLINE].
+    - add a plugin to read metadata from netcdf and/or hdf5 [OFFLINE]
+    - check if North is below or under South in the bounding box [ONLINE][OFFLINE].
+    - check if West is on the left or right of East in the bounding box [ONLINE][OFFLINE].
+    - can a date be entered as a futur date ? [ONLINE][OFFLINE]
+    
+
+FUTUR:
+======
+    - remove dynamically widgets by choosing which one to remove. [OFFLINE]
+    - add a button to draw a map to see the bounding box in the "Geographic Information" section. [OFFLINE]
+
+
+June 15 2015, Release version 0.9.3
+===================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.9.3.
+
+
+June 15 2015, Release version 0.9.3b2
+=====================================
+  MODIFIED:
+    - as the information "Spatial Resolution" is not mandatory for in-situ dataset, the dedicated CheckBox has been removed from the check function [ONLINE].
+    - few adjustments in the GUI [ONLINE][OFFLINE][Ui_mainwindow.py].
+    
+  FIXED:
+    - the "Unit" textbox in the "Geographic Information" tab wasn't checked by the check function [ONLINE].
+    
+  ADDED:
+    - the text in the Info Box dedicated to the "Spatial Resolution" has been introduced [OFFLINE][emc_database_creator.py].
+
+
+June 12 2015, Release version 0.9.3b1
+=====================================
+  MODIFIED:
+    - the "Instruments" part in the "Aircraft and Instruments" section of EMC has been removed until further advancement on the new classification and the new list of all EUFAR instruments [Ui_mainwindow.py][ONLINE][OFFLINE]
+
+
+June 8 2015, Release version 0.9.2
+==================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.9.2.
+
+
+June 5 2015, Release version 0.9.2b3
+====================================
+  ADDED:
+    - a function to check if all fields have bee filled in with characters or numbers has been introduced [ONLINE].
+
+
+June 4 2015, Release version 0.9.2b2
+====================================
+  ADDED:
+    - a function to check if all fields have been filled in has been introduced [ONLINE].
+  
+  FIXED:
+    - if a new widget is created but has no text inside, now it's not saved as empty xml code [ONLINE].
+
+
+June 3 2015, Release version 0.9.2b1
+====================================
+  This version of EMC is a transitory version to bring forward the development of an online version coded using Java and Google Web Toolkit.
+  So far the Java and Python versions of EMC are at the same state, they produce and read the same xml file. The same changelog will be used for both versions. The word [ONLINE] or [OFFLINE] will indicate which version has been corrected/modified/expanded.
+  
+  FIXED:
+    - few entries in the Keywords tab have been corrected to reflect those in the online version of EMC [emc_database_creator.py][OFFLINE].
+    - a wrongly linked checkbox in the Keywords tab has been corrected [emc_database_creator.py][OFFLINE].
+  
+  MODIFIED:
+    - the function to read an xml file in the online version has been modified to allow reading of an xml file created by the offline version [ONLINE].
+    
+  ADDED:
+    - new text and windows have been added in the online version to comply with all information given in the offline version [ONLINE].
+    - it is now possible to choose which widget to remove if more than one widget has been created [ONLINE].
+
+
+March xx 2015, Release version 0.9.1
+====================================
+  !! POSTPONE !!Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.9.1.
+
+
+March 19 2015, Release version 0.9.1b7
+======================================
+  FIXED:
+    - the check function crashes when an xml file is loaded and modified, then saved with another name [check_functions.py].
+    - when an xml file is opened, modified, then saved using "save as" action and canceled before entering a new name, the file was saved anyway with the current name [mainwindow.py].
+    
+
+March 18 2015, Release version 0.9.1b6
+======================================
+  ADDED:
+    - a new check function have been created to list items with wrong value, ex: in the bouding box ("Geographic Information" section), only float or integer can be entered, no character, the function will raise an error [check_functions.py].
+
+  MODIFIED:
+    - the text containing items which have not been completely or correctly filled in is now composed of html elements [check_functions.py].
+
+  FIXED:
+    - temporary fixed the list of QLineEdit objects associated to QDateEdit objects appearing in the "self.uncompleteElements" and "self.uncorrectElements" lists [check_functions.py].
+    - fixed the check function which crashed when new widgets were created and analyzed [check_functions.py].
+
+
+March 16-17 2015, Release version 0.9.1b4-5
+===========================================
+  MODIFIED:
+    - the copyright icon in the "Aircraft and Instrument" section is only visible when an aircraft is selected [button_functions.py].
+    - continents/countries/oceans/regions keywords in the dabase have been reworked to comply with the NASA GCMD keyword system [emc_database_creator.py].
+  
+  ADDED:
+    - a tooltip has been added to each "+" and "x" buttons [Ui_mainwindow_nonfree.py][button_functions.py].
+    - comboboxes in the "Geographic Information" section have been populated with NASA GCMD location keywords [Ui_mainwindow_nonfree.py][button_functions.py].
+    - the "Location" item in the "Geographic Information" section is now well saved and read [eufar_metadata_xml.py].
+    - added an exception in the check function to allow empty field for non mandatory items (as spatial resolution for in situ data) [check_functions.py].
+ 
+  FIXED:
+    - temporarily fixed the issue concerning the comboboxes in the "Geographic Information" section: once the "Countries" category is selected, selecting another category will add up and down arrows to the list of details. Now the second combobox is deleted and created once a category is selected in the first combobox [Ui_mainwindow_nonfree.py][button_functions.py].
+    - when trying to save a complete xml file, the popup to warn about uncompleted document was raised with no item to display, this has been fixed [check_functions.py].
+ 
+ 
+ 
+March 12 2015, Release version 0.9.1b3
+======================================
+  Fixed all functions to allow a right saving, resetting and reading actions with the new "Keywords", "Geographic Information" tabs, and without the old "Conformity" tab.
+  
+  MODIFIED:
+    - change "delete" icons to a fully transparent icon to simulate the absence of the corresponding Del buttons, when no supplementary widget has been created [Ui_mainwindow_nonfree.py].
+  
+  ADDED:
+    - a new icon has been created to replace the "copyright" logo below all images ("Aircraft and Instrument" section) [Ui_mainwindow_nonfree.py]
+    
+    
+March 10 2015, Release version 0.9.1b2
+======================================
+  ADDED:
+    - a new window has been added when trying to exit software and modifications exist, to propose to save the file, to cancel the exit, or to exit anyway [mainwindow.py][Ui_presavewindow.py].
+    - the "Keywords" tab has been reworked to propose a selection of keywords originating from NASA GCMD/CEOS science keywords displayed as checkboxes [Ui_mainwindow_nonfree.py].
+    
+
+March 9 2015, Release version 0.9.1b1
+=====================================
+  ADDED:
+    - countries, regions, continents and oceans have been added to the database, to improve the "Geographic Information" tab [emc_database_creator.py].
+    - NASA GCMD/CEOS science keywords have been added to the database, to improve the "Keywords" tab [emc_database_creator.py].
+  
+  MODIFIED:
+    - the "spatial resolution" item has been moved from the "Quality and Validity" tab to the "Geographic Information" tab [Ui_mainwindow_nonfree.py].
+    - the "Continents/country/regions" item has been reworked to propose a list of continents, countries, regions and oceans [Ui_mainwindow_nonfree.py].
+    - the "Keywords" tab has been reworked to propose a selection of keywords originating from NASA GCMD/CEOS science keywords [Ui_mainwindow_nonfree.py].
+   
+    
+February 13 2015, Release version 0.9.0
+=======================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.9.0.
+
+  
+February 12 2015, Release version 0.9.0b15
+==========================================
+  ADDED:
+    - added copyright to all aircraft images [database].
+    - added information to the Aircraft and Instrumens window [database].
+  
+    
+February 11 2015, Release version 0.9.0b14
+==========================================
+  FIXED:
+    - the instrument window is correctly cleared when a "New" file is created [mainwindow.py].
+    - when opening an existing file just after opening an existing file, few fields were duplicated, this has been fixed [mainwindow.py].
+    - if a new file is created after loading two files, one after another, the program crashes (segmentation fault), this has been fixed, but the solution need to be assessed [button_functions.py][mainwindow.py].
+    - when saving an xml file, with no aircraft selected, the program crashes [eufar_metadata_xml.py]
+  
+  ADDED:
+    - when opening a new file, the Coordinate Reference System is now reseted to the default value [mainwindow.py].
+    - when saving an incomplete file, it is now possible to save incompletely selected instruments and avoid the "Do your choice" in the xml file [eufar_metadata_xml.py].
+    - when reading an incomplete file, it is now possible to read incompletely saved instruments [eufar_metadata_xml.py].
+    - the list of missing elements is now sorted accordingly to the main software window [check_functions.py].
+
+    
+February 11 2015, Release version 0.9.0b13
+==========================================  
+  I don't like the 13 digit...
+  
+    
+February 5-10 2015, Release version 0.9.0b10-12
+===============================================
+  The different texts displayed in the info window for each element have been rewritten for clarification and style issues.
+  
+  MODIFIED:
+    - the about window has been reworked to comply with EUFAR Metadata Creator style [mainwindow.py][ui_aboutwindow.py].
+    - the fill window has been reworked to comply with EUFAR Metadata Creator style [mainwindow.py][ui_fillwindow.py].
+    - the info window has been reworked to comply with EUFAR Metadata Creator style [mainwindow.py][ui_infowindow.py].
+    - xml code dedicated to aircraft and instruments has been rewritten to facilitate integration into INSPIRE xml code [eufar_metadata_xml.py].
+    - changed the name of the different pages for clarification [Ui_mainwindow_nonfree.py].
+    - the "Temporal Reference" window has been a bit reworked : the info button of the temporal extent has been moved after the "+" and "x" buttons [Ui_mainwindow_nonfree.py].
+    - the "Metadata on Metadata" window has been a bit reworked : one of the info button of the contact has been moved after the "+" and "x" buttons, and the other has been deleted [Ui_mainwindow_nonfree.py].
+    - the "Validity and Quality" window has been a bit reworked [Ui_mainwindow_nonfree.py].
+    - the "Identification" window has been a bit reworked to justify all textboxes [Ui_mainwindow_nonfree.py].
+
+  ADDED:
+    - the Coordinate Reference System is now saved in the xml function, the GUI has been adapted accordingly [eufar_metadata_xml.py][mainwindow.py][button_functions.py].
+    - the Coordinate Reference System is now read by the xml read function [eufar_metadata_xml.py].
+    - the info window appears now just below the parent clicked infoButton [button_functions.py].
+    - in the "Quality and Validity" window, if "distance" is selected, the "unit" label is now red if no text is entered when trying to save an xml file [mainwindow.py].
+    - in the "Geographic Information" window, if "Other" is selected, the "name" and "caode" labels are now red if no text is entered when trying to save an wml file [mainwindow.py].
+    
+  FIXED:
+    - the widget linked to the keyword list in the "Keyword" window has been changed and induced an attribute error when the "+" button was clicked [button_functions.py].
+    - fixed an issue in the metadata date not saved correctly [eufar_metadata_xml.py].
+    
+    
+February 4 2015, Release version 0.9.0b9
+========================================    
+  ADDED:
+    - a new window has been created to warn the user about fields which have not been filled, with a button to show the list of all unfilled fields [mainwindow.py][ui_fillwindow.py]
+
+    
+February 3 2015, Release version 0.9.0b8
+========================================    
+  FIXED:
+    - when reading an xml file, the part containing aircraft information wasn't read correctly and generated an error [eufar_metadata_xml.py].
+    - when a new instrument widget was created, and the xml file saved, the model was saved in the xml code of the manufacturer, and the manufacturer was saved in the xml code of the model [eufar_metadata_xml.py].
+    
+  ADDED:
+    - the operator linked to the aircraft, instruments and data, is know saved in the xml file [eufar_metadata_xml.py].
+    
+    
+February 2 2015, Release version 0.9.0b7
+========================================
+  The function to save xml file has been modified to handle the two different GUI and the integration of both radio buttons result [eufar_metadata_xml.py].
+  
+  FIXED:
+    - corrected a bug which crashed the program when the "AWI - POLAR 5" aircraft was selected in the "Aircraft and Instruments" window [Ui_mainwindow_free.py][Ui_mainwindow_nonfree.py]
+    - corrected a problem with radio buttons : when a radio buttons was checked, all others, the initial ones and new ones, were automatically unchecked [Ui_mainwindow_free.py][Ui_mainwindow_nonfree.py].
+    
+
+January 27-30 2015, Release version 0.9.0b3-b6
+==============================================
+  The window to select instruments has been reworked to propose to users to select the classification based on GCMD / CEOS classification keywords, then enter themselves the Manufacturer and the model of the instrument. As the final choice will be made during the next EUFAR General Assembly, the old window has been backed up. The GUI files including both solutions are called [Ui_mainwindow_free.py] and [Ui_mainwindow_nonfree.py]. A solution has been implemented in the [button_function.py] to handle both window configurations.
+  The classification of instruments based on GCMD / CEOS has been reworked to comply fully with GCMD / CEOS.
+
+
+January 22 2015, Release version 0.9.0b2
+========================================
+  FIXED:
+    - when a xml file is open, if an element is deleted, then added for correction, and all fields are filled, if one is trying to save the file, the program will ask for a new name instead using the existing name [mainwindow.py].
+      
+     
+January 21 2015, Release version 0.9.0b1
+========================================
+  A new function will be implemented: it will inform if all mandatory fields have been filled or not, which field exactly have to be filled, and offer a solution to save anyway BUT with an information ("do not use the incompletely filled file for storage purposes, fill all fields before")
+      
+  MODIFIED:
+    _ names of all QLabel, QPlainTextEdit and QLineEdit have been changed to link each label to each QPlainTextEdit / QLineEdit [mainwindow.py][eufar_metadata_xml.py][sql_functions.py][Ui_mainwindow.py].
+    
+  FIXED:
+    - size policy in the new created widgets ("Keyword" window) was set linked to the default widget, this has been fixed [button_functions.py].
+    - all QPlainTextEdits objects weren't connected to the "modified" function [mainwindow.py].
+      
+
+January 21 2015, Release version 0.8.1
+======================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.8.1.
+      
+      
+January 21 2015, Release version 0.8.1b2
+========================================
+  FIXED:
+    - when an xml file is read with multiple widgets created, and when the program is then cleaned using the "New..." button, only one widget in each window is cleared and removed. This have been fixed [mainwindow.py].    
+      
+      
+January 20 2015, Release version 0.8.1b1
+========================================
+  FIXED:
+    - the keyword list of the main keyword widget wasn't cleared when "New..." was selected [mainwindow.py].
+    - the "Responsible Party Role" combobox wasn't set to "Owner" when "New..." was selected [mainwindow.py].
+    - the "Aircraft and Instruments" window wasn't cleared when "New..." was selected [mainwindow.py].
+    - the text "Radiometers / Altimeters" was misspelt when a new instrument was created [button_functions.py].
+    - a temporary solution has been found to avoid wrong placement of the different elements in layouts of "Keywords", "Aircraft and Instruments" and "Access and Use constraints" windows when reading an .xml files invokating new widgets [eufar_metadata_xml.py].
+      
+  MODIFIED:
+    - the code to set all date box to the current date has been reworked for clarification [mainwindow.py].
+    - the "Topics" dictionnary has been moved in the current database, all code to save and read this dictionnary has been modified to handle the database version [mainwindow.py][eufar_metadata_xml.py][emc_databse_creator.py].
+    - all objects initialized in [mainwindow.py] have been moved in a dedicated function [sql_functions.py][mainwindow.py].
+      
+      
+January 20 2015, Release version 0.8.0
+======================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.8.0.
+
+
+January 20 2015, Release version 0.8.0b9
+========================================    
+  FIXED:
+    - when a new instrument was created using the "+" button, trying to remove it using the "x" button crashed the programm (segmentation fault), this has been fixed (the same object with the same adresse was created two times in memory) [button_functions.py].
+      
+  ADDED:
+    - code has been added to save and read the different instruments to/in an xml file [eufar_metadata_xml.py].
+      
+  MODIFIED:
+    - few adjustments in the GUI code to handle all the text [Ui_mainwindow.py].
+    - spellchecking of the GUI [Ui_mainwindow.py].
+      
+      
+      
+January 19 2015, Release version 0.8.0b8
+========================================     
+  ADDED:
+    - the different roleboxes created by the "+" button in the "Aircrafts and Instruments" window have been linked to the function to select instrument from a list [Ui_mainwindow.py][button_functions.py][mainwindow.py].
+      
+  MODIFIED:
+    - the label "Aircrafts and Instruments" has been modified to "Aircraft and Instruments" 
+      
+      
+January 12-19 2015, Release version 0.8.0b2-b7
+==============================================
+  All categories and texts concerning instruments used within EUFAR as been written inside EMC. Instruments classification is done according to CEOS classification keywords. Then, all texts concerning aircrafts, instruments, help buttons, languages and roles, have been migrating to a sqlite database. A new design of the "Instruments" window have been done.
+
+  FIXED:
+    - when reading an xml file, the first language in the xml file was always the one to be read and to be entered in all language fields within EMC, even if a second one was present in the xml file [eufar_metadata_xml.py].
+
+    
+January 9 2015, Release version 0.8.0b1
+=======================================   
+  ADDED:
+    - added the first version of the tool to select instrument or multiple instruments [Ui_mainwindow.py][button_functions.py][mainwindow.py].
+    - added a copyright label for the different aircraft images [Ui_mainwindow.py][button_functions.py].
+
+
+January 8 2015, Release version 0.7.0
+=======================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.7.0.         
+    
+    
+January 8 2015, Release version 0.7.0b6
+=======================================
+  MODIFIED:
+    - all the fonts have been modified in the GUI for clarification and to add full path [Ui_mainwindow.py].
+    - added few improvements to the GUI [Ui_mainwindow.py].
+    - added the same improvements to the new created objetc [button_functions.py].
+    - moved image, icon and aicrafts directories to the main directory to avoid issues with the futur one-file executable.
+    
+  FIXED:
+    - the wrong image was loaded when the DLR Falcon20 was selected in the "Aircrafts and Instruments" tab [mainwindow.py].
+    - the aircraft parts wasn't read correctly in the .xml file [eufar_metadata_xml.py].
+    
+  ADDED:
+    - aircraft type, manufacturer and registration number are correctly saved in the .xml file [eufar_metadata_xml.py].
+    
+    
+January 7 2015, Release version 0.7.0b5
+=======================================
+  A new way to handle program path has been introduced in the program, it should facilitate the production of an executable file by Pyinstaller.
+  
+  MODIFIED:
+    - replaced the relative path of different images (icons and aircrafts) by an absolute path [Ui_mainwindow.py].
+    - moved image directories inside "ui" directory for clarification.
+    
+  ADDED:
+    - a function to save the absolute path of the executed applicated as an attribute of the application [mainwindow.py].
+    - added a new directory ("font") to embed Free and Droid fonts.
+    
+    
+January 6 2015, Release version 0.7.0b4
+=======================================
+  An icon for the EUFAR Metadata Creator has been created.
+  
+  FIXED:
+    - fixed a bug which prevented to resize one of the tab correctly [Ui_mainwindow.py].
+    
+
+January 5 2015, Release version 0.7.0b3
+=======================================
+  MODIFIED:
+    - improved GUI by removing frames around line objects and raise for buttons [Ui_mainwindow.py].
+    - added those improvements to the dynamically created objects [button_functions.py].
+
+    
+December 16 2014, Release version 0.7.0b2
+========================================        
+  ADDED:
+    - all aicrafts in EUFAR proposed to Transnational Access are now in EUFAR Metadata Creator (informations and an image) [mainwindow.py].
+      
+    
+December 16 2014, Release version 0.7.0b1
+========================================    
+  First integration of the tab dedicated to aircraft and instruments.
+  
+  ADDED:
+    - a new tab to allow selection of aircraft and the different instruments installed in the aircrafts [button_functions.py][Ui_mainwindow.py][mainwindow.py].
+    
+    
+December 15 2014, Release version 0.6.1
+========================================   
+  FIXED:
+    - converted RGB profile for the rose_des_vents.png image to avoid the following message "libpng warning: iCCP: known incorrect sRGB profile" in the terminal.
+    
+    
+December 15 2014, Release version 0.6.0
+========================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.6.0.    
+    
+
+December 15 2014, Release version 0.6.0b2
+=========================================     
+  FIXED:
+    - a bug which prevented to reset all the QPlainText boxes when "New" was clicked [mainwindow.py]
+    - the size of the "Role" rolebox in the Responsible Organisations to handle the whole text [Ui_mainwindow.py].
+    - a bug which prevented to save the Conformity date when new widgets are created [eufar_metadata_xml.py].
+    - the Delete button ("keywords" windows) is impossible to use (greyed) when an .xml file has been read [button_functions.py].
+    - info buttons' size in "Keywords" window changes when a new widget is created after reading an .xml file.
+    - few adjustments in the GUI [Ui_mainwindow.py][button_functions.py].
+    
+  
+  MODIFIED:
+    - the size of "Responsible Organisations" labels and text boxes to be agree with the rolebox [Ui_mainwindow.py][button_functions.py].
+    
+  ADDED:
+    - the "eufar_metadata_xml" function read the whole "Conformity" code correctly [eufar_metadata_xml.py].
+    - the "eufar_metadata_xml" function read the whole "Keywords" code correctly [eufar_metadata_xml.py].
+    - added spacer items in the "Conformity" windows when a new widget is created [button_functions.py].
+    - added spacer items in the "Contacts" windows when a new widget is created [button_functions.py].
+    - added spacer items in the "Keywords" windows when a new widget is created [button_functions.py].
+    
+    
+December 12 2014, Release version 0.6.0b1
+========================================= 
+  FIXED:
+    - the text box "Continent / Country / region" wasn't saved in the generated .xml file.
+    
+  ADDED:
+    - a read function has been implemented to read generic code from EUFAR metdata creator .xml files [eufar_metadata_xml.py].
+    - the "eufar_metadata_xml" function read the whole "Temporal extent" code correctly [eufar_metadata_xml.py].
+    - the "eufar_metadata_xml" function read the whole "Access and Use Constraints" code correctly [eufar_metadata_xml.py].
+    - the "eufar_metadata_xml" function read the whole "Responsible Organisations" code correctly [eufar_metadata_xml.py].
+    - the "eufar_metadata_xml" function read the whole "Metadata on Metadata" code correctly [eufar_metadata_xml.py].
+
+    
+December 12 2014, Release version 0.5.0
+========================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.5.0.
+ 
+
+December 11 2014, Release version 0.5.0b3
+=========================================
+  ADDED:
+    - the "eufar_metadata_xml" function saves the whole "Responsible Organisations" window correctly [eufar_metadata_xml.py].
+    - the "eufar_metadata_xml" function saves the whole "Access and use constraints" window correctly [eufar_metadata_xml.py].
+    - the "eufar_metadata_xml" function saves the whole "Metadata on Metadata" window correctly [eufar_metadata_xml.py].
+    - the "eufar_metadata_xml" function saves the whole "Conformity" window correctly [eufar_metadata_xml.py].
+    - new function to add a new "Unit:" line in the "Quality and Validity" window, if the text "Distance" is selected [button_functions.py][mainwindow.py].
+    - the result of the above addition has been implemented in the "eufar_metadata_xml" function [eufar_metadata_xml.py].
+    - added a function associated to the "New" item in "File" menu to reset all fields and remove all new widgets in the different windows [mainwindow.py].
+
+    
+  FIXED:
+    - corrected few mistakes in "eufar_metadata_xml" function (ex: adress -> address) to comply with INSPIRE scheme [eufar_metadata_xml.py].
+    - modified code lines in "eufar_metadata_xml" function (ex: gmd:topicCategory) to comply with INSPIRE scheme [eufar_metadata_xml.py].
+    - corrected two mistakes concerning the Geographic Bounding Box (ex: North -> longitude) to comply with INSPIRE scheme [eufar_metadata_xml.py].
+    - corrected position of labels in "Classification" window to sort all elements alphabetically [Ui_mainwindow.py].
+    
+    
+December 10 2014, Release version 0.5.0b2
+=========================================
+  FIXED:  
+    - corrected a bug which avoided the use of del button for the keyword frame when keywords are in the list [button_functions.py].
+    - corrected a bug which avoided the use of del button for the keyword frame when few new frame were created [button_functions.py].
+    - in all windows, if a new "object" has been created, to modify the object (as a text, rolebox, ...) does not apply the "-modified" option in the program's title
+    - corrected a bug which crashed the program when trying to save an xml file (keywords) [eufar_metadata_xml.py].
+
+  ADDED:
+    - the "eufar_metadata_xml" function saves the whole "Keywords" window correctly [eufar_metadata_xml.py].
+    - the "eufar_metadata_xml" function saves the whole "Temporal extent" window correctly [eufar_metadata_xml.py].
+    
+    
+December 9 2014, Release version 0.5.0b1
+========================================     
+  MODIFIED:
+    - all icons to avoid use of a resources.py [Ui_mainwindow.py].
+    - spaces between few icons (Info and Plus) [Ui_mainwindow.py].
+    
+  FIXED:
+    - remaining "*" in the text when new labels are created [Ui_mainwindow.py].
+    - corrected a bug with two spacer in the "Metadata on Metadata" window [button_functions.py].
+    - uncorrect widget names in the ""Access and Use Constraints" window when new widgets were created [button_functions.py].
+    - corrected a bug which avoided to set "Disabled" attribute to the Del Button in the "Responsible Organisations" window [button_functions.py].
+    - corrected a bug which avoided to remove spacer items in the "Temporal Reference" window [button_functions.py].
+    - corrected a bug which avoided to remove a label in the "Conformity" window [button_functions.py].
+    
+  ADDED:
+    - some spaces above and under lines when a new part is created by the user [Ui_mainwindow.py].
+    - the first revision of the Del button, in "Access and Use Constraints" window, as a test to remove dynamically a widget [button_functions.py].
+    - Del button added to the "Metadata on Metadata" window [button_functions.py].
+    - Del button added to the "Responsible Organisations" window [button_functions.py].
+    - Del button added to the "Temporal Reference" window [button_functions.py].
+    - Del button added to the "Conformity" window [button_functions.py].
+    - Del button added to the "Keyword" window [button_functions.py].
+
+    
+December 9 2014, Release version 0.4.0
+========================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.4.0.
+    
+    
+December 8 2014, Release version 0.4.0b11
+========================================    
+  ADDED:
+    - an icon to the changelog menu item [Ui_mainwindow.py].
+    
+  MODIFIED:
+    - reworked few parts of the GUI to be more readable [Ui_mainwindow.py][button_functions.py].
+    
+  FIXED:
+    - corrected a bug which crashes the program when the "+" button of keyword item was pressed [button_functions.py].
+    
+    
+December 5 2014, Release version 0.4.0b10
+========================================    
+  ADDED:
+    - added "phase x" text to temporal extent for clarification [button_functions.py].
+    
+    
+December 4 2014, Release version 0.4.0b9
+========================================    
+  MODIFIED:  
+    - reworked the following windows: Identification, Geographic Location, Temporal Extent, Quality and Validity, Access and use constraints, Metadata on Medatadata:
+    
+
+December 4 2014, Release version 0.4.0b9
+========================================
+  ADDED:
+    - in Keywords page, it is now possible to add an Originating Controlled Vocabulary by clicking on the plus button [button_functions.py].
+    - a new window to display the changelog.txt [mainwindow.py][Ui_logwindow.py].
+
+  FIXED:
+    - a misplacement of the "+" button in Keywords frame (Keywords page) when a new Originating Controlled Vocabulary entity was created button_functions.py].
+    - the "+" button, created when a new Originating Controlled Vocabulary entity is created, is not clickable, this has been using a dedicated function (temporary solution) [mainwindow.py][button_functions.py].
+    - a bug which applied a "connect" signal to all new "+" button created in Keyword page at each time a new OCV entity was created [button_functions.py].
+    - in "Access and Use Constraint" window, the "+" button tends to be inside the textbox when new textboxes were added to the window [Ui_mainwindow.py].
+    - in "Access and Use Constraint" window, the "+" and "info" button are not well placed, the "info" button should be before the "+" button [Ui_mainwindow.py].
+    
+
+
+December 3 2014, Release version 0.4.0b8
+========================================
+  ADDED:
+    - in Metadata on Metadata page, it is now possible to add a Metadata point of contact by clicking on the plus button [button_functions.py].
+    - in Temporal Reference page, it is now possible to add a temporal extent by clicking on the plus button [button_functions.py].
+    - in Responsible Organisations page, it is now possible to add a responsible party by clicking on the plus button [button_functions.py].
+    - in Conformity page, it is now possible to add a specification by clicking on the plus button [button_functions.py].
+    
+  FIXED:
+    - a problem in Metadata on Metadata page, where all the text was centered and not aligne at the top [button_functions.py].
+    - a problem in Access and Use Constraints page, where all the text was centered and not aligne at the top [button_functions.py].
+    - a bug which prevented to display information when the associated button was clicked [mainwindow.py].
+    
+  MODIFIED:
+    - reworked Keyword page for simplification and help "+" button function integration [Ui_mainwindow.py].
+    
+
+December 2 2014, Release version 0.4.0b7
+========================================
+  ADDED:
+    - added a new function to handle click on all buttons ("+" "x" and "info")
+
+  FIXED:
+    - a bug which changes the "Specification" label ("Conformity" page) into a text box when a new text box is added in the "Access and use constraints" page [button_functions.py]
+    
+
+December 2 2014, Release version 0.4.0b6
+========================================
+  ADDED:
+    - function to AU Limitation "+" button to add some text box to the layout [mainwindow.py].
+
+
+December 1 2014, Release version 0.4.0b5
+========================================
+  ADDED:
+    - function to Keyword "+" button to add some keyword to as list [mainwindow.py].
+    - a new QListWidget under Keywords part to add keyword to a visible list [Ui_mainwindow.py]
+    - a keyword "x" button to remove keyword from the list [mainwindow.py].
+    - an associated function which remove the selected keyword [mainwindow.py].
+    
+  MODIFIED:
+    - reworked window for keywords : replaced the line to enter keyword by the QListWidget
+    - the keyword "+" button now open a new window to enter a keyword
+
+
+November 7 2014, Release version 0.4.0b4
+========================================
+  Improvements added to the whole code.
+    
+  FIXED:
+    - replaced "EX_temporalExtent" by "EX_TemporalExtent" to comply with INSPIRE XML standard [eufar_metadata_xml.py].
+    - replaced "CI_citation" by "CI_Citation" to comply with INSPIRE XML standard [eufar_metadata_xml.py].
+    - replaced "CI_citation" by "CI_Citation" to comply with INSPIRE XML standard [eufar_metadata_xml.py].
+    - the scale denominator wasn't saved at the right place, it was fixed [eufar_metadata_xml.py].
+    - the "role" rolebox in the contact part for data wasn't correctly saved in the XML file [eufar_metadata_xml.py].
+    - corrected the "point of contact" element in the contact part for metadata, to "pointOfContact" [eufar_metadata_xml.py].
+    
+  MODIFIED:
+    - Temporal Extent part was moved to be in the Extent part including Geographic Extent to comply with INSPIRE XML standard [eufar_metadata_xml.py].
+
+
+November 6 2014, Release version 0.4.0b3
+========================================
+  Improvements added to the whole code.
+
+  FIXED:
+    - an unbound local error, "abstractIdent" was references before assignment, it was replaced by "languageIdent2" [eufar_metadata_xml.py]
+    - the use of the unique resource identifier in "MD_DataIdentification" [eufar_metadata_xml.py]
+    - a double "codeList" in the part "MD_RestrictionCode" was found, and removed the URL from the XML file, the second "codeList" was converted to "codeListValue" [eufar_metadata_xml.py].
+    - the email address for metadata contact was saved in the wrong section of the XML file [eufar_metadata_xml.py].
+    
+  ADDED:
+    - new set of icons for the File/Edit/Help menus.
+    - all texts linked to infoButtons
+
+  MODIFIED:
+    - text in the "About" menu.
+    - code in xml file to comply with INSPIRE XML file.
+
+
+November 5 2014, Release version 0.4.0b2
+========================================
+  Improvements added to the whole code.
+    
+  ADDED:
+    - tooltips to Classification menu
+    - icons to infoButtons and plusButtons
+    - a resource file where icons are stored
+    
+  MODIFIED:
+    - names of infoButtons and plusButtons to simplify the addition of futur code
+
+
+November 4 2014, Release version 0.4.0b1
+========================================
+  Improvements added to the whole code.
+
+  FIXED:
+    - corrected "self.au_responsible..." to "self.ro_responsible..." in [eufar_metadata_xml.py]
+    - corrected "self.au_responsible..." to "self.ro_responsible..." in [eufar_metadata_xml.py]
+  
+  ADDED:
+    - icons for "+" and "info" buttons
+
+
+November 4 2014, Release version 0.3.0
+======================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.3.0.
+
+
+November 4 2014, Release version 0.2.0b9
+========================================
+  Improvements added to the xml saving function.
+    
+  FIXED:
+    - few bugs were deleted to improve stability
+
+
+November 3 2014, Release version 0.2.0b8
+========================================
+  Improvements added to the xml saving function
+
+
+October 29 2014, Release version 0.2.0b3-b7
+===========================================
+  Creating a function to save xml documents.
+    
+  FIXED:
+    - two bugs in open and save pre functions which lead to crash
+
+
+October 29 2014, Release version 0.2.0b2
+========================================
+  ADDED:
+    - functions to open documents, reset fields, exit
+
+
+October 29 2014, Release version 0.2.0b1
+========================================
+  Designing the "mainwindow.py" code to handle every text lines, boxes, role boxes, etc etc ...
+
+
+October 29 2014, Release version 0.1.0b2-5
+==========================================
+  First version of the EUFAR Metadata Creator GUI
+    
+  FIXED:
+    - few mistakes in the GUI
+    
+  MODIFIED:
+    - few adjustments in the GUI
+
+
+October 28 2014, Release version 0.1.0b1
+========================================
+  First code of EUFAR Metadata Creator
+

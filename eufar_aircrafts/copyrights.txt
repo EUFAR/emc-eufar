@@ -1,0 +1,20 @@
+POLAR5-AWI.png -> Alfred Wegener Institute
+ERA-ISAFM.png -> CNR, Istituto per i Sistemi Agricoli e Forestali del Mediterraneo
+PARTENAVIA-CNR.png -> CNR, Istituto di Metodologie per l'Analisi Ambientale
+C208-DLR.png -> DLR, CC-BY 3.0
+DO228-DLR-1.png -> DLR, CC-BY 3.0
+DLR - DO228-2.png -> DLR, CC-BY 3.0
+FALCON20-DLR.png -> DLR, CC-BY 3.0
+logo_eufar_emc.png -> EUFAR
+LEARJET25-ENVISCOPE-3.png -> ENVISCOPE GmbH
+PARTENAVIA68-ENVISCOPE-2.png -> ENVISCOPE GmbH
+BAE146-FAAM.png -> NERC, Facility for Airborne Atmospheric Measurements
+C207-FUB.png -> Institut fur Weltraumwissenschaften
+CASA212-INTA.png -> Instituto Nacional de Tecnica Aeroespacial
+ENDURO-KIT.png -> KIT, Institute of Meteorology and Climate Research
+DO228-NERC.png -> NERC, Airborne Research and Survey Facility
+TWINOTTER-NERC.png -> NERC, British Antarctic Survey
+ATR42-SAFIRE.png -> SAFIRE
+FALCON20-SAFIRE-3.png -> Collection Saspozatlse
+PIPERAZTEC-SAFIRE.png -> SAFIRE
+DIAMOND-UEDIN-1.png -> UEDIN, Airborne GeoSciences

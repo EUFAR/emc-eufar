@@ -1,0 +1,29 @@
+Metadata-Version: 1.1
+Name: emc
+Version: 0.9.3
+Summary: EUFAR Metadata Creator.
+Home-page: http://www.eufar.net
+Author: Olivier Henry
+Author-email: olivier.henry@meteo.fr
+License: New BSD License
+Download-URL: https://github.com/eufarn7sp/emc-eufar
+Description: The goal of the EUFAR Metadata Creator is to produce 
+            metadata to facilitate data storage and searches for 
+            Airborne Scientific Campaigns. 
+        
+        This utility is maintained by EUFAR.
+        
+Keywords: airbornescience,xml,eufar,science,metadata
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Environment :: X11 Applications :: Qt
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Education
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Natural Language :: English
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering :: Atmospheric Science
+Classifier: Topic :: Text Processing :: Markup :: XML
+Requires: PyQt4

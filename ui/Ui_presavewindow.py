@@ -1,0 +1,151 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'presavewindow.ui'
+#
+# Created: Tue Mar 10 14:05:00 2015
+#      by: PyQt4 UI code generator 4.10.4
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt4 import QtCore, QtGui
+
+try:
+    _fromUtf8 = QtCore.QString.fromUtf8
+except AttributeError:
+    def _fromUtf8(s):
+        return s
+
+try:
+    _encoding = QtGui.QApplication.UnicodeUTF8
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+except AttributeError:
+    def _translate(context, text, disambig):
+        return QtGui.QApplication.translate(context, text, disambig)
+
+class Ui_presaveWindow(object):
+    def setupUi(self, presaveWindow):
+        presaveWindow.setObjectName(_fromUtf8("presaveWindow"))
+        presaveWindow.resize(450, 180)
+        presaveWindow.setMinimumSize(QtCore.QSize(450, 180))
+        presaveWindow.setMaximumSize(QtCore.QSize(452, 16777215))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8(self.progPath + "/font/DroidSansFallbackFull.ttf"))
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        presaveWindow.setFont(font)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/warning_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        presaveWindow.setWindowIcon(icon)
+        self.gridLayout = QtGui.QGridLayout(presaveWindow)
+        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
+        self.verticalLayout_2 = QtGui.QVBoxLayout()
+        self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.verticalLayout = QtGui.QVBoxLayout()
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.iw_label_2 = QtGui.QLabel(presaveWindow)
+        self.iw_label_2.setMinimumSize(QtCore.QSize(55, 55))
+        self.iw_label_2.setMaximumSize(QtCore.QSize(55, 55))
+        self.iw_label_2.setText(_fromUtf8(""))
+        self.iw_label_2.setPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/warning_icon.png")))
+        self.iw_label_2.setScaledContents(True)
+        self.iw_label_2.setObjectName(_fromUtf8("iw_label_2"))
+        self.verticalLayout.addWidget(self.iw_label_2)
+        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout.addItem(spacerItem)
+        self.horizontalLayout.addLayout(self.verticalLayout)
+        spacerItem1 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout.addItem(spacerItem1)
+        self.iw_label_1 = QtGui.QLabel(presaveWindow)
+        self.iw_label_1.setMinimumSize(QtCore.QSize(341, 120))
+        self.iw_label_1.setMaximumSize(QtCore.QSize(341, 16777215))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8(self.progPath + "/font/DroidSansFallbackFull.ttf"))
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.iw_label_1.setFont(font)
+        self.iw_label_1.setFrameShape(QtGui.QFrame.NoFrame)
+        self.iw_label_1.setFrameShadow(QtGui.QFrame.Plain)
+        self.iw_label_1.setLineWidth(0)
+        self.iw_label_1.setMidLineWidth(0)
+        self.iw_label_1.setTextFormat(QtCore.Qt.AutoText)
+        self.iw_label_1.setAlignment(QtCore.Qt.AlignJustify|QtCore.Qt.AlignTop)
+        self.iw_label_1.setWordWrap(True)
+        self.iw_label_1.setObjectName(_fromUtf8("iw_label_1"))
+        self.horizontalLayout.addWidget(self.iw_label_1)
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
+        spacerItem2 = QtGui.QSpacerItem(20, 13, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        self.verticalLayout_2.addItem(spacerItem2)
+        self.horizontalLayout_2 = QtGui.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
+        self.iw_nosaveButton = QtGui.QPushButton(presaveWindow)
+        self.iw_nosaveButton.setMinimumSize(QtCore.QSize(170, 27))
+        self.iw_nosaveButton.setMaximumSize(QtCore.QSize(170, 27))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8(self.progPath + "/font/DroidSansFallbackFull.ttf"))
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.iw_nosaveButton.setFont(font)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/cancel_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.iw_nosaveButton.setIcon(icon1)
+        self.iw_nosaveButton.setIconSize(QtCore.QSize(25, 25))
+        self.iw_nosaveButton.setObjectName(_fromUtf8("iw_nosaveButton"))
+        self.horizontalLayout_2.addWidget(self.iw_nosaveButton)
+        spacerItem3 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem3)
+        self.iw_cancelButton = QtGui.QPushButton(presaveWindow)
+        self.iw_cancelButton.setMinimumSize(QtCore.QSize(93, 27))
+        self.iw_cancelButton.setMaximumSize(QtCore.QSize(93, 27))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8(self.progPath + "/font/DroidSansFallbackFull.ttf"))
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.iw_cancelButton.setFont(font)
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/del_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.iw_cancelButton.setIcon(icon2)
+        self.iw_cancelButton.setIconSize(QtCore.QSize(25, 25))
+        self.iw_cancelButton.setObjectName(_fromUtf8("iw_cancelButton"))
+        self.horizontalLayout_2.addWidget(self.iw_cancelButton)
+        spacerItem4 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem4)
+        self.iw_saveButton = QtGui.QPushButton(presaveWindow)
+        self.iw_saveButton.setMinimumSize(QtCore.QSize(93, 27))
+        self.iw_saveButton.setMaximumSize(QtCore.QSize(93, 27))
+        font = QtGui.QFont()
+        font.setFamily(_fromUtf8(self.progPath + "/font/DroidSansFallbackFull.ttf"))
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferDefault)
+        self.iw_saveButton.setFont(font)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/save_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.iw_saveButton.setIcon(icon3)
+        self.iw_saveButton.setIconSize(QtCore.QSize(25, 25))
+        self.iw_saveButton.setObjectName(_fromUtf8("iw_saveButton"))
+        self.horizontalLayout_2.addWidget(self.iw_saveButton)
+        self.verticalLayout_2.addLayout(self.horizontalLayout_2)
+        self.gridLayout.addLayout(self.verticalLayout_2, 0, 0, 1, 1)
+
+        self.retranslateUi(presaveWindow)
+        QtCore.QMetaObject.connectSlotsByName(presaveWindow)
+
+    def retranslateUi(self, presaveWindow):
+        presaveWindow.setWindowTitle(_translate("presaveWindow", "EUFAR Metadata Creator", None))
+        self.iw_label_1.setText(_translate("presaveWindow", "<html><head/><body><p align=\"justify\">The actual document has been modified. Changes will be lost if the document is not saved.<br/></p><p><span style=\" font-weight:600;\">Do you want to save your changes ?</span></p></body></html>", None))
+        self.iw_nosaveButton.setText(_translate("presaveWindow", "Close without saving", None))
+        self.iw_cancelButton.setText(_translate("presaveWindow", "Cancel", None))
+        self.iw_saveButton.setText(_translate("presaveWindow", "Save", None))
+
