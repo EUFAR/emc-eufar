@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'fillwindow.ui'
 #
-# Created: Wed Mar 18 08:33:32 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Tue Jun 16 09:11:44 2015
+#      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -28,7 +28,7 @@ class Ui_fillWindow(object):
         fillWindow.setObjectName(_fromUtf8("fillWindow"))
         fillWindow.resize(450, 200)
         fillWindow.setMinimumSize(QtCore.QSize(450, 200))
-        fillWindow.setMaximumSize(QtCore.QSize(450, 200))
+        fillWindow.setMaximumSize(QtCore.QSize(452, 223))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/warning_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         fillWindow.setWindowIcon(icon)
@@ -74,8 +74,8 @@ class Ui_fillWindow(object):
         spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem3)
         self.fw_detailButton = QtGui.QPushButton(fillWindow)
-        self.fw_detailButton.setMinimumSize(QtCore.QSize(93, 27))
-        self.fw_detailButton.setMaximumSize(QtCore.QSize(93, 27))
+        self.fw_detailButton.setMinimumSize(QtCore.QSize(115, 27))
+        self.fw_detailButton.setMaximumSize(QtCore.QSize(115, 27))
         font = QtGui.QFont()
         font.setFamily(_fromUtf8(self.progPath + "/font/DroidSansFallbackFull.ttf"))
         font.setPointSize(10)
@@ -83,10 +83,25 @@ class Ui_fillWindow(object):
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.fw_detailButton.setFont(font)
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/preferences_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.fw_detailButton.setIcon(icon1)
+        self.fw_detailButton.setIconSize(QtCore.QSize(25, 25))
         self.fw_detailButton.setObjectName(_fromUtf8("fw_detailButton"))
         self.horizontalLayout_2.addWidget(self.fw_detailButton)
-        spacerItem4 = QtGui.QSpacerItem(120, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem4)
+        self.fw_cancelButton = QtGui.QPushButton(fillWindow)
+        self.fw_cancelButton.setMinimumSize(QtCore.QSize(93, 27))
+        self.fw_cancelButton.setMaximumSize(QtCore.QSize(93, 27))
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/cancel_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.fw_cancelButton.setIcon(icon2)
+        self.fw_cancelButton.setIconSize(QtCore.QSize(25, 25))
+        self.fw_cancelButton.setObjectName(_fromUtf8("fw_cancelButton"))
+        self.horizontalLayout_2.addWidget(self.fw_cancelButton)
+        spacerItem5 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem5)
         self.fw_okButton = QtGui.QPushButton(fillWindow)
         self.fw_okButton.setMinimumSize(QtCore.QSize(93, 27))
         self.fw_okButton.setMaximumSize(QtCore.QSize(93, 27))
@@ -97,13 +112,17 @@ class Ui_fillWindow(object):
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.fw_okButton.setFont(font)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/save_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.fw_okButton.setIcon(icon3)
+        self.fw_okButton.setIconSize(QtCore.QSize(25, 25))
         self.fw_okButton.setObjectName(_fromUtf8("fw_okButton"))
         self.horizontalLayout_2.addWidget(self.fw_okButton)
-        spacerItem5 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem5)
+        spacerItem6 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem6)
         self.verticalLayout_3.addLayout(self.horizontalLayout_2)
-        spacerItem6 = QtGui.QSpacerItem(20, 13, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
-        self.verticalLayout_3.addItem(spacerItem6)
+        spacerItem7 = QtGui.QSpacerItem(20, 13, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        self.verticalLayout_3.addItem(spacerItem7)
         self.verticalLayout = QtGui.QVBoxLayout()
         self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
         self.verticalLayout_3.addLayout(self.verticalLayout)
@@ -116,5 +135,6 @@ class Ui_fillWindow(object):
         fillWindow.setWindowTitle(_translate("fillWindow", "Warning", None))
         self.fw_label_1.setText(_translate("fillWindow", "<html><head/><body><p align=\"justify\">All mandatory fields have not been filled in, or have been incorrectly filled in. You can save your file if you want to complete/correct it later. All fields which have not been completely filled in are indicated in <span style=\" font-weight:600; color:#c80000;\">red</span>, and in <span style=\" font-weight:600; color:#0000c8;\">blue</span> for those incorrectly filled in (see Details to have a complete list). <span style=\" font-weight:600;\">Do not use an incomplete/incorrect xml file for storage and/or sql queries.</span></p></body></html>", None))
         self.fw_detailButton.setText(_translate("fillWindow", "Show details", None))
-        self.fw_okButton.setText(_translate("fillWindow", "OK", None))
+        self.fw_cancelButton.setText(_translate("fillWindow", "Cancel", None))
+        self.fw_okButton.setText(_translate("fillWindow", "Save", None))
 

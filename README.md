@@ -1,7 +1,7 @@
 # asmm-eufar
 
 A detailed changelog can be found in the Documentation directory.
-Current version: 0.9.3
+Current version: 0.9.4
 
 Overview
 

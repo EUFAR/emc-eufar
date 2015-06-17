@@ -4,12 +4,8 @@ CHANGELOG
 
 KNOWN ISSUES:
 =============
-    - the text in the different textboxes is align on the right once the .xml file has been read. -> no solution for now [OFFLINE]
     - after building using Pyinstaller on Linux, the one file sofware generate an Gtk error when used. This error doesn't induce issues with the software or the creation of xml files. -> no solution for now [OFFLINE]
-    - \\URGENT//: add an exception for new created widgets which are empty when saving the xml file. -> !! ON IT !! [OFFLINE]
-    - when a new widget is created by the user, it is not registered in the "modified" function.
-    
-    - in the [ONLINE] version, two lines need to be activated to allow a proper operation of the downloading and uploading servlet, based on the platform for devlopment and production: see in the "Asmm_eufar.java" file, section "open an existing xml file" openFile() and "save an xml file" saveFile(), to comment and uncomment dedicated lines. !!! IMPORTANT !!!
+    - in the [ONLINE] version, two lines need to be activated to allow a proper operation of the downloading and uploading servlets, based on the platform for devlopment or production: see in the "Asmm_eufar.java" file, section "open an existing xml file" openFile() and "save an xml file" saveFile(), to comment and uncomment dedicated lines. !!! IMPORTANT !!!
     
     
 TO ADD:
@@ -17,15 +13,51 @@ TO ADD:
     - add the instrument tab [ONLINE][OFFLINE].
     - rework "Quality and Validity" window [ONLINE][OFFLINE].
     - add a plugin to read metadata from netcdf and/or hdf5 [OFFLINE]
-    - check if North is below or under South in the bounding box [ONLINE][OFFLINE].
-    - check if West is on the left or right of East in the bounding box [ONLINE][OFFLINE].
-    - can a date be entered as a futur date ? [ONLINE][OFFLINE]
+    - add a function to enter automatically information from a database if some key information are entered by the user [ONLINE].
     
 
 FUTUR:
 ======
     - remove dynamically widgets by choosing which one to remove. [OFFLINE]
-    - add a button to draw a map to see the bounding box in the "Geographic Information" section. [OFFLINE]
+
+
+June 17 2015, Release version 0.9.4
+===================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.9.4.
+
+
+June 16-17 2015, Release version 0.9.4b2-3
+=====================================
+  FIXED:
+    - in the "Temporal Reference" tab, the date displayed in the new period widgets (phase 2, phase 3, ...) was aligned on the left and not centered [OFFLINE][button_functions.py].
+    - when a user tries to open an xml file, and an aircraft is included in the xml file, the C for the copyright of the picture is not displayed correctly [OFFLINE][eufar_metadata_xml.py].
+    - when a user wants to create a new file and agrees to save it when it is prompted, the program doesn't create a new file after saving the current file [ONLINE].
+    - when a user wants to create a new file and agrees to save it when it is prompted, the results of the check function are not reset [OFFLINE][mainwindow.py].
+    
+  ADDED:
+    - the check function can now check if a date is after the current date [ONLINE][OFFLINE][check_functions.py].
+    - a cancel button has been included in the Ui_fillwindow [OFFLINE][Ui_fillwindow.py].
+    - a function to append the suffix "modified" to the browser window title has been introduced when a modification is brought to a field, the suffix disapears if the file is saved or cleared [ONLINE].
+    - when a user wants to create a new file and some fields are not empty or have been changed, a function will ask him if he wants to save the file before creating a new one [ONLINE].
+    
+  MODIFIED:
+    - the way to handle aircraft information and the dedicated combobox has been modified when a user load an xml file including an aircraft. [OFFLINE][eufar_metadata_xml.py].
+    - few adjustments in the GUI [ONLINE].
+
+
+June 15 2015, Release version 0.9.4b1
+=====================================
+  FIXED:
+    - the function to clean all widgets tried to clean the instrument tab which doesn't exist since the v0.9.3b1 [OFFLINE][mainwindow.py].
+    - the function to clean all widgets didn't clear the "Spatial resolution" combobox [OFFLINE][mainwindow.py].
+    - the function to clean all widgets didn't clear the "Location" comboxes [OFFLINE][mainwindow.py].
+    - when a new widget is created by a user and is let empty, if the user tries to save the file, an error is raised with the check function ; now the check function ignore the empty widget if another one exists and has been correctly filled in [OFFLINE][check_functions.py].
+    - when an xml file is loaded, and a new widget is created for the same tab, deleting this new widget doesn't apply the "modified" parameter to the program ; this is fixed [OFFLINE][button_functions.py].
+    - in the window title bar, when a file is saved or open, the name and the path of the file is displayed ; when the string is greater than 40 characters, the string is truncated to display it correctly [OFFLINE][mainwindow.py]
+    
+  MODIFIED:
+    - the "Warning" window has been modified to reflect the situation when the window is triggered: to open a document, to create a new file or to exit the program [OFFLINE][mainwindow.py].
+    - the information text displayed when an Info button is clicked has been adjusted [ONLINE][OFFLINE][emc_database_creator.py].
 
 
 June 15 2015, Release version 0.9.3

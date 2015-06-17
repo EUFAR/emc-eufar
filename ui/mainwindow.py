@@ -5,6 +5,7 @@ import datetime
 import os, sys
 import sqlite3 as lite
 from PyQt4 import QtCore, QtGui
+from PyQt4.QtCore import Qt
 from PyQt4.QtCore import QDate
 from PyQt4.QtCore import QObject
 from PyQt4.QtCore import SIGNAL
@@ -17,6 +18,7 @@ from PyQt4.QtGui import QRadioButton
 from PyQt4.QtGui import QMainWindow
 from PyQt4.QtGui import QFileDialog
 from PyQt4.QtGui import QInputDialog
+from PyQt4.QtGui import QLabel
 from PyQt4.QtGui import QLineEdit
 from PyQt4.QtGui import QListWidget
 from PyQt4.QtGui import QTextEdit, QPlainTextEdit
@@ -25,11 +27,13 @@ from PyQt4.QtGui import QDateEdit
 from PyQt4.QtGui import QCompleter
 from PyQt4.QtGui import QMessageBox
 from PyQt4.QtGui import QWidget
+from PyQt4.QtGui import QCursor
 from Ui_mainwindow import Ui_MainWindow
 from Ui_logwindow import Ui_Changelog
 from Ui_fillwindow import Ui_fillWindow
 from Ui_aboutwindow import Ui_aboutWindow
 from Ui_presavewindow import Ui_presaveWindow
+from Ui_infowindow import Ui_infoWindow
 from _version import _version
 from _version import _xml_version
 from _version import _inspire_version
@@ -112,15 +116,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     @pyqtSignature("")
     def on_actionNew_triggered(self):
         if self.modified:
-            result = self.make_onsave_msg_box()
-            if result == QMessageBox.Save:
+            result = self.make_onsave_msg_box("Clear","new_icon.png")
+            if result == "iw_saveButton":
                 self.save_document()
 		self.reset_all_fields()
-            elif result == QMessageBox.Discard:
+		labels = self.findChildren(QLabel)
+                for label in labels:
+                    label.setStyleSheet("color: black")
+            elif result == "iw_nosaveButton":
                 self.reset_all_fields()
-            else:
-                return
-        self.reset_all_fields()
+        else:
+            self.reset_all_fields()
 
 
     @pyqtSignature("")
@@ -170,12 +176,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     @pyqtSignature("")
     def on_actionOpen_triggered(self):
         if self.modified:
-            result = self.make_onsave_msg_box()
-            if result == QMessageBox.Save:
+            result = self.make_onsave_msg_box("Open","open_icon.png")
+            if result == "iw_saveButton":
                 self.save_document()
-	    elif result == QMessageBox.Cancel:
-		return
-        self.open_file()
+	    elif result == "iw_nosaveButton":
+                self.open_file()
+        else:
+            self.open_file()
 
 
     @pyqtSignature("")
@@ -222,7 +229,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def closeEvent(self, event):
         if self.modified:
-            result = self.make_onsave_msg_box()
+            result = self.make_onsave_msg_box("Close", "exit_icon.png")
             if result == "iw_saveButton":
                 self.save_document()
                 print 'closing EUFAR Metadata Creator V{0} ...'.format(_version)
@@ -242,7 +249,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def make_window_title(self):
         if self.saved:
-            title_string = "EUFAR Metadata Creator V{0} - ".format(_version) + self.out_file_name
+            if len(self.out_file_name) > 40:
+                out_file_name = "..." + self.out_file_name[30:]
+            title_string = "EUFAR Metadata Creator V{0} - ".format(_version) + out_file_name
         else:
             title_string = "EUFAR Metadata Creator V{0} - unsaved".format(_version)
         if self.modified:
@@ -257,7 +266,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
 
     def save_document(self, save_as=False):
-	fill_all_fields(self)
+	cancel = fill_all_fields(self)
+	if cancel == True:
+            return
 	if not self.out_file_name or save_as or self.fillInfo:
 	    self.out_file_name = self.get_file_name()
 	    if not self.out_file_name:
@@ -296,24 +307,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	    length = len(self.ro_lab_1)
 	    for item in range(0, length):
 		button_functions.delButton_8_clicked(self)
-	#if self.cf_lab_1:
-	    #length = len(self.cf_lab_1)
-	    #for item in range(0, length):
-		#button_functions.delButton_4_clicked(self)
-	#if self.kw_lab_1:
-	    #for item in range(0, length):
-		#button_functions.delButton_2_clicked(self)
-	if self.ai_inst_rl1:
-	    length = len(self.ai_inst_rl1)
-	    for item in range(0, length):
-		button_functions.delButton_9_clicked(self)
-	#if self.gl_system_rl1.currentText() == "Other":
-	    #self.gl_label_4.deleteLater()
-	    #self.gl_name_ln.deleteLater()
-	    #self.gl_label_5.deleteLater()
-	    #self.gl_code_ln.deleteLater()
-	    #self.horizontalLayout_59.removeItem(self.spacer_1)
-	    #self.horizontalLayout_59.removeItem(self.spacer_2)
 	all_date_edits = self.findChildren(QDateEdit)
 	for widget in all_date_edits:
 	    widget.setDate(QDate.currentDate())
@@ -329,60 +322,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 	all_rolbox_edits = self.findChildren(QComboBox)
 	for widget in all_rolbox_edits:
 	    widget.setCurrentIndex(0)
+	gl_rolebox_changed(self)
+	gl_categoryRolebox_changed(self)
+	ai_aircraftRolebox_changed(self)
 	all_list_edits = self.findChildren(QListWidget)
 	for widget in all_list_edits:
 	    widget.clear()
 	self.id_resourceLang_rl2.setCurrentIndex(4)
 	self.mm_language_rl1.setCurrentIndex(4)
 	self.ro_responsibleRole_rl1.setCurrentIndex(4)
-	if self.findChildren(QComboBox, "ai_instrument_rl4"):
-	    self.ai_instrument_rb1.setAutoExclusive(False)
-	    self.ai_instrument_rb2.setAutoExclusive(False)
-	    self.ai_instrument_rb1.setChecked(False)
-	    self.ai_instrument_rb2.setChecked(False)
-	    self.ai_instrument_rb1.setAutoExclusive(True)
-	    self.ai_instrument_rb2.setAutoExclusive(True)
-	    self.ai_instrument_rl1.clear()
-	    self.ai_instrument_rl1.setEnabled(False)
-	    self.ai_instrument_rl2.clear()
-	    self.ai_instrument_rl2.setEnabled(False)
-	    self.ai_instrument_rl3.clear()
-	    self.ai_instrument_rl3.setEnabled(False)
-	    self.ai_instrument_rl4.clear()
-	    self.ai_instrument_rl4.setEnabled(False)
-	else:
-	    self.ai_instrument_rb1.setAutoExclusive(False)
-	    self.ai_instrument_rb2.setAutoExclusive(False)
-	    self.ai_instrument_rb1.setChecked(False)
-	    self.ai_instrument_rb2.setChecked(False)
-	    self.ai_instrument_rb1.setAutoExclusive(True)
-	    self.ai_instrument_rb2.setAutoExclusive(True)
-	    self.ai_instrument_rl1.clear()
-	    self.ai_instrument_rl1.setEnabled(False)
-	    self.ai_instrument_rl2.clear()
-	    self.ai_instrument_rl2.setEnabled(False)
-	    self.ai_instrument_ln3.clear()
-	    self.ai_instrument_rl3.setEnabled(False)
-	    self.ai_instrument_ln4.clear()
-	    self.ai_instrument_rl4.setEnabled(False)
 	self.ai_label_7.clear()
 	self.ai_label_8.clear()
 	self.ai_label_9.clear()
 	self.ai_label_10.clear()
 	self.ai_label_11.clear()
 	self.ai_label_12.clear()
-	self.ai_image_bx.setPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/eufar_aircrafts/logo_eufar_emc.png")))
-	#qv_rolebox_changed(self)
 	self.gl_roleBox = 0
-	#self.kw_list_1 = []
         self.out_file_name = None
         self.modified = False
         self.saved = False
         self.make_window_title()
 
 
-    def make_onsave_msg_box(self):
-	self.presaveWindow = MyWarning()
+    def make_onsave_msg_box(self, string, iconName):
+	self.presaveWindow = MyWarning(string, iconName)
 	x1, y1, w1, h1 = self.geometry().getRect()
 	x2, y2, w2, h2 = self.presaveWindow.geometry().getRect()
 	x2 = x1 + w1/2 - w2/2
@@ -441,6 +404,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     #def reference_changed(self):
 	#gl_referenceRolebox_changed(self)
 
+
     def category_changed(self):
 	gl_categoryRolebox_changed(self)
 
@@ -459,7 +423,7 @@ class MyLog(QtGui.QDialog, Ui_Changelog):
         self.setupUi(self)
         self.log_txBrower.setPlainText(open(self.progPath + "/" + "Documentation/changelog.txt").read())
         self.lg_okButton.clicked.connect(self.closeWindow)
-	
+        self.lg_okButton.setFocus(True)
 
     def closeWindow(self):
 	self.close()
@@ -475,14 +439,14 @@ class MyAbout(QtGui.QDialog, Ui_aboutWindow):
         self.setupUi(self)
         self.aw_label_1.setText(aboutText)
         self.aw_okButton.clicked.connect(self.closeWindow)
-
+        self.aw_okButton.setFocus(True)
 
     def closeWindow(self):
 	self.close()
 
 
 class MyWarning(QtGui.QDialog, Ui_presaveWindow):
-    def __init__(self):
+    def __init__(self, string, iconName):
         QWidget.__init__(self)
         if getattr(sys, 'frozen', False):
 	    self.progPath = sys._MEIPASS
@@ -493,9 +457,11 @@ class MyWarning(QtGui.QDialog, Ui_presaveWindow):
         all_buttons = self.findChildren(QPushButton)
 	for widget in all_buttons:
 	    QObject.connect(widget, SIGNAL("clicked()"), self.closeWindow) 
-
+        self.iw_nosaveButton.setText(string + " without saving")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/" + iconName)), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.iw_nosaveButton.setIcon(icon)
 
     def closeWindow(self):
 	self.buttonName = self.sender().objectName()
 	self.close()
-

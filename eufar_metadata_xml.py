@@ -18,6 +18,7 @@ from functions.sql_functions import sql_valueRead
 from functions.button_functions import gl_categoryRolebox_changed
 from PyQt4.QtGui import QComboBox
 from PyQt4.QtGui import QRadioButton
+from functions.button_functions import ai_aircraftRolebox_changed
 
 
 try:
@@ -673,14 +674,8 @@ def read_eufar_xml(self, in_file_name):
     areg = get_element_value(aircraftRegistration, "gco:CharacterString")
     if areg:
 	query = sql_valueRead(self, "aircraftInformations", "Code", unicode(areg))
-	self.ai_image_bx.setPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/eufar_aircrafts/" + query[0][6])))
-	self.ai_label_7.setText(_translate("MainWindow", query[0][1], None))
-	self.ai_label_8.setText(_translate("MainWindow", query[0][2], None))
-	self.ai_label_9.setText(_translate("MainWindow", query[0][3], None))
-	self.ai_label_10.setText(_translate("MainWindow", query[0][4], None))
-	self.ai_label_11.setText(_translate("MainWindow", query[0][5], None))
-	self.ai_label_12.setText(_translate("MainWindow", query[0][7], None))
 	self.ai_aircraft_rl1.setCurrentIndex(self.ai_aircraft_rl1.findText(query[0][0]))
+	ai_aircraftRolebox_changed(self)
 
   
     ############################

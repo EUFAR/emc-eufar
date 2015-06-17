@@ -14,6 +14,8 @@ from PyQt4.QtGui import QLineEdit
 from PyQt4.QtGui import QListWidget
 from PyQt4.QtGui import QPlainTextEdit
 from PyQt4.QtGui import QComboBox
+from PyQt4.QtGui import QDateEdit
+from PyQt4.QtCore import QDate
 from ui.Ui_fillwindow import Ui_fillWindow
 from functions.sql_functions import sql_valueRead
 
@@ -26,7 +28,6 @@ except AttributeError:
 
 
 def fill_all_fields(self):
-
     self.fillInfo = False
     self.incompleteElements = []
     self.incorrectElements = []
@@ -60,9 +61,10 @@ def fill_all_fields(self):
     for widget in all_plainText_edits:
 	text = widget.toPlainText()
 	if not text:
-	    all_texts = 0
-	    self.findChildren(QLabel, widget.objectName()[:-2] + "lb")[0].setStyleSheet("color: rgb(200,0,0)")
-	    self.incompleteElements.append(widget.objectName())
+            if widget.objectName()[:12] != "au_wn_con_ta" and widget.objectName()[:12] != "au_wn_lim_ta":
+                all_texts = 0
+                self.findChildren(QLabel, widget.objectName()[:-2] + "lb")[0].setStyleSheet("color: rgb(200,0,0)")
+                self.incompleteElements.append(widget.objectName())
     all_line_edits = self.findChildren(QLineEdit)
     # exception for spatial resolution which exist for hyperspectral data but not for some in-situ data
     for widget in all_line_edits:
@@ -71,11 +73,12 @@ def fill_all_fields(self):
     for widget in all_line_edits:
 	text = widget.text()
         if not text:
-	    all_lines = 0
-	    linked_labels = self.findChildren(QLabel, widget.objectName()[:-2] + "lb")
-	    if linked_labels:
-		linked_labels[0].setStyleSheet("color: rgb(200,0,0)")
-	    self.incompleteElements.append(widget.objectName())
+            if widget.objectName()[:10] != "ro_rlPy_ln" and widget.objectName()[:10] != "ro_rlEm_ln" and widget.objectName()[:13] != "mm_conName_ln" and widget.objectName()[:14] != "mm_conEmail_ln":
+                all_lines = 0
+                linked_labels = self.findChildren(QLabel, widget.objectName()[:-2] + "lb")
+                if linked_labels:
+                    linked_labels[0].setStyleSheet("color: rgb(200,0,0)")
+                self.incompleteElements.append(widget.objectName())
     if "qv_unit_ln" in self.incompleteElements:
 	self.qv_label_3.setStyleSheet("color: rgb(200,0,0)")
     if self.ai_aircraft_rl1.currentText() == "Do your choice ...":
@@ -121,7 +124,29 @@ def fill_all_fields(self):
 
     all_lines = 1
     all_texts = 1
+    all_dates = 1
     all_boundaries = 0
+    all_date_edits = self.findChildren(QDateEdit)
+    for widget in all_date_edits:
+        if widget.objectName() == "tr_dateStart_do4" or widget.objectName() == "tr_dateEnd_do5" or widget.objectName()[:9] == "tr_dtSt_1" or widget.objectName()[:9] == "tr_dtEd_1":
+            if widget.date() > QDate.currentDate():
+                all_dates = 0
+                self.tr_period_lb.setStyleSheet("color: rgb(0,0,200)")
+                if widget.objectName() == "tr_dateStart_do4" or widget.objectName() == "tr_dateEnd_do5":
+                    self.label_7.setStyleSheet("color: rgb(0,0,200)")
+                    if "tr_temporal_extent" not in self.incorrectElements:
+                        self.incorrectElements.append("tr_temporal_extent")
+                elif widget.objectName()[:9] == "tr_dtSt_1" or widget.objectName()[:9] == "tr_dtEd_1":
+                    self.tr_lab_1[int(widget.objectName()[-1:])].setStyleSheet("color: rgb(0,0,200)")
+                    if ("tr_phase_" + widget.objectName()[-1:]) not in self.incorrectElements:
+                        self.incorrectElements.append("tr_phase_" + widget.objectName()[-1:])
+        else:
+            if widget.date() > QDate.currentDate():
+                all_dates = 0
+                self.incorrectElements.append(widget.objectName()[:-1])
+                linked_labels = self.findChildren(QLabel, widget.objectName()[:-3] + "lb")
+                if linked_labels:
+                    linked_labels[0].setStyleSheet("color: rgb(0,0,200)")
     all_line_edits = self.findChildren(QLineEdit)
     for widget in all_line_edits:
         if not widget.text() or widget.objectName() == "qt_spinbox_lineedit":
@@ -133,15 +158,11 @@ def fill_all_fields(self):
 		type_test = "float"
 	    except ValueError:
 		type_test = "text"
-
-	    
 	    try:
 		tmp = int(widget.objectName()[-1:])
 		query = sql_valueRead(self, "elementsInformation", "Object", unicode(widget.objectName()[:-1]))
 	    except ValueError:
 		query = sql_valueRead(self, "elementsInformation", "Object", unicode(widget.objectName()))
-	    
-	    
 	    if query[0][4] != type_test:
 		all_lines = 0
 		self.incorrectElements.append(widget.objectName())
@@ -175,37 +196,31 @@ def fill_all_fields(self):
 		type_test = "float"
 	    except ValueError:
 		type_test = "text"
-	
-	
 	    try:
 		tmp = int(widget.objectName()[-1:])
 		query = sql_valueRead(self, "elementsInformation", "Object", unicode(widget.objectName()[:-1]))
 	    except ValueError:
 		query = sql_valueRead(self, "elementsInformation", "Object", unicode(widget.objectName()))
-	
-	
 	    if query[0][4] != type_test:
 		all_texts = 0
 		self.incorrectElements.append(widget.objectName())
 		linked_labels = self.findChildren(QLabel, widget.objectName()[:-2] + "lb")
 		if linked_labels:
 		    linked_labels[0].setStyleSheet("color: rgb(0,0,200)")
-    if all_lines ==0 or all_texts == 0:
+    if all_lines == 0 or all_texts == 0 or all_dates == 0:
 	fillElements = []
 	cur = self.db.cursor()
 	for name in self.incorrectElements:
-	    
-	    
-	    try:
-		tmp = int(name[-1:])
-		query = sql_valueRead(self, "elementsInformation", "Object", unicode(name[:-1]))
-	    except ValueError:
-		query = sql_valueRead(self, "elementsInformation", "Object", unicode(name))
-	    
-	    
-	    fillElements.append([query[0][0], query[0][3], query[0][2]])
+            if name[:9] == "tr_phase_":
+                fillElements.append(["20." + name[-1:], "Temporal Reference", "Temporal extent - Phase " + str(int(name[-1:]) + 2)])
+            else:
+                try:
+                    tmp = int(name[-1:])
+                    query = sql_valueRead(self, "elementsInformation", "Object", unicode(name[:-1]))
+                except ValueError:
+                    query = sql_valueRead(self, "elementsInformation", "Object", unicode(name))
+                fillElements.append([query[0][0], query[0][3], query[0][2]])
 	fillElements = sorted(fillElements, key=lambda element: element[0])
-	
 	if "writeElements" in locals():
 	    writeElements = writeElements + "<font color=#0000C8><b><u>Incorrect fields<\u></b></font>"
 	else:
@@ -234,7 +249,9 @@ def fill_all_fields(self):
 	y2 = y1 + h1/2 - h2/2
 	self.fillWindow.setGeometry(x2, y2, w2, h2)
 	self.fillWindow.exec_()
-    return
+	return self.fillWindow.cancel
+    else:
+        return False
 	
 
 class MyFill(QtGui.QDialog, Ui_fillWindow):
@@ -247,7 +264,10 @@ class MyFill(QtGui.QDialog, Ui_fillWindow):
         self.setupUi(self)
         self.fw_okButton.clicked.connect(self.closeWindow)
         self.fw_detailButton.clicked.connect(self.detailElements_show)
+        self.fw_cancelButton.clicked.connect(self.cancelWindow)
         self.incompleteElements = fillElements
+        self.cancel = False
+        self.fw_cancelButton.setFocus(True)
 
     
     def detailElements_show(self):
@@ -282,6 +302,9 @@ class MyFill(QtGui.QDialog, Ui_fillWindow):
 	self.setMinimumHeight(self.h)
 	self.setMaximumHeight(self.h)
 	
+    def cancelWindow(self):
+        self.cancel = True
+        self.close()
 
     def closeWindow(self):
 	self.close()

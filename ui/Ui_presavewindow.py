@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'presavewindow.ui'
 #
-# Created: Tue Mar 10 14:05:00 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created: Tue Jun 16 09:07:02 2015
+#      by: PyQt4 UI code generator 4.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -95,7 +95,7 @@ class Ui_presaveWindow(object):
         font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.iw_nosaveButton.setFont(font)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/cancel_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/exit_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.iw_nosaveButton.setIcon(icon1)
         self.iw_nosaveButton.setIconSize(QtCore.QSize(25, 25))
         self.iw_nosaveButton.setObjectName(_fromUtf8("iw_nosaveButton"))
@@ -113,7 +113,7 @@ class Ui_presaveWindow(object):
         font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.iw_cancelButton.setFont(font)
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/del_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/cancel_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.iw_cancelButton.setIcon(icon2)
         self.iw_cancelButton.setIconSize(QtCore.QSize(25, 25))
         self.iw_cancelButton.setObjectName(_fromUtf8("iw_cancelButton"))
@@ -145,7 +145,7 @@ class Ui_presaveWindow(object):
     def retranslateUi(self, presaveWindow):
         presaveWindow.setWindowTitle(_translate("presaveWindow", "EUFAR Metadata Creator", None))
         self.iw_label_1.setText(_translate("presaveWindow", "<html><head/><body><p align=\"justify\">The actual document has been modified. Changes will be lost if the document is not saved.<br/></p><p><span style=\" font-weight:600;\">Do you want to save your changes ?</span></p></body></html>", None))
-        self.iw_nosaveButton.setText(_translate("presaveWindow", "Close without saving", None))
+        self.iw_nosaveButton.setText(_translate("presaveWindow", "Create a new file", None))
         self.iw_cancelButton.setText(_translate("presaveWindow", "Cancel", None))
         self.iw_saveButton.setText(_translate("presaveWindow", "Save", None))
 
