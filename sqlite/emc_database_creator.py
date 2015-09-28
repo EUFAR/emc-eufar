@@ -1,34 +1,62 @@
 # -*- coding: utf-8 -*-
 
-# EMC is using a database to store all needed information about aircraft, operators, keywords, instruments and so on. Use this program to generate the database
+# EMC is using a database to store all needed information about aircraft, operators, keywords, 
+# instruments and so on. Use this program to generate the database
 
 
 import sqlite3 as lite
-import sys, os
+import os
 
 
 aircraft_informations = (
-	("AWI - POLAR 5", "Basler Turbo Conversions", "BT-67", "Alfred Wegener Institute (AWI)", "Germany", "C-GAWI", "POLAR5-AWI.png", "Alfred Wegener Institute"),
-	("CNR - ERA Skyarrow", "3I / Magnaghi Aeronautica", "Sky Arrow 650", "Consiglio Nazionale delle Ricerche (CNR) - ISAFoM", "Italy", "I-AMMO", "ERA-ISAFM.png", "CNR, Istituto per i Sistemi Agricoli e Forestali del Mediterraneo"),
-	("CNR - Partenavia", "Partenavia / Vulcanair", "P-68", "Consiglio Nazionale delle Ricerche (CNR) - IMAA", "Italy", "I-ALTM", "PARTENAVIA-CNR.png", "CNR, Istituto di Metodologie per l'Analisi Ambientale"),
-	("DLR - C 208", "Cessna Aircraft Company", "Cessna 208", "Deutsches Zentrum fur Luft- und Raumfahrt (DLR)", "Germany", "D-FDLR", "C208-DLR.png", "DLR, CC-BY 3.0"),
-	("DLR - DO 228 D-CFFU", "Dornier Flugzeugwerke", "DO-228", "Deutsches Zentrum fur Luft- und Raumfahrt (DLR)", "Germany", "D-CFFU", "DO228-DLR-1.png", "DLR, CC-BY 3.0"),
-	("DLR - DO 228 D-CODE", "Dornier Flugzeugwer	ke", "DO-228", "Deutsches Zentrum fur Luft- und Raumfahrt (DLR)", "Germany", "D-CODE", "DLR - DO228-2.png", "DLR, CC-BY 3.0"),
-	("DLR - Falcon 20", "Dassault Aviation", "Mystere/Falcon 20", "Deutsches Zentrum fur Luft- und Raumfahrt (DLR)", "Germany", "D-CMET", "FALCON20-DLR.png", "DLR, CC-BY 3.0"),
-	("Do your choice ...", " ", " ", " ", " ", " ", "logo_eufar_emc.png", " "),
-	("ENVISCOPE - Learjet 35", "Learjet Aircraft Company", "Learjet 35", "ENVISCOPE", "Germany", "D-CGFD", "LEARJET25-ENVISCOPE-3.png", "ENVISCOPE GmbH"),
-	("ENVISCOPE - Partenavia", "Partenavia / Vulcanair", "P-68", "ENVISCOPE", "Germany", "D-GERY", "PARTENAVIA68-ENVISCOPE-2.png", "ENVISCOPE GmbH"),
-	("FAAM - BAe 146", "BAE Systems", "BAe-146", "Facility for Airborne Atmospheric Measurements (FAAM)", "United Kingdom", "G-LUXE", "BAE146-FAAM.png", "NERC, Facility for Airborne Atmospheric Measurements"),
-	("FUB - C 207", "Cessna Aircraft Company", "Cessna 207", "Freie Universitat Berlin (FUB) - ISS", "Germany", "D-EAFU", "C207-FUB.png", "Institut fur Weltraumwissenschaften"),
-	("INTA - CASA 212 AR", "Construcciones Aeronauticas S.A.", "CASA-212", "Instituto Nacional de Tecnica Aeroespacial (INTA)", "Spain", "EC-DTV", "CASA212-INTA.png", "Instituto Nacional de Tecnica Aeroespacial"),
-	("INTA - CASA 212 RS", "Construcciones Aeronauticas S.A.", "CASA-212", "Instituto Nacional de Tecnica Aeroespacial (INTA)", "Spain", "EC-DUQ", "CASA212-INTA.png", "Instituto Nacional de Tecnica Aeroespacial"),
-	("KIT - Enduro", "Ultraleichtflug Schmidtler", "Enduro", "Karlsruhe Institute of Technology (KIT) - IMK-IFU", "Germany", "D-MIFU", "ENDURO-KIT.png","KIT, Institute of Meteorology and Climate Research"),
-	("NERC - DO 228", "Dornier Flugzeugwerke", "DO-228", "Natural Environment Research Council (NERC) - ARSF", "United Kingdom", "EC-DUQ", "DO228-NERC.png", "NERC, Airborne Research and Survey Facility"),
-	("NERC - Twin Otter", "De Havilland Canada", "DHC-6", "Natural Environment Research Council (NERC) - BAS", "United Kingdom", "VP-FAZ", "TWINOTTER-NERC.png", "NERC, British Antarctic Survey"),
+	("AWI - POLAR 5", "Basler Turbo Conversions", "BT-67", "Alfred Wegener Institute (AWI)", "Germa"
+     + "ny", "C-GAWI", "POLAR5-AWI.png", "Alfred Wegener Institute"),
+	("CNR - ERA Skyarrow", "3I / Magnaghi Aeronautica", "Sky Arrow 650", "Consiglio Nazionale delle"
+     + " Ricerche (CNR) - ISAFoM", "Italy", "I-AMMO", "ERA-ISAFM.png", "CNR, Istituto per i Sistemi"
+     + " Agricoli e Forestali del Mediterraneo"),
+	("CNR - Partenavia", "Partenavia / Vulcanair", "P-68", "Consiglio Nazionale delle Ricerche (CNR"
+     + ") - IMAA", "Italy", "I-ALTM", "PARTENAVIA-CNR.png", "CNR, Istituto di Metodologie per l'Ana"
+     + "lisi Ambientale"),
+	("DLR - C 208", "Cessna Aircraft Company", "Cessna 208", "Deutsches Zentrum fur Luft- und Raumf"
+     + "ahrt (DLR)", "Germany", "D-FDLR", "C208-DLR.png", "DLR, CC-BY 3.0"),
+	("DLR - DO 228 D-CFFU", "Dornier Flugzeugwerke", "DO-228", "Deutsches Zentrum fur Luft- und Rau"
+     + "mfahrt (DLR)", "Germany", "D-CFFU", "DO228-DLR-1.png", "DLR, CC-BY 3.0"),
+	("DLR - DO 228 D-CODE", "Dornier Flugzeugwerke", "DO-228", "Deutsches Zentrum fur Luft- und"
+     + " Raumfahrt (DLR)", "Germany", "D-CODE", "DLR - DO228-2.png", "DLR, CC-BY 3.0"),
+	("DLR - Falcon 20", "Dassault Aviation", "Mystere/Falcon 20", "Deutsches Zentrum fur Luft- und "
+     + "Raumfahrt (DLR)", "Germany", "D-CMET", "FALCON20-DLR.png", "DLR, CC-BY 3.0"),
+	("Make a choice...", " ", " ", " ", " ", " ", "logo_eufar_emc.png", " "),
+	("ENVISCOPE - Learjet 35", "Learjet Aircraft Company", "Learjet 35", "ENVISCOPE", "Germany", "D"
+     + "-CGFD", "LEARJET25-ENVISCOPE-3.png", "ENVISCOPE GmbH"),
+	("ENVISCOPE - Partenavia", "Partenavia / Vulcanair", "P-68", "ENVISCOPE", "Germany", "D-GERY", 
+     "PARTENAVIA68-ENVISCOPE-2.png", "ENVISCOPE GmbH"),
+	("FAAM - BAe 146", "BAE Systems", "BAe-146", "Facility for Airborne Atmospheric Measurements (F"
+     + "AAM)", "United Kingdom", "G-LUXE", "BAE146-FAAM.png", "NERC, Facility for Airborne Atmosphe"
+     + "ric Measurements"),
+	("FUB - C 207", "Cessna Aircraft Company", "Cessna 207", "Freie Universitat Berlin (FUB) - ISS",
+      "Germany", "D-EAFU", "C207-FUB.png", "Institut fur Weltraumwissenschaften"),
+	("INTA - CASA 212 AR", "Construcciones Aeronauticas S.A.", "CASA-212", "Instituto Nacional de T"
+     + "ecnica Aeroespacial (INTA)", "Spain", "EC-DTV", "CASA212-INTA.png", "Instituto Nacional de "
+     + "Tecnica Aeroespacial"),
+	("INTA - CASA 212 RS", "Construcciones Aeronauticas S.A.", "CASA-212", "Instituto Nacional de T"
+	 + "ecnica Aeroespacial (INTA)", "Spain", "EC-DUQ", "CASA212-INTA.png", "Instituto Nacional de "
+     + "Tecnica Aeroespacial"),
+	("KIT - Enduro", "Ultraleichtflug Schmidtler", "Enduro", "Karlsruhe Institute of Technology (KI"
+     + "T) - IMK-IFU", "Germany", "D-MIFU", "ENDURO-KIT.png","KIT, Institute of Meteorology and Cli"
+     + "mate Research"),
+	("NERC - DO 228", "Dornier Flugzeugwerke", "DO-228", "Natural Environment Research Council (NER"
+     + "C) - ARSF", "United Kingdom", "EC-DUQ", "DO228-NERC.png", "NERC, Airborne Research and Surv"
+     + "ey Facility"),
+	("NERC - Twin Otter", "De Havilland Canada", "DHC-6", "Natural Environment Research Council (NE"
+     + "RC) - BAS", "United Kingdom", "VP-FAZ", "TWINOTTER-NERC.png", "NERC, British Antarctic Survey"),
 	("SAFIRE - ATR 42", "ATR", "ATR-42", "SAFIRE", "France", "F-HMTO", "ATR42-SAFIRE.png", "SAFIRE"),
-	("SAFIRE - Falcon 20", "Dassault Aviation", "Mystere/Falcon 20", "SAFIRE", "France", "F-GBTM", "FALCON20-SAFIRE-3.png", "Collection Saspozatlse"),
-	("SAFIRE - PIPER Aztec", "Piper Aircraft", "PA23", "SAFIRE", "France", "F-BLEB", "PIPERAZTEC-SAFIRE.png", "SAFIRE"),
-	("UEDIN - ECO Dimona", "Diamond Aircraft Industries", "HK36TTC ECO Dimona", "The University of Edinburgh (UEDIN) - IAES", "United Kingdom", "G-GEOS", "DIAMOND-UEDIN-1.png", "UEDIN, Airborne GeoSciences"),
+	("SAFIRE - Falcon 20", "Dassault Aviation", "Mystere/Falcon 20", "SAFIRE", "France", "F-GBTM", 
+     "FALCON20-SAFIRE-3.png", "Collection Saspozatlse"),
+	("SAFIRE - PIPER Aztec", "Piper Aircraft", "PA23", "SAFIRE", "France", "F-BLEB", "PIPERAZTEC-SA"
+     + "FIRE.png", "SAFIRE"),
+	("UEDIN - ECO Dimona", "Diamond Aircraft Industries", "HK36TTC ECO Dimona", "The University of "
+     + "Edinburgh (UEDIN) - IAES", "United Kingdom", "G-GEOS", "DIAMOND-UEDIN-1.png", "UEDIN, Airbo"
+     + "rne GeoSciences"),
 	)
 
 
@@ -104,6 +132,14 @@ language_role_dict = (
 	('SAFIRE','SAFIRE'),
 	('The University of Edinburgh (UEDIN) - IAES','UEDIN-IAES')
 	)
+
+
+unit_dict = (
+    ('Centimetre(s)', 'cm'),
+    ('Decimal degree(s)', 'dd'),
+    ('Kilometre(s)', 'km'),
+    ('Metre(s)', 'm'),
+    )
 
 
 ceos_science_keywords = [
@@ -201,7 +237,7 @@ ceos_science_keywords = [
 	]
 
 emc_locations = [
-	["Do your choice ...",""],
+	["Make a choice ...",""],
 	["Continents","Africa"],
 	["Continents","Antarctica"],
 	["Continents","Asia"],
@@ -529,82 +565,148 @@ emc_locations = [
 	]
 
 
-
-
-
-
-
-
-
-#window_messages = (
-	#("infoButton_1","<p align=justify><u>INSPIRE:</u><br>This is a characteristic, and often a unique name identifying the resource. The value domain of this metadata element is free text.</p><u>EUFAR:</u><br>Project acronym -- survey request form.<br><br><br> ",172),
-	#("infoButton_2","<p align=justify><u>INSPIRE:</u><br>This is a brief narrative summary of the content of the resource. The value domain of this metadata element is free text.</p><u>EUFAR:</u><br>Abstract -- survey request form.<br><br><br> ",172),
-	#("infoButton_3","<p align=justify><u>INSPIRE:</u><br>This is the type of resource being described by the metadata. The value domain of this metadata element is defined in Part D.1.</p><u>EUFAR:</u><br>Dataset or series.<br><br><br> ",172),
-	#("infoButton_4",'<p align=justify><u>INSPIRE:</u><br>The resource locator defines the link(s) to the resource and/or the link to additional information about the resource. The value domain of this metadata element is a character string, commonly expressed as uniform resource locator (URL).</p><u>EUFAR:</u><br>Link to data in EUFAR N8-DB or http://www.eufar.net.<br><br><br> ',202),
-	#("infoButton_5",'<p align=justify><u>INSPIRE:</u><br>A value uniquely identifying the resource. The value domain of this metadata element is a mandatory character string code, generally assigned by the data owner, and a character string namespace uniquely identifying the context of the identifier code (for example, the data owner).</p><u>EUFAR:</u><br>N8-DB file name specification.<br><br><br> ',217),
-	#("infoButton_6",'<p align=justify><u>INSPIRE:</u><br>The language(s) used within the resource. The value domain of this metadata element is limited to the languages defined in ISO 639-2.</p><u>EUFAR:</u><br>English.<br><br><br> ',172),
-	#("infoButton_7",'<p align=justify><u>INSPIRE:</u><br>The topic category is a high-level classification scheme to facilitate the grouping and topic-based search of available spatial data resources. The value domain of this metadata element is defined in Part D.2.</p><u>EUFAR:</u><br>Main scientific field -- survey request form.<br><br><br> ',202),
-	#("infoButton_8",'<p align=justify><u>INSPIRE:</u><br>If the keyword value originates from a controlled vocabulary (thesaurus, ontology), for example GEMET, the citation of the originating controlled vocabulary shall be provided. This citation shall include at least the title and a reference date (date of publication, date of last revision or of creation) of the originating controlled vocabulary.</p><p align=justify><u>EUFAR:</u><br>GEMET - INSPIRE themes, version 1.0, 2008-06-01.</p><br><br><br> ',232),
-	#("infoButton_9",'<p align=justify><u>INSPIRE:</u><br>The keyword value is a commonly used word, formalised word or phrase used to describe the subject. While the topic category is too obscure for detailed queries, keywords can help narrowing a full text search and allow for structured keyword searches. The value domain of this metadata element is free text.</p><p align=justify><u>EUFAR:</u><br>Scientific theme -- survey request form.</p><br><br><br> ',232),
-	#("infoButton_10",'<p align=justify><u>INSPIRE:</u><br>This is the extent of the resource in the geographic space, given as a bounding box. The bounding box shall be expressed with westbound and eastbound longitudes, and southbound and northbound latitudes in decimal degrees, with a precision of at least two decimals.</p><p align=justify><u>EUFAR:</u><br>Result of data processing plus information on country and region (survey request form).</p><br><br><br> ',232),
-	#("infoButton_11",'<p align=justify><u>INSPIRE:</u><br>This is the name of the geographic space covered by the dataset.</p><p align=justify><u>EUFAR:</u><br>Information on country and region -- survey request form.</p><br><br><br> ',172),
-	#("infoButton_12",'<p align=justify><u>INSPIRE:</u><br>This is the date of publication of the resource when available, or the date of entry into force. There may be more than one date of publication.</p><p align=justify><u>EUFAR:</u><br>Date of entry into EUFAR N8-DB.</p><br><br><br> ',172),
-	#("infoButton_13",'<p align=justify><u>INSPIRE:</u><br>This is the date of last revision of the resource, in the case that the resource has been revised. There shall not be more than one date of last revision.</p><p align=justify><u>EUFAR:</u><br>Automatically created within EUFAR N8-DB (date stamp).</p><br><br><br> ',187),
-	#("infoButton_14",'<p align=justify><u>INSPIRE:</u><br>This is the date of creation of the resource. There shall not be more than one date of creation.</p><p align=justify><u>EUFAR:</u><br>Date of data processing (related to product, which is stored in EUFAR N8-DB).</p><br><br><br> ',172),
-	#("infoButton_15",'<p align=justify><u>INSPIRE:</u><br>The temporal extent defines the time period covered by the content of the resource. This time period may be expressed as any of the following: an individual date, an interval of dates expressed represented by the starting date and end date of the interval, or a mix of individual dates and intervals of dates.</p><p align=justify><u>EUFAR:</u><br>Date of data acquisition.</p><br><br><br> ',217),
-	#("infoButton_16",'<p align=justify><u>INSPIRE:</u><br>This is a statement on process history and/or overall quality of the spatial data set. Where appropriate, it may include a statement on whether the data set has been validated or its quality assured, it is the official version (if multiple versions exist), and it has legal validity. The value domain of this metadata element is free text.</p><p align=justify><u>EUFAR:</u><br>Result of data processing including processing level, date and time of processing.</p><br><br><br> ',247),
-	#("infoButton_17",'<p align=justify><u>INSPIRE:</u><br>Spatial resolution refers to the level of detail of the data set. It shall be expressed as a set of zero up to many resolution distances (typically for gridded data and imagery-derived products) or equivalent scales (typically for maps or map-derived products). An equivalent scale is generally expressed as an integer value expressing the scale denominator. A resolution distance shall be expressed as a numerical value associated with a unit of length.</p><p align=justify><u>EUFAR:</u><br>Result of data processing.</p><br><br><br> ',262),
-	#("infoButton_18",'<p align=justify><u>INSPIRE:</u><br>This is a citation of the implementing rules adopted under Article 7(1) of Directive 2007/2/EC or other specification to which a particular resource conforms. A resource may conform to more than one implementing rules adopted under Article 7(1) of Directive 2007/2/EC or other specification. This citation shall include at least the title and a reference date (date of publication, date of last revision or of creation) of the implementing rules adopted under Article 7(1) of Directive 2007/2/EC or of the specification.</p><p align=justify><u>EUFAR:</u><br>Not evaluated.</p><br><br><br> ',292),
-	#("infoButton_21",'<p align=justify><u>INSPIRE:</u><br>This is the degree of conformity of the resource to the implementing rules adopted under Article 7(1) of Directive 2007/2/EC or other specification. The value domain of this metadata element is defined in Part D.</p><p align=justify><u>EUFAR:</u><br>True.</p><br><br><br> ',197),
-	#("infoButton_22",'<p align=justify><u>INSPIRE:</u><br>This metadata element defines the conditions for access and use of spatial data sets and services, and where applicable, corresponding fees as required by Article 5(2)(b) and Article 11(2)(f) of Directive 2007/2/EC. The value domain of this metadata element is free text. The element must have values. If no conditions apply to the access and use of the resource, "no conditions apply" shall be used. If conditions are unknown, "conditions unknown" shall be used. This element shall also provide information on any fees necessary to access and use the resource, if applicable, or refer to a uniform resource locator (URL) where information on fees is available.</p><p align=justify><u>EUFAR:</u><br>Consortium agreement for access usage restrictions.</p><br><br><br> ',322),
-	#("infoButton_23",'<p align=justify><u>INSPIRE:</u><br>When Member States limit public access to spatial data sets and spatial data services under Article 13 of Directive 2007/2/EC, the metadata element shall provide information on the limitations and the reasons for this. If there are no limitations on public access, the metadata element shall indicate this. The value domain of the metadata element is free text.</p><p align=justify><u>EUFAR:</u><br>Consortium agreement for public access limitations.</p><br><br><br> ',247),
-	#("infoButton_24",'<p align=justify><u>INSPIRE:</u><br>This is the description of the organisation responsible for the establishment, management, maintenance and distribution of the resource. This description shall include:<ul><li>the name of the organisation as free text</li><li>a contact e-mail address as a character string</li></ul><p align=justify><u>EUFAR:</u><br>Party, who created the resource/data provider.</p><br><br><br> ',232),
-	#("infoButton_25",'<p align=justify><u>INSPIRE:</u><br>This is the description of the organisation responsible for the establishment, management, maintenance and distribution of the resource. This description shall include:<ul><li>the name of the organisation as free text</li><li>a contact e-mail address as a character string</li></ul><p align=justify><u>EUFAR:</u><br>Party, who created the resource/data provider.</p><br><br><br> ',232),
-	#("infoButton_26",'<p align=justify><u>INSPIRE:</u><br>This is the role of the responsible organisation. The value domain of this metadata element is defined in Part D.</p><p align=justify><u>EUFAR:</u><br>pointOfContact and principalInvestigator (two different entries).</p><br><br><br> ',187),
-	#("infoButton_27",'<p align=justify><u>INSPIRE:</u><br>The date which specifies when the metadata record was created or updated. This date shall be expressed in conformity with ISO 8601.</p><p align=justify><u>EUFAR:</u><br>Date when the metadata record was created or updated (result of data processing or entry into DB).</p><br><br><br> ',187),
-	#("infoButton_28",'<p align=justify><u>INSPIRE:</u><br>This is the language in which the metadata elements are expressed. The value domain of this metadata element is limited to the official languages of the Community and is expressed in conformity with ISO 639-2.</p><p align=justify><u>EUFAR:</u><br>English.</p><br><br><br> ',187),
-	#("infoButton_29",'<p align=justify><u>INSPIRE & EUFAR:</u><br>This is the name and the contact e-mail of the party responsible for the data set.</p><br><br><br> ',112),
-	#("infoButton_33",'<p align=justify><u>EUFAR:</u><br>This is the aircraft used to acquire the actual data and metadata.</p><br><br><br> ',117),
-	#("infoButton_34",'<p align=justify><u>EUFAR:</u><br>This(these) is(are) the instrument(s) used to acquire the actual data and metadata.</p><br><br><br> ',117),
-	#)
-
-
 window_messages = (
-	("infoButton_1","<p align=justify><u>INSPIRE:</u><br>This is a characteristic, and often a unique name identifying the resource. The value domain of this metadata element is free text.</p><u>EUFAR:</u><br>Project acronym -- survey request form."),
-	("infoButton_2","<p align=justify><u>INSPIRE:</u><br>This is a brief narrative summary of the content of the resource. The value domain of this metadata element is free text.</p><u>EUFAR:</u><br>Abstract -- survey request form."),
-	("infoButton_3","<p align=justify><u>INSPIRE:</u><br>This is the type of resource being described by the metadata. The value domain of this metadata element is defined in Part D.1.</p><u>EUFAR:</u><br>Dataset or series."),
-	("infoButton_4",'<p align=justify><u>INSPIRE:</u><br>The resource locator defines the link(s) to the resource and/or the link to additional information about the resource. The value domain of this metadata element is a character string, commonly expressed as uniform resource locator (URL).</p><u>EUFAR:</u><br>Link to data in EUFAR N8-DB or http://www.eufar.net.'),
-	("infoButton_5",'<p align=justify><u>INSPIRE:</u><br>A value uniquely identifying the resource. The value domain of this metadata element is a mandatory character string code, generally assigned by the data owner, and a character string namespace uniquely identifying the context of the identifier code (for example, the data owner).</p><u>EUFAR:</u><br>N8-DB file name specification.'),
-	("infoButton_6",'<p align=justify><u>INSPIRE:</u><br>The language(s) used within the resource. The value domain of this metadata element is limited to the languages defined in ISO 639-2.</p><u>EUFAR:</u><br>English.'),
-	("infoButton_7",'<p align=justify><u>INSPIRE:</u><br>The topic category is a high-level classification scheme to facilitate the grouping and topic-based search of available spatial data resources. The value domain of this metadata element is defined in Part D.2.</p><u>EUFAR:</u><br>Main scientific field -- survey request form.'),
-	("infoButton_8",'<p align=justify><u>INSPIRE:</u><br>If the keyword value originates from a controlled vocabulary (thesaurus, ontology), for example GEMET, the citation of the originating controlled vocabulary shall be provided. This citation shall include at least the title and a reference date (date of publication, date of last revision or of creation) of the originating controlled vocabulary.</p><p align=justify><u>EUFAR:</u><br>GEMET - INSPIRE themes, version 1.0, 2008-06-01.</p>'),
-	("infoButton_9",'<p align=justify><u>INSPIRE:</u><br>The keyword value is a commonly used word, formalised word or phrase used to describe the subject. While the topic category is too obscure for detailed queries, keywords can help narrowing a full text search and allow for structured keyword searches. The value domain of this metadata element is free text.</p><p align=justify><u>EUFAR:</u><br>Keywords are from NASA/Global Change Master Directory (GCMD) Earth Science Keywords.</p>'),
-	("infoButton_10",'<p align=justify><u>INSPIRE:</u><br>This is the extent of the resource in the geographic space, given as a bounding box. The bounding box shall be expressed with westbound and eastbound longitudes (-180W to 180E), and southbound and northbound latitudes (90N to -90S) in decimal degrees, with a precision of at least two decimals.</p><p align=justify><u>EUFAR:</u><br>Result of data processing plus information on country and region (survey request form).</p>'),
-	("infoButton_11",'<p align=justify><u>INSPIRE:</u><br>This is the name of the geographic space covered by the dataset.</p><p align=justify><u>EUFAR:</u><br>Information on country and region -- survey request form.</p>'),
-	("infoButton_12",'<p align=justify><u>INSPIRE:</u><br>This is the date of publication of the resource when available, or the date of entry into force. There may be more than one date of publication.</p><p align=justify><u>EUFAR:</u><br>Date of entry into EUFAR N8-DB. The date have to be set "before" the current date.</p>'),
-	("infoButton_13",'<p align=justify><u>INSPIRE:</u><br>This is the date of last revision of the resource, in the case that the resource has been revised. There shall not be more than one date of last revision.</p><p align=justify><u>EUFAR:</u><br>Automatically created within EUFAR N8-DB (date stamp). The date have to be set "before" the current date.</p>'),
-	("infoButton_14",'<p align=justify><u>INSPIRE:</u><br>This is the date of creation of the resource. There shall not be more than one date of creation.</p><p align=justify><u>EUFAR:</u><br>Date of data processing (related to product, which is stored in EUFAR N8-DB). The date have to be set "before" the current date.</p>'),
-	("infoButton_15",'<p align=justify><u>INSPIRE:</u><br>The temporal extent defines the time period covered by the content of the resource. This time period may be expressed as any of the following: an individual date, an interval of dates expressed represented by the starting date and end date of the interval, or a mix of individual dates and intervals of dates.</p><p align=justify><u>EUFAR:</u><br>Date of data acquisition. The date have to be set "before" the current date.</p>'),
-	("infoButton_16",'<p align=justify><u>INSPIRE:</u><br>This is a statement on process history and/or overall quality of the spatial data set. Where appropriate, it may include a statement on whether the data set has been validated or its quality assured, it is the official version (if multiple versions exist), and it has legal validity. The value domain of this metadata element is free text.</p><p align=justify><u>EUFAR:</u><br>Result of data processing including processing level, date and time of processing.</p>'),
-	("infoButton_17",'<p align=justify><u>INSPIRE:</u><br>Spatial resolution refers to the level of detail of the data set. It shall be expressed as a set of zero up to many resolution distances (typically for gridded data and imagery-derived products) or equivalent scales (typically for maps or map-derived products). An equivalent scale is generally expressed as an integer value expressing the scale denominator. A resolution distance shall be expressed as a numerical value associated with a unit of length.</p><p align=justify><u>EUFAR:</u><br>Result of data processing.</p>'),
-	("infoButton_18",'<p align=justify><u>INSPIRE:</u><br>This is a citation of the implementing rules adopted under Article 7(1) of Directive 2007/2/EC or other specification to which a particular resource conforms. A resource may conform to more than one implementing rules adopted under Article 7(1) of Directive 2007/2/EC or other specification. This citation shall include at least the title and a reference date (date of publication, date of last revision or of creation) of the implementing rules adopted under Article 7(1) of Directive 2007/2/EC or of the specification.</p><p align=justify><u>EUFAR:</u><br>Not evaluated.</p>'),
-	("infoButton_21",'<p align=justify><u>INSPIRE:</u><br>This is the degree of conformity of the resource to the implementing rules adopted under Article 7(1) of Directive 2007/2/EC or other specification. The value domain of this metadata element is defined in Part D.</p><p align=justify><u>EUFAR:</u><br>True.</p>'),
-	("infoButton_22",'<p align=justify><u>INSPIRE:</u><br>This metadata element defines the conditions for access and use of spatial data sets and services, and where applicable, corresponding fees as required by Article 5(2)(b) and Article 11(2)(f) of Directive 2007/2/EC. The value domain of this metadata element is free text. The element must have values. If no conditions apply to the access and use of the resource, "no conditions apply" shall be used. If conditions are unknown, "conditions unknown" shall be used. This element shall also provide information on any fees necessary to access and use the resource, if applicable, or refer to a uniform resource locator (URL) where information on fees is available.</p><p align=justify><u>EUFAR:</u><br>Consortium agreement for access usage restrictions.</p>'),
-	("infoButton_23",'<p align=justify><u>INSPIRE:</u><br>When Member States limit public access to spatial data sets and spatial data services under Article 13 of Directive 2007/2/EC, the metadata element shall provide information on the limitations and the reasons for this. If there are no limitations on public access, the metadata element shall indicate this. The value domain of the metadata element is free text.</p><p align=justify><u>EUFAR:</u><br>Consortium agreement for public access limitations.</p>'),
-	("infoButton_24",'<p align=justify><u>INSPIRE:</u><br>This is the description of the organisation responsible for the establishment, management, maintenance and distribution of the resource. This description shall include:<ul><li>the name of the organisation as free text</li><li>a contact e-mail address as a character string</li></ul><p align=justify><u>EUFAR:</u><br>Party, who created the resource/data provider.</p>'),
-	("infoButton_25",'<p align=justify><u>INSPIRE:</u><br>This is the description of the organisation responsible for the establishment, management, maintenance and distribution of the resource. This description shall include:<ul><li>the name of the organisation as free text</li><li>a contact e-mail address as a character string</li></ul><p align=justify><u>EUFAR:</u><br>Party, who created the resource/data provider.</p>'),
-	("infoButton_26",'<p align=justify><u>INSPIRE:</u><br>This is the role of the responsible organisation. The value domain of this metadata element is defined in Part D.</p><p align=justify><u>EUFAR:</u><br>pointOfContact and principalInvestigator (two different entries).</p>'),
-	("infoButton_27",'<p align=justify><u>INSPIRE:</u><br>The date which specifies when the metadata record was created or updated. This date shall be expressed in conformity with ISO 8601.</p><p align=justify><u>EUFAR:</u><br>Date when the metadata record was created or updated (result of data processing or entry into DB). The date have to be set "before" the current date.</p>'),
-	("infoButton_28",'<p align=justify><u>INSPIRE:</u><br>This is the language in which the metadata elements are expressed. The value domain of this metadata element is limited to the official languages of the Community and is expressed in conformity with ISO 639-2.</p><p align=justify><u>EUFAR:</u><br>English.</p>'),
-	("infoButton_29",'<p align=justify><u>INSPIRE & EUFAR:</u><br>This is the name and the contact e-mail of the party responsible for the data set.</p>'),
-	("infoButton_30",'<p align=justify><u>INSPIRE & EUFAR:</u><br>Spatial resolution refers to the level of detail of the data set. It shall be expressed as a set of zero to many resolution distances (typically for gridded data and imagery-derived products) or equivalent scales (typically for maps or map-derived products). An equivalent scale is generally expressed as an integer value expressing the scale denominator. A resolution distance shall be expressed as a numerical value associated with a unit of length.</p>'),
-	("infoButton_33",'<p align=justify><u>EUFAR:</u><br>This is the aircraft used to acquire the actual data and metadata.</p>'),
-	("infoButton_34",'<p align=justify><u>EUFAR:</u><br>This(these) is(are) the instrument(s) used to acquire the actual data and metadata.</p>'),
-	)
+	("infoButton_1","<p>Available in the EUFAR TA application form (<b>Project acronym</b>), this i"
+     + "s a characteristic and often unique name identifying the resource.</p><p><u>Example:</u> SM"
+     + "ALLPROJECT.</p>"),
+	("infoButton_2","<p>This is a brief narrative summary of the content of the resource. It is ava"
+     + "ilable in the EUFAR TA application form (<b>Scientific problems being addressed by the expe"
+     + "riments to be performed</b>).</p><p><u>Example:</u> SMALLPROJECT is a small project. Its go"
+     + "al is to explain what to do and what to write.</p>"),
+	("infoButton_3","<p>This is the type of resource being described by the metadata, and can be ei"
+     + "ther dataset or series.</p><p><u>Example:</u> Dataset.</p>"),
+	("infoButton_4","<p>The resource locator defines the link(s) to the resource and/or the link to"
+     + " additional information about the resource. For EUFAR projects, it is automatically filled "
+     + "in with the link to the EUFAR database.</p><p><u>Example:</u> http://browse.ceda.ac.uk/brow"
+     + "se/badc/eu far/docs/00eufararchive contents.html</p>"),
+	("infoButton_5","<p hyphens='auto'>This element uniquely identifying the resource and it is gen"
+     + "erally formed with mandatory and/or optional string codes. In a EUFAR project, the file-nam"
+     + "ing convention is as follow <b>instrument_aircraft_YYYY MMDD[_extra].ext</b>. <b>instrument"
+     + "</b> is the instrument which was used to produce the data set, <b>aircraft</b> is a merge b"
+     + "etween the operator and the aircraft, <b>YYYYMMDD</b> (year month day) is the date on which"
+     + " measurements were taken, <b>[_extra]</b> allow to add optional parameter. <b>.ext</b> is u"
+     + "sed for the file extension.</p><p><u>Example:</u> core_safire-atr42_20100913_as100051_r0 _1"
+     + "hz.ext</p>"),
+	("infoButton_6","<p>The language(s) used within the resource. In a EUFAR project, English is al"
+     + "ways selected and should not be changed. </p><p><u>Example:</u> English.</p>"),
+	("infoButton_7","<p>The topic category is a high-level classification scheme to facilitate the "
+     + "grouping and topic-based search of available spatial data resources. This item corresponds "
+     + "to the Main <b>Scientific Field / specific discipline</b> in the EUFAR Ta application form."
+     + "</p><p><u>Example:</u> Environment.</p>"),
+	("infoButton_8","<p>The keyword value is a commonly used word to describe the subject. The keyw"
+     + "ord scheme is from NASA/Global Change Master Directory (GCMD) Earth Science Keywords.</p><p"
+     + "><u>Example:</u> Forest science, Aerosols, Clouds.</p>"),
+	("infoButton_9","<p>The selection of an aircraft can help to improve storage and queries in a d"
+     + "atabase. Please select here the aircraft used to acquire and prepare the actual data and me"
+     + "tadata.</p><p><u>Example:</u> AWI - POLAR 5.</p>"),
+    ("infoButton_10","<p>The selection of an instrument, or multiple instruments, can help to impro"
+     + "ve storage and queries in a database. Please select here the instrument(s) used to acquire "
+     + "and prepare the actual data and metadata, and click on the '+' icon to add it into the list"
+     + ".</p><p><u>Example:</u> APEX.</p>"),
+    ("infoButton_11","<p>This is the name of the formal location covered by the dataset. It is avai"
+     + "lable in the EUFAR TA application form.</p><p><u>Example:</u> Countries / France.</p>"),
+    ("infoButton_12","<p>This is the extent of the resource in the geographic space, given as a bou"
+     + "nding box. The bounding box shall be expressed with westbound and eastbound longitudes in d"
+     + "ecimal degree (-180.00 to 180.00) and southbound and northbound latitudes in decimal degree"
+     + " (-90.00 to 90.00), with a precision of two decimals.</p><p><u>Example:</u> for a bounding "
+     + "box above United Kingdom (58.65°N / -11.80°W and 50.69°N / 2.32°E)</p><p align='center'>58."
+     + "65</p><p align='center'>-11.80 &nbsp;&nbsp;&nbsp;&nbsp; 2.32</p><p align='center'>50.69</p>"),
+    ("infoButton_13","<p>Each spatial resolution is either an equivalent scale OR a ground sample d"
+     + "istance. When two equivalent scales or two ground sample distances are expressed, the spati"
+     + "al resolution is an interval bounded by these two values. It is only mandatory if an equiva"
+     + "lent scale or a resolution distance can be specified.</p><p><u>Example:</u> a dataset with "
+     + "a spatial resolution of 0.25°x0.25° -> 0.25 / Decimal degree (dd).</p>"),
+    ("infoButton_14","<p>This is the date of publication of the resource. In a EUFAR project, the d"
+     + "ate of entry into EUFAR database (N8-DB) should be used and set <b>before</b> the current d"
+     + "ate.</p><p><u>Example:</u> 2015/07/12.</p>"),
+    ("infoButton_15","<p>This is the date of last revision of the resource if available. In a EUFAR"
+     + " project, it is automatically created by the EUFAR database (date stamp).</p>"),
+    ("infoButton_16","<p>This is the date of creation of the resource. In a EUFAR project, the date"
+     + " should be set to the date of data processing.</p><p><u>Example:</u> 2015/07/11.</p>"),
+    ("infoButton_17","<p>The temporal extent defines the time period covered by the data acquisitio"
+     + "n. It can be composed of multiple phases if necessary.</p><p><u>Example:</u></p>&nbsp;&nbsp"
+     + ";&nbsp;&nbsp; 2015/07/01 - 2015/07/03<br> &nbsp;&nbsp;&nbsp;&nbsp; 2015/07/05 - 2015/07/07<"
+     + "/p>"),
+    ("infoButton_18","<p>This metadata element defines the conditions for access and use of spatial"
+     + " data sets. In a EUFAR project, this element has already been filled in in agreement with t"
+     + "he EUFAR Consortium Agreement.</p>"),
+    ("infoButton_19","<p>This metadata element defines the limitations for public access to spatial"
+     + " data sets and the reason for that. In a EUFAR project, this element has already been fille"
+     + "d in in agreement with the EUFAR Consortium Agreement.</p>"),
+    ("infoButton_20","<p>This is the description of the organisation responsible for the production"
+     + " of the resource. The description shall include the name of the organisation.</p><p><u>Exam"
+     + "ple:</u> SAFIRE</p>"),
+    ("infoButton_21","<p>This is the email of the point of contact.</p><p><u>Example:</u> john.doe@"
+     + "email.com.</p>"),
+    ("infoButton_22","<p>This is the role of the responsible organisation. In a EUFAR project, the "
+     + "value is <b>Point of Contact</b>.</p><p><u>Example:</u> Point of Contact.</p>"),
+    ("infoButton_23","<p>The date which specifies when the metadata record was created or updated.<"
+     + "/p><p><u>Example:</u> 2015/07/14.</p>"),
+    ("infoButton_24","<p>This is the language in which the metadata elements are expressed. In a EU"
+     + "FAR project, English is always selected and should not be changed.</p><p><u>Example:</u> En"
+     + "glish.</p>"),
+    ("infoButton_25","<p>This is the name and the contact e-mail of the party responsible for the m"
+     + "etadata.</p><p><u>Example:</u> SAFIRE or John Doe</p>"),
+    ("infoButton_26","<p>This is a statement on process history and/or overall quality of the spati"
+     + "al data set. The user has to fill in the requested fields. Once it has been done, EMC will "
+     + "format the inputs as free text to conform to INSPIRE standard.</p>"),
+    ("infoButton_27","<p>Those items are a link to the description of all procedures, constants and"
+     + " materials applied to raw digital data for calibration purpose. A free text description is "
+     + "also accepted for each item if necessary.</p><p><u>Example:</u> <b>http://www.operator.com/"
+     + "path/pa th2/document_to_explain_procedures.html</b> or <b>We proceed this way and this way "
+     + "to calibrate the instrument / The calibration constants come from this book and this public"
+     + "ation</b>.</p>"),
+    ("infoButton_28","<p>Once the data has been processed, the final output format.</p><p><u>Exampl"
+     + "e:</u> NetCDF.</p>"),
+    ("infoButton_29","<p>The Quality and Validity section needs a brief description, or a link to t"
+     + "he document, of the operator's standard procedures explaining the quality-control flagging "
+     + "applied to individual data points.</p><p><u>Example:</u> <b>http://www.operator.com/path/p "
+     + "ath2/document_to_explain_flagging.html</b> or <b>Each point has a certain number of flag to"
+     + " say if the measurement is allright or not</b>.</p>"),
+    ("infoButton_30","<p>What are the empirical assumptions, made when processing the data ? Please"
+     + " give references if possible.</p><p><u>Example:</u> aerosol refractive index, ice crystal b"
+     + "ulk density.</p>"),
+    ("infoButton_31","<p>In case of issues with the sensor calibration, it is important to track ba"
+     + "ck the calibration cycle.</p>"),
+    ("infoButton_32","<p>The setting up of the spectral mode can be changed with some sensor system"
+     + "s.</p>"),
+    ("infoButton_33","<p>As basic processing information, it is important to know if the DC was alr"
+     + "eady corrected, or if this has to be done before all subsequent information retrieval.</p>"),
+    ("infoButton_34","<p>Some data Quality Indicators can be assigned to single pixels and can ther"
+     + "efore provided as Quality Layers in a spatial dataset.</p>"),
+    ("infoButton_35","<p>This mask includes all pixels for which corrections where carried out in o"
+     + "ne or more bands.</p>"),
+    ("infoButton_36","<p>All pixels where defects were detected, but which were not corrected, are "
+     + "included in this bad pixel mask.</p>"),
+    ("infoButton_37","<p>Saturation occurs when the sensed and amplified signal exceeds the dynamic"
+     + " range of the detector.</p>"),
+    ("infoButton_38","<p>The quality of pixels, spatially or spectrally neighbouring a saturated pi"
+     + "xel, can be reduced for sensor designs based on frame-transfer CCDs (e.g., AISA Eagle). Thu"
+     + "s these pixels are detected and included in a separate mask.</p>"),
+    ("infoButton_39","<p>Position information might include data gaps, errors and increased uncerta"
+     + "inties related to the reception of a small number of GPS satellites, or rapid changes in ca"
+     + "se of turbulent flight conditions. When geocoding, the corresponding scan lines might have "
+     + "an error or an increased uncertainty in geo-location.</p>"),
+    ("infoButton_40","<p>In certain cases, the parameters required for an accurate atmospheric corr"
+     + "ection cannot be estimated for all pixels in an image. Such critical pixels should be flagg"
+     + "ed.</p>"),
+    ("infoButton_41","<p>One of the limiting factors, regarding processing quality, is the accuracy"
+     + " and spatial resolution of the DEM. Therefore one can expect an increased uncertainty where"
+     + "ver the terrain is rough. Thus the local variability of the terrain height is calculated in"
+     + " a <b>moving window</b> approach, and critical areas are detected and flagged in this quali"
+     + "ty layer.</p>"),
+    ("infoButton_42","<p>In addition to the increased DEM uncertainty in rough terrain, areas with "
+     + "high slope values and/or unfavourable local illumination (large solar zenith angles) are li"
+     + "kely affected by an increased uncertainty for the terrain correction.</p>"),
+    ("infoButton_43","<p>Regarding the strength of the BRDF effect and the related accuracy of BRDF"
+     + " correction, critical conditions should be addressed. The strength of the BRDF effect is a "
+     + "function of viewing / illumination geometry, terrain as well as land cover. Therefore stron"
+     + "gly affected areas can be detected based on these parameters and are subsequently flagged.<"
+     + "/p>")
+    )
 
 
-
-intruments_information = [
+'''intruments_information = [
 	["In Situ/Laboratory Instruments","Chemical Meters/Analyzers","Aerosol Monitors","AARP","University of Manchester"],
 	["In Situ/Laboratory Instruments","Chemical Meters/Analyzers","Aerosol Monitors","CAPS","Droplet Measurement Technologies"],
 	["In Situ/Laboratory Instruments","Chemical Meters/Analyzers","Aerosol Monitors","CAS Spectrometer","Baumgardner et al., 2001"],
@@ -873,7 +975,264 @@ intruments_information = [
 	["Remote Sensing Instruments","Thermal/Radiation Detectors","Pyrgeometers","CGR-4","Kipp & Zonen"],
 	["Remote Sensing Instruments","Thermal/Radiation Detectors","Pyrgeometers","Eppley Pyrgeometer","The Eppley Laboratory Inc."],
 	["Remote Sensing Instruments","Thermal/Radiation Detectors","Pyrometers","KT-15","Heitronics Infrarot Messtechnik"],
-	]
+	]'''
+
+
+intruments_information = [
+    ["1.108","Grimm Technologies Inc."],
+    ["1.109","Grimm Technologies Inc."],
+    ["1011C","Buck Research Instruments L.L.C."],
+    ["1201","Rosemount"],
+    ["1221","Rosemount"],
+    ["2D-C","Particle Measuring Systems"],
+    ["2D-P","Particle Measuring Systems"],
+    ["2D-S","Stratton Park Engineering Company"],
+    ["2D2C","Particle Measuring Systems"],
+    ["2DGB2","Particle Measuring Systems"],
+    ["3150","ICSensors / Measurement Specialties"],
+    ["4PI-SR","METEO-CONSULT"],
+    ["5-hole Turbulence Probe","Other"],
+    ["858AJ28","Rosemount"],
+    ["AA-300","Sperry"],
+    ["AADC II","Scintrex Ltd"],
+    ["AARP","University of Manchester"],
+    ["ADA-100-PDPA","TSI Inc."],
+    ["AE-42","Magee Scientific"],
+    ["AE-52 Aethelometer","Magee Scientific"],
+    ["AHV16","Thales"],
+    ["AHV8","TRT"],
+    ["AIMMS-20","Aventech Inc."],
+    ["AIRINS","iXBlue"],
+    ["AL5002","Aero-Laser Gmbh"],
+    ["AL5003","Aero-Laser Gmbh"],
+    ["ALS-450","Leosphere"],
+    ["ALS50","Leica Geosystems"],
+    ["ARIES","Met Office / ABB Bomem"],
+    ["AT4","Javad GNSS Inc."],
+    ["AVAPS","Vaisala"],
+    ["Airborne Hyperspectral Scanner","Argon ST"],
+    ["Airborne Prism EXperiment","ESA"],
+    ["Airborne Thematic Mapper","DLR"],
+    ["Airborne Visibility Meter","HSS Inc."],
+    ["Aircraft Systems","Other"],
+    ["AisaDUAL","SPECIM"],
+    ["AisaEAGLE 1K","SPECIM"],
+    ["AisaEAGLE","SPECIM"],
+    ["AisaFENIX 1K","SPECIM"],
+    ["AisaFENIX","SPECIM"],
+    ["AisaOWL","SPECIM"],
+    ["B270","Setra Systems"],
+    ["BAT","NOAA / Airborne Research Australia"],
+    ["BCP","Droplet Measurement Technologies"],
+    ["CAPS - LWC","Droplet Measurement Technologies"],
+    ["CAPS","Droplet Measurement Technologies"],
+    ["CAS Spectrometer","Baumgardner et al., 2001"],
+    ["CASI","ITRES Research Ltd"],
+    ["CASI-1500i","ITRES Research Ltd"],
+    ["CASI-550","ITRES Research Ltd"],
+    ["CCN Counter","Droplet Measurement Technologies"],
+    ["CCNS4","IGI mbH"],
+    ["CDP-2","Droplet Measurement Technologies"],
+    ["CEV","INTA"],
+    ["CGR-4","Kipp & Zonen"],
+    ["CIP","Droplet Measurement Technologies"],
+    ["CIP-100","Droplet Measurement Technologies"],
+    ["CIP-15","Droplet Measurement Technologies"],
+    ["CMP-22","Kipp & Zonen"],
+    ["COPAS","University of Mainz"],
+    ["CPI","Stratton Park Engineering Company"],
+    ["CR-1","Buck Research Instruments L.L.C."],
+    ["CR-2","Buck Research Instruments L.L.C."],
+    ["CRISTA New Frontiers","ForschungsZentrum Juelich"],
+    ["CW-QCLAS","Aerodyne Research Inc."],
+    ["Campbell Q7.1","Campbell Scientific"],
+    ["Cloud Imaging Probe","Other"],
+    ["Counterflow Virtual Impactor","Met Office"],
+    ["DEIMOS","Met Office"],
+    ["Dewtrak-137","EdgeTech Instruments"],
+    ["Dewtrak-200","EdgeTech Instruments"],
+    ["dIGIcam K14","IGI mbH"],
+    ["E-SAR","DLR"],
+    ["ERS microjoule Lidar EMB-ER 1/2","ERS"],
+    ["Eppley PS Pyranometer","The Eppley Laboratory Inc."],
+    ["Eppley Pyrgeometer","The Eppley Laboratory Inc."],
+    ["Everest 4000.4ZL","Everest Interscience Inc."],
+    ["F-SAR","DLR"],
+    ["FAGE","University of Leeds"],
+    ["FLIR M40","FLIR Systems Inc."],
+    ["FLIR SC3000","FLIR Systems Inc."],
+    ["FS2 Relative Humidity","Aerodata GmbH"],
+    ["FSSP-100","Particle Measuring Systems"],
+    ["FSSP-100ER","Particle Measuring Systems"],
+    ["FSSP-300","Particle Measuring Systems"],
+    ["FTIR","Midac Inc."],
+    ["FUBISS","Free University of Berlin"],
+    ["FUBISS-ASA2","Free University Berlin"],
+    ["Filter Sampler","Other"],
+    ["Flask Array Sampler","Atmospheric Observing Systems Inc."],
+    ["Flask Sampling System","MetAir"],
+    ["Flourescence Water Vapour Sensor","Met Office"],
+    ["Formaldehyde Detectors","Other"],
+    ["GASCOD-A","FISBAT-CNR"],
+    ["GE-1011B","General Eastern"],
+    ["GE-1011C","General Eastern"],
+    ["GR-DV400","JVC"],
+    ["Garmin GPS","Garmin"],
+    ["Gyro-4","Javad GNSS Inc."],
+    ["HAGAR","University of Frankfurt"],
+    ["HALOX","Forschungszentrum Julich GmbH"],
+    ["HMP","Vaisala / Rosemount"],
+    ["HMP233","Vaisala"],
+    ["HRSC AX","DLR"],
+    ["HVPS","Stratton Park Engineering Company"],
+    ["High Accuracy INS","SAGEM"],
+    ["Hyperspectral Imagery Sensor","DLR"],
+    ["HySpecScan","Analytical Spectral Devices Inc."],
+    ["IR Gas analyzer","Edinburgh Sensors"],
+    ["IR/UV Line Scanner","OPTIMARE Systems GmbH"],
+    ["IRCAM","Jenoptik AG"],
+    ["IS-2","Interspect Ltd."],
+    ["IS-3","Interspect Ltd."],
+    ["IS-4","Interspect Ltd."],
+    ["IS2+","Interspect Ltd."],
+    ["Ice Nucleus Counter","University of Manchester"],
+    ["J-W LWC","Johnson-Williams"],
+    ["JO1D / JNO2 Photometer","Unknown"],
+    ["KA-131","Bendix King"],
+    ["KT-15","Heitronics Infrarot Messtechnik"],
+    ["King Probe","Particle Measuring Systems"],
+    ["Kistler 3 axes accelerometers","Kistler Instrumente AG"],
+    ["LASAIR-5295","Particle Measurement Systems"],
+    ["LD90","Riegl Laser Measurement Systems GmbH"],
+    ["LGR 907","Los Gatos Research Inc."],
+    ["LGR DLT100","Los Gatos Research Inc."],
+    ["LI-COR 6262","LI-COR"],
+    ["LI-COR 7500","LI-COR"],
+    ["LI-COR Pyranometer","LI-COR"],
+    ["LI-COR Quantum Sensor","LI-COR"],
+    ["LMS-Q280","Riegl Laser Measurement Systems GmbH"],
+    ["LMS-Q560","Riegl Laser Measurement Systems GmbH"],
+    ["LMS-Q680i","Riegl Laser Measurement Systems GmbH"],
+    ["LTC 0600","Philipps"],
+    ["LTN 90-100","Litton"],
+    ["Lasernav YG1761B","Honeywell"],
+    ["Lyman-alpha HMS-2","Buck Research Instruments L.L.C."],
+    ["Lyman-alpha L-5","Buck Research Instruments L.L.C."],
+    ["MARSS","Met Office"],
+    ["MS4100","Duncantech"],
+    ["MetAir NOxTOy","MetAir AG"],
+    ["Meteorological Sensor Package","DLR"],
+    ["Mobile Flux Platform","IBIMET CNR"],
+    ["NO CLD","DLR"],
+    ["Nevzorov IVO-2a","Sky Tech Research Inc."],
+    ["Nevzorov","Sky Tech Research Inc."],
+    ["OAP-200X","Particle Measuring Systems"],
+    ["OAP-230X","Particle Measuring Systems"],
+    ["OAP-230Y","Particle Measuring Systems"],
+    ["OEM4-G2","NovAtel Inc."],
+    ["ORAC","University of Leeds"],
+    ["Others","Other"],
+    ["Ozone Lidar EXperiment","DLR"],
+    ["Ozone Monitor 202","2B Technologies"],
+    ["Ozone Monitor","2B Technologies"],
+    ["PAN GC","Ai Qualitek Ltd"],
+    ["PCASP-100X","Droplet Measurement Technologies"],
+    ["PCASP-SPP200","Droplet Measurement Technologies"],
+    ["PELICAN","ONERA"],
+    ["PERCA","University of Leceister"],
+    ["POS AV 510","Applanix"],
+    ["POSAV-410","Applanix"],
+    ["PRT 6","Barnes"],
+    ["PSAP","Radiance Research Inc."],
+    ["PSI-O3","Paul Scherrer Institut"],
+    ["PT","Rosemount"],
+    ["PT100","Rosemount"],
+    ["PT102AL","Rosemount"],
+    ["PT102BL","Rosemount"],
+    ["PT102BW","Rosemount"],
+    ["PT102DB1 AG","Rosemount"],
+    ["PT102E2 AL","Rosemount"],
+    ["PT102E4 AL","Rosemount"],
+    ["PT50","Rosemount"],
+    ["PT500","Rosemount"],
+    ["PTR-MS","University of East Anglia"],
+    ["PVM-100","Gerber Scientific Inc."],
+    ["Peroxide Detectors","Other"],
+    ["Pitot Probe","Other"],
+    ["Polifemo M21","SUPERELECTRIC s.r.l."],
+    ["Portable Lidar System","University of Munich"],
+    ["R4903","Met One Instruments"],
+    ["RALI","LATMOS"],
+    ["RALI","LATMOS"],
+    ["RCD105","Leica-Geosystems"],
+    ["RDR-4B","Honeywell"],
+    ["RMK A 30/23","Zeiss"],
+    ["RMK A","Zeiss"],
+    ["RR-0150","RadianceResearch"],
+    ["RT3102","Oxford Technical Solutions"],
+    ["Radar Echo Sounding System","AWI"],
+    ["S-5002","Sistemas Instalaciones Redes S.A."],
+    ["S-5006","Sistemas Instalaciones Redes S.A."],
+    ["S-5012","Sistemas Instalaciones Redes S.A."],
+    ["S3000","Michell Instruments GmbH"],
+    ["S56","Micro-g LaCoste"],
+    ["SA 41M","Environment S.A."],
+    ["SETHI","ONERA"],
+    ["SFIM 3 axes accelerometers","SFIM"],
+    ["SID-2","University of Hertfordshire"],
+    ["SIELETERS","ONERA"],
+    ["SIOUX","DLR"],
+    ["SMPS","Grimm Technologies Inc."],
+    ["SP-2","Droplet Measurement Technologies"],
+    ["SPEC Hawkeye","Stratton Park Engineering Company"],
+    ["SWS","Met Office"],
+    ["Solent HS","Gill Instruments Ltd"],
+    ["Solent HS-100","Gill Instruments Ltd"],
+    ["Solent HS-50","Gill Instruments Ltd"],
+    ["Sony Video Camera","Sony"],
+    ["Sundstrand 3 axes accelerometers","Sundstrand"],
+    ["TABI320","ITRES Research Ltd"],
+    ["TAFTS","Imperial College London"],
+    ["TASI-600","ITRES Research Ltd"],
+    ["TDLAS","Imperial College London"],
+    ["TDLAS","National Physical Laboratory"],
+    ["TECO 42C","ThermoScientific"],
+    ["TECO 42C","ThermoScientific"],
+    ["TECO 42S","ThermoScientific"],
+    ["TECO 43C","ThermoScientific"],
+    ["TECO 48","ThermoScientific"],
+    ["TECO 48CS","ThermoScientific"],
+    ["TECO 49PS","ThermoScientific"],
+    ["TECO 49S","ThermoScientific"],
+    ["TOF-AMS","Aerodyne Research Inc."],
+    ["TP3-S","Meteolabor AG"],
+    ["TS9260","NEC Corporation"],
+    ["TSI-3007","TSI Inc."],
+    ["TSI-3010","TSI Inc."],
+    ["TSI-3022","TSI Inc."],
+    ["TSI-3025","TSI Inc."],
+    ["TSI-3563","TSI Inc."],
+    ["TSI-3776","TSI Inc."],
+    ["TSI-3786","TSI Inc."],
+    ["Total Water Content","Met Office"],
+    ["Trimble 2101","Trimble Navigation"],
+    ["Trimble 4000 SSI","Trimble Navigation"],
+    ["Trimble TNL 2000","Trimble Navigation"],
+    ["UHSAS-A","Droplet Measurement Technologies"],
+    ["ULISS 45i","SAGEM"],
+    ["ULS","Laser Technology Inc."],
+    ["UMP40","Sextant"],
+    ["VACC","University of Leeds"],
+    ["VIS Line Scanner","OPTIMARE Systems GmbH"],
+    ["VIS/NIR Spectrometer ","Other"],
+    ["VOC GC","Airmotec AG"],
+    ["Video Camera","Other"],
+    ["WIND","DLR / CNRS / INSU"],
+    ["WVSS-II","SpectraSensors Inc."],
+    ["Walz UV Pyranometer","Heinz Walz Company"],
+    ["Whole Air Sampling System","University of York"],
+    ["XR5","Navstar Electronics"],
+    ]
 
 
 instruments_classification = [
@@ -1010,10 +1369,15 @@ elements_informations = [
 	["2","id_resourceAbstract_ta","Resource abstract","Identification","text"],
 	["3","id_resourceLocator_ln","Resource locator","Identification","text"],
 	["4","id_resourceIdent_ln","Unique resource identifier","Identification","text"],
-	#["6","kw_name_ln","Name","Keyword",""],
-	#["7","kw_keyword_ls","Keywords","Keyword",""],
 	["8","ai_label_1","Aircraft","Aircraft and Instruments",""],
-	["9","ai_label_13","Instrument 1","Aircraft and Instruments",""],
+    
+    ["8.1","ai_manufacturer_ln","Manufacturer","Aircraft and Instruments","text"],
+    ["8.2","ai_type_ln","Type","Aircraft and Instruments","text"],
+    ["8.3","ai_operator_ln","Operator","Aircraft and Instruments","text"],
+    ["8.4","ai_country_lb","Country","Aircraft and Instruments",""],
+    ["8.5","ai_number_ln","Registration number","Aircraft and Instruments","text"],
+    
+	["9","ai_label_13","Instrument","Aircraft and Instruments",""],
 	["10","gl_location_lb","Location","Geographic Information",""],
 	["11","gl_northBound_ln","Geographic bounding box - North","Geographic Information","float"],
 	["12","gl_southBound_ln","Geographic bounding box - South","Geographic Information","float"],
@@ -1021,43 +1385,70 @@ elements_informations = [
 	["14","gl_westBound_ln","Geographic bounding box - West","Geographic Information","float"],
 	["15","gl_resolution_ln","Spatial Resolution","Geographic Information","float"],
 	["16","gl_unit_ln","Spatial Resolution - Unit","Geographic Information","text"],
-	#["17","qv_lineage_ta","Lineage","Quality and Validity","text"],
-	#["10","gl_name_ln","Coordinate Reference System - Name","Geographic Information",""],
-	#["11","gl_code_ln","Coordinate Reference System - Code","Geographic Information",""],
-	#["12","gl_northBound_ln","Geographic bounding box - North","Geographic Information",""],
-	#["13","gl_southBound_ln","Geographic bounding box - South","Geographic Information",""],
-	#["14","gl_eastBound_ln","Geographic bounding box - East","Geographic Information",""],
-	#["15","gl_westBound_ln","Geographic bounding box - West","Geographic Information",""],
-	#["16","gl_continent_ln","Continent / Country / Region","Geographic Information",""],
-	#["17","qv_lineage_ta","Lineage","Quality and Validity",""],
-	#["18","qv_resolution_ln","Spatial Resolution","Quality and Validity",""],
-	#["19","qv_unit_ln","Spatial Resolution - Unit","Quality and Validity",""],
-	#["20","cf_specification_ln","Specification","Conformity",""],
 	["17","tr_datePublication_do","Date of publication","Temporal Reference","date"],
 	["18","tr_dateRevision_do","Date of last revision","Temporal Reference","date"],
 	["19","tr_dateCreation_do","Date of creation","Temporal Reference","date"],
 	["20","tr_temporal_extent","Temporal extent - Phase 1","Temporal Reference","date"],
-	["21","au_conditions_ta","Conditions applying to access and use","Access and Use Constraints","text"],
-	["22","au_limitations_ta","Limitations on public access","Access and Use Constraints","text"],
-	["23","au_wn_con_ta","Conditions applying to access and use","Access and Use Constraints","text"],
-	["24","au_wn_lim_ta","Limitations on public access","Access and Use Constraints","text"],
-	["25","ro_responsibleParty_ln","Responsible party","Responsible Organisations","text"],
-	["26","ro_responsibleEmail_ln","Responsible party e-mail","Responsible Organisations","text"],
-	["27","ro_rlPy_ln","Responsible party","Responsible Organisations","text"],
-	["28","ro_rlEm_ln","Responsible party e-mail","Responsible Organisations","text"],
-	["29","mm_date_do","Metadata date","Metadata on Metadata","date"],
-	["30","mm_contactName_ln","Name","Metadata on Metadata","text"],
-	["31","mm_contactEmail_ln","E-mail","Metadata on Metadata","text"],
-	["32","mm_conName_ln","Name","Metadata on Metadata","text"],
-	["33","mm_conEmail_ln","E-mail","Metadata on Metadata","text"],
+    
+    ["21","qv_insituLab","Selection of the domain","Quality and Validity",""],
+    ["22","qv_insituCalDesc_ln","Link to the procedure's description","Quality and Validity","text"],
+    ["23","qv_insituCalCons_ln","Source of constants","Quality and Validity","text"],
+    ["24","qv_insituCalMat_ln","Source of materials","Quality and Validity","text"],
+    ["25","qv_insituGeoUni","Conversion to geophysical units","Quality and Validity",""],
+    ["26","qv_insituOutFormat","Output in standardized format","Quality and Validity",""],
+    ["27","qv_other_ln","Output in standardized format - Other","Quality and Validity","text"],
+    ["28","qv_insituQuaFlag_ln","Quality-control flagging","Quality and Validity","text"],
+    ["29","qv_insituAssumption_ln","Assumption","Quality and Validity","text"],
+    
+    ["21","qv_obsCalLabo_ln","Name of calibration laboratory","Quality and Validity","text"],
+    ["22","qv_obsRadCal_do1","Date of radiometric calibration","Quality and Validity","date"],
+    ["23","qv_obsSpeCal_do2","Date of spectral calibration","Quality and Validity","date"],
+    ["24","qv_obsSpeBand_ln","Number of spectral bands","Quality and Validity","float"],
+    ["25","qv_obsFltHdg_ln","Overall fligh direction","Quality and Validity","float"],
+    ["26","qv_obsFltAlt_ln","Overall altitude ASL","Quality and Validity","float"],
+    ["27","qv_obsSolZen_ln","Solar zenith","Quality and Validity","float"],
+    ["28","qv_obsSolAzi_ln","Solar azimuth","Quality and Validity","float"],
+    ["29","qv_obsAnoAcq_ln","Report anomalies in data acquisition","Quality and Validity","text"],
+    ["30","qv_obsProLvl","Processing level","Quality and Validity",""],
+    ["31","qv_obsDrkCur","Dark current correction","Quality and Validity",""],
+    ["32","qv_obsIntMask","Aggregated interpolated pixel mask","Quality and Validity",""],
+    ["33","qv_obsBadMask","Aggregated bad pixel mask","Quality and Validity",""],
+    ["34","qv_obsSatPix","Saturated pixels / overflow","Quality and Validity",""],
+    ["35","qv_obsSpeNeigh","Pixels affected by saturation","Quality and Validity",""],
+    ["36","qv_obsPosInfo","Problems with position information","Quality and Validity",""],
+    ["37","qv_obsAttInfo","Problems with attitude information","Quality and Validity",""],
+    ["38","qv_obsSynProb","Synchronization problems","Quality and Validity",""],
+    ["39","qv_obsIntGeo","Interpolated pixels during geocoding","Quality and Validity",""],
+    ["40","qv_obsAtmCorr","Failure of atmospheric correction","Quality and Validity",""],
+    ["41","qv_obsCldMask","Cloud mask","Quality and Validity",""],
+    ["42","qv_obsShdMask","Cloud shadow mask","Quality and Validity",""],
+    ["43","qv_obsHazMask","Haze mask","Quality and Validity",""],
+    ["44","qv_obsDEMMea","Terrain correction based on DEM roughness measure","Quality and Validity",""],
+    ["45","qv_obsIllAng","Terrain correction based on illumination angle","Quality and Validity",""],
+    ["46","qv_obsBRDFGeo","BRDF geometry based on sun-sensor-terrain geometry","Quality and Validity",""],
+    
+	["47","au_conditions_ta","Conditions applying to access and use","Access and Use Constraints","text"],
+	["48","au_limitations_ta","Limitations on public access","Access and Use Constraints","text"],
+	["49","au_wn_con_ta","Conditions applying to access and use","Access and Use Constraints","text"],
+	["50","au_wn_lim_ta","Limitations on public access","Access and Use Constraints","text"],
+	["51","ro_responsibleParty_ln","Responsible party","Responsible Organisations","text"],
+	["52","ro_responsibleEmail_ln","Responsible party e-mail","Responsible Organisations","text"],
+	["53","ro_rlPy_ln","Responsible party","Responsible Organisations","text"],
+	["54","ro_rlEm_ln","Responsible party e-mail","Responsible Organisations","text"],
+	["55","mm_date_do","Metadata date","Metadata on Metadata","date"],
+	["56","mm_contactName_ln","Name","Metadata on Metadata","text"],
+	["57","mm_contactEmail_ln","E-mail","Metadata on Metadata","text"],
+	["58","mm_conName_ln","Name","Metadata on Metadata","text"],
+	["59","mm_conEmail_ln","E-mail","Metadata on Metadata","text"],
 	]
 
 path = os.getcwd()
 
 if path == "/home/henryo/Travail/python/EUFAR_metadata_creator":
-  path += "/sqlite"
+    path += "/sqlite"
 
 con = lite.connect(path + "/emc_database.db")
+con.text_factory = str
 
 
 with con:
@@ -1073,14 +1464,19 @@ with con:
     cur.executemany("INSERT INTO languageRole VALUES(?, ?)", language_role_dict)
     
     cur = con.cursor()    
+    cur.execute("DROP TABLE IF EXISTS unit")
+    cur.execute("CREATE TABLE unit(Main TEXT, Short TEXT)")
+    cur.executemany("INSERT INTO unit VALUES(?, ?)", unit_dict)
+    
+    cur = con.cursor()    
     cur.execute("DROP TABLE IF EXISTS windowsMessage")
     cur.execute("CREATE TABLE windowsMessage(Button TEXT, Message TEXT)")
     cur.executemany("INSERT INTO windowsMessage VALUES(?, ?)", window_messages)
     
     cur = con.cursor()    
     cur.execute("DROP TABLE IF EXISTS instrumentsInformations")
-    cur.execute("CREATE TABLE instrumentsInformations(Domain TEXT, Category TEXT, Type TEXT, Model TEXT, Manufacturer TEXT)")
-    cur.executemany("INSERT INTO instrumentsInformations VALUES(?, ?, ?, ?, ?)", intruments_information)
+    cur.execute("CREATE TABLE instrumentsInformations(Model TEXT, Manufacturer TEXT)")
+    cur.executemany("INSERT INTO instrumentsInformations VALUES(?, ?)", intruments_information)
     
     cur = con.cursor()    
     cur.execute("DROP TABLE IF EXISTS topics")

@@ -1,7 +1,7 @@
 # asmm-eufar
 
 A detailed changelog can be found in the Documentation directory.
-Current version: 0.9.4
+Current version: 1.0.0
 
 Overview
 
@@ -11,4 +11,4 @@ The goal of the EUFAR Metadata Creator is to produce metadata dedicated to a par
 Libraries
 
 This software needs the following libraries to allow proper operation:
-  - PyQt4 4.11.2+ -> http://www.riverbankcomputing.co.uk/software/pyqt/download
+  - PyQt4 4.11.4+ -> http://www.riverbankcomputing.co.uk/software/pyqt/download

@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from PyQt4 import QtCore, QtGui
+from PyQt4 import QtGui
 from ui.mainwindow import MainWindow
-from ui._version import _version
-import os.path
 
 
 def launch_eufar_creator():
@@ -15,5 +13,4 @@ def launch_eufar_creator():
 
 
 if __name__ == '__main__':
-    print 'launching EUFAR Metadata Creator V{0} ...'.format(_version)
     launch_eufar_creator()

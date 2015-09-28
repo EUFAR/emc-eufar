@@ -26,9 +26,9 @@ except AttributeError:
 class Ui_infoWindow(object):
     def setupUi(self, infoWindow):
         infoWindow.setObjectName(_fromUtf8("infoWindow"))
-        infoWindow.resize(450, 100)
-        infoWindow.setMinimumSize(QtCore.QSize(450, 100))
-        infoWindow.setMaximumSize(QtCore.QSize(450, 100))
+        infoWindow.resize(450, 80)
+        infoWindow.setMinimumSize(QtCore.QSize(450, 80))
+        infoWindow.setMaximumSize(QtCore.QSize(450, 80))
         font = QtGui.QFont()
         font.setFamily(_fromUtf8(self.progPath + "/font/DroidSansFallbackFull.ttf"))
         font.setPointSize(10)
@@ -61,7 +61,7 @@ class Ui_infoWindow(object):
         spacerItem1 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
         self.iw_label_1 = QtGui.QLabel(infoWindow)
-        self.iw_label_1.setMinimumSize(QtCore.QSize(341, 120))
+        self.iw_label_1.setMinimumSize(QtCore.QSize(341, 60))
         self.iw_label_1.setMaximumSize(QtCore.QSize(341, 16777215))
         font = QtGui.QFont()
         font.setFamily(_fromUtf8(self.progPath + "/font/DroidSansFallbackFull.ttf"))

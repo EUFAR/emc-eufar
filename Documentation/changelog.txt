@@ -5,20 +5,183 @@ CHANGELOG
 KNOWN ISSUES:
 =============
     - after building using Pyinstaller on Linux, the one file sofware generate an Gtk error when used. This error doesn't induce issues with the software or the creation of xml files. -> no solution for now [OFFLINE]
-    - in the [ONLINE] version, two lines need to be activated to allow a proper operation of the downloading and uploading servlets, based on the platform for devlopment or production: see in the "Asmm_eufar.java" file, section "open an existing xml file" openFile() and "save an xml file" saveFile(), to comment and uncomment dedicated lines. !!! IMPORTANT !!!
     
+    - !!! IMPORTANT !!! in the [ONLINE] version, a line need to be activated or commented to allow a proper operation of the downloading, uploading and printing servlets, based on the platform of devlopment or production: see in the "Emc_eufar.java" file, find those lines at the beginning:
+      
+        //String emcPath = new String(GWT.getHostPageBaseURL()); // for Tomcat7/8 Server
+        String emcPath = new String(""); // for Eclipse Dev Mode
+
+September 28 2015, Release version 1.0.0 [ONLINE]
+=====================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 1.0.0.
+
+
+September 28 2015, Release version 1.0.0 [OFFLINE]
+========================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 1.0.0.
+
+
+September 25-28 2015, Release version 1.0.0b1-2 [ONLINE]
+==========================================
+  MODIFIED:
+    - few GUI adjustments [ONLINE].
     
-TO ADD:
-=======
-    - add the instrument tab [ONLINE][OFFLINE].
-    - rework "Quality and Validity" window [ONLINE][OFFLINE].
-    - add a plugin to read metadata from netcdf and/or hdf5 [OFFLINE]
-    - add a function to enter automatically information from a database if some key information are entered by the user [ONLINE].
+  ADDED:
+    - a new layout has been added for computers with a screen height below 1000 px [mainwindow.py][Ui_mainwindow.py][OFFLINE]
+
+
+September 25 2015, Release version 0.9.7 [OFFLINE]
+========================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.9.7.
+
+
+September 23-25 2015, Release version 0.9.7b1-3 [OFFLINE]
+===============================================
+  New "Quality and Validity" items have been introduced for Earth obersation and atmospheric data.
+  
+  ADDED:
+    - new "Quality and Validity" items [button_function.py][mainwindow.py][OFFLINE].
+    - textboxes have been added to the aircraft section if the user wants to enter aircraft information which are not available in the database [mainwindow.py][button_function.py][OFFLINE].
+    - when a user add multiple widgets, a "x" icon appears in front of the original widget, it is possible now to delete it and make the first new widget the original one [button_function.py][mainwindow.py][OFFLINE].
+    
+  MODIFIED:
+    - the checking and clearing function have been modified to take care of the new items in the "Quality and Validity" section [check_functions.py][eufar_database_creator.py][mainwindow.py][OFFLINE].
+    - the checking and clearing function have been modified to take care of the new textboxes in the "Aircraft and Instrument" section [check_functions.py][eufar_database_creator.py][mainwindow.py][OFFLINE].
+    - the saving and opening function have been modified to take care of the new textboxes in the "Aircraft and Instrument" section [eufar_creator_xml.py][OFFLINE].
+    - the saving and opening function have been modified to take care of the new items in the "Quality and Validity" section [eufar_creator_xml.py][OFFLINE].
+    
+  FIXED:
+    - fixed an issue with the reading of the location when the xml item is empty [eufar_creator_xml.py][OFFLINE].
+    - fixed an issue with the reading of the platform/aircraft information when those information are empty [eufar_creator_xml.py][OFFLINE].
+
+
+September 23 2015, Release version 0.9.6 [OFFLINE]
+========================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.9.6.
+
+
+September 22-23 2015, Release version 0.9.6b1-2 [OFFLINE]
+===============================================
+  The text in the different InfoButtons has been reviewed by the EUFAR N7SP members for simplification and addition of examples.
+  
+  ADDED:
+    - an about panel has been introduced to present INSPIRE [mainwindow.py][OFFLINE].
+    
+  MODIFIED:
+    - all infoButtons have been modified to display new texts and examples [eufar_database_creator.py][OFFLINE]
+
+
+September 22 2015, Release version 0.9.5 [OFFLINE]
+========================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.9.5.
+
+
+September 18-22 2015, Release version 0.9.5b1-3 [OFFLINE]
+===============================================
+  ADDED:
+    - few adjustements in the GUI to comply with the ONLINE version [Ui_mainwindow.py][OFFLINE].
+    - a simple "Instrument" selection has been introduced in the "Aircraft and Instrument" section [Ui_mainwindow.py][mainwindow.py][button_function.py][OFFLINE].
+    - a new function to delete widget created by the user, now the delete button will delete the widget with which it is created [mainwindow.py][button_function.py][OFFLINE].
+  
+  MODIFIED:
+    - the saving, reading and checking function have been modified to handle the instrument selection [eufar_metadata_xml.py][OFFLINE].
+    - the textbox to inform about the unit in the "Geographic Information" section has been replaced by a combobox listing necessary units [mainwindow.py][button_function.py][OFFLINE].
+    
+  FIXED:
+    - fixed two errors in the checking function which prevented the display of two incomplete elements in the Check Panel [check_functions.py][OFFLINE]
+    - the filename, when its length was greater than 40 caracters, wasn't well displayed in the window title [mainwindow.py][OFFLINE]
+
+
+September 4 2015, Release version 0.9.7 [ONLINE]
+=====================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.9.7.
+
+
+August 28 - September 4 2015, Release version 0.9.7b1-3 [ONLINE]
+=============================================
+  ADDED:
+    - the possibility to enter manually information about an aircraft not present in the list has been added [ONLINE].
+    - the possibility to enter manually information about an instrument not present in the list has been added [ONLINE].
+    - a popup has been added to ask to the user if he wants to exit EMC when he clicks on a link and data are entered and not saved [ONLINE].
+    
+  MODIFIED:
+    - functions to check, clear, save and read have been modified to comply with the new addition [ONLINE].
+    - few adjustments in the GUI [ONLINE].
+    
+  FIXED:
+    - fixed an issue with the css code in the "Aircraft and Instrument" section [ONLINE].
+    - now It is not possible to add more than once the same instrument [ONLINE].
     
 
-FUTUR:
-======
-    - remove dynamically widgets by choosing which one to remove. [OFFLINE]
+August 28 2015, Release version 0.9.6 [ONLINE]
+=====================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.9.6.
+
+
+August 18-28 2015, Release version 0.9.6b3-11 [ONLINE]
+=============================================
+  The text in the different InfoButtons has been reviewed by the EUFAR N7SP members for simplification and addition of examples. The "Quality and Validity" section has been expanded with Earth observation/Remote sensing and Atmospheric/In-situ data quality indicators to comply with INSPIRE standard. A list of instrument is currently reviewed to expand the "Aircraft and Instruments" section.
+
+  MODIFIED:
+    - few adjustments in the GUI [ONLINE].
+    - changed Hyperspectral/Imagery data to Earth observation/Remote sensing data in the "Quality and Validity" section [ONLINE].
+    - the "Access and Use Constraints" section has been modified to comply with requirements from EUFAR [ONLINE].
+    - the Resource Locator in the "Identification" section has been modified to comply with requirements from EUFAR [ONLINE].
+    - the "Geographic Information" section has been modified to comply with requirements from EUFAR [ONLINE].
+    - in the "Geographic Information" section, the user will have to select the unit when "distance" is selected for the "spatial resolution [ONLINE].
+    - the "Quality and Validity section has been reworked to comply with INSPIRE standard [ONLINE].
+    - the function to check empty and not correct fields has bee modified to take into account the new "Quality and Validity" section [ONLINE].
+    - the functions to save and load a file have been updated to support the integration of instruments [ONLINE].
+    
+  FIXED:
+    - an important issue prevented the check function to work properly when ASMM layout was a browser-like (horizontal) layout [ONLINE].
+    - fixed an issue with the "Unit" listbox in the "Geographic Information" section which wasn't saved properly [ONLINE].
+    - the radiobutton in the "Quality and Validity" section weren't checked properly when a user tried to save an xml file, it has been fixed [ONLINE].
+    - fixed a css issue with the "other" textbox in the "Quality and Validity" section [ONLINE].
+    
+  ADDED:
+    - a list of instrument available on EUFAR website has been added into EMC [ONLINE].
+
+
+August 13-14 2015, Release version 0.9.6b1-2 [ONLINE]
+============================================
+  The changelog has been introduced in EMC [ONLINE].
+
+
+August 12 2015, Release version 0.9.5 [ONLINE]
+=====================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 0.9.5.
+
+
+August 3-12 2015, Release version 0.9.5b5-10 [ONLINE]
+==========================================
+  A complete revamp of the Quality and Validity section has been started to comply with INSPIRE standards [ONLINE].
+  
+  FIXED:
+    - once a new "Responsible Organisation" was created, it was possible for the user to change the role [ONLINE].
+    - the role of the "Responsible Organisation" was automatically set on "Owner" when a new file was created [ONLINE].
+    - if the user select and aircraft, then select "Do your choice..." and save the file, a null variable was saved for the operator xml code [ONLINE].
+    - few adjustments and corrections in the GUI [ONLINE].
+    
+  MODIFIED:
+    - all icons have been replaced by new ones with higher resolution and a bit crisper [ONLINE].
+
+
+July 28-31 2015, Release version 0.9.5b1-4 [ONLINE]
+==========================================
+  A proper logging system is being introduced in EUFAR Metadata Creator Online. I will be introduced in EUFAR Metadata Creator Offline later.
+  Because off compatibility issues with Internet Explorer, a popup message has been introduced to warn user if they use IE.
+  
+  ADDED:
+    - a new layout (browser-like tab system) has been introduced. It is automatically selected for small and wide screen, an optional for other screens [ONLINE].
+    
+  MODIFIED:
+    - few adjustments in the GUI [ONLINE].
+    - a revamp of the Quality and Validity section has been started to comply with INSPIRE standards [ONLINE].
+    - all textboxes of EMC have been replaced by a combination of horizontalpanel, textbox and inlinelabel to allow a correct vertical alignment of the label [ONLINE].
+
+  FIXED:
+    - fixed a little issue with the display of all infobuttons [ONLINE].
 
 
 June 17 2015, Release version 0.9.4
@@ -27,7 +190,7 @@ June 17 2015, Release version 0.9.4
 
 
 June 16-17 2015, Release version 0.9.4b2-3
-=====================================
+==========================================
   FIXED:
     - in the "Temporal Reference" tab, the date displayed in the new period widgets (phase 2, phase 3, ...) was aligned on the left and not centered [OFFLINE][button_functions.py].
     - when a user tries to open an xml file, and an aircraft is included in the xml file, the C for the copyright of the picture is not displayed correctly [OFFLINE][eufar_metadata_xml.py].
@@ -39,6 +202,7 @@ June 16-17 2015, Release version 0.9.4b2-3
     - a cancel button has been included in the Ui_fillwindow [OFFLINE][Ui_fillwindow.py].
     - a function to append the suffix "modified" to the browser window title has been introduced when a modification is brought to a field, the suffix disapears if the file is saved or cleared [ONLINE].
     - when a user wants to create a new file and some fields are not empty or have been changed, a function will ask him if he wants to save the file before creating a new one [ONLINE].
+    - when a user tries to open an xml file and some fields are not empty, it is not prompted if the user wants to save his work before opening the xml file [ONLINE].
     
   MODIFIED:
     - the way to handle aircraft information and the dedicated combobox has been modified when a user load an xml file including an aircraft. [OFFLINE][eufar_metadata_xml.py].
@@ -153,13 +317,13 @@ March 16-17 2015, Release version 0.9.1b4-5
     - continents/countries/oceans/regions keywords in the dabase have been reworked to comply with the NASA GCMD keyword system [emc_database_creator.py].
   
   ADDED:
-    - a tooltip has been added to each "+" and "x" buttons [Ui_mainwindow_nonfree.py][button_functions.py].
-    - comboboxes in the "Geographic Information" section have been populated with NASA GCMD location keywords [Ui_mainwindow_nonfree.py][button_functions.py].
+    - a tooltip has been added to each "+" and "x" buttons [Ui_mainwindow.py][button_functions.py].
+    - comboboxes in the "Geographic Information" section have been populated with NASA GCMD location keywords [Ui_mainwindow.py][button_functions.py].
     - the "Location" item in the "Geographic Information" section is now well saved and read [eufar_metadata_xml.py].
     - added an exception in the check function to allow empty field for non mandatory items (as spatial resolution for in situ data) [check_functions.py].
  
   FIXED:
-    - temporarily fixed the issue concerning the comboboxes in the "Geographic Information" section: once the "Countries" category is selected, selecting another category will add up and down arrows to the list of details. Now the second combobox is deleted and created once a category is selected in the first combobox [Ui_mainwindow_nonfree.py][button_functions.py].
+    - temporarily fixed the issue concerning the comboboxes in the "Geographic Information" section: once the "Countries" category is selected, selecting another category will add up and down arrows to the list of details. Now the second combobox is deleted and created once a category is selected in the first combobox [Ui_mainwindow.py][button_functions.py].
     - when trying to save a complete xml file, the popup to warn about uncompleted document was raised with no item to display, this has been fixed [check_functions.py].
  
  
@@ -169,17 +333,17 @@ March 12 2015, Release version 0.9.1b3
   Fixed all functions to allow a right saving, resetting and reading actions with the new "Keywords", "Geographic Information" tabs, and without the old "Conformity" tab.
   
   MODIFIED:
-    - change "delete" icons to a fully transparent icon to simulate the absence of the corresponding Del buttons, when no supplementary widget has been created [Ui_mainwindow_nonfree.py].
+    - change "delete" icons to a fully transparent icon to simulate the absence of the corresponding Del buttons, when no supplementary widget has been created [Ui_mainwindow.py].
   
   ADDED:
-    - a new icon has been created to replace the "copyright" logo below all images ("Aircraft and Instrument" section) [Ui_mainwindow_nonfree.py]
+    - a new icon has been created to replace the "copyright" logo below all images ("Aircraft and Instrument" section) [Ui_mainwindow.py]
     
     
 March 10 2015, Release version 0.9.1b2
 ======================================
   ADDED:
     - a new window has been added when trying to exit software and modifications exist, to propose to save the file, to cancel the exit, or to exit anyway [mainwindow.py][Ui_presavewindow.py].
-    - the "Keywords" tab has been reworked to propose a selection of keywords originating from NASA GCMD/CEOS science keywords displayed as checkboxes [Ui_mainwindow_nonfree.py].
+    - the "Keywords" tab has been reworked to propose a selection of keywords originating from NASA GCMD/CEOS science keywords displayed as checkboxes [Ui_mainwindow.py].
     
 
 March 9 2015, Release version 0.9.1b1
@@ -189,9 +353,9 @@ March 9 2015, Release version 0.9.1b1
     - NASA GCMD/CEOS science keywords have been added to the database, to improve the "Keywords" tab [emc_database_creator.py].
   
   MODIFIED:
-    - the "spatial resolution" item has been moved from the "Quality and Validity" tab to the "Geographic Information" tab [Ui_mainwindow_nonfree.py].
-    - the "Continents/country/regions" item has been reworked to propose a list of continents, countries, regions and oceans [Ui_mainwindow_nonfree.py].
-    - the "Keywords" tab has been reworked to propose a selection of keywords originating from NASA GCMD/CEOS science keywords [Ui_mainwindow_nonfree.py].
+    - the "spatial resolution" item has been moved from the "Quality and Validity" tab to the "Geographic Information" tab [Ui_mainwindow.py].
+    - the "Continents/country/regions" item has been reworked to propose a list of continents, countries, regions and oceans [Ui_mainwindow.py].
+    - the "Keywords" tab has been reworked to propose a selection of keywords originating from NASA GCMD/CEOS science keywords [Ui_mainwindow.py].
    
     
 February 13 2015, Release version 0.9.0
@@ -235,11 +399,11 @@ February 5-10 2015, Release version 0.9.0b10-12
     - the fill window has been reworked to comply with EUFAR Metadata Creator style [mainwindow.py][ui_fillwindow.py].
     - the info window has been reworked to comply with EUFAR Metadata Creator style [mainwindow.py][ui_infowindow.py].
     - xml code dedicated to aircraft and instruments has been rewritten to facilitate integration into INSPIRE xml code [eufar_metadata_xml.py].
-    - changed the name of the different pages for clarification [Ui_mainwindow_nonfree.py].
-    - the "Temporal Reference" window has been a bit reworked : the info button of the temporal extent has been moved after the "+" and "x" buttons [Ui_mainwindow_nonfree.py].
-    - the "Metadata on Metadata" window has been a bit reworked : one of the info button of the contact has been moved after the "+" and "x" buttons, and the other has been deleted [Ui_mainwindow_nonfree.py].
-    - the "Validity and Quality" window has been a bit reworked [Ui_mainwindow_nonfree.py].
-    - the "Identification" window has been a bit reworked to justify all textboxes [Ui_mainwindow_nonfree.py].
+    - changed the name of the different pages for clarification [Ui_mainwindow.py].
+    - the "Temporal Reference" window has been a bit reworked : the info button of the temporal extent has been moved after the "+" and "x" buttons [Ui_mainwindow.py].
+    - the "Metadata on Metadata" window has been a bit reworked : one of the info button of the contact has been moved after the "+" and "x" buttons, and the other has been deleted [Ui_mainwindow.py].
+    - the "Validity and Quality" window has been a bit reworked [Ui_mainwindow.py].
+    - the "Identification" window has been a bit reworked to justify all textboxes [Ui_mainwindow.py].
 
   ADDED:
     - the Coordinate Reference System is now saved in the xml function, the GUI has been adapted accordingly [eufar_metadata_xml.py][mainwindow.py][button_functions.py].
@@ -274,13 +438,13 @@ February 2 2015, Release version 0.9.0b7
   The function to save xml file has been modified to handle the two different GUI and the integration of both radio buttons result [eufar_metadata_xml.py].
   
   FIXED:
-    - corrected a bug which crashed the program when the "AWI - POLAR 5" aircraft was selected in the "Aircraft and Instruments" window [Ui_mainwindow_free.py][Ui_mainwindow_nonfree.py]
-    - corrected a problem with radio buttons : when a radio buttons was checked, all others, the initial ones and new ones, were automatically unchecked [Ui_mainwindow_free.py][Ui_mainwindow_nonfree.py].
+    - corrected a bug which crashed the program when the "AWI - POLAR 5" aircraft was selected in the "Aircraft and Instruments" window [Ui_mainwindow_free.py][Ui_mainwindow.py]
+    - corrected a problem with radio buttons : when a radio buttons was checked, all others, the initial ones and new ones, were automatically unchecked [Ui_mainwindow_free.py][Ui_mainwindow.py].
     
 
 January 27-30 2015, Release version 0.9.0b3-b6
 ==============================================
-  The window to select instruments has been reworked to propose to users to select the classification based on GCMD / CEOS classification keywords, then enter themselves the Manufacturer and the model of the instrument. As the final choice will be made during the next EUFAR General Assembly, the old window has been backed up. The GUI files including both solutions are called [Ui_mainwindow_free.py] and [Ui_mainwindow_nonfree.py]. A solution has been implemented in the [button_function.py] to handle both window configurations.
+  The window to select instruments has been reworked to propose to users to select the classification based on GCMD / CEOS classification keywords, then enter themselves the Manufacturer and the model of the instrument. As the final choice will be made during the next EUFAR General Assembly, the old window has been backed up. The GUI files including both solutions are called [Ui_mainwindow_free.py] and [Ui_mainwindow.py]. A solution has been implemented in the [button_function.py] to handle both window configurations.
   The classification of instruments based on GCMD / CEOS has been reworked to comply fully with GCMD / CEOS.
 
 
