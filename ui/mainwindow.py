@@ -268,8 +268,12 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def get_file_name(self):
         file_dialog = QFileDialog()
         file_dialog.setDefaultSuffix('xml')
-        out_file_name = unicode(file_dialog.getSaveFileName(self, "Save XML File", filter='XML File'
-                                                            's (*.xml)'))
+        """out_file_name = unicode(file_dialog.getSaveFileName(self, "Save XML File", filter='XML File'
+                                                            's (*.xml)'))"""
+        out_file_name = unicode(file_dialog.getSaveFileName(self, "Save XML File",
+                           "flight-info_!!!Unique resource identifier!!!.xml",
+                           filter="XML Files (*.xml)"));
+        
         return out_file_name
 
     def reset_all_fields(self):

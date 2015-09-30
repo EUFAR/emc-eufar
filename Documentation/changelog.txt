@@ -11,6 +11,22 @@ KNOWN ISSUES:
         //String emcPath = new String(GWT.getHostPageBaseURL()); // for Tomcat7/8 Server
         String emcPath = new String(""); // for Eclipse Dev Mode
 
+
+September 30 2015, Release version 1.0.1 [ONLINE][OFFLINE]
+========================================
+  Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 1.0.1.
+
+
+September 30 2015, Release version 1.0.1b1 [ONLINE][OFFLINE]
+==========================================
+  FIXED:
+    - few text mistakes in the panel to warn the user about the use of EMC and Internet Explorer [ONLINE]
+    
+  MODIFIED:
+    - modified the infobutton concerning the "Unique resource identifier" to display the official EUFAR filename convention [ONLINE][OFFLINE].
+    - modified the save panel to inform the user about the filename convention [ONLINE][OFFLINE].
+
+
 September 28 2015, Release version 1.0.0 [ONLINE]
 =====================================
   Since the code is stable and no more bug has been found, the software is released in the current state, and version number increases to 1.0.0.

@@ -579,14 +579,14 @@ window_messages = (
      + " additional information about the resource. For EUFAR projects, it is automatically filled "
      + "in with the link to the EUFAR database.</p><p><u>Example:</u> http://browse.ceda.ac.uk/brow"
      + "se/badc/eu far/docs/00eufararchive contents.html</p>"),
-	("infoButton_5","<p hyphens='auto'>This element uniquely identifying the resource and it is gen"
-     + "erally formed with mandatory and/or optional string codes. In a EUFAR project, the file-nam"
-     + "ing convention is as follow <b>instrument_aircraft_YYYY MMDD[_extra].ext</b>. <b>instrument"
-     + "</b> is the instrument which was used to produce the data set, <b>aircraft</b> is a merge b"
-     + "etween the operator and the aircraft, <b>YYYYMMDD</b> (year month day) is the date on which"
-     + " measurements were taken, <b>[_extra]</b> allow to add optional parameter. <b>.ext</b> is u"
-     + "sed for the file extension.</p><p><u>Example:</u> core_safire-atr42_20100913_as100051_r0 _1"
-     + "hz.ext</p>"),
+	("infoButton_5","<p hyphens='auto'>This element uniquely identifying the resource and it is generally formed with mandatory and/or optional "
+     + "string codes. In a EUFAR project, the file-naming convention is as follow <b>instrument_aircraft _YYYYMMDD[hh][mm][ss][_extra][_cor#]."
+     + "ext</b>. <b>instrument</b> is the instrument which was used to produce the data set, <b>aircraft</b> is a merge between "
+     + "the operator and the aircraft, <b>YYYYMMDD</b> (year month day) and <b>[hh][mm][ss]</b> (hour minute second) are the date"
+     + " and time at which measurements were taken (time is optional), <b>[_extra]"
+     + "</b> allow to add optional parameter, and <b>[_cor#]</b> denotes that the file is a corrected version of a previously released "
+     + "file. <b>.ext</b> is used for the file extension.</p><p><u>Example:</u> core_safire-atr42_"
+     + "20100913_as100051_r0 _1hz.ext</p>"),
 	("infoButton_6","<p>The language(s) used within the resource. In a EUFAR project, English is al"
      + "ways selected and should not be changed. </p><p><u>Example:</u> English.</p>"),
 	("infoButton_7","<p>The topic category is a high-level classification scheme to facilitate the "
