@@ -8,6 +8,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt4 import QtCore, QtGui
+import os
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -26,23 +27,20 @@ except AttributeError:
 class Ui_inspireWindow(object):
     def setupUi(self, aboutWindow):
         aboutWindow.setObjectName(_fromUtf8("aboutWindow"))
-        aboutWindow.resize(600, 600)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(aboutWindow.sizePolicy().hasHeightForWidth())
         aboutWindow.setSizePolicy(sizePolicy)
-        aboutWindow.setMinimumSize(QtCore.QSize(600, 600))
-        aboutWindow.setMaximumSize(QtCore.QSize(600, 600))
         font = QtGui.QFont()
-        font.setFamily(_fromUtf8(self.progPath + "/font/DroidSansFallbackFull.ttf"))
+        font.setFamily(_fromUtf8("font/DroidSansFallbackFull.ttf"))
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         aboutWindow.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/inspire_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(_fromUtf8("icons/inspire_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         aboutWindow.setWindowIcon(icon)
         self.gridLayout = QtGui.QGridLayout(aboutWindow)
         self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
@@ -56,7 +54,7 @@ class Ui_inspireWindow(object):
         self.aw_label_2.setMinimumSize(QtCore.QSize(55, 55))
         self.aw_label_2.setMaximumSize(QtCore.QSize(55, 55))
         self.aw_label_2.setText(_fromUtf8(""))
-        self.aw_label_2.setPixmap(QtGui.QPixmap(_fromUtf8(self.progPath + "/icons/inspire_icon.png")))
+        self.aw_label_2.setPixmap(QtGui.QPixmap(_fromUtf8("icons/inspire_icon.png")))
         self.aw_label_2.setScaledContents(True)
         self.aw_label_2.setObjectName(_fromUtf8("aw_label_2"))
         self.verticalLayout.addWidget(self.aw_label_2)
@@ -71,10 +69,8 @@ class Ui_inspireWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.aw_label_1.sizePolicy().hasHeightForWidth())
         self.aw_label_1.setSizePolicy(sizePolicy)
-        self.aw_label_1.setMinimumSize(QtCore.QSize(500, 170))
-        self.aw_label_1.setMaximumSize(QtCore.QSize(500, 16777215))
         font = QtGui.QFont()
-        font.setFamily(_fromUtf8(self.progPath + "/font/DroidSansFallbackFull.ttf"))
+        font.setFamily(_fromUtf8("font/DroidSansFallbackFull.ttf"))
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -89,6 +85,25 @@ class Ui_inspireWindow(object):
         self.aw_label_1.setAlignment(QtCore.Qt.AlignJustify|QtCore.Qt.AlignTop)
         self.aw_label_1.setWordWrap(True)
         self.aw_label_1.setObjectName(_fromUtf8("aw_label_1"))
+        if os.name == "posix":
+            aboutWindow.resize(600, 600)
+            aboutWindow.setMinimumSize(QtCore.QSize(600, 600))
+            aboutWindow.setMaximumSize(QtCore.QSize(600, 600))
+            self.aw_label_1.setMinimumSize(QtCore.QSize(500, 170))
+            self.aw_label_1.setMaximumSize(QtCore.QSize(500, 16777215))
+            
+        elif os.name == "nt":
+            aboutWindow.resize(800, 600)
+            aboutWindow.setMinimumSize(QtCore.QSize(800, 600))
+            aboutWindow.setMaximumSize(QtCore.QSize(800, 600))
+            self.aw_label_1.setMinimumSize(QtCore.QSize(700, 170))
+            self.aw_label_1.setMaximumSize(QtCore.QSize(700, 16777215))
+        else:
+            aboutWindow.resize(600, 600)
+            aboutWindow.setMinimumSize(QtCore.QSize(600, 600))
+            aboutWindow.setMaximumSize(QtCore.QSize(600, 600))
+            self.aw_label_1.setMinimumSize(QtCore.QSize(500, 170))
+            self.aw_label_1.setMaximumSize(QtCore.QSize(500, 16777215))
         self.horizontalLayout.addWidget(self.aw_label_1)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
         spacerItem2 = QtGui.QSpacerItem(20, 10, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
@@ -101,7 +116,7 @@ class Ui_inspireWindow(object):
         self.aw_okButton.setMinimumSize(QtCore.QSize(93, 27))
         self.aw_okButton.setMaximumSize(QtCore.QSize(93, 27))
         font = QtGui.QFont()
-        font.setFamily(_fromUtf8(self.progPath + "/font/DroidSansFallbackFull.ttf"))
+        font.setFamily(_fromUtf8("font/DroidSansFallbackFull.ttf"))
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)

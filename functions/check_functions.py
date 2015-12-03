@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os, sys
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import QLabel
 from PyQt4.QtGui import QWidget
@@ -11,6 +10,7 @@ from PyQt4.QtGui import QDateEdit
 from PyQt4.QtCore import QDate
 from ui.Ui_fillwindow import Ui_fillWindow
 from functions.sql_functions import sql_valueRead
+import os
 
 
 try:
@@ -367,10 +367,6 @@ def fill_all_fields(self):
 class MyFill(QtGui.QDialog, Ui_fillWindow):
     def __init__(self, fillElements):
         QWidget.__init__(self)
-        if getattr(sys, 'frozen', False):
-            self.progPath = sys._MEIPASS  # @UndefinedVariable
-        else:
-            self.progPath = os.path.abspath(".")
         self.setupUi(self)
         self.fw_okButton.clicked.connect(self.closeWindow)
         self.fw_detailButton.clicked.connect(self.detailElements_show)
@@ -384,10 +380,14 @@ class MyFill(QtGui.QDialog, Ui_fillWindow):
         self.fw_detailButton.clicked.disconnect(self.detailElements_show)
         self.fw_detailButton.clicked.connect(self.detailElements_hide)
         x1, y1, self.w, self.h = self.geometry().getRect()  # @UnusedVariable
-        self.h1 = 400
-        self.h2 = self.h1 - 186
-        self.setMinimumHeight(self.h1)
-        self.setMaximumHeight(self.h1)
+        if os.name == "nt":
+            self.h1 = 450
+            self.h2 = self.h1 - 236
+        else:
+            self.h1 = 400
+            self.h2 = self.h1 - 186
+        self.setMinimumHeight(self.h1+20)
+        self.setMaximumHeight(self.h1+20)
         self.textBrowser = QtGui.QTextBrowser()
         font = QtGui.QFont()
         font.setPointSize(9)
