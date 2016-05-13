@@ -1,139 +1,93 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'aboutwindow.ui'
+# Form implementation generated from reading ui file 'inspirewindow.ui'
 #
-# Created: Fri Feb 13 13:26:14 2015
-#      by: PyQt4 UI code generator 4.10.4
+# Created by: PyQt5 UI code generator 5.6
 #
 # WARNING! All changes made in this file will be lost!
 
-from PyQt4 import QtCore, QtGui
-import os
-
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
-
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_inspireWindow(object):
-    def setupUi(self, aboutWindow):
-        aboutWindow.setObjectName(_fromUtf8("aboutWindow"))
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
+    def setupUi(self, inspireWindow):
+        inspireWindow.setObjectName("inspireWindow")
+        inspireWindow.resize(600, 500)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(aboutWindow.sizePolicy().hasHeightForWidth())
-        aboutWindow.setSizePolicy(sizePolicy)
+        sizePolicy.setHeightForWidth(inspireWindow.sizePolicy().hasHeightForWidth())
+        inspireWindow.setSizePolicy(sizePolicy)
+        inspireWindow.setMinimumSize(QtCore.QSize(600, 500))
+        inspireWindow.setMaximumSize(QtCore.QSize(600, 16777215))
         font = QtGui.QFont()
-        font.setFamily(_fromUtf8("font/DroidSansFallbackFull.ttf"))
+        font.setFamily("font/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
+        font.setKerning(True)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        aboutWindow.setFont(font)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("icons/inspire_icon.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        aboutWindow.setWindowIcon(icon)
-        self.gridLayout = QtGui.QGridLayout(aboutWindow)
-        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
-        self.verticalLayout_2 = QtGui.QVBoxLayout()
-        self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
-        self.horizontalLayout = QtGui.QHBoxLayout()
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.verticalLayout = QtGui.QVBoxLayout()
-        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
-        self.aw_label_2 = QtGui.QLabel(aboutWindow)
+        inspireWindow.setFont(font)
+        self.gridLayout = QtWidgets.QGridLayout(inspireWindow)
+        self.gridLayout.setObjectName("gridLayout")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.aw_label_2 = QtWidgets.QLabel(inspireWindow)
         self.aw_label_2.setMinimumSize(QtCore.QSize(55, 55))
         self.aw_label_2.setMaximumSize(QtCore.QSize(55, 55))
-        self.aw_label_2.setText(_fromUtf8(""))
-        self.aw_label_2.setPixmap(QtGui.QPixmap(_fromUtf8("icons/inspire_icon.png")))
+        self.aw_label_2.setText("")
+        self.aw_label_2.setPixmap(QtGui.QPixmap("icons/about_icon.png"))
         self.aw_label_2.setScaledContents(True)
-        self.aw_label_2.setObjectName(_fromUtf8("aw_label_2"))
+        self.aw_label_2.setObjectName("aw_label_2")
         self.verticalLayout.addWidget(self.aw_label_2)
-        spacerItem = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem)
         self.horizontalLayout.addLayout(self.verticalLayout)
-        spacerItem1 = QtGui.QSpacerItem(20, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
-        self.aw_label_1 = QtGui.QLabel(aboutWindow)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Preferred, QtGui.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.aw_label_1.sizePolicy().hasHeightForWidth())
-        self.aw_label_1.setSizePolicy(sizePolicy)
+        self.aw_label_1 = QtWidgets.QLabel(inspireWindow)
+        self.aw_label_1.setMinimumSize(QtCore.QSize(480, 500))
+        self.aw_label_1.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily(_fromUtf8("font/DroidSansFallbackFull.ttf"))
+        font.setFamily("font/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
+        font.setKerning(True)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.aw_label_1.setFont(font)
-        self.aw_label_1.setFrameShape(QtGui.QFrame.NoFrame)
-        self.aw_label_1.setFrameShadow(QtGui.QFrame.Plain)
-        self.aw_label_1.setLineWidth(1)
-        self.aw_label_1.setMidLineWidth(0)
-        self.aw_label_1.setTextFormat(QtCore.Qt.AutoText)
-        self.aw_label_1.setScaledContents(False)
-        self.aw_label_1.setAlignment(QtCore.Qt.AlignJustify|QtCore.Qt.AlignTop)
+        self.aw_label_1.setText("")
         self.aw_label_1.setWordWrap(True)
-        self.aw_label_1.setObjectName(_fromUtf8("aw_label_1"))
-        if os.name == "posix":
-            aboutWindow.resize(600, 600)
-            aboutWindow.setMinimumSize(QtCore.QSize(600, 600))
-            aboutWindow.setMaximumSize(QtCore.QSize(600, 600))
-            self.aw_label_1.setMinimumSize(QtCore.QSize(500, 170))
-            self.aw_label_1.setMaximumSize(QtCore.QSize(500, 16777215))
-            
-        elif os.name == "nt":
-            aboutWindow.resize(800, 600)
-            aboutWindow.setMinimumSize(QtCore.QSize(800, 600))
-            aboutWindow.setMaximumSize(QtCore.QSize(800, 600))
-            self.aw_label_1.setMinimumSize(QtCore.QSize(700, 170))
-            self.aw_label_1.setMaximumSize(QtCore.QSize(700, 16777215))
-        else:
-            aboutWindow.resize(600, 600)
-            aboutWindow.setMinimumSize(QtCore.QSize(600, 600))
-            aboutWindow.setMaximumSize(QtCore.QSize(600, 600))
-            self.aw_label_1.setMinimumSize(QtCore.QSize(500, 170))
-            self.aw_label_1.setMaximumSize(QtCore.QSize(500, 16777215))
+        self.aw_label_1.setObjectName("aw_label_1")
         self.horizontalLayout.addWidget(self.aw_label_1)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
-        spacerItem2 = QtGui.QSpacerItem(20, 10, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Fixed)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         self.verticalLayout_2.addItem(spacerItem2)
-        self.horizontalLayout_2 = QtGui.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
-        spacerItem3 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem3)
-        self.aw_okButton = QtGui.QPushButton(aboutWindow)
-        self.aw_okButton.setMinimumSize(QtCore.QSize(93, 27))
-        self.aw_okButton.setMaximumSize(QtCore.QSize(93, 27))
+        self.aw_okButton = QtWidgets.QPushButton(inspireWindow)
+        self.aw_okButton.setMinimumSize(QtCore.QSize(50, 27))
+        self.aw_okButton.setMaximumSize(QtCore.QSize(50, 27))
         font = QtGui.QFont()
-        font.setFamily(_fromUtf8("font/DroidSansFallbackFull.ttf"))
+        font.setFamily("font/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.aw_okButton.setFont(font)
-        self.aw_okButton.setObjectName(_fromUtf8("aw_okButton"))
+        self.aw_okButton.setObjectName("aw_okButton")
         self.horizontalLayout_2.addWidget(self.aw_okButton)
-        spacerItem4 = QtGui.QSpacerItem(40, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+        spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem4)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.gridLayout.addLayout(self.verticalLayout_2, 0, 0, 1, 1)
 
-        self.retranslateUi(aboutWindow)
-        QtCore.QMetaObject.connectSlotsByName(aboutWindow)
+        self.retranslateUi(inspireWindow)
+        QtCore.QMetaObject.connectSlotsByName(inspireWindow)
 
-    def retranslateUi(self, aboutWindow):
-        aboutWindow.setWindowTitle(_translate("aboutWindow", "About EUFAR Metadata Creator", None))
-        self.aw_label_1.setText(_translate("aboutWindow", "<html><head/><body><p><br/></p></body></html>", None))
-        self.aw_okButton.setText(_translate("aboutWindow", "OK", None))
+    def retranslateUi(self, inspireWindow):
+        _translate = QtCore.QCoreApplication.translate
+        inspireWindow.setWindowTitle(_translate("inspireWindow", "About EUFAR Metadata Creator"))
+        self.aw_okButton.setText(_translate("inspireWindow", "OK"))
 

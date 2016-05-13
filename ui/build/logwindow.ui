@@ -10,6 +10,14 @@
     <height>450</height>
    </rect>
   </property>
+  <property name="font">
+   <font>
+    <family>FreeSans</family>
+    <pointsize>10</pointsize>
+    <stylestrategy>PreferAntialias</stylestrategy>
+    <kerning>true</kerning>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Changelog</string>
   </property>
@@ -22,7 +30,10 @@
     <widget class="QTextBrowser" name="log_txBrower">
      <property name="font">
       <font>
+       <family>FreeSans</family>
        <pointsize>9</pointsize>
+       <stylestrategy>PreferAntialias</stylestrategy>
+       <kerning>true</kerning>
       </font>
      </property>
      <property name="horizontalScrollBarPolicy">
@@ -61,6 +72,14 @@
          <width>50</width>
          <height>27</height>
         </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>FreeSans</family>
+         <pointsize>10</pointsize>
+         <stylestrategy>PreferAntialias</stylestrategy>
+         <kerning>true</kerning>
+        </font>
        </property>
        <property name="text">
         <string>Ok</string>

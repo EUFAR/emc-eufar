@@ -1,23 +1,16 @@
 # -*- coding: utf-8 -*-
 
-from PyQt4 import QtCore, QtGui
-from PyQt4.QtGui import QLabel
-from PyQt4.QtGui import QWidget
-from PyQt4.QtGui import QCheckBox
-from PyQt4.QtGui import QLineEdit
-from PyQt4.QtGui import QPlainTextEdit
-from PyQt4.QtGui import QDateEdit
-from PyQt4.QtCore import QDate
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QCheckBox
+from PyQt5.QtWidgets import QLineEdit
+from PyQt5.QtWidgets import QPlainTextEdit
+from PyQt5.QtWidgets import QDateEdit
+from PyQt5.QtCore import QDate
 from ui.Ui_fillwindow import Ui_fillWindow
 from functions.sql_functions import sql_valueRead
 import os
-
-
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
 
 
 def fill_all_fields(self):
@@ -211,10 +204,10 @@ def fill_all_fields(self):
         fillElements = []
         cur = self.db.cursor()
         for name in self.incompleteElements:
-            query = sql_valueRead(self, "elementsInformation", "Object", unicode(name))
+            query = sql_valueRead(self, "elementsInformation", "Object", name)
             fillElements.append([query[0][0], query[0][3], query[0][2]])
         fillElements = sorted(fillElements, key=lambda element: element[0])
-        writeElements = "<font color=#C80000><b><u>Incomplete fields<\u></b></font>"
+        writeElements = r"<font color=#C80000><b><u>Incomplete fields<\u></b></font>"
         item_bf = 0
         i = 0
         for item in fillElements:
@@ -267,11 +260,9 @@ def fill_all_fields(self):
                 type_test = "text"
             try:
                 tmp = int(widget.objectName()[-1:])
-                query = sql_valueRead(self, "elementsInformation", "Object", unicode(widget.
-                                                                                     objectName()[:-1]))
+                query = sql_valueRead(self, "elementsInformation", "Object", widget.objectName()[:-1])
             except ValueError:
-                query = sql_valueRead(self, "elementsInformation", "Object", unicode(widget.
-                                                                                     objectName()))
+                query = sql_valueRead(self, "elementsInformation", "Object", widget.objectName())
             if query[0][4] != type_test:
                 all_lines = 0
                 self.incorrectElements.append(widget.objectName())
@@ -289,8 +280,7 @@ def fill_all_fields(self):
                     type_test = "float"
                 except ValueError:
                     type_test = "text"
-                query = sql_valueRead(self, "elementsInformation", "Object", unicode(widget.
-                                                                                     objectName()))
+                query = sql_valueRead(self, "elementsInformation", "Object", widget.objectName())
                 if query[0][4] != type_test:
                     all_boundaries = 1
     if all_boundaries == 1:
@@ -308,11 +298,9 @@ def fill_all_fields(self):
                 type_test = "text"
             try:
                 tmp = int(widget.objectName()[-1:])
-                query = sql_valueRead(self, "elementsInformation", "Object", unicode(widget.
-                                                                                     objectName()[:-1]))
+                query = sql_valueRead(self, "elementsInformation", "Object", widget.objectName()[:-1])
             except ValueError:
-                query = sql_valueRead(self, "elementsInformation", "Object", unicode(widget.
-                                                                                     objectName()))
+                query = sql_valueRead(self, "elementsInformation", "Object", widget.objectName())
             if query[0][4] != type_test:
                 all_texts = 0
                 self.incorrectElements.append(widget.objectName())
@@ -329,15 +317,15 @@ def fill_all_fields(self):
             else:
                 try:
                     tmp = int(name[-1:])
-                    query = sql_valueRead(self, "elementsInformation", "Object", unicode(name[:-1]))
+                    query = sql_valueRead(self, "elementsInformation", "Object", name[:-1])
                 except ValueError:
-                    query = sql_valueRead(self, "elementsInformation", "Object", unicode(name))
+                    query = sql_valueRead(self, "elementsInformation", "Object", name)
                 fillElements.append([query[0][0], query[0][3], query[0][2]])
         fillElements = sorted(fillElements, key=lambda element: element[0])
         if "writeElements" in locals():
-            writeElements = writeElements + "<font color=#0000C8><b><u>Incorrect fields<\u></b></font>"
+            writeElements = writeElements + r"<font color=#0000C8><b><u>Incorrect fields<\u></b></font>"
         else:
-            writeElements = "<font color=#0000C8><b><u>Incorrect fields<\u></b></font>"
+            writeElements = r"<font color=#0000C8><b><u>Incorrect fields<\u></b></font>"
         item_bf = 0
         i = 0
         for item in fillElements:
@@ -364,7 +352,7 @@ def fill_all_fields(self):
         return False
 
 
-class MyFill(QtGui.QDialog, Ui_fillWindow):
+class MyFill(QtWidgets.QDialog, Ui_fillWindow):
     def __init__(self, fillElements):
         QWidget.__init__(self)
         self.setupUi(self)
@@ -388,16 +376,16 @@ class MyFill(QtGui.QDialog, Ui_fillWindow):
             self.h2 = self.h1 - 186
         self.setMinimumHeight(self.h1+20)
         self.setMaximumHeight(self.h1+20)
-        self.textBrowser = QtGui.QTextBrowser()
+        self.textBrowser = QtWidgets.QTextBrowser()
         font = QtGui.QFont()
         font.setPointSize(9)
         self.textBrowser.setFont(font)
         self.textBrowser.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.textBrowser.setFrameShape(QtGui.QFrame.NoFrame)
+        self.textBrowser.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.textBrowser.setAcceptRichText(True)
         self.textBrowser.setMinimumHeight(self.h2)
         self.textBrowser.setMaximumHeight(self.h2)
-        self.textBrowser.setObjectName(_fromUtf8("textBrowser"))
+        self.textBrowser.setObjectName("textBrowser")
         self.verticalLayout.addWidget(self.textBrowser)
         self.textBrowser.setText(self.incompleteElements)
 

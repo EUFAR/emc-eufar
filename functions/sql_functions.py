@@ -1,22 +1,14 @@
 # -*- coding: utf-8 -*-
 
-from PyQt4 import QtCore, QtGui
-
-
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
-
+from PyQt5 import QtWidgets
 
 try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
+    _encoding = QtWidgets.QApplication.UnicodeUTF8
     def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+        return QtWidgets.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
     def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+        return QtWidgets.QApplication.translate(context, text, disambig)
 
 
 def objectsInit(self):
@@ -58,19 +50,15 @@ def objectsInit(self):
     self.tr_delBut = []
     self.ro_roPy = 0
     self.ro_delBut = []
-    self.ro_verlay_1 = []
     self.ro_verlay_2 = []
-    self.ro_horlay_4 = []
+    self.ro_grilay_1 = []
     self.ro_line_1 = []
-    self.ro_horlay_1 = []
     self.ro_lab_1 = []
     self.ro_rlPy_ln = []
     self.ro_infBut_1 = []
-    self.ro_horlay_2 = []
     self.ro_lab_2 = []
     self.ro_rlEm_ln = []
     self.ro_infBut_2 = []
-    self.ro_horlay_3 = []
     self.ro_lab_3 = []
     self.ro_rlRl_ln = []
     self.ro_infBut_3 = []
@@ -125,5 +113,5 @@ def objectsInit(self):
 def sql_valueRead(self, table, column, value):
     cur = self.db.cursor()
     sql = 'SELECT * FROM ' + table + ' WHERE ' + column + '=?'
-    query = cur.execute(sql, [(unicode(value))]).fetchall()
+    query = cur.execute(sql, [(value)]).fetchall()
     return query

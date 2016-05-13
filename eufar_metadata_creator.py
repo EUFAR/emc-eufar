@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 
-from PyQt4 import QtGui
+from PyQt5.QtWidgets import QApplication
 from ui.mainwindow import MainWindow
 
 
 def launch_eufar_creator():
     import sys
-    app = QtGui.QApplication(sys.argv)
+    app = QApplication(sys.argv)
     ui = MainWindow()
     ui.show()
     sys.exit(app.exec_())

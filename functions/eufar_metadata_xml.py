@@ -8,10 +8,10 @@ NAMESPACE_URI5 = "http://www.isotc211.org/2005/srv"
 NAMESPACE_URI6 = "http://www.w3.org/1999/xlink"
 
 import xml.dom.minidom
-from PyQt4 import QtCore, QtGui
-from PyQt4.QtCore import Qt
-from PyQt4.QtCore import QDate
-from PyQt4.QtGui import QCheckBox
+from PyQt5 import QtWidgets
+from PyQt5.QtCore import Qt
+from PyQt5.QtCore import QDate
+from PyQt5.QtWidgets import QCheckBox
 from functions import button_functions
 from functions.sql_functions import sql_valueRead
 from functions.button_functions import gl_categoryRolebox_changed
@@ -20,19 +20,12 @@ from functions.button_functions import qv_output_other
 
 
 try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
-
-
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
+    _encoding = QtWidgets.QApplication.UnicodeUTF8
     def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
+        return QtWidgets.QApplication.translate(context, text, disambig, _encoding)
 except AttributeError:
     def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+        return QtWidgets.QApplication.translate(context, text, disambig)
 
 
 def create_eufar_xml(self, out_file_name):
@@ -282,10 +275,10 @@ def create_eufar_xml(self, out_file_name):
     ############################
     hierarchyLevel1 = add_element(doc, "gmd:hierarchyLevel", doc_root)
     scopeLevel1MD = add_element(doc, "gmd:MD_ScopeCode", hierarchyLevel1, self.id_resourceType_rl1.
-                                currentText().toLower())
+                                currentText().lower())
     scopeLevel1MD.setAttribute("codeList","http://standards.iso.org/ittf/PubliclyAvailableStandards"
                                + "/ISO_19139_Schemas/resources/Codelist/gmxCodelists.xml#MD_ScopeCode")
-    scopeLevel1MD.setAttribute("codeListValue", self.id_resourceType_rl1.currentText().toLower())
+    scopeLevel1MD.setAttribute("codeListValue", self.id_resourceType_rl1.currentText().lower())
     
     
     ############################
@@ -365,6 +358,8 @@ def create_eufar_xml(self, out_file_name):
             add_element(doc, "gco:CharacterString", aircraftOperator, query[0][1])
         else:
             add_element(doc, "gco:CharacterString", aircraftOperator, "")
+        aircraftCountry = add_element(doc, "gmd:platformCountry", aircraftInfo1AI)
+        add_element(doc, "gco:CharacterString", aircraftCountry, self.ai_label_10.text())
         aircraftRegistration = add_element(doc, "gmd:platformRegistration", aircraftInfo1AI)
         add_element(doc, "gco:CharacterString", aircraftRegistration, self.ai_label_11.text())
     else:
@@ -453,14 +448,14 @@ def create_eufar_xml(self, out_file_name):
     # File Creation
     ############################
     f = open(out_file_name, 'w')
-    f.write(doc.toprettyxml(encoding='UTF-8'))
+    f.write(doc.toprettyxml())
     f.close()
     self.saved = True
     self.modified = False
 
 
 def read_eufar_xml(self, in_file_name):
-    currentIndex = self.toolBox.currentIndex()
+    currentIndex = self.tabWidget.currentIndex()
     f = open(in_file_name, 'r')
     doc = xml.dom.minidom.parse(f)
 
@@ -511,7 +506,7 @@ def read_eufar_xml(self, in_file_name):
     #######################
     # Temporal Extent
     #######################
-    self.toolBox.setCurrentIndex(5)
+    self.tabWidget.setCurrentIndex(5)
     nodes = doc_root.getElementsByTagName("gml:TimePeriod")
     starts = []
     ends = []
@@ -531,7 +526,7 @@ def read_eufar_xml(self, in_file_name):
     #######################
     # Resource Constraints
     #######################
-    self.toolBox.setCurrentIndex(7)
+    self.tabWidget.setCurrentIndex(7)
     nodes = doc_root.getElementsByTagName("gmd:useLimitation")
     set_plainText_value(self.au_conditions_ta, nodes[0], "gco:CharacterString")
     if len(nodes) > 1:
@@ -552,7 +547,7 @@ def read_eufar_xml(self, in_file_name):
     #######################
     # Resource Contacts
     #######################
-    self.toolBox.setCurrentIndex(8)
+    self.tabWidget.setCurrentIndex(8)
     nodes = doc_root.getElementsByTagName("gmd:pointOfContact")
     responsibleIdent1CI = get_element(nodes[0], "gmd:CI_ResponsibleParty")
     organisationIdent1 = get_element(responsibleIdent1CI, "gmd:organisationName")
@@ -690,7 +685,7 @@ def read_eufar_xml(self, in_file_name):
     ############################
     # Contact Info
     ############################
-    self.toolBox.setCurrentIndex(9)
+    self.tabWidget.setCurrentIndex(9)
     nodes = doc_root.getElementsByTagName("gmd:contact")
     responsiblePartyInfo1CI = get_element(nodes[0], "gmd:CI_ResponsibleParty")
     nameContact1 = get_element(responsiblePartyInfo1CI, "gmd:organisationName")
@@ -720,7 +715,7 @@ def read_eufar_xml(self, in_file_name):
     ############################
     # Data Quality
     ############################
-    self.toolBox.setCurrentIndex(6)
+    self.tabWidget.setCurrentIndex(6)
     qualityInfo1 = get_element(doc_root, "gmd:dataQualityInfo")
     dataQuality1DQ = get_element(qualityInfo1, "gmd:DQ_DataQuality")
     lineageQuality1 = get_element(dataQuality1DQ, "gmd:lineage")
@@ -734,7 +729,7 @@ def read_eufar_xml(self, in_file_name):
     ############################
     # Aircraft and Instruments
     ############################
-    self.toolBox.setCurrentIndex(3)
+    self.tabWidget.setCurrentIndex(3)
     acquisitionInfo1 = get_element(doc_root, "gmd:acquisitionInfo")
     aircraftInfo1 = get_element(acquisitionInfo1, "gmd:platformInfo")
     aircraftInfo11AI = get_element(aircraftInfo1, "gmd:PI_PlatformInfo")
@@ -750,7 +745,7 @@ def read_eufar_xml(self, in_file_name):
         self.ai_aircraft_rl1.setCurrentIndex(0)
         ai_aircraftRolebox_changed(self)
     elif areg != None and operator != None and atype != None and manufacturer != None:
-        query = sql_valueRead(self, "aircraftInformations", "Code", unicode(areg))
+        query = sql_valueRead(self, "aircraftInformations", "Code", areg)
         if query:
             self.ai_aircraft_rl1.setCurrentIndex(self.ai_aircraft_rl1.findText(query[0][0]))
             ai_aircraftRolebox_changed(self)
@@ -775,7 +770,7 @@ def read_eufar_xml(self, in_file_name):
         self.ai_number_ln.setText(areg)
         self.ai_country_rl.setCurrentIndex(self.ai_country_rl.findText(country))
     nodes = doc_root.getElementsByTagName("gmd:instrumentInfo")
-    if len(nodes) > 1:
+    if len(nodes) > 0:
         i = 0
         for i in range(0, len(nodes)):
             instrument1AI = get_element(nodes[i], "gmd:II_InstrumentInfo")
@@ -795,7 +790,7 @@ def read_eufar_xml(self, in_file_name):
     date = get_element_value(dateStamp1, "gco:Date")
     self.mm_date_do1.setDate(QDate.fromString(date, Qt.ISODate))
 
-    self.toolBox.setCurrentIndex(currentIndex)
+    self.tabWidget.setCurrentIndex(currentIndex)
 
 
 def get_element(parent, element_name):
@@ -823,7 +818,7 @@ def set_plainText_value(text_widget, parent, element_name):
 def add_element(doc, element_name, parent, value=None):
     new_element = doc.createElement(element_name)
     if value:
-        new_text = doc.createTextNode(unicode(value))
+        new_text = doc.createTextNode(value)
         new_element.appendChild(new_text)
     parent.appendChild(new_element)
     return new_element

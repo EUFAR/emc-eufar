@@ -24,7 +24,7 @@
   </property>
   <property name="font">
    <font>
-    <family>Droid Sans Fallback</family>
+    <family>FreeSans</family>
     <pointsize>10</pointsize>
     <weight>50</weight>
     <bold>false</bold>
@@ -117,7 +117,7 @@
          </property>
          <property name="font">
           <font>
-           <family>Droid Sans Fallback</family>
+           <family>FreeSans</family>
            <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>
@@ -184,19 +184,19 @@
         <widget class="QPushButton" name="iw_okButton">
          <property name="minimumSize">
           <size>
-           <width>93</width>
+           <width>50</width>
            <height>27</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>93</width>
+           <width>50</width>
            <height>27</height>
           </size>
          </property>
          <property name="font">
           <font>
-           <family>Droid Sans Fallback</family>
+           <family>FreeSans</family>
            <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>

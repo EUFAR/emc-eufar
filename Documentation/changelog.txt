@@ -2,14 +2,6 @@
 CHANGELOG
 =========
 
-
-ONLINE VERSION TESTED ON:
-========================
-    - Firefox 31.5.3, 38.0.1, 39, 40 (succeeded)
-    - Chrome 44 (succeeded)
-    - Internet Explorer 11 (failed on one computer and succeeded on others)
-    - Safari 5.1.7, 8.0.5 (succeeded)
-    - Opera 30 (succeeded)
     
 OFFLINE VERSION TESTED ON:
 =========================
@@ -19,14 +11,18 @@ OFFLINE VERSION TESTED ON:
     - Windows 8.1 (32 and 64 bits)
 
 
-KNOWN ISSUES:
-=============
-    - with Windows, if the window to warn the user about incorrectly filled in fields appears, it won't resize itself once the "Hide details" button is pressed.
+May 13 2015, Release version 1.0.4 [OFFLINE]
+==================================
+The EUFAR Metadata Creator has been converted to Python 3.5 and PyQt 5.6. Style has been reworked for harminisation with other EUFAR software.
 
-    - !!! IMPORTANT !!! in the [ONLINE] version, a line need to be activated or commented to allow a proper operation of the downloading, uploading and printing servlets, based on the platform of devlopment or production: see in the "Emc_eufar.java" file, find those lines at the beginning:
-      
-        //String emcPath = new String(GWT.getHostPageBaseURL()); // for Tomcat7/8 Server
-        String emcPath = new String(""); // for Eclipse Dev Mode
+
+April 18 2015, Release version 1.0.3 [OFFLINE]
+====================================
+  FIXED:
+    - an xml tag wasn't written and saved properly.
+    - emc failed to read instrument in xml file if just one instrument was entered.
+    - fixed an issue with the "Location" combox in the "Geographic Location" section.
+
 
 December 3 2015, Release version 1.0.2 [OFFLINE]
 ======================================

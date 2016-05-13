@@ -1447,7 +1447,7 @@ path = os.getcwd()
 if path == "/home/henryo/Travail/python/EUFAR_metadata_creator":
     path += "/sqlite"
 
-con = lite.connect(path + "/emc_database.db")
+con = lite.connect(path + "/emc_database.db")  # @UndefinedVariable
 con.text_factory = str
 
 

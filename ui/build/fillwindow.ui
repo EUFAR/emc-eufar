@@ -22,6 +22,14 @@
     <height>223</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>FreeSans</family>
+    <pointsize>10</pointsize>
+    <stylestrategy>PreferAntialias</stylestrategy>
+    <kerning>true</kerning>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Warning</string>
   </property>
@@ -54,7 +62,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>icons/warning_icon.png</pixmap>
+            <pixmap>icons/warning_icon2.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -108,11 +116,12 @@
          </property>
          <property name="font">
           <font>
-           <family>Droid Sans Fallback</family>
+           <family>FreeSans</family>
            <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <stylestrategy>PreferAntialias</stylestrategy>
+           <kerning>true</kerning>
           </font>
          </property>
          <property name="text">
@@ -160,27 +169,38 @@
         <widget class="QPushButton" name="fw_detailButton">
          <property name="minimumSize">
           <size>
-           <width>93</width>
+           <width>120</width>
            <height>27</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>93</width>
+           <width>120</width>
            <height>27</height>
           </size>
          </property>
          <property name="font">
           <font>
-           <family>Droid Sans Fallback</family>
+           <family>FreeSans</family>
            <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <stylestrategy>PreferDefault</stylestrategy>
+           <kerning>true</kerning>
           </font>
          </property>
          <property name="text">
           <string>Show details</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>icons/info_icon.png</normaloff>icons/info_icon.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
          </property>
         </widget>
        </item>
@@ -194,7 +214,61 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>120</width>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="fw_cancelButton">
+         <property name="minimumSize">
+          <size>
+           <width>93</width>
+           <height>27</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>93</width>
+           <height>27</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>FreeSans</family>
+           <pointsize>10</pointsize>
+           <weight>50</weight>
+           <bold>false</bold>
+           <stylestrategy>PreferDefault</stylestrategy>
+          </font>
+         </property>
+         <property name="text">
+          <string>Cancel</string>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>icons/del_icon.png</normaloff>icons/del_icon.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>25</width>
+           <height>25</height>
+          </size>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
            <height>20</height>
           </size>
          </property>
@@ -216,30 +290,28 @@
          </property>
          <property name="font">
           <font>
-           <family>Droid Sans Fallback</family>
+           <family>FreeSans</family>
            <pointsize>10</pointsize>
            <weight>50</weight>
            <bold>false</bold>
            <stylestrategy>PreferDefault</stylestrategy>
+           <kerning>true</kerning>
           </font>
          </property>
          <property name="text">
-          <string>OK</string>
+          <string>Save</string>
          </property>
-        </widget>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
+         <property name="icon">
+          <iconset>
+           <normaloff>icons/save_icon.png</normaloff>icons/save_icon.png</iconset>
          </property>
-         <property name="sizeHint" stdset="0">
+         <property name="iconSize">
           <size>
-           <width>40</width>
-           <height>20</height>
+           <width>25</width>
+           <height>25</height>
           </size>
          </property>
-        </spacer>
+        </widget>
        </item>
       </layout>
      </item>

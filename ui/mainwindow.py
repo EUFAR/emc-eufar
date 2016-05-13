@@ -1,36 +1,27 @@
 # -*- coding: utf-8 -*-
 
 import webbrowser
-import os
 import sqlite3 as lite
-from PyQt4 import QtCore, QtGui
-from PyQt4.QtCore import QDate
-from PyQt4.QtCore import QObject
-from PyQt4.QtCore import SIGNAL
-from PyQt4.QtCore import pyqtSignature
-from PyQt4.QtGui import QCheckBox, QLabel
-from PyQt4.QtGui import QToolButton
-from PyQt4.QtGui import QPushButton
-from PyQt4.QtGui import QMainWindow
-from PyQt4.QtGui import QFileDialog
-from PyQt4.QtGui import QLineEdit
-from PyQt4.QtGui import QListWidget
-from PyQt4.QtGui import QPlainTextEdit
-from PyQt4.QtGui import QComboBox
-from PyQt4.QtGui import QDateEdit
-from PyQt4.QtGui import QWidget
-if os.name == "posix":
-    from Ui_mainwindow import Ui_MainWindow
-elif os.name == "nt":
-    from Ui_mainwindow_windows import Ui_MainWindow
-else:
-    from Ui_mainwindow import Ui_MainWindow
-from Ui_logwindow import Ui_Changelog
-from Ui_aboutwindow import Ui_aboutWindow
-from Ui_inspirewindow import Ui_inspireWindow
-from Ui_presavewindow import Ui_presaveWindow
-from Ui_aboutresolution import Ui_aboutResolution
-from _version import _version, _py_version, _qt_version, _inspire_version
+from PyQt5 import QtCore, QtWidgets, QtGui
+from PyQt5.QtCore import QDate
+from PyQt5.QtCore import pyqtSlot
+from PyQt5.QtWidgets import QCheckBox, QLabel
+from PyQt5.QtWidgets import QToolButton
+from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtWidgets import QLineEdit
+from PyQt5.QtWidgets import QListWidget
+from PyQt5.QtWidgets import QPlainTextEdit
+from PyQt5.QtWidgets import QComboBox
+from PyQt5.QtWidgets import QDateEdit
+from PyQt5.QtWidgets import QWidget
+from .Ui_mainwindow import Ui_MainWindow
+from .Ui_logwindow import Ui_Changelog
+from .Ui_aboutwindow import Ui_aboutWindow
+from .Ui_inspirewindow import Ui_inspireWindow
+from .Ui_presavewindow import Ui_presaveWindow
+from ._version import _version, _py_version, _qt_version, _inspire_version
 from functions.eufar_metadata_xml import create_eufar_xml
 from functions.eufar_metadata_xml import read_eufar_xml
 from functions.eufar_metadata_xml import save_statement_observation
@@ -46,83 +37,47 @@ from functions.button_functions import qv_domain_changed
 from functions.button_functions import qv_output_other
 from functions.sql_functions import objectsInit
 from functions.check_functions import fill_all_fields
-from PyQt4.Qt import Qt
-
-
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
+from PyQt5.Qt import Qt
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
-        self.db = lite.connect('sqlite/emc_database.db')
+        self.db = lite.connect('sqlite/emc_database.db')  # @UndefinedVariable
         QMainWindow.__init__(self, parent)
-        self.resolution = QtGui.QDesktopWidget().screenGeometry()
         self.tabLayout = 0
-        if self.resolution.height() < 1000:
-            self.tabLayout = 1
-            self.setupUi_tab(self)
-        else:
-            self.setupUi(self)
+        self.setupUi(self)
         objectsInit(self)
         all_date_edits = self.findChildren(QDateEdit)
         for widget in all_date_edits:
             widget.setDate(QDate.currentDate())
         all_check_boxes = self.findChildren(QCheckBox)
         for check_box in all_check_boxes:
-            QObject.connect(check_box, SIGNAL("stateChanged(int)"), self.set_modified)
+            check_box.stateChanged.connect(lambda: self.set_modified())
         all_text_edits = self.findChildren(QPlainTextEdit)
         for widget in all_text_edits:
-            QObject.connect(widget, SIGNAL("textChanged()"), self.set_modified)
+            widget.textChanged.connect(lambda: self.set_modified())
         all_line_edits = self.findChildren(QLineEdit)
         for widget in all_line_edits:
-            QObject.connect(widget, SIGNAL("textChanged(QString)"), self.set_modified)
+            widget.textChanged.connect(lambda: self.set_modified())
         all_rolbox_edits = self.findChildren(QComboBox)
         for widget in all_rolbox_edits:
-            QObject.connect(widget, SIGNAL("activated(QString)"), self.set_modified)
+            widget.activated.connect(lambda: self.set_modified())
         all_date_edits = self.findChildren(QDateEdit)
         for widget in all_date_edits:
-            QObject.connect(widget, SIGNAL("dateChanged(QDate)"), self.set_modified)
+            widget.dateChanged.connect(lambda: self.set_modified())
         all_info_boxes = self.findChildren(QToolButton)
         for widget in all_info_boxes:
-            QObject.connect(widget, SIGNAL("clicked()"), self.button_clicked)
-        QObject.connect(self.gl_resolution_rl1, SIGNAL("activated(QString)"), self.rolebox_changed)
-        QObject.connect(self.ai_aircraft_rl1, SIGNAL("activated(QString)"), self.image_changed)	
-        QObject.connect(self.gl_category_rl1, SIGNAL("activated(QString)"), self.category_changed)
-        QObject.connect(self.ai_instrument_rl1, SIGNAL("activated(QString)"), self.instrument_changed)
-        QObject.connect(self.qv_obsRadio, SIGNAL("clicked()"), self.quality_domain)
-        QObject.connect(self.qv_insituRadio, SIGNAL("clicked()"), self.quality_domain)
+            widget.clicked.connect(lambda: self.button_clicked())
+        self.ai_aircraft_rl1.activated.connect(lambda: self.image_changed())
+        self.gl_category_rl1.activated.connect(lambda: self.category_changed())
+        self.gl_resolution_rl1.activated.connect(lambda: self.rolebox_changed())
+        self.ai_instrument_rl1.activated.connect(lambda: self.instrument_changed())
+        self.qv_obsRadio.clicked.connect(lambda: self.quality_domain())
+        self.qv_insituRadio.clicked.connect(lambda: self.quality_domain())
         self.make_window_title()
-        if (self.resolution.height() > 1080) & (self.resolution.width() > 1920):
-            aboutText = ("Your screen appears to have a resolution greater than 1920 x 1080. " 
-                         + "EMC is currently not fully compatible with such high resolutions "
-                         + "and can show display issues. Until the release of a new version "
-                         + "supporting high resolutions, please use the online version of EMC, "
-                         + "available at http://176.31.165.18:8080/emc-eufar/, or at www.eufar."
-                         + "net/tools/.")
-            self.resolutionWindow = MyResolution(aboutText)
-            x1, y1, w1, h1 = self.geometry().getRect()
-            x2, y2, w2, h2 = self.resolutionWindow.geometry().getRect()  # @UnusedVariable
-            x2 = x1 + w1/2 - w2/2
-            y2 = y1 + h1/2 - h2/2
-            self.resolutionWindow.setGeometry(x2, y2, w2, h2)
-            self.resolutionWindow.setMinimumSize(QtCore.QSize(400, self.resolutionWindow.sizeHint().height()))
-            self.resolutionWindow.setMaximumSize(QtCore.QSize(400, self.resolutionWindow.sizeHint().height()))
-            self.resolutionWindow.exec_()
         
 
-    @pyqtSignature("")
-    def on_generateXMLButton_clicked(self):
-        self.save_document()
-
-    @pyqtSignature("")
-    def on_exitButton_clicked(self):
-        self.close()
-
-    @pyqtSignature("")
+    @pyqtSlot()
     def on_actionNew_triggered(self):
         if self.modified:
             result = self.make_onsave_msg_box("Clear","new_icon.png")
@@ -136,16 +91,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.reset_all_fields()
         else:
             self.reset_all_fields()
-
-    @pyqtSignature("")
+    
+    @pyqtSlot()
     def on_actionSave_triggered(self):
         self.save_document()
 
-    @pyqtSignature("")
+    @pyqtSlot()
     def on_actionSave_As_triggered(self):
         self.save_document(save_as=True)
 
-    @pyqtSignature("")
+    @pyqtSlot()
     def on_actionOpen_triggered(self):
         if self.modified:
             result = self.make_onsave_msg_box("Open","open_icon.png")
@@ -156,11 +111,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         else:
             self.open_file()
 
-    @pyqtSignature("")
+    @pyqtSlot()
     def on_actionExit_triggered(self):
         self.close()
 
-    @pyqtSignature("")
+    @pyqtSlot()
     def on_actionEUFAR_CreatorAbout_triggered(self):
         aboutText = ("<html><head/><body><p align=justify>This is the EUFAR Metadata Creator V%s. I"
                      + "t was developed by EUFAR using Python %s and PyQT %s. The goal of the EUFAR Metad"
@@ -178,24 +133,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         x1, y1, w1, h1 = self.geometry().getRect()
         x2, y2, w2, h2 = self.aboutWindow.geometry().getRect()  # @UnusedVariable
         self.aboutWindow.setGeometry(x1 + w1/2 - w2/2, y1 + h1/2 - h2/2, w2, h2)
-        if os.name =="nt":
-            self.aboutWindow.setMinimumSize(QtCore.QSize(500, self.aboutWindow.sizeHint().height()))
-            self.aboutWindow.setMaximumSize(QtCore.QSize(500, self.aboutWindow.sizeHint().height()))
-        else:
-            self.aboutWindow.setMinimumSize(QtCore.QSize(450, self.aboutWindow.sizeHint().height()))
-            self.aboutWindow.setMaximumSize(QtCore.QSize(450, self.aboutWindow.sizeHint().height()))
+        self.aboutWindow.setMinimumSize(QtCore.QSize(450, self.aboutWindow.sizeHint().height()))
+        self.aboutWindow.setMaximumSize(QtCore.QSize(450, self.aboutWindow.sizeHint().height()))
         self.aboutWindow.exec_()
 
-    @pyqtSignature("")
+    @pyqtSlot()
     def on_actionINSPIRE_Standard_triggered(self):
-        aboutText = ("<p>INSPIRE is 'an European Union initiative to establish an infrastructure fo"
+        aboutText = ("<html><head/><body><p align=justify>INSPIRE is 'an European Union initiative "
+                     + "to establish an infrastructure fo"
                      + "r spatial information in Europe that is geared to help to make spatial or g"
                      + "eographical information more accessible and interoperable for a wide range "
-                     + "of purposes supporting sustainable development.'</p><p>The INSPIRE directiv"
+                     + "of purposes supporting sustainable development.'</p><p align=justify>The INSPIRE directiv"
                      + "e lays down a general framework for a Spatial Data Infrastructure (SDI) for"
                      + " the purposes of European Community environmental policies and policies or "
                      + "activities which may have an impact on the environment. The INSPIRE Directi"
-                     + "ve entered into force on 15 May 2007.</p><p>INSPIRE is based on the infrast"
+                     + "ve entered into force on 15 May 2007.</p><p align=justify>INSPIRE is based on the infrast"
                      + "ructures for spatial information established and operated by the member sta"
                      + "tes of the European Union. The directive addresses 34 spatial data themes n"
                      + "eeded for environmental applications. To ensure that the spatial data infra"
@@ -204,11 +156,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                      + "islation or common Implementing Rules (IR) are adopted for a number of spec"
                      + "ific areas (metadata, interoperability of spatial data sets and services, n"
                      + "etwork services, data and service sharing, monitoring and reporting). These"
-                     + " are published either as Commission Regulations or as Decisions.</p><p>The "
+                     + " are published either as Commission Regulations or as Decisions.</p><p align=justify>The "
                      + "Commission is assisted in the process of adopting such rules by a regulator"
                      + "y committee, INSPIRE Committee, composed of representatives of the member s"
                      + "tates and chaired by a representative of the Commission (this is known as t"
-                     + "he Comitology procedure).</p><p>Wikipedia - Infrastructure for Spatial Info"
+                     + "he Comitology procedure).</p><p align=justify>Wikipedia - Infrastructure for Spatial Info"
                      + "rmation in the European Community (<a href=https://en.wikipedia.org/wiki/In"
                      + "frastructure_for_Spatial_Information_in_the_European_Community target='_bla"
                      + "nk'><span style=\" text-decoration: underline; color:#0000ff;\">https://en."
@@ -217,31 +169,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                      + ".europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32008R1205&from=EN target='_"
                      + "blank'><span style=\" text-decoration: underline; color:#0000ff;\">http://e"
                      + "ur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32008R1205&from=EN</a>"
-                     + "</p><p>Link to the INSPIRE website: <a href=http://inspire.ec.europa.eu/ind"
+                     + "</p><p align=justify>Link to the INSPIRE website: <a href=http://inspire.ec.europa.eu/ind"
                      + "ex.cfm target='_blank'><span style=\" text-decoration: underline; color:#00"
-                     + "00ff;\">http://inspire.ec.europa.eu/index.cfm</a></p>")
+                     + "00ff;\">http://inspire.ec.europa.eu/index.cfm</a></p></body></html>")
         self.inspireWindow = MyInspire(aboutText)
         x1, y1, w1, h1 = self.geometry().getRect()
         x2, y2, w2, h2 = self.inspireWindow.geometry().getRect()  # @UnusedVariable
         self.inspireWindow.setGeometry(x1 + w1/2 - w2/2, y1 + h1/2 - h2/2, w2, h2)
-        if os.name == "posix":
-            self.inspireWindow.setMinimumSize(QtCore.QSize(600, self.inspireWindow.sizeHint().height()))
-            self.inspireWindow.setMaximumSize(QtCore.QSize(600, self.inspireWindow.sizeHint().height()))
-            
-        elif os.name == "nt":
-            self.inspireWindow.setMinimumSize(QtCore.QSize(800, self.inspireWindow.sizeHint().height()))
-            self.inspireWindow.setMaximumSize(QtCore.QSize(800, self.inspireWindow.sizeHint().height()))
-            
-        else:
-            self.inspireWindow.setMinimumSize(QtCore.QSize(600, self.inspireWindow.sizeHint().height()))
-            self.inspireWindow.setMaximumSize(QtCore.QSize(600, self.inspireWindow.sizeHint().height()))
+        self.inspireWindow.setMinimumSize(QtCore.QSize(600, self.inspireWindow.sizeHint().height()))
+        self.inspireWindow.setMaximumSize(QtCore.QSize(600, self.inspireWindow.sizeHint().height()))
         self.inspireWindow.exec_()
 
-    @pyqtSignature("")
+    @pyqtSlot()
     def on_actionEUFAR_N7SP_triggered(self):
         webbrowser.open('http://www.eufar.net/')
 
-    @pyqtSignature("")
+    @pyqtSlot()
     def on_actionChangelog_triggered(self):
         self.logWindow = MyLog()
         x1, y1, w1, h1 = self.geometry().getRect()
@@ -299,32 +242,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def get_file_name(self):
         file_dialog = QFileDialog()
         file_dialog.setDefaultSuffix('xml')
-        """out_file_name = unicode(file_dialog.getSaveFileName(self, "Save XML File", filter='XML File'
-                                                            's (*.xml)'))"""
-        out_file_name = unicode(file_dialog.getSaveFileName(self, "Save XML File",
+        out_file_name, out_file_ext = file_dialog.getSaveFileName(self, "Save XML File",  # @UnusedVariable
                            "flight-info_!!!Unique resource identifier!!!.xml",
-                           filter="XML Files (*.xml)"));
+                           filter="XML Files (*.xml)");
         
-        return out_file_name
+        return str(out_file_name)
 
     def reset_all_fields(self):
         if self.au_wn_con_ta:
-            for i in reversed(range(0, len(self.au_wn_con_ta))):
+            for i in reversed(list(range(0, len(self.au_wn_con_ta)))):
                 button_functions.delButton_5_clicked(self, i)
         if self.au_wn_lim_ta:
-            for i in reversed(range(0, len(self.au_wn_lim_ta))):
+            for i in reversed(list(range(0, len(self.au_wn_lim_ta)))):
                 button_functions.delButton_6_clicked(self, i)
         if self.mm_lab_1:
-            for i in reversed(range(0, len(self.mm_lab_1))):
+            for i in reversed(list(range(0, len(self.mm_lab_1)))):
                 button_functions.delButton_7_clicked(self, i)	
         if self.tr_lab_1:
-            for i in reversed(range(0, len(self.tr_lab_1))):
+            for i in reversed(list(range(0, len(self.tr_lab_1)))):
                 button_functions.delButton_3_clicked(self, i)
         if self.ro_lab_1:
-            for i in reversed(range(0, len(self.ro_lab_1))):
+            for i in reversed(list(range(0, len(self.ro_lab_1)))):
                 button_functions.delButton_8_clicked(self, i)
         if self.ai_lab_1:
-            for i in reversed(range(0, len(self.ai_lab_1))):
+            for i in reversed(list(range(0, len(self.ai_lab_1)))):
                 button_functions.delButton_4_clicked(self, i)
         all_date_edits = self.findChildren(QDateEdit)
         for widget in all_date_edits:
@@ -385,9 +326,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         return self.presaveWindow.buttonName
 
     def open_file(self):
-        (out_file_name, filter) = QFileDialog.getOpenFileNameAndFilter(self, "Open XML File",  # @ReservedAssignment
+        (out_file_name, filter) = QFileDialog.getOpenFileName(self, "Open XML File",  # @ReservedAssignment
                                                                        filter="XML Files (*.xml)")
-        out_file_name = unicode(out_file_name)
+        out_file_name = str(out_file_name)
         if out_file_name:
             self.reset_all_fields()
             read_eufar_xml(self, out_file_name)
@@ -482,7 +423,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             read_statement_insitu(self, statement)
 
 
-class MyLog(QtGui.QDialog, Ui_Changelog):
+class MyLog(QtWidgets.QDialog, Ui_Changelog):
     def __init__(self):
         QWidget.__init__(self)
         self.setupUi(self)
@@ -495,7 +436,7 @@ class MyLog(QtGui.QDialog, Ui_Changelog):
         self.close()
 
 
-class MyAbout(QtGui.QDialog, Ui_aboutWindow):
+class MyAbout(QtWidgets.QDialog, Ui_aboutWindow):
     def __init__(self, aboutText):
         QWidget.__init__(self)
         self.setupUi(self)
@@ -507,7 +448,7 @@ class MyAbout(QtGui.QDialog, Ui_aboutWindow):
         self.close()
         
         
-class MyInspire(QtGui.QDialog, Ui_inspireWindow):
+class MyInspire(QtWidgets.QDialog, Ui_inspireWindow):
     def __init__(self, aboutText):
         QWidget.__init__(self)
         self.setupUi(self)
@@ -519,30 +460,20 @@ class MyInspire(QtGui.QDialog, Ui_inspireWindow):
         self.close()
 
 
-class MyWarning(QtGui.QDialog, Ui_presaveWindow):
+class MyWarning(QtWidgets.QDialog, Ui_presaveWindow):
     def __init__(self, string, iconName):
         QWidget.__init__(self)
         self.setupUi(self)
         self.iw_cancelButton.setFocus(True)
         all_buttons = self.findChildren(QPushButton)
         for widget in all_buttons:
-            QObject.connect(widget, SIGNAL("clicked()"), self.closeWindow) 
+            widget.clicked.connect(lambda: self.closeWindow())
         self.iw_nosaveButton.setText(string + " without saving")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(_fromUtf8("icons/" + iconName)), QtGui.QIcon.
+        icon.addPixmap(QtGui.QPixmap("icons/" + iconName), QtGui.QIcon.
                        Normal, QtGui.QIcon.Off)
         self.iw_nosaveButton.setIcon(icon)
 
     def closeWindow(self):
         self.buttonName = self.sender().objectName()
         self.close()
-
-class MyResolution(QtGui.QDialog, Ui_aboutResolution):
-    def __init__(self, aboutText):
-        QWidget.__init__(self)
-        self.setupUi(self)
-        self.aw_label_1.setText(aboutText)
-        self.aw_okButton.clicked.connect(self.closeWindow)
-
-    def closeWindow(self):
-        self.close() 

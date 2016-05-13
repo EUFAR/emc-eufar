@@ -1,7 +1,7 @@
 # emc-eufar
 
-A detailed changelog can be found in the Documentation directory. Stand-alone versions for Windows and Linux can be found in the Stand-alone versions directory.
-Current version: 1.0.2
+A detailed changelog can be found in the Documentation directory. Stand-alone versions for Windows and Linux can be found in the Release directory.
+Current version: 1.0.4
 
 Overview
 
@@ -11,4 +11,4 @@ The goal of the EUFAR Metadata Creator is to produce metadata dedicated to a par
 Libraries
 
 This software needs the following libraries to allow proper operation:
-  - PyQt4 4.11.4+ -> http://www.riverbankcomputing.co.uk/software/pyqt/download
+  - PyQt5 5.6+ -> https://www.riverbankcomputing.com/software/pyqt/download5
