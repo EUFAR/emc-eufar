@@ -1,6 +1,6 @@
 Metadata-Version: 1.1
 Name: emc
-Version: 0.9.3
+Version: 1.0.5
 Summary: EUFAR Metadata Creator.
 Home-page: http://www.eufar.net
 Author: Olivier Henry
@@ -26,4 +26,4 @@ Classifier: Natural Language :: English
 Classifier: Programming Language :: Python
 Classifier: Topic :: Scientific/Engineering :: Atmospheric Science
 Classifier: Topic :: Text Processing :: Markup :: XML
-Requires: PyQt4
+Requires: PyQt5

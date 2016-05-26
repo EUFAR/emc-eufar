@@ -31,7 +31,7 @@ Topic :: Text Processing :: Markup :: XML
 
 doclines = __doc__.split('\n')
 
-setup(name='asmm_creator',
+setup(name='eufar_metadata_creator',
       version=_version,
       description=doclines[0],
       long_description='\n'.join(doclines[2:]),
@@ -45,6 +45,6 @@ setup(name='asmm_creator',
       keywords=['airbornescience', 'xml', 'eufar', 'science', 'metadata'],
       packages=['ui','Documentation','eufar_aircrafts','font','functions','icons','sqlite'],
       classifiers=filter(None, classifiers.split("\n")),
-      requires=['PyQt']
+      requires=['PyQt5']
       )
 
