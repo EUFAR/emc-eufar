@@ -11,6 +11,11 @@ OFFLINE VERSION TESTED ON:
     - Windows 8.1 (32 and 64 bits)
 
 
+May 20 2015, Release version 1.0.5 [OFFLINE]
+==================================
+The EUFAR Metdata Creator GUI has been modified to be well displayed in Windows. Few stand-alone versions have been produced for Windows and Linux (only x64).
+
+
 May 13 2015, Release version 1.0.4 [OFFLINE]
 ==================================
 The EUFAR Metadata Creator has been converted to Python 3.5 and PyQt 5.6. Style has been reworked for harminisation with other EUFAR software.

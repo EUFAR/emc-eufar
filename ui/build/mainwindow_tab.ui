@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>570</height>
+    <height>585</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -33,7 +33,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>icons/emc.png</normaloff>icons/emc.png</iconset>
+    <normaloff>icons/emc_icon.ico</normaloff>icons/emc_icon.ico</iconset>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -4330,13 +4330,13 @@ QToolButton:flat {border: none;}</string>
                      <widget class="QLabel" name="ai_label_1">
                       <property name="minimumSize">
                        <size>
-                        <width>60</width>
+                        <width>0</width>
                         <height>27</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>60</width>
+                        <width>16777215</width>
                         <height>27</height>
                        </size>
                       </property>
@@ -4645,7 +4645,7 @@ QToolButton:flat {border: none;}</string>
                      <widget class="QLabel" name="ai_label_7">
                       <property name="minimumSize">
                        <size>
-                        <width>230</width>
+                        <width>270</width>
                         <height>35</height>
                        </size>
                       </property>
@@ -4714,7 +4714,7 @@ QToolButton:flat {border: none;}</string>
                      <widget class="QLabel" name="ai_label_8">
                       <property name="minimumSize">
                        <size>
-                        <width>230</width>
+                        <width>270</width>
                         <height>35</height>
                        </size>
                       </property>
@@ -4783,14 +4783,14 @@ QToolButton:flat {border: none;}</string>
                      <widget class="QLabel" name="ai_label_9">
                       <property name="minimumSize">
                        <size>
-                        <width>230</width>
-                        <height>44</height>
+                        <width>270</width>
+                        <height>45</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>43</height>
+                        <height>45</height>
                        </size>
                       </property>
                       <property name="font">
@@ -4852,7 +4852,7 @@ QToolButton:flat {border: none;}</string>
                      <widget class="QLabel" name="ai_label_10">
                       <property name="minimumSize">
                        <size>
-                        <width>230</width>
+                        <width>270</width>
                         <height>35</height>
                        </size>
                       </property>
@@ -4893,7 +4893,7 @@ QToolButton:flat {border: none;}</string>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>90</width>
+                        <width>100</width>
                         <height>16777215</height>
                        </size>
                       </property>
@@ -4924,7 +4924,7 @@ QToolButton:flat {border: none;}</string>
                      <widget class="QLabel" name="ai_label_11">
                       <property name="minimumSize">
                        <size>
-                        <width>230</width>
+                        <width>270</width>
                         <height>35</height>
                        </size>
                       </property>
@@ -4994,6 +4994,19 @@ QToolButton:flat {border: none;}</string>
                   </item>
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_44">
+                    <item>
+                     <spacer name="horizontalSpacer_18">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>40</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
                     <item>
                      <widget class="QLabel" name="ai_label_21">
                       <property name="minimumSize">
@@ -5486,13 +5499,13 @@ QToolButton:flat {border: none;}</string>
                    <widget class="QLabel" name="ai_label_13">
                     <property name="minimumSize">
                      <size>
-                      <width>90</width>
+                      <width>0</width>
                       <height>27</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>90</width>
+                      <width>16777215</width>
                       <height>27</height>
                      </size>
                     </property>
@@ -5805,13 +5818,13 @@ QToolButton:flat {border: none;}</string>
                  <widget class="QLabel" name="gl_location_lb">
                   <property name="minimumSize">
                    <size>
-                    <width>70</width>
+                    <width>0</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>70</width>
+                    <width>16777215</width>
                     <height>27</height>
                    </size>
                   </property>
@@ -5859,7 +5872,7 @@ QToolButton:flat {border: none;}</string>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>140</width>
+                    <width>16777215</width>
                     <height>27</height>
                    </size>
                   </property>
@@ -5983,13 +5996,13 @@ QComboBox QAbstractItemView {
                     </property>
                     <property name="minimumSize">
                      <size>
-                      <width>200</width>
+                      <width>140</width>
                       <height>27</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>200</width>
+                      <width>16777215</width>
                       <height>27</height>
                      </size>
                     </property>
@@ -6113,8 +6126,8 @@ QToolButton:flat {border: none;}</string>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>210</width>
-                    <height>27</height>
+                    <width>16777215</width>
+                    <height>54</height>
                    </size>
                   </property>
                   <property name="font">
@@ -6518,7 +6531,7 @@ QToolButton:flat {border: none;}</string>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>140</width>
+                    <width>16777215</width>
                     <height>27</height>
                    </size>
                   </property>
@@ -7678,7 +7691,7 @@ QToolButton:flat {border: none;}</string>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>130</width>
+                        <width>16777215</width>
                         <height>27</height>
                        </size>
                       </property>
@@ -8300,13 +8313,13 @@ QRadioButton::indicator:checked:pressed {
                  <widget class="QLabel" name="qv_obsLab">
                   <property name="minimumSize">
                    <size>
-                    <width>300</width>
+                    <width>350</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>300</width>
+                    <width>16777215</width>
                     <height>27</height>
                    </size>
                   </property>
@@ -8409,13 +8422,13 @@ QRadioButton::indicator:checked:pressed {
                  <widget class="QLabel" name="qv_insituLab">
                   <property name="minimumSize">
                    <size>
-                    <width>190</width>
+                    <width>250</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>190</width>
+                    <width>16777215</width>
                     <height>27</height>
                    </size>
                   </property>
@@ -8594,8 +8607,8 @@ QToolButton:flat {border: none;}</string>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>140</width>
-                        <height>16777215</height>
+                        <width>16777215</width>
+                        <height>40</height>
                        </size>
                       </property>
                       <property name="font">
@@ -8853,6 +8866,9 @@ QToolButton:flat {border: none;}</string>
                    <spacer name="verticalSpacer_53">
                     <property name="orientation">
                      <enum>Qt::Vertical</enum>
+                    </property>
+                    <property name="sizeType">
+                     <enum>QSizePolicy::Expanding</enum>
                     </property>
                     <property name="sizeHint" stdset="0">
                      <size>
@@ -9352,7 +9368,7 @@ QToolButton:flat {border: none;}</string>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>140</width>
+                        <width>16777215</width>
                         <height>40</height>
                        </size>
                       </property>

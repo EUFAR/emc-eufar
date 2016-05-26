@@ -11,9 +11,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_presaveWindow(object):
     def setupUi(self, presaveWindow):
         presaveWindow.setObjectName("presaveWindow")
-        presaveWindow.resize(450, 180)
-        presaveWindow.setMinimumSize(QtCore.QSize(450, 180))
-        presaveWindow.setMaximumSize(QtCore.QSize(452, 16777215))
+        presaveWindow.resize(470, 183)
+        presaveWindow.setMinimumSize(QtCore.QSize(470, 180))
+        presaveWindow.setMaximumSize(QtCore.QSize(470, 16777215))
         font = QtGui.QFont()
         font.setFamily("font/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
@@ -70,8 +70,8 @@ class Ui_presaveWindow(object):
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.iw_nosaveButton = QtWidgets.QPushButton(presaveWindow)
-        self.iw_nosaveButton.setMinimumSize(QtCore.QSize(170, 27))
-        self.iw_nosaveButton.setMaximumSize(QtCore.QSize(170, 27))
+        self.iw_nosaveButton.setMinimumSize(QtCore.QSize(180, 27))
+        self.iw_nosaveButton.setMaximumSize(QtCore.QSize(190, 27))
         font = QtGui.QFont()
         font.setFamily("font/SourceSansPro-Regular.ttf")
         font.setPointSize(10)

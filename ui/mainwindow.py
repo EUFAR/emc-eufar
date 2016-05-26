@@ -74,6 +74,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ai_instrument_rl1.activated.connect(lambda: self.instrument_changed())
         self.qv_obsRadio.clicked.connect(lambda: self.quality_domain())
         self.qv_insituRadio.clicked.connect(lambda: self.quality_domain())
+        self.id_resourceLocator_ln.setCursorPosition(0)
         self.make_window_title()
         
 
@@ -320,10 +321,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         x1, y1, w1, h1 = self.geometry().getRect()
         x2, y2, w2, h2 = self.presaveWindow.geometry().getRect()  # @UnusedVariable
         self.presaveWindow.setGeometry(x1 + w1/2 - w2/2, y1 + h1/2 - h2/2, w2, h2)
-        self.presaveWindow.setMinimumSize(QtCore.QSize(450, self.presaveWindow.sizeHint().height()))
-        self.presaveWindow.setMaximumSize(QtCore.QSize(452, self.presaveWindow.sizeHint().height()))
+        self.presaveWindow.setMinimumSize(QtCore.QSize(470, self.presaveWindow.sizeHint().height()))
+        self.presaveWindow.setMaximumSize(QtCore.QSize(470, self.presaveWindow.sizeHint().height()))
         self.presaveWindow.exec_()
-        return self.presaveWindow.buttonName
+        try:
+            return self.presaveWindow.buttonName
+        except AttributeError:
+            return
 
     def open_file(self):
         (out_file_name, filter) = QFileDialog.getOpenFileName(self, "Open XML File",  # @ReservedAssignment

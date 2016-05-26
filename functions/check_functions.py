@@ -346,6 +346,10 @@ def fill_all_fields(self):
         x1, y1, w1, h1 = self.geometry().getRect()
         x2, y2, w2, h2 = self.fillWindow.geometry().getRect()  # @UnusedVariable
         self.fillWindow.setGeometry(x1 + w1/2 - w2/2, y1 + h1/2 - h2/2, w2, h2)
+        
+        self.fillWindow.setMinimumSize(QtCore.QSize(450, self.fillWindow.sizeHint().height()))
+        self.fillWindow.setMaximumSize(QtCore.QSize(450, self.fillWindow.sizeHint().height()))
+        
         self.fillWindow.exec_()
         return self.fillWindow.cancel
     else:
@@ -369,7 +373,7 @@ class MyFill(QtWidgets.QDialog, Ui_fillWindow):
         self.fw_detailButton.clicked.connect(self.detailElements_hide)
         x1, y1, self.w, self.h = self.geometry().getRect()  # @UnusedVariable
         if os.name == "nt":
-            self.h1 = 450
+            self.h1 = 470
             self.h2 = self.h1 - 236
         else:
             self.h1 = 400
@@ -395,6 +399,7 @@ class MyFill(QtWidgets.QDialog, Ui_fillWindow):
         self.fw_detailButton.clicked.connect(self.detailElements_show)
         self.textBrowser.clear()
         self.textBrowser.deleteLater()
+        self.verticalLayout.removeWidget(self.textBrowser)
         self.setMinimumHeight(self.h)
         self.setMaximumHeight(self.h)
 
