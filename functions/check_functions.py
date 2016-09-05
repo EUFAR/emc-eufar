@@ -65,16 +65,32 @@ def fill_all_fields(self):
     # exception for spatial resolution which exist for hyperspectral data but not for some in-situ data
     for widget in all_line_edits:
         if widget.objectName() == "gl_resolution_ln" or widget.objectName() == "gl_unit_ln":
-            all_line_edits.remove(widget)
+            all_line_edits.remove(widget)  
     for widget in all_line_edits:
         text = widget.text()
         if not text:
             if widget.objectName()[:10] != "ro_rlPy_ln" and widget.objectName()[:10] != "ro_rlEm_ln"and widget.objectName()[:13] != "mm_conName_ln" and widget.objectName()[:14] != "mm_conEmail_ln":
-                all_lines = 0
-                linked_labels = self.findChildren(QLabel, widget.objectName()[:-2] + "lb")
-                if linked_labels:
-                    linked_labels[0].setStyleSheet("color: rgb(200,0,0)")
-                self.incompleteElements.append(widget.objectName())
+                if widget.objectName() == "ai_manufacturer_ln" or widget.objectName() == "ai_type_ln" or widget.objectName() == "ai_operator_ln" or widget.objectName() == "ai_number_ln":
+                    if not self.aircraft_list:
+                        all_lines = 0
+                        linked_labels = self.findChildren(QLabel, widget.objectName()[:-2] + "lb")
+                        if linked_labels:
+                            linked_labels[0].setStyleSheet("color: rgb(200,0,0)")
+                        self.incompleteElements.append(widget.objectName())
+                elif widget.objectName() == "ai_newname_ln" or widget.objectName() == "ai_newmanufacturer_ln":
+                    if not self.instModel_list:
+                        all_lines = 0
+                        linked_labels = self.findChildren(QLabel, widget.objectName()[:-2] + "lb")
+                        if linked_labels:
+                            linked_labels[0].setStyleSheet("color: rgb(200,0,0)")
+                        self.incompleteElements.append(widget.objectName())
+                else:
+                    if not widget.isHidden():
+                        all_lines = 0
+                        linked_labels = self.findChildren(QLabel, widget.objectName()[:-2] + "lb")
+                        if linked_labels:
+                            linked_labels[0].setStyleSheet("color: rgb(200,0,0)")
+                        self.incompleteElements.append(widget.objectName())
     
     # check: for spatial resolution, if the distance is selected and something has been entered for 
     # the distance, the unit shouldn't be empty
@@ -84,16 +100,16 @@ def fill_all_fields(self):
             self.qv_label_3.setStyleSheet("color: rgb(200,0,0)")
     
     # check: aircraft selection
-    if self.ai_aircraft_rl1.currentText() == "Make a choice...":
+    if self.ai_aircraft_rl1.currentText() == "Make a choice..." and not self.aircraft_list:
         self.ai_label_1.setStyleSheet("color: rgb(200,0,0)")
         self.incompleteElements.append("ai_label_1")
     elif self.ai_aircraft_rl1.currentText() == "Other...":
-        if self.ai_country_rl.currentText() == "Make a choice...":
+        if self.ai_country_rl.currentText() == "Make a choice..." and not self.aircraft_list:
             self.ai_country_lb.setStyleSheet("color: rgb(200,0,0)")
             self.incompleteElements.append("ai_country_lb")
     
     # check: instrument selection
-    if self.ai_instrument_rl1.currentText() == "Make a choice..." and len(self.instModel_list) == 0:
+    if self.ai_instrument_rl1.currentText() == "Make a choice..." and not self.instModel_list:
         self.ai_label_13.setStyleSheet("color: rgb(200,0,0)")
         self.incompleteElements.append("ai_label_13")
     
@@ -124,9 +140,9 @@ def fill_all_fields(self):
             all_quality = 0
             self.qv_insituGeoUnit.setStyleSheet("color: rgb(200,0,0)")
             self.incompleteElements.append("qv_insituGeoUni")
-        if self.qv_insituOutFormat_rd1.isChecked() == False and self.qv_insituOutFormat_rd2.isChecked() == False and self.qv_insituOutFormat_rd3.isChecked() == False and self.qv_insituOutFormat_rd4.isChecked() == False:
+        if self.qv_insituOutFormat_ck1.isChecked() == False and self.qv_insituOutFormat_ck2.isChecked() == False and self.qv_insituOutFormat_ck3.isChecked() == False and self.qv_insituOutFormat_ck4.isChecked() == False:
             all_quality = 0
-            self.qv_insituOutFormat.setStyleSheet("color: rgb(200,0,0)")
+            self.qv_insituOutFormat_lb.setStyleSheet("color: rgb(200,0,0)")
             self.incompleteElements.append("qv_insituOutFormat")
     elif self.qv_obsRadio.isChecked() == True and self.qv_insituRadio.isChecked() == False:
         if self.qv_obsProLvl_rl.currentText() == "Make a choice...":
@@ -157,13 +173,13 @@ def fill_all_fields(self):
             all_quality = 0
             self.qv_obsPosInfo.setStyleSheet("color: rgb(200,0,0)")
             self.incompleteElements.append("qv_obsPosInfo")
-        if self.qv_obsAttInfo_rd1.isChecked() == False and self.qv_obsAttInfo_rd2.isChecked() == False:
+        if self.qv_obsAttInf_rd1.isChecked() == False and self.qv_obsAttInf_rd2.isChecked() == False:
             all_quality = 0
             self.qv_obsAttInfo.setStyleSheet("color: rgb(200,0,0)")
             self.incompleteElements.append("qv_obsAttInfo")
-        if self.qv_obsSynProb_rd1.isChecked() == False and self.qv_obsSynProb_rd2.isChecked() == False:
+        if self.qv_obsSynprob_rd1.isChecked() == False and self.qv_obsSynprob_rd2.isChecked() == False:
             all_quality = 0
-            self.qv_obsSynProb.setStyleSheet("color: rgb(200,0,0)")
+            self.qv_obsSynprob.setStyleSheet("color: rgb(200,0,0)")
             self.incompleteElements.append("qv_obsSynProb")
         if self.qv_obsIntGeo_rd1.isChecked() == False and self.qv_obsIntGeo_rd2.isChecked() == False:
             all_quality = 0

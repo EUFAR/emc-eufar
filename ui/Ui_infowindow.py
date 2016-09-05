@@ -15,7 +15,7 @@ class Ui_infoWindow(object):
         infoWindow.setMinimumSize(QtCore.QSize(450, 180))
         infoWindow.setMaximumSize(QtCore.QSize(452, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -24,6 +24,9 @@ class Ui_infoWindow(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("icons/info_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         infoWindow.setWindowIcon(icon)
+        infoWindow.setStyleSheet("QWidget {\n"
+"    background-color: rgb(230,230,230);\n"
+"}")
         self.gridLayout = QtWidgets.QGridLayout(infoWindow)
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
@@ -49,7 +52,7 @@ class Ui_infoWindow(object):
         self.iw_label_1.setMinimumSize(QtCore.QSize(341, 120))
         self.iw_label_1.setMaximumSize(QtCore.QSize(341, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -70,18 +73,38 @@ class Ui_infoWindow(object):
         self.verticalLayout_2.addItem(spacerItem2)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        spacerItem3 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem3)
-        self.iw_okButton = QtWidgets.QPushButton(infoWindow)
-        self.iw_okButton.setMinimumSize(QtCore.QSize(50, 27))
-        self.iw_okButton.setMaximumSize(QtCore.QSize(50, 27))
+        self.iw_okButton = QtWidgets.QToolButton(infoWindow)
+        self.iw_okButton.setMinimumSize(QtCore.QSize(93, 27))
+        self.iw_okButton.setMaximumSize(QtCore.QSize(93, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.iw_okButton.setFont(font)
+        self.iw_okButton.setStyleSheet("QToolButton {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #f0f0f0, stop:1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #ecf4fc, stop:1 #dcecfc);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    border: 1px solid #579de5;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #daecfc, stop:1 #c4e0fc);\n"
+"}")
         self.iw_okButton.setObjectName("iw_okButton")
         self.horizontalLayout_2.addWidget(self.iw_okButton)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -95,5 +118,5 @@ class Ui_infoWindow(object):
     def retranslateUi(self, infoWindow):
         _translate = QtCore.QCoreApplication.translate
         infoWindow.setWindowTitle(_translate("infoWindow", "Information"))
-        self.iw_okButton.setText(_translate("infoWindow", "OK"))
+        self.iw_okButton.setText(_translate("infoWindow", "Ok"))
 

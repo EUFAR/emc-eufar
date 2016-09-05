@@ -2,12 +2,11 @@
 
 import webbrowser
 import sqlite3 as lite
-from PyQt5 import QtCore, QtWidgets, QtGui
+from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtCore import QDate
 from PyQt5.QtCore import pyqtSlot
 from PyQt5.QtWidgets import QCheckBox, QLabel
 from PyQt5.QtWidgets import QToolButton
-from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtWidgets import QLineEdit
@@ -81,7 +80,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     @pyqtSlot()
     def on_actionNew_triggered(self):
         if self.modified:
-            result = self.make_onsave_msg_box("Clear","new_icon.png")
+            result = self.make_onsave_msg_box("Clear")
             if result == "iw_saveButton":
                 self.save_document()
                 self.reset_all_fields()
@@ -104,7 +103,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     @pyqtSlot()
     def on_actionOpen_triggered(self):
         if self.modified:
-            result = self.make_onsave_msg_box("Open","open_icon.png")
+            result = self.make_onsave_msg_box("Open")
             if result == "iw_saveButton":
                 self.save_document()
             elif result == "iw_nosaveButton":
@@ -140,50 +139,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     @pyqtSlot()
     def on_actionINSPIRE_Standard_triggered(self):
-        aboutText = ("<html><head/><body><p align=justify>INSPIRE is 'an European Union initiative "
-                     + "to establish an infrastructure fo"
-                     + "r spatial information in Europe that is geared to help to make spatial or g"
-                     + "eographical information more accessible and interoperable for a wide range "
-                     + "of purposes supporting sustainable development.'</p><p align=justify>The INSPIRE directiv"
-                     + "e lays down a general framework for a Spatial Data Infrastructure (SDI) for"
-                     + " the purposes of European Community environmental policies and policies or "
-                     + "activities which may have an impact on the environment. The INSPIRE Directi"
-                     + "ve entered into force on 15 May 2007.</p><p align=justify>INSPIRE is based on the infrast"
-                     + "ructures for spatial information established and operated by the member sta"
-                     + "tes of the European Union. The directive addresses 34 spatial data themes n"
-                     + "eeded for environmental applications. To ensure that the spatial data infra"
-                     + "structures of the member states are compatible and usable in a community an"
-                     + "d transboundary context, the INSPIRE Directive requires that additional leg"
-                     + "islation or common Implementing Rules (IR) are adopted for a number of spec"
-                     + "ific areas (metadata, interoperability of spatial data sets and services, n"
-                     + "etwork services, data and service sharing, monitoring and reporting). These"
-                     + " are published either as Commission Regulations or as Decisions.</p><p align=justify>The "
-                     + "Commission is assisted in the process of adopting such rules by a regulator"
-                     + "y committee, INSPIRE Committee, composed of representatives of the member s"
-                     + "tates and chaired by a representative of the Commission (this is known as t"
-                     + "he Comitology procedure).</p><p align=justify>Wikipedia - Infrastructure for Spatial Info"
-                     + "rmation in the European Community (<a href=https://en.wikipedia.org/wiki/In"
-                     + "frastructure_for_Spatial_Information_in_the_European_Community target='_bla"
-                     + "nk'><span style=\" text-decoration: underline; color:#0000ff;\">https://en."
-                     + "wikipedia.org/wiki/Infrastructure_for_Spatial_Information_in_the_Eu ropean_"
-                     + "Community</a>)</p><p>Link to the INSPIRE regulation: <a href=http://eur-lex"
-                     + ".europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32008R1205&from=EN target='_"
-                     + "blank'><span style=\" text-decoration: underline; color:#0000ff;\">http://e"
-                     + "ur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32008R1205&from=EN</a>"
-                     + "</p><p align=justify>Link to the INSPIRE website: <a href=http://inspire.ec.europa.eu/ind"
-                     + "ex.cfm target='_blank'><span style=\" text-decoration: underline; color:#00"
-                     + "00ff;\">http://inspire.ec.europa.eu/index.cfm</a></p></body></html>")
-        self.inspireWindow = MyInspire(aboutText)
+        self.inspireWindow = MyInspire()
         x1, y1, w1, h1 = self.geometry().getRect()
         x2, y2, w2, h2 = self.inspireWindow.geometry().getRect()  # @UnusedVariable
         self.inspireWindow.setGeometry(x1 + w1/2 - w2/2, y1 + h1/2 - h2/2, w2, h2)
-        self.inspireWindow.setMinimumSize(QtCore.QSize(600, self.inspireWindow.sizeHint().height()))
-        self.inspireWindow.setMaximumSize(QtCore.QSize(600, self.inspireWindow.sizeHint().height()))
+        self.inspireWindow.setMinimumSize(QtCore.QSize(800, 300)) #self.inspireWindow.sizeHint().height()))
+        self.inspireWindow.setMaximumSize(QtCore.QSize(800, 600)) #self.inspireWindow.sizeHint().height()))
         self.inspireWindow.exec_()
 
     @pyqtSlot()
     def on_actionEUFAR_N7SP_triggered(self):
         webbrowser.open('http://www.eufar.net/')
+
+    @pyqtSlot()
+    def on_actionHelp_triggered(self):
+        webbrowser.open('http://www.eufar.net/cms/eufar-metadata-creator-help/')
 
     @pyqtSlot()
     def on_actionChangelog_triggered(self):
@@ -195,7 +165,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def closeEvent(self, event):
         if self.modified:
-            result = self.make_onsave_msg_box("Close", "exit_icon.png")
+            result = self.make_onsave_msg_box("Close")
             if result == "iw_saveButton":
                 self.save_document()
                 self.db.close()
@@ -226,6 +196,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if not self.modified:
             self.modified = True
             self.make_window_title()
+            
 
     def save_document(self, save_as=False):
         cancel = fill_all_fields(self)
@@ -244,9 +215,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         file_dialog = QFileDialog()
         file_dialog.setDefaultSuffix('xml')
         out_file_name, out_file_ext = file_dialog.getSaveFileName(self, "Save XML File",  # @UnusedVariable
-                           "flight-info_!!!Unique resource identifier!!!.xml",
-                           filter="XML Files (*.xml)");
-        
+                           "!!!Project acronym!!!_xxxxxxxxxx.xml", filter="XML Files (*.xml)");
         return str(out_file_name)
 
     def reset_all_fields(self):
@@ -300,6 +269,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ai_label_12.clear()
         self.id_resourceLocator_ln.setText("http://browse.ceda.ac.uk/browse/badc/eufar/docs/00eufar"
                                            + "archivecontents.html")
+        self.id_resourceLocator_ln.setCursorPosition(0)
         self.au_conditions_ta.setPlainText("As EUFAR is an EU-funded project, data in the EUFAR arc"
                                            + "hive are available to everyone. All users are require"
                                            + "d to aknowledge the data providers in any publication"
@@ -316,8 +286,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.saved = False
         self.make_window_title()
 
-    def make_onsave_msg_box(self, string, iconName):
-        self.presaveWindow = MyWarning(string, iconName)
+    def make_onsave_msg_box(self, string):
+        self.presaveWindow = MyWarning(string)
         x1, y1, w1, h1 = self.geometry().getRect()
         x2, y2, w2, h2 = self.presaveWindow.geometry().getRect()  # @UnusedVariable
         self.presaveWindow.setGeometry(x1 + w1/2 - w2/2, y1 + h1/2 - h2/2, w2, h2)
@@ -349,6 +319,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 count_end=-3
             getattr(button_functions, str(self.sender().objectName()[:count_end] + "_clicked"))(self,
                  self.sender().objectName())
+        elif "ai_delButton_2_" in self.sender().objectName():
+            getattr(button_functions, "delButton_9_clicked")(self)
         elif "ai_delButton" in self.sender().objectName():
             getattr(button_functions, "delButton_4_clicked")(self)
         elif "tr_delBut" in self.sender().objectName():
@@ -453,10 +425,9 @@ class MyAbout(QtWidgets.QDialog, Ui_aboutWindow):
         
         
 class MyInspire(QtWidgets.QDialog, Ui_inspireWindow):
-    def __init__(self, aboutText):
+    def __init__(self):
         QWidget.__init__(self)
         self.setupUi(self)
-        self.aw_label_1.setText(aboutText)
         self.aw_okButton.clicked.connect(self.closeWindow)
         self.aw_okButton.setFocus(True)
 
@@ -465,18 +436,14 @@ class MyInspire(QtWidgets.QDialog, Ui_inspireWindow):
 
 
 class MyWarning(QtWidgets.QDialog, Ui_presaveWindow):
-    def __init__(self, string, iconName):
+    def __init__(self, string):
         QWidget.__init__(self)
         self.setupUi(self)
         self.iw_cancelButton.setFocus(True)
-        all_buttons = self.findChildren(QPushButton)
+        all_buttons = self.findChildren(QToolButton)
         for widget in all_buttons:
             widget.clicked.connect(lambda: self.closeWindow())
         self.iw_nosaveButton.setText(string + " without saving")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icons/" + iconName), QtGui.QIcon.
-                       Normal, QtGui.QIcon.Off)
-        self.iw_nosaveButton.setIcon(icon)
 
     def closeWindow(self):
         self.buttonName = self.sender().objectName()

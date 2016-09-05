@@ -11,11 +11,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_presaveWindow(object):
     def setupUi(self, presaveWindow):
         presaveWindow.setObjectName("presaveWindow")
-        presaveWindow.resize(470, 183)
+        presaveWindow.resize(470, 215)
         presaveWindow.setMinimumSize(QtCore.QSize(470, 180))
         presaveWindow.setMaximumSize(QtCore.QSize(470, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -24,6 +24,9 @@ class Ui_presaveWindow(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("icons/warning_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         presaveWindow.setWindowIcon(icon)
+        presaveWindow.setStyleSheet("QWidget {\n"
+"    background-color: rgb(230,230,230);\n"
+"}")
         self.gridLayout = QtWidgets.QGridLayout(presaveWindow)
         self.gridLayout.setObjectName("gridLayout")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
@@ -49,7 +52,7 @@ class Ui_presaveWindow(object):
         self.iw_label_1.setMinimumSize(QtCore.QSize(341, 120))
         self.iw_label_1.setMaximumSize(QtCore.QSize(341, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -69,55 +72,106 @@ class Ui_presaveWindow(object):
         self.verticalLayout_2.addItem(spacerItem2)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.iw_nosaveButton = QtWidgets.QPushButton(presaveWindow)
-        self.iw_nosaveButton.setMinimumSize(QtCore.QSize(180, 27))
-        self.iw_nosaveButton.setMaximumSize(QtCore.QSize(190, 27))
+        self.iw_nosaveButton = QtWidgets.QToolButton(presaveWindow)
+        self.iw_nosaveButton.setMinimumSize(QtCore.QSize(160, 27))
+        self.iw_nosaveButton.setMaximumSize(QtCore.QSize(180, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.iw_nosaveButton.setFont(font)
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("icons/cancel_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.iw_nosaveButton.setIcon(icon1)
+        self.iw_nosaveButton.setStyleSheet("QToolButton {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #f0f0f0, stop:1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #ecf4fc, stop:1 #dcecfc);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    border: 1px solid #579de5;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #daecfc, stop:1 #c4e0fc);\n"
+"}")
         self.iw_nosaveButton.setIconSize(QtCore.QSize(25, 25))
         self.iw_nosaveButton.setObjectName("iw_nosaveButton")
         self.horizontalLayout_2.addWidget(self.iw_nosaveButton)
         spacerItem3 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem3)
-        self.iw_cancelButton = QtWidgets.QPushButton(presaveWindow)
+        self.iw_cancelButton = QtWidgets.QToolButton(presaveWindow)
         self.iw_cancelButton.setMinimumSize(QtCore.QSize(93, 27))
         self.iw_cancelButton.setMaximumSize(QtCore.QSize(93, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.iw_cancelButton.setFont(font)
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("icons/del_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.iw_cancelButton.setIcon(icon2)
+        self.iw_cancelButton.setStyleSheet("QToolButton {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #f0f0f0, stop:1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #ecf4fc, stop:1 #dcecfc);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    border: 1px solid #579de5;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #daecfc, stop:1 #c4e0fc);\n"
+"}")
         self.iw_cancelButton.setIconSize(QtCore.QSize(25, 25))
         self.iw_cancelButton.setObjectName("iw_cancelButton")
         self.horizontalLayout_2.addWidget(self.iw_cancelButton)
         spacerItem4 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_2.addItem(spacerItem4)
-        self.iw_saveButton = QtWidgets.QPushButton(presaveWindow)
+        self.iw_saveButton = QtWidgets.QToolButton(presaveWindow)
         self.iw_saveButton.setMinimumSize(QtCore.QSize(93, 27))
         self.iw_saveButton.setMaximumSize(QtCore.QSize(93, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferDefault)
         self.iw_saveButton.setFont(font)
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap("icons/save_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.iw_saveButton.setIcon(icon3)
+        self.iw_saveButton.setStyleSheet("QToolButton {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #f0f0f0, stop:1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #ecf4fc, stop:1 #dcecfc);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    border: 1px solid #579de5;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
+"                                    stop:0 #daecfc, stop:1 #c4e0fc);\n"
+"}")
         self.iw_saveButton.setIconSize(QtCore.QSize(25, 25))
         self.iw_saveButton.setObjectName("iw_saveButton")
         self.horizontalLayout_2.addWidget(self.iw_saveButton)

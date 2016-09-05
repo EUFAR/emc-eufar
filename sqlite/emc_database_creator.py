@@ -91,7 +91,7 @@ language_role_dict = (
 	('English','eng'),
 	('Estonian','est'),
 	('Finnish','fin'),
-	('French','fra'),
+	('French','fre'),
 	('German','ger'),
 	('Greek','gre'),
 	('Hungarian','hun'),
@@ -566,9 +566,9 @@ emc_locations = [
 
 
 window_messages = (
-	("infoButton_1","<p>Available in the EUFAR TA application form (<b>Project acronym</b>), this i"
-     + "s a characteristic and often unique name identifying the resource.</p><p><u>Example:</u> SM"
-     + "ALLPROJECT.</p>"),
+	("infoButton_1","<p>Available in the EUFAR TA application form (<b>Project title</b>), this i"
+     + "s a characteristic and often unique name identifying the resource.</p><p><u>Example:</u> Our"
+     + " Small Project.</p>"),
 	("infoButton_2","<p>This is a brief narrative summary of the content of the resource. It is ava"
      + "ilable in the EUFAR TA application form (<b>Scientific problems being addressed by the expe"
      + "riments to be performed</b>).</p><p><u>Example:</u> SMALLPROJECT is a small project. Its go"
@@ -579,14 +579,10 @@ window_messages = (
      + " additional information about the resource. For EUFAR projects, it is automatically filled "
      + "in with the link to the EUFAR database.</p><p><u>Example:</u> http://browse.ceda.ac.uk/brow"
      + "se/badc/eu far/docs/00eufararchive contents.html</p>"),
-	("infoButton_5","<p hyphens='auto'>This element uniquely identifying the resource and it is generally formed with mandatory and/or optional "
-     + "string codes. In a EUFAR project, the file-naming convention is as follow <b>instrument_aircraft _YYYYMMDD[hh][mm][ss][_extra][_cor#]."
-     + "ext</b>. <b>instrument</b> is the instrument which was used to produce the data set, <b>aircraft</b> is a merge between "
-     + "the operator and the aircraft, <b>YYYYMMDD</b> (year month day) and <b>[hh][mm][ss]</b> (hour minute second) are the date"
-     + " and time at which measurements were taken (time is optional), <b>[_extra]"
-     + "</b> allow to add optional parameter, and <b>[_cor#]</b> denotes that the file is a corrected version of a previously released "
-     + "file. <b>.ext</b> is used for the file extension.</p><p><u>Example:</u> core_safire-atr42_"
-     + "20100913_as100051_r0 _1hz.ext</p>"),
+	("infoButton_5","<p hyphens='auto'>This element uniquely identifying the project and it is gene"
+     + "rally formed with mandatory and/or optional string codes. In a EUFAR project, it is availab"
+     + "le in the EUFAR TA application form (<b>Project acronym</b>).</p><p><u>Example:</u> SMALLPR"
+     + "OJECT"),
 	("infoButton_6","<p>The language(s) used within the resource. In a EUFAR project, English is al"
      + "ways selected and should not be changed. </p><p><u>Example:</u> English.</p>"),
 	("infoButton_7","<p>The topic category is a high-level classification scheme to facilitate the "
@@ -598,7 +594,8 @@ window_messages = (
      + "><u>Example:</u> Forest science, Aerosols, Clouds.</p>"),
 	("infoButton_9","<p>The selection of an aircraft can help to improve storage and queries in a d"
      + "atabase. Please select here the aircraft used to acquire and prepare the actual data and me"
-     + "tadata.</p><p><u>Example:</u> AWI - POLAR 5.</p>"),
+     + "tadata, and click on the '+' button to add it to the list. It's possible to add multiple ai"
+     + "rcraft.<p><u>Example:</u> AWI - POLAR 5.</p>"),
     ("infoButton_10","<p>The selection of an instrument, or multiple instruments, can help to impro"
      + "ve storage and queries in a database. Please select here the instrument(s) used to acquire "
      + "and prepare the actual data and metadata, and click on the '+' icon to add it into the list"
@@ -656,8 +653,9 @@ window_messages = (
      + "path/pa th2/document_to_explain_procedures.html</b> or <b>We proceed this way and this way "
      + "to calibrate the instrument / The calibration constants come from this book and this public"
      + "ation</b>.</p>"),
-    ("infoButton_28","<p>Once the data has been processed, the final output format.</p><p><u>Exampl"
-     + "e:</u> NetCDF.</p>"),
+    ("infoButton_28","<p>Once the data has been processed, the final output format. Multiple entrie"
+     + "s are possible. If 'Other' is selected for free text, the characters ';', '|' and '/' are p"
+     + "rohibited.</p><p><u>Example:</u> NetCDF.</p>"),
     ("infoButton_29","<p>The Quality and Validity section needs a brief description, or a link to t"
      + "he document, of the operator's standard procedures explaining the quality-control flagging "
      + "applied to individual data points.</p><p><u>Example:</u> <b>http://www.operator.com/path/p "
@@ -1371,13 +1369,16 @@ elements_informations = [
 	["4","id_resourceIdent_ln","Unique resource identifier","Identification","text"],
 	["8","ai_label_1","Aircraft","Aircraft and Instruments",""],
     
-    ["8.1","ai_manufacturer_ln","Manufacturer","Aircraft and Instruments","text"],
-    ["8.2","ai_type_ln","Type","Aircraft and Instruments","text"],
-    ["8.3","ai_operator_ln","Operator","Aircraft and Instruments","text"],
-    ["8.4","ai_country_lb","Country","Aircraft and Instruments",""],
-    ["8.5","ai_number_ln","Registration number","Aircraft and Instruments","text"],
+    ["8.1","ai_manufacturer_ln","Aircraft - Manufacturer","Aircraft and Instruments","text"],
+    ["8.2","ai_type_ln","Aircraft - Type","Aircraft and Instruments","text"],
+    ["8.3","ai_operator_ln","Aircraft - Operator","Aircraft and Instruments","text"],
+    ["8.4","ai_country_lb","Aircraft - Country","Aircraft and Instruments",""],
+    ["8.5","ai_number_ln","Aircraft - Registration number","Aircraft and Instruments","text"],
     
 	["9","ai_label_13","Instrument","Aircraft and Instruments",""],
+    ["9.1","ai_newname_ln","Instrument - Name","Aircraft and Instruments","text"],
+    ["9.2","ai_newmanufacturer_ln","Instrument - Manufacturer","Aircraft and Instruments","text"],
+    
 	["10","gl_location_lb","Location","Geographic Information",""],
 	["11","gl_northBound_ln","Geographic bounding box - North","Geographic Information","float"],
 	["12","gl_southBound_ln","Geographic bounding box - South","Geographic Information","float"],
@@ -1396,7 +1397,7 @@ elements_informations = [
     ["24","qv_insituCalMat_ln","Source of materials","Quality and Validity","text"],
     ["25","qv_insituGeoUni","Conversion to geophysical units","Quality and Validity",""],
     ["26","qv_insituOutFormat","Output in standardized format","Quality and Validity",""],
-    ["27","qv_other_ln","Output in standardized format - Other","Quality and Validity","text"],
+    ["27","qv_insituOutFormat_ln","Output in standardized format - Other","Quality and Validity","text"],
     ["28","qv_insituQuaFlag_ln","Quality-control flagging","Quality and Validity","text"],
     ["29","qv_insituAssumption_ln","Assumption","Quality and Validity","text"],
     

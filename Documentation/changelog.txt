@@ -6,10 +6,19 @@ CHANGELOG
 OFFLINE VERSION TESTED ON:
 =========================
     - Mageia 4
-    - Xubuntu 15.04, 15.10 (32 and 64 bits)
+    - Xubuntu 14.04, 15.04, 15.10, 16.04 (64 bits)
     - Windows 7 (64 bits)
     - Windows 8.1 (32 and 64 bits)
 
+
+September 5 2016, Release version 1.1.0 [OFFLINE]
+=====================================
+  Style has been reworked for harmonisation with other EUFAR software. Recommendations from the EUFAR N7SP/N8DB meeting have been introduced.
+  
+  MODIFIED:
+    - it is now possible to enter multiple aircraft.
+    - the "Quality and Validity" section has been reworked for clarification.
+  
 
 May 20 2015, Release version 1.0.5 [OFFLINE]
 ==================================

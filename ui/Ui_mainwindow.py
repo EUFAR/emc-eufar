@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1000, 585)
+        MainWindow.resize(1094, 673)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -19,7 +19,7 @@ class Ui_MainWindow(object):
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QtCore.QSize(0, 400))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         MainWindow.setFont(font)
         icon = QtGui.QIcon()
@@ -43,7 +43,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1019, 568))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 1072, 625))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_4 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -57,10 +57,10 @@ class Ui_MainWindow(object):
         self.tabWidget.setMinimumSize(QtCore.QSize(0, 0))
         self.tabWidget.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.tabWidget.setFont(font)
         self.tabWidget.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -94,7 +94,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QTabBar::tab:selected {\n"
-"    background-color: rgb(230,230,230);\n"
+"    background: rgb(230,230,230);\n"
 "}\n"
 "\n"
 "QTabBar::tab:!selected {\n"
@@ -111,15 +111,15 @@ class Ui_MainWindow(object):
         self.gridLayout_15.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_15.setObjectName("gridLayout_15")
         spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_15.addItem(spacerItem, 0, 1, 1, 1)
+        self.gridLayout_15.addItem(spacerItem, 0, 2, 1, 1)
         self.gridLayout_2 = QtWidgets.QGridLayout()
-        self.gridLayout_2.setVerticalSpacing(15)
+        self.gridLayout_2.setVerticalSpacing(20)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.id_resourceTitle_lb = QtWidgets.QLabel(self.tabWidgetPage1)
         self.id_resourceTitle_lb.setMinimumSize(QtCore.QSize(0, 0))
         self.id_resourceTitle_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -134,11 +134,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setSpacing(6)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.id_resourceTitle_ln = QtWidgets.QLineEdit(self.tabWidgetPage1)
-        self.id_resourceTitle_ln.setMinimumSize(QtCore.QSize(350, 27))
-        self.id_resourceTitle_ln.setMaximumSize(QtCore.QSize(350, 27))
+        self.id_resourceTitle_ln.setMinimumSize(QtCore.QSize(450, 27))
+        self.id_resourceTitle_ln.setMaximumSize(QtCore.QSize(450, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
@@ -154,34 +154,128 @@ class Ui_MainWindow(object):
         self.infoButton_1 = QtWidgets.QToolButton(self.tabWidgetPage1)
         self.infoButton_1.setMinimumSize(QtCore.QSize(27, 27))
         self.infoButton_1.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_1.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_1.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_1.setText("")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("icons/info_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.infoButton_1.setIcon(icon1)
         self.infoButton_1.setIconSize(QtCore.QSize(27, 27))
         self.infoButton_1.setPopupMode(QtWidgets.QToolButton.DelayedPopup)
-        self.infoButton_1.setAutoRaise(True)
+        self.infoButton_1.setAutoRaise(False)
         self.infoButton_1.setArrowType(QtCore.Qt.NoArrow)
         self.infoButton_1.setObjectName("infoButton_1")
         self.horizontalLayout_8.addWidget(self.infoButton_1)
         spacerItem1 = QtWidgets.QSpacerItem(13, 24, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_8.addItem(spacerItem1)
         self.gridLayout_2.addLayout(self.horizontalLayout_8, 0, 1, 1, 1)
+        self.id_resourceIdent_lb = QtWidgets.QLabel(self.tabWidgetPage1)
+        self.id_resourceIdent_lb.setMinimumSize(QtCore.QSize(0, 0))
+        self.id_resourceIdent_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.id_resourceIdent_lb.setFont(font)
+        self.id_resourceIdent_lb.setToolTip("")
+        self.id_resourceIdent_lb.setObjectName("id_resourceIdent_lb")
+        self.gridLayout_2.addWidget(self.id_resourceIdent_lb, 1, 0, 1, 1)
+        self.horizontalLayout_38 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_38.setSpacing(6)
+        self.horizontalLayout_38.setObjectName("horizontalLayout_38")
+        self.id_resourceIdent_ln = QtWidgets.QLineEdit(self.tabWidgetPage1)
+        self.id_resourceIdent_ln.setMinimumSize(QtCore.QSize(450, 27))
+        self.id_resourceIdent_ln.setMaximumSize(QtCore.QSize(450, 27))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.id_resourceIdent_ln.setFont(font)
+        self.id_resourceIdent_ln.setStyleSheet("QLineEdit {\n"
+"    border-radius: 3px;\n"
+"   padding: 1px 4px 1px 4px;\n"
+"    background-color:  rgb(240, 240, 240);\n"
+"}")
+        self.id_resourceIdent_ln.setFrame(False)
+        self.id_resourceIdent_ln.setObjectName("id_resourceIdent_ln")
+        self.horizontalLayout_38.addWidget(self.id_resourceIdent_ln)
+        self.infoButton_5 = QtWidgets.QToolButton(self.tabWidgetPage1)
+        self.infoButton_5.setMinimumSize(QtCore.QSize(27, 27))
+        self.infoButton_5.setMaximumSize(QtCore.QSize(27, 27))
+        self.infoButton_5.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
+        self.infoButton_5.setText("")
+        self.infoButton_5.setIcon(icon1)
+        self.infoButton_5.setIconSize(QtCore.QSize(27, 27))
+        self.infoButton_5.setAutoRaise(False)
+        self.infoButton_5.setObjectName("infoButton_5")
+        self.horizontalLayout_38.addWidget(self.infoButton_5)
+        spacerItem2 = QtWidgets.QSpacerItem(13, 24, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_38.addItem(spacerItem2)
+        self.gridLayout_2.addLayout(self.horizontalLayout_38, 1, 1, 1, 1)
+        self.id_resourceAbstract_lb = QtWidgets.QLabel(self.tabWidgetPage1)
+        self.id_resourceAbstract_lb.setMinimumSize(QtCore.QSize(0, 0))
+        self.id_resourceAbstract_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.id_resourceAbstract_lb.setFont(font)
+        self.id_resourceAbstract_lb.setToolTip("")
+        self.id_resourceAbstract_lb.setObjectName("id_resourceAbstract_lb")
+        self.gridLayout_2.addWidget(self.id_resourceAbstract_lb, 2, 0, 1, 1)
         self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_9.setContentsMargins(0, -1, -1, -1)
         self.horizontalLayout_9.setSpacing(6)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
         self.id_resourceAbstract_ta = QtWidgets.QPlainTextEdit(self.tabWidgetPage1)
-        self.id_resourceAbstract_ta.setMinimumSize(QtCore.QSize(500, 120))
+        self.id_resourceAbstract_ta.setMinimumSize(QtCore.QSize(600, 120))
         self.id_resourceAbstract_ta.setMaximumSize(QtCore.QSize(16777215, 120))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
@@ -197,36 +291,77 @@ class Ui_MainWindow(object):
         self.infoButton_2 = QtWidgets.QToolButton(self.tabWidgetPage1)
         self.infoButton_2.setMinimumSize(QtCore.QSize(27, 27))
         self.infoButton_2.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_2.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_2.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_2.setText("")
         self.infoButton_2.setIcon(icon1)
         self.infoButton_2.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_2.setAutoRaise(True)
+        self.infoButton_2.setAutoRaise(False)
         self.infoButton_2.setObjectName("infoButton_2")
         self.horizontalLayout_9.addWidget(self.infoButton_2)
-        self.gridLayout_2.addLayout(self.horizontalLayout_9, 1, 1, 3, 1)
+        self.gridLayout_2.addLayout(self.horizontalLayout_9, 2, 1, 1, 1)
+        self.id_label_3 = QtWidgets.QLabel(self.tabWidgetPage1)
+        self.id_label_3.setMinimumSize(QtCore.QSize(0, 0))
+        self.id_label_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.id_label_3.setFont(font)
+        self.id_label_3.setToolTip("")
+        self.id_label_3.setObjectName("id_label_3")
+        self.gridLayout_2.addWidget(self.id_label_3, 3, 0, 1, 1)
         self.horizontalLayout_29 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_29.setContentsMargins(2, -1, -1, -1)
         self.horizontalLayout_29.setSpacing(6)
         self.horizontalLayout_29.setObjectName("horizontalLayout_29")
         self.id_resourceType_rl1 = QtWidgets.QComboBox(self.tabWidgetPage1)
-        self.id_resourceType_rl1.setMinimumSize(QtCore.QSize(100, 27))
-        self.id_resourceType_rl1.setMaximumSize(QtCore.QSize(100, 27))
+        self.id_resourceType_rl1.setMinimumSize(QtCore.QSize(120, 27))
+        self.id_resourceType_rl1.setMaximumSize(QtCore.QSize(120, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.id_resourceType_rl1.setFont(font)
         self.id_resourceType_rl1.setStyleSheet("QComboBox {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QComboBox:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -249,20 +384,20 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png);\n"
+"    image: url(icons/arrow_down.png); \n"
 "    width: 18px;\n"
-"    height: 18px;\n"
+"    height: 18px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
-"    top: 1px;\n"
+"    top: 1px; \n"
 "    left: 1px;\n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    background-color: rgb(240,240,240);\n"
+"    selection-background-color: transparent;\n"
 "    selection-color: blue;\n"
-"    padding: 1px 4px 1px 1px 1px\n"
+"    border: 0px, solid black;\n"
 "}")
         self.id_resourceType_rl1.setFrame(False)
         self.id_resourceType_rl1.setObjectName("id_resourceType_rl1")
@@ -272,29 +407,57 @@ class Ui_MainWindow(object):
         self.infoButton_3 = QtWidgets.QToolButton(self.tabWidgetPage1)
         self.infoButton_3.setMinimumSize(QtCore.QSize(27, 27))
         self.infoButton_3.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_3.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_3.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_3.setText("")
         self.infoButton_3.setIcon(icon1)
         self.infoButton_3.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_3.setAutoRaise(True)
+        self.infoButton_3.setAutoRaise(False)
         self.infoButton_3.setObjectName("infoButton_3")
         self.horizontalLayout_29.addWidget(self.infoButton_3)
-        spacerItem2 = QtWidgets.QSpacerItem(13, 24, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_29.addItem(spacerItem2)
-        self.gridLayout_2.addLayout(self.horizontalLayout_29, 4, 1, 1, 1)
+        spacerItem3 = QtWidgets.QSpacerItem(13, 24, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_29.addItem(spacerItem3)
+        self.gridLayout_2.addLayout(self.horizontalLayout_29, 3, 1, 1, 1)
+        self.id_resourceLocator_lb = QtWidgets.QLabel(self.tabWidgetPage1)
+        self.id_resourceLocator_lb.setMinimumSize(QtCore.QSize(0, 0))
+        self.id_resourceLocator_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.id_resourceLocator_lb.setFont(font)
+        self.id_resourceLocator_lb.setToolTip("")
+        self.id_resourceLocator_lb.setObjectName("id_resourceLocator_lb")
+        self.gridLayout_2.addWidget(self.id_resourceLocator_lb, 4, 0, 1, 1)
         self.horizontalLayout_36 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_36.setSpacing(6)
         self.horizontalLayout_36.setObjectName("horizontalLayout_36")
         self.id_resourceLocator_ln = QtWidgets.QLineEdit(self.tabWidgetPage1)
-        self.id_resourceLocator_ln.setMinimumSize(QtCore.QSize(350, 27))
-        self.id_resourceLocator_ln.setMaximumSize(QtCore.QSize(350, 27))
+        self.id_resourceLocator_ln.setMinimumSize(QtCore.QSize(450, 27))
+        self.id_resourceLocator_ln.setMaximumSize(QtCore.QSize(450, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
@@ -312,76 +475,79 @@ class Ui_MainWindow(object):
         self.infoButton_4 = QtWidgets.QToolButton(self.tabWidgetPage1)
         self.infoButton_4.setMinimumSize(QtCore.QSize(27, 27))
         self.infoButton_4.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_4.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_4.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_4.setText("")
         self.infoButton_4.setIcon(icon1)
         self.infoButton_4.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_4.setAutoRaise(True)
+        self.infoButton_4.setAutoRaise(False)
         self.infoButton_4.setObjectName("infoButton_4")
         self.horizontalLayout_36.addWidget(self.infoButton_4)
-        spacerItem3 = QtWidgets.QSpacerItem(13, 24, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_36.addItem(spacerItem3)
-        self.gridLayout_2.addLayout(self.horizontalLayout_36, 5, 1, 1, 1)
-        self.horizontalLayout_38 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_38.setSpacing(6)
-        self.horizontalLayout_38.setObjectName("horizontalLayout_38")
-        self.id_resourceIdent_ln = QtWidgets.QLineEdit(self.tabWidgetPage1)
-        self.id_resourceIdent_ln.setMinimumSize(QtCore.QSize(350, 27))
-        self.id_resourceIdent_ln.setMaximumSize(QtCore.QSize(350, 27))
+        spacerItem4 = QtWidgets.QSpacerItem(13, 24, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_36.addItem(spacerItem4)
+        self.gridLayout_2.addLayout(self.horizontalLayout_36, 4, 1, 1, 1)
+        self.id_label_6 = QtWidgets.QLabel(self.tabWidgetPage1)
+        self.id_label_6.setMinimumSize(QtCore.QSize(0, 0))
+        self.id_label_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.id_resourceIdent_ln.setFont(font)
-        self.id_resourceIdent_ln.setStyleSheet("QLineEdit {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
-"}")
-        self.id_resourceIdent_ln.setFrame(False)
-        self.id_resourceIdent_ln.setObjectName("id_resourceIdent_ln")
-        self.horizontalLayout_38.addWidget(self.id_resourceIdent_ln)
-        self.infoButton_5 = QtWidgets.QToolButton(self.tabWidgetPage1)
-        self.infoButton_5.setMinimumSize(QtCore.QSize(27, 27))
-        self.infoButton_5.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_5.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
-"\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
-"\n"
-"QToolButton:flat {border: none;}")
-        self.infoButton_5.setText("")
-        self.infoButton_5.setIcon(icon1)
-        self.infoButton_5.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_5.setAutoRaise(True)
-        self.infoButton_5.setObjectName("infoButton_5")
-        self.horizontalLayout_38.addWidget(self.infoButton_5)
-        spacerItem4 = QtWidgets.QSpacerItem(13, 24, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_38.addItem(spacerItem4)
-        self.gridLayout_2.addLayout(self.horizontalLayout_38, 6, 1, 1, 1)
+        self.id_label_6.setFont(font)
+        self.id_label_6.setToolTip("")
+        self.id_label_6.setObjectName("id_label_6")
+        self.gridLayout_2.addWidget(self.id_label_6, 5, 0, 1, 1)
         self.horizontalLayout_42 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_42.setContentsMargins(2, -1, -1, -1)
         self.horizontalLayout_42.setSpacing(6)
         self.horizontalLayout_42.setObjectName("horizontalLayout_42")
         self.id_resourceLang_rl2 = QtWidgets.QComboBox(self.tabWidgetPage1)
-        self.id_resourceLang_rl2.setMinimumSize(QtCore.QSize(100, 27))
-        self.id_resourceLang_rl2.setMaximumSize(QtCore.QSize(100, 27))
+        self.id_resourceLang_rl2.setMinimumSize(QtCore.QSize(120, 27))
+        self.id_resourceLang_rl2.setMaximumSize(QtCore.QSize(120, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.id_resourceLang_rl2.setFont(font)
         self.id_resourceLang_rl2.setStyleSheet("QComboBox {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QComboBox:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -404,20 +570,20 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png);\n"
+"    image: url(icons/arrow_down.png); \n"
 "    width: 18px;\n"
-"    height: 18px;\n"
+"    height: 18px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
-"    top: 1px;\n"
+"    top: 1px; \n"
 "    left: 1px;\n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    background-color: rgb(240,240,240);\n"
+"    selection-background-color: transparent;\n"
 "    selection-color: blue;\n"
-"   padding: 1px 4px 1px 1px 1px\n"
+"    border: 0px, solid black;\n"
 "}")
         self.id_resourceLang_rl2.setFrame(False)
         self.id_resourceLang_rl2.setObjectName("id_resourceLang_rl2")
@@ -447,92 +613,42 @@ class Ui_MainWindow(object):
         self.horizontalLayout_42.addWidget(self.id_resourceLang_rl2)
         self.infoButton_6 = QtWidgets.QToolButton(self.tabWidgetPage1)
         self.infoButton_6.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_6.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_6.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_6.setText("")
         self.infoButton_6.setIcon(icon1)
         self.infoButton_6.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_6.setAutoRaise(True)
+        self.infoButton_6.setAutoRaise(False)
         self.infoButton_6.setObjectName("infoButton_6")
         self.horizontalLayout_42.addWidget(self.infoButton_6)
         spacerItem5 = QtWidgets.QSpacerItem(13, 24, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_42.addItem(spacerItem5)
-        self.gridLayout_2.addLayout(self.horizontalLayout_42, 7, 1, 1, 1)
-        self.id_label_6 = QtWidgets.QLabel(self.tabWidgetPage1)
-        self.id_label_6.setMinimumSize(QtCore.QSize(0, 0))
-        self.id_label_6.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.id_label_6.setFont(font)
-        self.id_label_6.setToolTip("")
-        self.id_label_6.setObjectName("id_label_6")
-        self.gridLayout_2.addWidget(self.id_label_6, 7, 0, 1, 1)
-        self.id_resourceIdent_lb = QtWidgets.QLabel(self.tabWidgetPage1)
-        self.id_resourceIdent_lb.setMinimumSize(QtCore.QSize(0, 0))
-        self.id_resourceIdent_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.id_resourceIdent_lb.setFont(font)
-        self.id_resourceIdent_lb.setToolTip("")
-        self.id_resourceIdent_lb.setObjectName("id_resourceIdent_lb")
-        self.gridLayout_2.addWidget(self.id_resourceIdent_lb, 6, 0, 1, 1)
-        self.id_resourceLocator_lb = QtWidgets.QLabel(self.tabWidgetPage1)
-        self.id_resourceLocator_lb.setMinimumSize(QtCore.QSize(0, 0))
-        self.id_resourceLocator_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.id_resourceLocator_lb.setFont(font)
-        self.id_resourceLocator_lb.setToolTip("")
-        self.id_resourceLocator_lb.setObjectName("id_resourceLocator_lb")
-        self.gridLayout_2.addWidget(self.id_resourceLocator_lb, 5, 0, 1, 1)
-        self.id_label_3 = QtWidgets.QLabel(self.tabWidgetPage1)
-        self.id_label_3.setMinimumSize(QtCore.QSize(0, 0))
-        self.id_label_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.id_label_3.setFont(font)
-        self.id_label_3.setToolTip("")
-        self.id_label_3.setObjectName("id_label_3")
-        self.gridLayout_2.addWidget(self.id_label_3, 4, 0, 1, 1)
-        self.id_resourceAbstract_lb = QtWidgets.QLabel(self.tabWidgetPage1)
-        self.id_resourceAbstract_lb.setMinimumSize(QtCore.QSize(0, 0))
-        self.id_resourceAbstract_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.id_resourceAbstract_lb.setFont(font)
-        self.id_resourceAbstract_lb.setToolTip("")
-        self.id_resourceAbstract_lb.setObjectName("id_resourceAbstract_lb")
-        self.gridLayout_2.addWidget(self.id_resourceAbstract_lb, 2, 0, 1, 1)
+        self.gridLayout_2.addLayout(self.horizontalLayout_42, 5, 1, 1, 1)
         self.gridLayout_15.addLayout(self.gridLayout_2, 1, 1, 2, 2)
         spacerItem6 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout_15.addItem(spacerItem6, 1, 3, 1, 1)
         spacerItem7 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout_15.addItem(spacerItem7, 2, 0, 1, 1)
         spacerItem8 = QtWidgets.QSpacerItem(20, 66, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_15.addItem(spacerItem8, 3, 2, 1, 1)
+        self.gridLayout_15.addItem(spacerItem8, 3, 1, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage1, "")
         self.tabWidgetPage2 = QtWidgets.QWidget()
         self.tabWidgetPage2.setObjectName("tabWidgetPage2")
@@ -552,7 +668,7 @@ class Ui_MainWindow(object):
         self.cl_topicIntelligence_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicIntelligence_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -564,7 +680,7 @@ class Ui_MainWindow(object):
         self.cl_topicLocation_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicLocation_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -576,7 +692,7 @@ class Ui_MainWindow(object):
         self.cl_topicPlanning_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicPlanning_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -588,7 +704,7 @@ class Ui_MainWindow(object):
         self.cl_topicEconomy_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicEconomy_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -600,7 +716,7 @@ class Ui_MainWindow(object):
         self.cl_topicSociety_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicSociety_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -612,7 +728,7 @@ class Ui_MainWindow(object):
         self.cl_topicStructure_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicStructure_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -624,7 +740,7 @@ class Ui_MainWindow(object):
         self.cl_label_1.setMinimumSize(QtCore.QSize(0, 0))
         self.cl_label_1.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(True)
         font.setUnderline(True)
@@ -641,7 +757,7 @@ class Ui_MainWindow(object):
         self.cl_topicTransportation_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicTransportation_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -653,7 +769,7 @@ class Ui_MainWindow(object):
         self.cl_topicClimatology_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicClimatology_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -665,7 +781,7 @@ class Ui_MainWindow(object):
         self.cl_topicElevation_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicElevation_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -677,7 +793,7 @@ class Ui_MainWindow(object):
         self.cl_topicOceans_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicOceans_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -689,7 +805,7 @@ class Ui_MainWindow(object):
         self.cl_topicImagery_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicImagery_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -701,7 +817,7 @@ class Ui_MainWindow(object):
         self.cl_topicEnvironment_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicEnvironment_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -713,7 +829,7 @@ class Ui_MainWindow(object):
         self.cl_topicWaters_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicWaters_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -727,7 +843,7 @@ class Ui_MainWindow(object):
         self.cl_topicUtilities_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicUtilities_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -739,7 +855,7 @@ class Ui_MainWindow(object):
         self.cl_topicBiota_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.cl_topicBiota_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -752,7 +868,7 @@ class Ui_MainWindow(object):
         self.cl_topicFarming_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicFarming_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -764,7 +880,7 @@ class Ui_MainWindow(object):
         self.cl_topicBoundaries_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicBoundaries_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -776,7 +892,7 @@ class Ui_MainWindow(object):
         self.cl_topicHealth_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicHealth_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -788,7 +904,7 @@ class Ui_MainWindow(object):
         self.cl_topicInformation_ck.setMinimumSize(QtCore.QSize(0, 27))
         self.cl_topicInformation_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -803,15 +919,30 @@ class Ui_MainWindow(object):
         self.horizontalLayout_19.addItem(spacerItem13)
         self.infoButton_7 = QtWidgets.QToolButton(self.tabWidgetPage2)
         self.infoButton_7.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_7.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_7.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_7.setText("")
         self.infoButton_7.setIcon(icon1)
         self.infoButton_7.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_7.setAutoRaise(True)
+        self.infoButton_7.setAutoRaise(False)
         self.infoButton_7.setObjectName("infoButton_7")
         self.horizontalLayout_19.addWidget(self.infoButton_7)
         self.gridLayout_16.addLayout(self.horizontalLayout_19, 1, 1, 2, 2)
@@ -838,7 +969,7 @@ class Ui_MainWindow(object):
         self.kw_category_lb1.setMinimumSize(QtCore.QSize(0, 27))
         self.kw_category_lb1.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(True)
         font.setUnderline(True)
@@ -853,7 +984,7 @@ class Ui_MainWindow(object):
         self.kw_agriEngineering_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_agriEngineering_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -866,7 +997,7 @@ class Ui_MainWindow(object):
         self.kw_agriPlant_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_agriPlant_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -879,7 +1010,7 @@ class Ui_MainWindow(object):
         self.kw_foodScience_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_foodScience_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -892,7 +1023,7 @@ class Ui_MainWindow(object):
         self.kw_forestScience_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_forestScience_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -905,7 +1036,7 @@ class Ui_MainWindow(object):
         self.kw_soils_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_soils_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -918,7 +1049,7 @@ class Ui_MainWindow(object):
         self.kw_category_lb2.setMinimumSize(QtCore.QSize(0, 27))
         self.kw_category_lb2.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(True)
         font.setUnderline(True)
@@ -933,7 +1064,7 @@ class Ui_MainWindow(object):
         self.kw_aerosols_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_aerosols_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -946,7 +1077,7 @@ class Ui_MainWindow(object):
         self.kw_airQuality_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_airQuality_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -959,7 +1090,7 @@ class Ui_MainWindow(object):
         self.kw_altitude_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_altitude_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -972,7 +1103,7 @@ class Ui_MainWindow(object):
         self.kw_atmChemistry_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_atmChemistry_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -985,7 +1116,7 @@ class Ui_MainWindow(object):
         self.kw_atmElectricity_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_atmElectricity_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -998,7 +1129,7 @@ class Ui_MainWindow(object):
         self.kw_atmPhenomena_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_atmPhenomena_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1011,7 +1142,7 @@ class Ui_MainWindow(object):
         self.kw_atmPressure_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_atmPressure_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1024,7 +1155,7 @@ class Ui_MainWindow(object):
         self.kw_atmRadiation_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_atmRadiation_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1037,7 +1168,7 @@ class Ui_MainWindow(object):
         self.kw_atmTemperature_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_atmTemperature_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1050,7 +1181,7 @@ class Ui_MainWindow(object):
         self.kw_atmVapor_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_atmVapor_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1063,7 +1194,7 @@ class Ui_MainWindow(object):
         self.kw_atmWinds_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_atmWinds_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1076,7 +1207,7 @@ class Ui_MainWindow(object):
         self.kw_clouds_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_clouds_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1089,7 +1220,7 @@ class Ui_MainWindow(object):
         self.kw_precipitation_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_precipitation_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1110,7 +1241,7 @@ class Ui_MainWindow(object):
         self.kw_category_lb3.setMinimumSize(QtCore.QSize(0, 27))
         self.kw_category_lb3.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(True)
         font.setUnderline(True)
@@ -1124,7 +1255,7 @@ class Ui_MainWindow(object):
         self.kw_ecoDynamics_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_ecoDynamics_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1137,7 +1268,7 @@ class Ui_MainWindow(object):
         self.kw_terEcosystems_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_terEcosystems_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1150,7 +1281,7 @@ class Ui_MainWindow(object):
         self.kw_vegetation_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_vegetation_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1163,7 +1294,7 @@ class Ui_MainWindow(object):
         self.kw_category_lb4.setMinimumSize(QtCore.QSize(0, 27))
         self.kw_category_lb4.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(True)
         font.setUnderline(True)
@@ -1178,7 +1309,7 @@ class Ui_MainWindow(object):
         self.kw_frozenGround_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_frozenGround_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1191,7 +1322,7 @@ class Ui_MainWindow(object):
         self.kw_glaciersIcesheet_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_glaciersIcesheet_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1204,7 +1335,7 @@ class Ui_MainWindow(object):
         self.kw_seaIce_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_seaIce_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1217,7 +1348,7 @@ class Ui_MainWindow(object):
         self.kw_snowIce_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_snowIce_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1230,7 +1361,7 @@ class Ui_MainWindow(object):
         self.kw_category_lb5.setMinimumSize(QtCore.QSize(0, 27))
         self.kw_category_lb5.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(True)
         font.setUnderline(True)
@@ -1244,7 +1375,7 @@ class Ui_MainWindow(object):
         self.kw_erosionSedimentation_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_erosionSedimentation_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1257,7 +1388,7 @@ class Ui_MainWindow(object):
         self.kw_geomorphology_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_geomorphology_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1270,7 +1401,7 @@ class Ui_MainWindow(object):
         self.kw_landTemperature_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_landTemperature_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1283,7 +1414,7 @@ class Ui_MainWindow(object):
         self.kw_landCover_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_landCover_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1296,7 +1427,7 @@ class Ui_MainWindow(object):
         self.kw_landscape_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_landscape_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1309,7 +1440,7 @@ class Ui_MainWindow(object):
         self.kw_surfaceProperties_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_surfaceProperties_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1322,7 +1453,7 @@ class Ui_MainWindow(object):
         self.kw_topography_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_topography_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1344,7 +1475,7 @@ class Ui_MainWindow(object):
         self.kw_category_lb6.setMinimumSize(QtCore.QSize(0, 27))
         self.kw_category_lb6.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(True)
         font.setUnderline(True)
@@ -1358,7 +1489,7 @@ class Ui_MainWindow(object):
         self.kw_bathymetry_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_bathymetry_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1371,7 +1502,7 @@ class Ui_MainWindow(object):
         self.kw_coastalProcesses_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_coastalProcesses_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1384,7 +1515,7 @@ class Ui_MainWindow(object):
         self.kw_marineEnvironment_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_marineEnvironment_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1397,7 +1528,7 @@ class Ui_MainWindow(object):
         self.kw_marineGeophysics_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_marineGeophysics_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1410,7 +1541,7 @@ class Ui_MainWindow(object):
         self.kw_oceanWaves_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_oceanWaves_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1423,7 +1554,7 @@ class Ui_MainWindow(object):
         self.kw_oceanWinds_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_oceanWinds_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1436,7 +1567,7 @@ class Ui_MainWindow(object):
         self.kw_seaTopography_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_seaTopography_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1449,7 +1580,7 @@ class Ui_MainWindow(object):
         self.kw_seaTides_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_seaTides_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1462,7 +1593,7 @@ class Ui_MainWindow(object):
         self.kw_waterQuality_ck_2.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_waterQuality_ck_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1475,7 +1606,7 @@ class Ui_MainWindow(object):
         self.kw_category_lb7.setMinimumSize(QtCore.QSize(0, 27))
         self.kw_category_lb7.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(True)
         font.setUnderline(True)
@@ -1489,7 +1620,7 @@ class Ui_MainWindow(object):
         self.kw_geodetics_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_geodetics_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1502,7 +1633,7 @@ class Ui_MainWindow(object):
         self.kw_geomagnetism_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_geomagnetism_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1515,7 +1646,7 @@ class Ui_MainWindow(object):
         self.kw_geomorphicLandforms_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_geomorphicLandforms_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1528,7 +1659,7 @@ class Ui_MainWindow(object):
         self.kw_gravity_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_gravity_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1541,7 +1672,7 @@ class Ui_MainWindow(object):
         self.kw_category_lb10.setMinimumSize(QtCore.QSize(0, 27))
         self.kw_category_lb10.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(True)
         font.setUnderline(True)
@@ -1555,7 +1686,7 @@ class Ui_MainWindow(object):
         self.kw_groundWater_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_groundWater_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1568,7 +1699,7 @@ class Ui_MainWindow(object):
         self.kw_surfaceWater_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_surfaceWater_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1581,7 +1712,7 @@ class Ui_MainWindow(object):
         self.kw_waterQuality_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_waterQuality_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1602,7 +1733,7 @@ class Ui_MainWindow(object):
         self.kw_solarFlux_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_solarFlux_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1615,7 +1746,7 @@ class Ui_MainWindow(object):
         self.kw_ionosMagnetos_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_ionosMagnetos_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1628,7 +1759,7 @@ class Ui_MainWindow(object):
         self.kw_xRay_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_xRay_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1641,7 +1772,7 @@ class Ui_MainWindow(object):
         self.kw_category_lb9.setMinimumSize(QtCore.QSize(0, 27))
         self.kw_category_lb9.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(True)
         font.setUnderline(True)
@@ -1655,7 +1786,7 @@ class Ui_MainWindow(object):
         self.kw_solarActivity_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_solarActivity_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1668,7 +1799,7 @@ class Ui_MainWindow(object):
         self.kw_lidar_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_lidar_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1681,7 +1812,7 @@ class Ui_MainWindow(object):
         self.kw_radioWave_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_radioWave_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1694,7 +1825,7 @@ class Ui_MainWindow(object):
         self.kw_radar_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_radar_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1707,7 +1838,7 @@ class Ui_MainWindow(object):
         self.kw_visWavelentghs_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_visWavelentghs_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1720,7 +1851,7 @@ class Ui_MainWindow(object):
         self.kw_uvWavelentghs_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_uvWavelentghs_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1733,7 +1864,7 @@ class Ui_MainWindow(object):
         self.kw_irWavelengths_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_irWavelengths_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1746,7 +1877,7 @@ class Ui_MainWindow(object):
         self.kw_microwave_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_microwave_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1759,7 +1890,7 @@ class Ui_MainWindow(object):
         self.kw_gammaRay_ck.setMinimumSize(QtCore.QSize(0, 0))
         self.kw_gammaRay_ck.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
@@ -1772,7 +1903,7 @@ class Ui_MainWindow(object):
         self.kw_category_lb8.setMinimumSize(QtCore.QSize(0, 27))
         self.kw_category_lb8.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(9)
         font.setBold(True)
         font.setUnderline(True)
@@ -1790,15 +1921,30 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addItem(spacerItem23)
         self.infoButton_8 = QtWidgets.QToolButton(self.tabWidgetPage3)
         self.infoButton_8.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_8.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_8.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_8.setText("")
         self.infoButton_8.setIcon(icon1)
         self.infoButton_8.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_8.setAutoRaise(True)
+        self.infoButton_8.setAutoRaise(False)
         self.infoButton_8.setObjectName("infoButton_8")
         self.horizontalLayout.addWidget(self.infoButton_8)
         self.gridLayout_20.addLayout(self.horizontalLayout, 1, 1, 2, 1)
@@ -1816,8 +1962,8 @@ class Ui_MainWindow(object):
         self.gridLayout_22.addItem(spacerItem26, 0, 1, 1, 1)
         spacerItem27 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout_22.addItem(spacerItem27, 1, 0, 1, 1)
-        self.verticalLayout_20 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_20.setObjectName("verticalLayout_20")
+        self.verticalLayout_22 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_22.setObjectName("verticalLayout_22")
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.verticalLayout_17 = QtWidgets.QVBoxLayout()
@@ -1829,7 +1975,7 @@ class Ui_MainWindow(object):
         self.ai_label_1.setMinimumSize(QtCore.QSize(0, 27))
         self.ai_label_1.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(True)
         font.setUnderline(True)
@@ -1844,19 +1990,32 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.ai_aircraft_rl1.sizePolicy().hasHeightForWidth())
         self.ai_aircraft_rl1.setSizePolicy(sizePolicy)
-        self.ai_aircraft_rl1.setMinimumSize(QtCore.QSize(200, 27))
-        self.ai_aircraft_rl1.setMaximumSize(QtCore.QSize(200, 27))
+        self.ai_aircraft_rl1.setMinimumSize(QtCore.QSize(220, 27))
+        self.ai_aircraft_rl1.setMaximumSize(QtCore.QSize(220, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.ai_aircraft_rl1.setFont(font)
         self.ai_aircraft_rl1.setStyleSheet("QComboBox {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QComboBox:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -1879,20 +2038,20 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png);\n"
+"    image: url(icons/arrow_down.png); \n"
 "    width: 18px;\n"
-"    height: 18px;\n"
+"    height: 18px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
-"    top: 1px;\n"
+"    top: 1px; \n"
 "    left: 1px;\n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    background-color: rgb(240,240,240);\n"
+"    selection-background-color: transparent;\n"
 "    selection-color: blue;\n"
-"   padding: 1px 4px 1px 1px 1px\n"
+"    border: 0px, solid black;\n"
 "}")
         self.ai_aircraft_rl1.setObjectName("ai_aircraft_rl1")
         self.ai_aircraft_rl1.addItem("")
@@ -1918,22 +2077,70 @@ class Ui_MainWindow(object):
         self.ai_aircraft_rl1.addItem("")
         self.ai_aircraft_rl1.addItem("")
         self.horizontalLayout_45.addWidget(self.ai_aircraft_rl1)
+        self.plusButton_10 = QtWidgets.QToolButton(self.tabWidgetPage4)
+        self.plusButton_10.setMinimumSize(QtCore.QSize(27, 27))
+        self.plusButton_10.setMaximumSize(QtCore.QSize(27, 27))
+        self.plusButton_10.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
+        self.plusButton_10.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("icons/plus_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.plusButton_10.setIcon(icon2)
+        self.plusButton_10.setIconSize(QtCore.QSize(27, 27))
+        self.plusButton_10.setAutoRaise(False)
+        self.plusButton_10.setObjectName("plusButton_10")
+        self.horizontalLayout_45.addWidget(self.plusButton_10)
+        spacerItem28 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_45.addItem(spacerItem28)
         self.infoButton_9 = QtWidgets.QToolButton(self.tabWidgetPage4)
         self.infoButton_9.setMinimumSize(QtCore.QSize(27, 27))
         self.infoButton_9.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_9.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_9.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_9.setText("")
         self.infoButton_9.setIcon(icon1)
         self.infoButton_9.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_9.setAutoRaise(True)
+        self.infoButton_9.setAutoRaise(False)
         self.infoButton_9.setObjectName("infoButton_9")
         self.horizontalLayout_45.addWidget(self.infoButton_9)
-        spacerItem28 = QtWidgets.QSpacerItem(60, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_45.addItem(spacerItem28)
+        spacerItem29 = QtWidgets.QSpacerItem(60, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_45.addItem(spacerItem29)
         self.verticalLayout_17.addLayout(self.horizontalLayout_45)
         self.gridLayout_10 = QtWidgets.QGridLayout()
         self.gridLayout_10.setSizeConstraint(QtWidgets.QLayout.SetFixedSize)
@@ -1943,7 +2150,7 @@ class Ui_MainWindow(object):
         self.ai_manufacturer_lb.setMinimumSize(QtCore.QSize(0, 0))
         self.ai_manufacturer_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -1956,7 +2163,7 @@ class Ui_MainWindow(object):
         self.ai_label_7.setMinimumSize(QtCore.QSize(270, 35))
         self.ai_label_7.setMaximumSize(QtCore.QSize(16777215, 35))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(True)
         font.setItalic(True)
@@ -1972,7 +2179,7 @@ class Ui_MainWindow(object):
         self.ai_type_lb.setMinimumSize(QtCore.QSize(0, 0))
         self.ai_type_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -1985,7 +2192,7 @@ class Ui_MainWindow(object):
         self.ai_label_8.setMinimumSize(QtCore.QSize(270, 35))
         self.ai_label_8.setMaximumSize(QtCore.QSize(16777215, 35))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(True)
         font.setItalic(True)
@@ -2001,7 +2208,7 @@ class Ui_MainWindow(object):
         self.ai_operator_lb.setMinimumSize(QtCore.QSize(0, 0))
         self.ai_operator_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -2014,7 +2221,7 @@ class Ui_MainWindow(object):
         self.ai_label_9.setMinimumSize(QtCore.QSize(270, 45))
         self.ai_label_9.setMaximumSize(QtCore.QSize(16777215, 45))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(True)
         font.setItalic(True)
@@ -2030,7 +2237,7 @@ class Ui_MainWindow(object):
         self.ai_country_lb.setMinimumSize(QtCore.QSize(0, 0))
         self.ai_country_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -2043,7 +2250,7 @@ class Ui_MainWindow(object):
         self.ai_label_10.setMinimumSize(QtCore.QSize(270, 35))
         self.ai_label_10.setMaximumSize(QtCore.QSize(16777215, 35))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(True)
         font.setItalic(True)
@@ -2059,7 +2266,7 @@ class Ui_MainWindow(object):
         self.ai_number_lb.setMinimumSize(QtCore.QSize(0, 0))
         self.ai_number_lb.setMaximumSize(QtCore.QSize(100, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -2073,7 +2280,7 @@ class Ui_MainWindow(object):
         self.ai_label_11.setMinimumSize(QtCore.QSize(270, 35))
         self.ai_label_11.setMaximumSize(QtCore.QSize(16777215, 35))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(True)
         font.setItalic(True)
@@ -2101,8 +2308,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_27.addWidget(self.ai_image_bx)
         self.horizontalLayout_44 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_44.setObjectName("horizontalLayout_44")
-        spacerItem29 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_44.addItem(spacerItem29)
+        spacerItem30 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_44.addItem(spacerItem30)
         self.ai_label_21 = QtWidgets.QLabel(self.tabWidgetPage4)
         self.ai_label_21.setMinimumSize(QtCore.QSize(17, 17))
         self.ai_label_21.setMaximumSize(QtCore.QSize(17, 17))
@@ -2115,7 +2322,7 @@ class Ui_MainWindow(object):
         self.ai_label_12.setMinimumSize(QtCore.QSize(370, 15))
         self.ai_label_12.setMaximumSize(QtCore.QSize(370, 15))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(8)
         font.setBold(False)
         font.setWeight(50)
@@ -2127,7 +2334,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout_44.addWidget(self.ai_label_12)
         self.verticalLayout_27.addLayout(self.horizontalLayout_44)
         self.horizontalLayout_6.addLayout(self.verticalLayout_27)
-        self.verticalLayout_20.addLayout(self.horizontalLayout_6)
+        self.verticalLayout_22.addLayout(self.horizontalLayout_6)
+        self.verticalLayout_21 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_21.setObjectName("verticalLayout_21")
+        self.verticalLayout_22.addLayout(self.verticalLayout_21)
         self.ai_line_1 = QtWidgets.QFrame(self.tabWidgetPage4)
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -2269,7 +2479,7 @@ class Ui_MainWindow(object):
         self.ai_line_1.setFrameShape(QtWidgets.QFrame.HLine)
         self.ai_line_1.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.ai_line_1.setObjectName("ai_line_1")
-        self.verticalLayout_20.addWidget(self.ai_line_1)
+        self.verticalLayout_22.addWidget(self.ai_line_1)
         self.verticalLayout_36 = QtWidgets.QVBoxLayout()
         self.verticalLayout_36.setObjectName("verticalLayout_36")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
@@ -2278,7 +2488,7 @@ class Ui_MainWindow(object):
         self.ai_label_13.setMinimumSize(QtCore.QSize(0, 27))
         self.ai_label_13.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(True)
         font.setUnderline(True)
@@ -2293,19 +2503,32 @@ class Ui_MainWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.ai_instrument_rl1.sizePolicy().hasHeightForWidth())
         self.ai_instrument_rl1.setSizePolicy(sizePolicy)
-        self.ai_instrument_rl1.setMinimumSize(QtCore.QSize(280, 27))
-        self.ai_instrument_rl1.setMaximumSize(QtCore.QSize(280, 27))
+        self.ai_instrument_rl1.setMinimumSize(QtCore.QSize(320, 27))
+        self.ai_instrument_rl1.setMaximumSize(QtCore.QSize(320, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.ai_instrument_rl1.setFont(font)
         self.ai_instrument_rl1.setStyleSheet("QComboBox {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QComboBox:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -2328,20 +2551,20 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png);\n"
+"    image: url(icons/arrow_down.png); \n"
 "    width: 18px;\n"
-"    height: 18px;\n"
+"    height: 18px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
-"    top: 1px;\n"
+"    top: 1px; \n"
 "    left: 1px;\n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    background-color: rgb(240,240,240);\n"
+"    selection-background-color: transparent;\n"
 "    selection-color: blue;\n"
-"   padding: 1px 4px 1px 1px 1px\n"
+"    border: 0px, solid black;\n"
 "}")
         self.ai_instrument_rl1.setFrame(False)
         self.ai_instrument_rl1.setObjectName("ai_instrument_rl1")
@@ -2349,37 +2572,65 @@ class Ui_MainWindow(object):
         self.plusButton_4 = QtWidgets.QToolButton(self.tabWidgetPage4)
         self.plusButton_4.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_4.setMaximumSize(QtCore.QSize(27, 27))
-        self.plusButton_4.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.plusButton_4.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.plusButton_4.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("icons/plus_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.plusButton_4.setIcon(icon2)
         self.plusButton_4.setIconSize(QtCore.QSize(27, 27))
-        self.plusButton_4.setAutoRaise(True)
+        self.plusButton_4.setAutoRaise(False)
         self.plusButton_4.setObjectName("plusButton_4")
         self.horizontalLayout_3.addWidget(self.plusButton_4)
-        spacerItem30 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem30)
+        spacerItem31 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem31)
         self.infoButton_10 = QtWidgets.QToolButton(self.tabWidgetPage4)
         self.infoButton_10.setMinimumSize(QtCore.QSize(27, 27))
         self.infoButton_10.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_10.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_10.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_10.setText("")
         self.infoButton_10.setIcon(icon1)
         self.infoButton_10.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_10.setAutoRaise(True)
+        self.infoButton_10.setAutoRaise(False)
         self.infoButton_10.setObjectName("infoButton_10")
         self.horizontalLayout_3.addWidget(self.infoButton_10)
-        spacerItem31 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem31)
+        spacerItem32 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem32)
         self.verticalLayout_36.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_58 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_58.setObjectName("horizontalLayout_58")
@@ -2387,12 +2638,15 @@ class Ui_MainWindow(object):
         self.verticalLayout_31 = QtWidgets.QVBoxLayout()
         self.verticalLayout_31.setObjectName("verticalLayout_31")
         self.verticalLayout_36.addLayout(self.verticalLayout_31)
-        self.verticalLayout_20.addLayout(self.verticalLayout_36)
-        self.gridLayout_22.addLayout(self.verticalLayout_20, 1, 1, 3, 3)
-        spacerItem32 = QtWidgets.QSpacerItem(121, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_22.addItem(spacerItem32, 2, 4, 1, 1)
+        self.verticalLayout_22.addLayout(self.verticalLayout_36)
+        self.gridLayout_22.addLayout(self.verticalLayout_22, 1, 1, 2, 2)
+        spacerItem33 = QtWidgets.QSpacerItem(121, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_22.addItem(spacerItem33, 2, 3, 1, 1)
+        spacerItem34 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_22.addItem(spacerItem34, 3, 2, 1, 1)
         self.delButton_9 = QtWidgets.QToolButton(self.tabWidgetPage4)
         self.delButton_9.setEnabled(False)
+        self.delButton_9.setGeometry(QtCore.QRect(925, 397, 27, 27))
         self.delButton_9.setMinimumSize(QtCore.QSize(27, 27))
         self.delButton_9.setMaximumSize(QtCore.QSize(27, 27))
         self.delButton_9.setText("")
@@ -2402,17 +2656,14 @@ class Ui_MainWindow(object):
         self.delButton_9.setIconSize(QtCore.QSize(27, 27))
         self.delButton_9.setAutoRaise(True)
         self.delButton_9.setObjectName("delButton_9")
-        self.gridLayout_22.addWidget(self.delButton_9, 3, 3, 1, 1)
-        spacerItem33 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_22.addItem(spacerItem33, 4, 2, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage4, "")
         self.tabWidgetPage5 = QtWidgets.QWidget()
         self.tabWidgetPage5.setObjectName("tabWidgetPage5")
         self.gridLayout_11 = QtWidgets.QGridLayout(self.tabWidgetPage5)
         self.gridLayout_11.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_11.setObjectName("gridLayout_11")
-        spacerItem34 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_11.addItem(spacerItem34, 0, 1, 1, 1)
+        spacerItem35 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_11.addItem(spacerItem35, 0, 1, 1, 1)
         self.verticalLayout_24 = QtWidgets.QVBoxLayout()
         self.verticalLayout_24.setObjectName("verticalLayout_24")
         self.horizontalLayout_40 = QtWidgets.QHBoxLayout()
@@ -2421,7 +2672,7 @@ class Ui_MainWindow(object):
         self.gl_location_lb.setMinimumSize(QtCore.QSize(0, 27))
         self.gl_location_lb.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(True)
         font.setUnderline(True)
@@ -2431,23 +2682,36 @@ class Ui_MainWindow(object):
         self.gl_location_lb.setWordWrap(True)
         self.gl_location_lb.setObjectName("gl_location_lb")
         self.horizontalLayout_40.addWidget(self.gl_location_lb)
-        spacerItem35 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_40.addItem(spacerItem35)
+        spacerItem36 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_40.addItem(spacerItem36)
         self.gl_category_rl1 = QtWidgets.QComboBox(self.tabWidgetPage5)
-        self.gl_category_rl1.setMinimumSize(QtCore.QSize(140, 27))
-        self.gl_category_rl1.setMaximumSize(QtCore.QSize(16777215, 27))
+        self.gl_category_rl1.setMinimumSize(QtCore.QSize(160, 27))
+        self.gl_category_rl1.setMaximumSize(QtCore.QSize(160, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setKerning(True)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.gl_category_rl1.setFont(font)
         self.gl_category_rl1.setStyleSheet("QComboBox {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QComboBox:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -2470,20 +2734,20 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png);\n"
+"    image: url(icons/arrow_down.png); \n"
 "    width: 18px;\n"
-"    height: 18px;\n"
+"    height: 18px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
-"    top: 1px;\n"
+"    top: 1px; \n"
 "    left: 1px;\n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    background-color: rgb(240,240,240);\n"
+"    selection-background-color: transparent;\n"
 "    selection-color: blue;\n"
-"   padding: 1px 4px 1px 1px 1px\n"
+"    border: 0px, solid black;\n"
 "}")
         self.gl_category_rl1.setObjectName("gl_category_rl1")
         self.gl_category_rl1.addItem("")
@@ -2509,235 +2773,30 @@ class Ui_MainWindow(object):
         self.gl_details_rl2.setMinimumSize(QtCore.QSize(140, 27))
         self.gl_details_rl2.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setKerning(True)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.gl_details_rl2.setFont(font)
-        self.gl_details_rl2.setStyleSheet("QComboBox {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}\n"
+        self.gl_details_rl2.setStyleSheet("QComboBox {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
 "\n"
-"QComboBox:disabled {background-color:  rgb(200,200,200);}\n"
+"QComboBox:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
+"}\n"
 "\n"
-"QComboBox::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
-"\n"
-"QComboBox::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
-"\n"
-"QComboBox::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}\n"
-"\n"
-"QComboBox::down-arrow:on {top: 1px; left: 1px;}\n"
-"\n"
-"QComboBox QAbstractItemView {background-color: rgb(240,240,240); selection-color: blue; padding: 4px 1px 4px 1px;}")
-        self.gl_details_rl2.setMaxVisibleItems(20)
-        self.gl_details_rl2.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToMinimumContentsLength)
-        self.gl_details_rl2.setMinimumContentsLength(20)
-        self.gl_details_rl2.setFrame(False)
-        self.gl_details_rl2.setModelColumn(0)
-        self.gl_details_rl2.setObjectName("gl_details_rl2")
-        self.horizontalLayout_60.addWidget(self.gl_details_rl2)
-        self.horizontalLayout_40.addLayout(self.horizontalLayout_60)
-        self.infoButton_11 = QtWidgets.QToolButton(self.tabWidgetPage5)
-        self.infoButton_11.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_11.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
-"\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
-"\n"
-"QToolButton:flat {border: none;}")
-        self.infoButton_11.setText("")
-        self.infoButton_11.setIcon(icon1)
-        self.infoButton_11.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_11.setAutoRaise(True)
-        self.infoButton_11.setObjectName("infoButton_11")
-        self.horizontalLayout_40.addWidget(self.infoButton_11)
-        spacerItem36 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_40.addItem(spacerItem36)
-        self.verticalLayout_24.addLayout(self.horizontalLayout_40)
-        spacerItem37 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_24.addItem(spacerItem37)
-        self.horizontalLayout_24 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_24.setObjectName("horizontalLayout_24")
-        self.gl_label_1 = QtWidgets.QLabel(self.tabWidgetPage5)
-        self.gl_label_1.setMinimumSize(QtCore.QSize(210, 27))
-        self.gl_label_1.setMaximumSize(QtCore.QSize(16777215, 54))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setUnderline(True)
-        font.setWeight(75)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.gl_label_1.setFont(font)
-        self.gl_label_1.setWordWrap(True)
-        self.gl_label_1.setObjectName("gl_label_1")
-        self.horizontalLayout_24.addWidget(self.gl_label_1)
-        self.gridLayout_8 = QtWidgets.QGridLayout()
-        self.gridLayout_8.setObjectName("gridLayout_8")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem38 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem38)
-        self.gl_northBound_ln = QtWidgets.QLineEdit(self.tabWidgetPage5)
-        self.gl_northBound_ln.setMinimumSize(QtCore.QSize(60, 27))
-        self.gl_northBound_ln.setMaximumSize(QtCore.QSize(60, 27))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.gl_northBound_ln.setFont(font)
-        self.gl_northBound_ln.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.gl_northBound_ln.setStyleSheet("QLineEdit {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
-"}")
-        self.gl_northBound_ln.setFrame(False)
-        self.gl_northBound_ln.setAlignment(QtCore.Qt.AlignCenter)
-        self.gl_northBound_ln.setObjectName("gl_northBound_ln")
-        self.horizontalLayout_2.addWidget(self.gl_northBound_ln)
-        spacerItem39 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem39)
-        self.gridLayout_8.addLayout(self.horizontalLayout_2, 0, 1, 1, 1)
-        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_7.setObjectName("verticalLayout_7")
-        spacerItem40 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_7.addItem(spacerItem40)
-        self.gl_westBound_ln = QtWidgets.QLineEdit(self.tabWidgetPage5)
-        self.gl_westBound_ln.setMinimumSize(QtCore.QSize(60, 27))
-        self.gl_westBound_ln.setMaximumSize(QtCore.QSize(60, 27))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.gl_westBound_ln.setFont(font)
-        self.gl_westBound_ln.setStyleSheet("QLineEdit {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
-"}")
-        self.gl_westBound_ln.setFrame(False)
-        self.gl_westBound_ln.setAlignment(QtCore.Qt.AlignCenter)
-        self.gl_westBound_ln.setObjectName("gl_westBound_ln")
-        self.verticalLayout_7.addWidget(self.gl_westBound_ln)
-        spacerItem41 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_7.addItem(spacerItem41)
-        self.gridLayout_8.addLayout(self.verticalLayout_7, 1, 0, 1, 1)
-        self.label_6 = QtWidgets.QLabel(self.tabWidgetPage5)
-        self.label_6.setMinimumSize(QtCore.QSize(250, 250))
-        self.label_6.setMaximumSize(QtCore.QSize(250, 250))
-        self.label_6.setText("")
-        self.label_6.setPixmap(QtGui.QPixmap("icons/EMC_globe_terrestre.png"))
-        self.label_6.setScaledContents(True)
-        self.label_6.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_6.setObjectName("label_6")
-        self.gridLayout_8.addWidget(self.label_6, 1, 1, 1, 1)
-        self.verticalLayout_28 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_28.setObjectName("verticalLayout_28")
-        spacerItem42 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_28.addItem(spacerItem42)
-        self.gl_eastBound_ln = QtWidgets.QLineEdit(self.tabWidgetPage5)
-        self.gl_eastBound_ln.setMinimumSize(QtCore.QSize(60, 27))
-        self.gl_eastBound_ln.setMaximumSize(QtCore.QSize(60, 27))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.gl_eastBound_ln.setFont(font)
-        self.gl_eastBound_ln.setStyleSheet("QLineEdit {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
-"}")
-        self.gl_eastBound_ln.setFrame(False)
-        self.gl_eastBound_ln.setAlignment(QtCore.Qt.AlignCenter)
-        self.gl_eastBound_ln.setObjectName("gl_eastBound_ln")
-        self.verticalLayout_28.addWidget(self.gl_eastBound_ln)
-        spacerItem43 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_28.addItem(spacerItem43)
-        self.gridLayout_8.addLayout(self.verticalLayout_28, 1, 2, 1, 1)
-        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        spacerItem44 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem44)
-        self.gl_southBound_ln = QtWidgets.QLineEdit(self.tabWidgetPage5)
-        self.gl_southBound_ln.setMinimumSize(QtCore.QSize(60, 27))
-        self.gl_southBound_ln.setMaximumSize(QtCore.QSize(60, 27))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.gl_southBound_ln.setFont(font)
-        self.gl_southBound_ln.setStyleSheet("QLineEdit {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
-"}")
-        self.gl_southBound_ln.setFrame(False)
-        self.gl_southBound_ln.setAlignment(QtCore.Qt.AlignCenter)
-        self.gl_southBound_ln.setObjectName("gl_southBound_ln")
-        self.horizontalLayout_5.addWidget(self.gl_southBound_ln)
-        spacerItem45 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem45)
-        self.gridLayout_8.addLayout(self.horizontalLayout_5, 2, 1, 1, 1)
-        self.horizontalLayout_24.addLayout(self.gridLayout_8)
-        self.infoButton_12 = QtWidgets.QToolButton(self.tabWidgetPage5)
-        self.infoButton_12.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_12.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
-"\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
-"\n"
-"QToolButton:flat {border: none;}")
-        self.infoButton_12.setText("")
-        self.infoButton_12.setIcon(icon1)
-        self.infoButton_12.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_12.setAutoRaise(True)
-        self.infoButton_12.setObjectName("infoButton_12")
-        self.horizontalLayout_24.addWidget(self.infoButton_12)
-        spacerItem46 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_24.addItem(spacerItem46)
-        self.verticalLayout_24.addLayout(self.horizontalLayout_24)
-        spacerItem47 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_24.addItem(spacerItem47)
-        self.horizontalLayout_41 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_41.setObjectName("horizontalLayout_41")
-        self.gl_resolution_lb = QtWidgets.QLabel(self.tabWidgetPage5)
-        self.gl_resolution_lb.setMinimumSize(QtCore.QSize(140, 27))
-        self.gl_resolution_lb.setMaximumSize(QtCore.QSize(16777215, 27))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(True)
-        font.setUnderline(True)
-        font.setWeight(75)
-        font.setKerning(True)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.gl_resolution_lb.setFont(font)
-        self.gl_resolution_lb.setObjectName("gl_resolution_lb")
-        self.horizontalLayout_41.addWidget(self.gl_resolution_lb)
-        spacerItem48 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_41.addItem(spacerItem48)
-        self.gl_resolution_rl1 = QtWidgets.QComboBox(self.tabWidgetPage5)
-        self.gl_resolution_rl1.setMinimumSize(QtCore.QSize(100, 27))
-        self.gl_resolution_rl1.setMaximumSize(QtCore.QSize(100, 27))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.gl_resolution_rl1.setFont(font)
-        self.gl_resolution_rl1.setStyleSheet("QComboBox {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -2760,28 +2819,317 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png);\n"
+"    image: url(icons/arrow_down.png); \n"
 "    width: 18px;\n"
-"    height: 18px;\n"
+"    height: 18px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
-"    top: 1px;\n"
+"    top: 1px; \n"
 "    left: 1px;\n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    background-color: rgb(240,240,240);\n"
+"    selection-background-color: transparent;\n"
 "    selection-color: blue;\n"
-"   padding: 1px 4px 1px 1px 1px\n"
+"    border: 0px, solid black;\n"
+"}")
+        self.gl_details_rl2.setMaxVisibleItems(20)
+        self.gl_details_rl2.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToMinimumContentsLength)
+        self.gl_details_rl2.setMinimumContentsLength(20)
+        self.gl_details_rl2.setFrame(False)
+        self.gl_details_rl2.setModelColumn(0)
+        self.gl_details_rl2.setObjectName("gl_details_rl2")
+        self.horizontalLayout_60.addWidget(self.gl_details_rl2)
+        self.horizontalLayout_40.addLayout(self.horizontalLayout_60)
+        self.infoButton_11 = QtWidgets.QToolButton(self.tabWidgetPage5)
+        self.infoButton_11.setMaximumSize(QtCore.QSize(27, 27))
+        self.infoButton_11.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
+        self.infoButton_11.setText("")
+        self.infoButton_11.setIcon(icon1)
+        self.infoButton_11.setIconSize(QtCore.QSize(27, 27))
+        self.infoButton_11.setAutoRaise(False)
+        self.infoButton_11.setObjectName("infoButton_11")
+        self.horizontalLayout_40.addWidget(self.infoButton_11)
+        spacerItem37 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_40.addItem(spacerItem37)
+        self.verticalLayout_24.addLayout(self.horizontalLayout_40)
+        spacerItem38 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_24.addItem(spacerItem38)
+        self.horizontalLayout_24 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_24.setObjectName("horizontalLayout_24")
+        self.gl_label_1 = QtWidgets.QLabel(self.tabWidgetPage5)
+        self.gl_label_1.setMinimumSize(QtCore.QSize(210, 27))
+        self.gl_label_1.setMaximumSize(QtCore.QSize(16777215, 54))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setUnderline(True)
+        font.setWeight(75)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.gl_label_1.setFont(font)
+        self.gl_label_1.setWordWrap(True)
+        self.gl_label_1.setObjectName("gl_label_1")
+        self.horizontalLayout_24.addWidget(self.gl_label_1)
+        self.gridLayout_8 = QtWidgets.QGridLayout()
+        self.gridLayout_8.setObjectName("gridLayout_8")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        spacerItem39 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem39)
+        self.gl_northBound_ln = QtWidgets.QLineEdit(self.tabWidgetPage5)
+        self.gl_northBound_ln.setMinimumSize(QtCore.QSize(60, 27))
+        self.gl_northBound_ln.setMaximumSize(QtCore.QSize(60, 27))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.gl_northBound_ln.setFont(font)
+        self.gl_northBound_ln.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.gl_northBound_ln.setStyleSheet("QLineEdit {\n"
+"    border-radius: 3px;\n"
+"   padding: 1px 4px 1px 4px;\n"
+"    background-color:  rgb(240, 240, 240);\n"
+"}")
+        self.gl_northBound_ln.setFrame(False)
+        self.gl_northBound_ln.setAlignment(QtCore.Qt.AlignCenter)
+        self.gl_northBound_ln.setObjectName("gl_northBound_ln")
+        self.horizontalLayout_2.addWidget(self.gl_northBound_ln)
+        spacerItem40 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem40)
+        self.gridLayout_8.addLayout(self.horizontalLayout_2, 0, 1, 1, 1)
+        self.verticalLayout_7 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_7.setObjectName("verticalLayout_7")
+        spacerItem41 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_7.addItem(spacerItem41)
+        self.gl_westBound_ln = QtWidgets.QLineEdit(self.tabWidgetPage5)
+        self.gl_westBound_ln.setMinimumSize(QtCore.QSize(60, 27))
+        self.gl_westBound_ln.setMaximumSize(QtCore.QSize(60, 27))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.gl_westBound_ln.setFont(font)
+        self.gl_westBound_ln.setStyleSheet("QLineEdit {\n"
+"    border-radius: 3px;\n"
+"   padding: 1px 4px 1px 4px;\n"
+"    background-color:  rgb(240, 240, 240);\n"
+"}")
+        self.gl_westBound_ln.setFrame(False)
+        self.gl_westBound_ln.setAlignment(QtCore.Qt.AlignCenter)
+        self.gl_westBound_ln.setObjectName("gl_westBound_ln")
+        self.verticalLayout_7.addWidget(self.gl_westBound_ln)
+        spacerItem42 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_7.addItem(spacerItem42)
+        self.gridLayout_8.addLayout(self.verticalLayout_7, 1, 0, 1, 1)
+        self.label_6 = QtWidgets.QLabel(self.tabWidgetPage5)
+        self.label_6.setMinimumSize(QtCore.QSize(250, 250))
+        self.label_6.setMaximumSize(QtCore.QSize(250, 250))
+        self.label_6.setText("")
+        self.label_6.setPixmap(QtGui.QPixmap("icons/EMC_globe_terrestre.png"))
+        self.label_6.setScaledContents(True)
+        self.label_6.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_6.setObjectName("label_6")
+        self.gridLayout_8.addWidget(self.label_6, 1, 1, 1, 1)
+        self.verticalLayout_28 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_28.setObjectName("verticalLayout_28")
+        spacerItem43 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_28.addItem(spacerItem43)
+        self.gl_eastBound_ln = QtWidgets.QLineEdit(self.tabWidgetPage5)
+        self.gl_eastBound_ln.setMinimumSize(QtCore.QSize(60, 27))
+        self.gl_eastBound_ln.setMaximumSize(QtCore.QSize(60, 27))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.gl_eastBound_ln.setFont(font)
+        self.gl_eastBound_ln.setStyleSheet("QLineEdit {\n"
+"    border-radius: 3px;\n"
+"   padding: 1px 4px 1px 4px;\n"
+"    background-color:  rgb(240, 240, 240);\n"
+"}")
+        self.gl_eastBound_ln.setFrame(False)
+        self.gl_eastBound_ln.setAlignment(QtCore.Qt.AlignCenter)
+        self.gl_eastBound_ln.setObjectName("gl_eastBound_ln")
+        self.verticalLayout_28.addWidget(self.gl_eastBound_ln)
+        spacerItem44 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_28.addItem(spacerItem44)
+        self.gridLayout_8.addLayout(self.verticalLayout_28, 1, 2, 1, 1)
+        self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_5.setObjectName("horizontalLayout_5")
+        spacerItem45 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem45)
+        self.gl_southBound_ln = QtWidgets.QLineEdit(self.tabWidgetPage5)
+        self.gl_southBound_ln.setMinimumSize(QtCore.QSize(60, 27))
+        self.gl_southBound_ln.setMaximumSize(QtCore.QSize(60, 27))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.gl_southBound_ln.setFont(font)
+        self.gl_southBound_ln.setStyleSheet("QLineEdit {\n"
+"    border-radius: 3px;\n"
+"   padding: 1px 4px 1px 4px;\n"
+"    background-color:  rgb(240, 240, 240);\n"
+"}")
+        self.gl_southBound_ln.setFrame(False)
+        self.gl_southBound_ln.setAlignment(QtCore.Qt.AlignCenter)
+        self.gl_southBound_ln.setObjectName("gl_southBound_ln")
+        self.horizontalLayout_5.addWidget(self.gl_southBound_ln)
+        spacerItem46 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem46)
+        self.gridLayout_8.addLayout(self.horizontalLayout_5, 2, 1, 1, 1)
+        self.horizontalLayout_24.addLayout(self.gridLayout_8)
+        self.infoButton_12 = QtWidgets.QToolButton(self.tabWidgetPage5)
+        self.infoButton_12.setMaximumSize(QtCore.QSize(27, 27))
+        self.infoButton_12.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
+        self.infoButton_12.setText("")
+        self.infoButton_12.setIcon(icon1)
+        self.infoButton_12.setIconSize(QtCore.QSize(27, 27))
+        self.infoButton_12.setAutoRaise(False)
+        self.infoButton_12.setObjectName("infoButton_12")
+        self.horizontalLayout_24.addWidget(self.infoButton_12)
+        spacerItem47 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_24.addItem(spacerItem47)
+        self.verticalLayout_24.addLayout(self.horizontalLayout_24)
+        spacerItem48 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_24.addItem(spacerItem48)
+        self.horizontalLayout_41 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_41.setObjectName("horizontalLayout_41")
+        self.gl_resolution_lb = QtWidgets.QLabel(self.tabWidgetPage5)
+        self.gl_resolution_lb.setMinimumSize(QtCore.QSize(140, 27))
+        self.gl_resolution_lb.setMaximumSize(QtCore.QSize(16777215, 27))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setBold(True)
+        font.setUnderline(True)
+        font.setWeight(75)
+        font.setKerning(True)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.gl_resolution_lb.setFont(font)
+        self.gl_resolution_lb.setObjectName("gl_resolution_lb")
+        self.horizontalLayout_41.addWidget(self.gl_resolution_lb)
+        spacerItem49 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_41.addItem(spacerItem49)
+        self.gl_resolution_rl1 = QtWidgets.QComboBox(self.tabWidgetPage5)
+        self.gl_resolution_rl1.setMinimumSize(QtCore.QSize(110, 27))
+        self.gl_resolution_rl1.setMaximumSize(QtCore.QSize(110, 27))
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.gl_resolution_rl1.setFont(font)
+        self.gl_resolution_rl1.setStyleSheet("QComboBox {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QComboBox:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down:hover {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow {\n"
+"    image: url(icons/arrow_down.png); \n"
+"    width: 18px;\n"
+"    height: 18px\n"
+"}\n"
+"\n"
+"QComboBox::down-arrow:on {\n"
+"    top: 1px; \n"
+"    left: 1px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    selection-background-color: transparent;\n"
+"    selection-color: blue;\n"
+"    border: 0px, solid black;\n"
 "}")
         self.gl_resolution_rl1.setFrame(False)
         self.gl_resolution_rl1.setObjectName("gl_resolution_rl1")
         self.gl_resolution_rl1.addItem("")
         self.gl_resolution_rl1.addItem("")
         self.horizontalLayout_41.addWidget(self.gl_resolution_rl1)
-        spacerItem49 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_41.addItem(spacerItem49)
+        spacerItem50 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_41.addItem(spacerItem50)
         self.horizontalLayout_27 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_27.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
         self.horizontalLayout_27.setObjectName("horizontalLayout_27")
@@ -2789,8 +3137,8 @@ class Ui_MainWindow(object):
         self.gl_resolution_ln.setMinimumSize(QtCore.QSize(200, 27))
         self.gl_resolution_ln.setMaximumSize(QtCore.QSize(27, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
@@ -2806,38 +3154,53 @@ class Ui_MainWindow(object):
         self.horizontalLayout_41.addLayout(self.horizontalLayout_27)
         self.infoButton_13 = QtWidgets.QToolButton(self.tabWidgetPage5)
         self.infoButton_13.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_13.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_13.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_13.setText("")
         self.infoButton_13.setIcon(icon1)
         self.infoButton_13.setIconSize(QtCore.QSize(27, 27))
         self.infoButton_13.setPopupMode(QtWidgets.QToolButton.InstantPopup)
-        self.infoButton_13.setAutoRaise(True)
+        self.infoButton_13.setAutoRaise(False)
         self.infoButton_13.setObjectName("infoButton_13")
         self.horizontalLayout_41.addWidget(self.infoButton_13)
-        spacerItem50 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_41.addItem(spacerItem50)
+        spacerItem51 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_41.addItem(spacerItem51)
         self.verticalLayout_24.addLayout(self.horizontalLayout_41)
         self.gridLayout_11.addLayout(self.verticalLayout_24, 1, 1, 2, 1)
-        spacerItem51 = QtWidgets.QSpacerItem(179, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_11.addItem(spacerItem51, 1, 2, 1, 1)
-        spacerItem52 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_11.addItem(spacerItem52, 2, 0, 1, 1)
-        spacerItem53 = QtWidgets.QSpacerItem(20, 32, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_11.addItem(spacerItem53, 3, 1, 1, 1)
+        spacerItem52 = QtWidgets.QSpacerItem(179, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_11.addItem(spacerItem52, 1, 2, 1, 1)
+        spacerItem53 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_11.addItem(spacerItem53, 2, 0, 1, 1)
+        spacerItem54 = QtWidgets.QSpacerItem(20, 32, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_11.addItem(spacerItem54, 3, 1, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage5, "")
         self.tabWidgetPage6 = QtWidgets.QWidget()
         self.tabWidgetPage6.setObjectName("tabWidgetPage6")
         self.gridLayout_21 = QtWidgets.QGridLayout(self.tabWidgetPage6)
         self.gridLayout_21.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_21.setObjectName("gridLayout_21")
-        spacerItem54 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_21.addItem(spacerItem54, 0, 1, 1, 1)
-        spacerItem55 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_21.addItem(spacerItem55, 1, 0, 1, 1)
+        spacerItem55 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_21.addItem(spacerItem55, 0, 1, 1, 1)
+        spacerItem56 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_21.addItem(spacerItem56, 1, 0, 1, 1)
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
@@ -2845,87 +3208,60 @@ class Ui_MainWindow(object):
         self.gridLayout_3 = QtWidgets.QGridLayout()
         self.gridLayout_3.setVerticalSpacing(29)
         self.gridLayout_3.setObjectName("gridLayout_3")
-        self.tr_datePublication_lb = QtWidgets.QLabel(self.tabWidgetPage6)
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.tr_datePublication_lb.setFont(font)
-        self.tr_datePublication_lb.setObjectName("tr_datePublication_lb")
-        self.gridLayout_3.addWidget(self.tr_datePublication_lb, 0, 0, 1, 1)
-        self.tr_datePublication_do1 = QtWidgets.QDateEdit(self.tabWidgetPage6)
-        self.tr_datePublication_do1.setMinimumSize(QtCore.QSize(130, 27))
-        self.tr_datePublication_do1.setMaximumSize(QtCore.QSize(130, 27))
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.tr_datePublication_do1.setFont(font)
-        self.tr_datePublication_do1.setStyleSheet("QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}\n"
-"\n"
-"QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
-"\n"
-"QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
-"\n"
-"QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}\n"
-"\n"
-"QDateEdit::down-arrow:on {top: 1px; left: 1px;}")
-        self.tr_datePublication_do1.setWrapping(False)
-        self.tr_datePublication_do1.setFrame(False)
-        self.tr_datePublication_do1.setAlignment(QtCore.Qt.AlignCenter)
-        self.tr_datePublication_do1.setAccelerated(True)
-        self.tr_datePublication_do1.setCurrentSection(QtWidgets.QDateTimeEdit.YearSection)
-        self.tr_datePublication_do1.setCalendarPopup(True)
-        self.tr_datePublication_do1.setTimeSpec(QtCore.Qt.UTC)
-        self.tr_datePublication_do1.setDate(QtCore.QDate(2014, 10, 7))
-        self.tr_datePublication_do1.setObjectName("tr_datePublication_do1")
-        self.gridLayout_3.addWidget(self.tr_datePublication_do1, 0, 1, 1, 1)
-        self.infoButton_14 = QtWidgets.QToolButton(self.tabWidgetPage6)
-        self.infoButton_14.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_14.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
-"\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
-"\n"
-"QToolButton:flat {border: none;}")
-        self.infoButton_14.setText("")
-        self.infoButton_14.setIcon(icon1)
-        self.infoButton_14.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_14.setAutoRaise(True)
-        self.infoButton_14.setObjectName("infoButton_14")
-        self.gridLayout_3.addWidget(self.infoButton_14, 0, 2, 1, 1)
-        self.tr_dateRevision_lb = QtWidgets.QLabel(self.tabWidgetPage6)
-        font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.tr_dateRevision_lb.setFont(font)
-        self.tr_dateRevision_lb.setObjectName("tr_dateRevision_lb")
-        self.gridLayout_3.addWidget(self.tr_dateRevision_lb, 1, 0, 1, 1)
         self.tr_dateRevision_do2 = QtWidgets.QDateEdit(self.tabWidgetPage6)
         self.tr_dateRevision_do2.setMinimumSize(QtCore.QSize(130, 27))
         self.tr_dateRevision_do2.setMaximumSize(QtCore.QSize(130, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.tr_dateRevision_do2.setFont(font)
-        self.tr_dateRevision_do2.setStyleSheet("QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}\n"
+        self.tr_dateRevision_do2.setStyleSheet("QDateEdit {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
 "\n"
-"QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
+"QDateEdit:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+"}\n"
 "\n"
-"QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
+"QDateEdit::drop-down  {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
 "\n"
-"QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}\n"
+"QDateEdit::drop-down:hover{\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
 "\n"
-"QDateEdit::down-arrow:on {top: 1px; left: 1px;}")
+"QDateEdit::down-arrow {\n"
+"    image: url(icons/arrow_down.png);\n"
+"    width: 18px;\n"
+"    height: 18px;\n"
+"}\n"
+"\n"
+"QDateEdit::down-arrow:on {\n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}")
         self.tr_dateRevision_do2.setFrame(False)
         self.tr_dateRevision_do2.setAlignment(QtCore.Qt.AlignCenter)
         self.tr_dateRevision_do2.setAccelerated(True)
@@ -2934,49 +3270,127 @@ class Ui_MainWindow(object):
         self.tr_dateRevision_do2.setTimeSpec(QtCore.Qt.UTC)
         self.tr_dateRevision_do2.setDate(QtCore.QDate(2014, 10, 7))
         self.tr_dateRevision_do2.setObjectName("tr_dateRevision_do2")
-        self.gridLayout_3.addWidget(self.tr_dateRevision_do2, 1, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.tr_dateRevision_do2, 0, 1, 1, 1)
         self.infoButton_15 = QtWidgets.QToolButton(self.tabWidgetPage6)
         self.infoButton_15.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_15.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_15.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_15.setText("")
         self.infoButton_15.setIcon(icon1)
         self.infoButton_15.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_15.setAutoRaise(True)
+        self.infoButton_15.setAutoRaise(False)
         self.infoButton_15.setObjectName("infoButton_15")
-        self.gridLayout_3.addWidget(self.infoButton_15, 1, 2, 1, 1)
-        self.tr_dateCreation_lb = QtWidgets.QLabel(self.tabWidgetPage6)
+        self.gridLayout_3.addWidget(self.infoButton_15, 0, 2, 1, 1)
+        self.tr_dateRevision_lb = QtWidgets.QLabel(self.tabWidgetPage6)
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.tr_dateCreation_lb.setFont(font)
-        self.tr_dateCreation_lb.setObjectName("tr_dateCreation_lb")
-        self.gridLayout_3.addWidget(self.tr_dateCreation_lb, 2, 0, 1, 1)
+        self.tr_dateRevision_lb.setFont(font)
+        self.tr_dateRevision_lb.setObjectName("tr_dateRevision_lb")
+        self.gridLayout_3.addWidget(self.tr_dateRevision_lb, 0, 0, 1, 1)
+        self.infoButton_16 = QtWidgets.QToolButton(self.tabWidgetPage6)
+        self.infoButton_16.setMaximumSize(QtCore.QSize(27, 27))
+        self.infoButton_16.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
+"\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
+"\n"
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
+        self.infoButton_16.setText("")
+        self.infoButton_16.setIcon(icon1)
+        self.infoButton_16.setIconSize(QtCore.QSize(27, 27))
+        self.infoButton_16.setAutoRaise(False)
+        self.infoButton_16.setObjectName("infoButton_16")
+        self.gridLayout_3.addWidget(self.infoButton_16, 1, 2, 1, 1)
         self.tr_dateCreation_do3 = QtWidgets.QDateEdit(self.tabWidgetPage6)
         self.tr_dateCreation_do3.setMinimumSize(QtCore.QSize(130, 27))
         self.tr_dateCreation_do3.setMaximumSize(QtCore.QSize(130, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.tr_dateCreation_do3.setFont(font)
-        self.tr_dateCreation_do3.setStyleSheet("QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}\n"
+        self.tr_dateCreation_do3.setStyleSheet("QDateEdit {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
 "\n"
-"QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
+"QDateEdit:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+"}\n"
 "\n"
-"QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
+"QDateEdit::drop-down  {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
 "\n"
-"QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}\n"
+"QDateEdit::drop-down:hover{\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
 "\n"
-"QDateEdit::down-arrow:on {top: 1px; left: 1px;}")
+"QDateEdit::down-arrow {\n"
+"    image: url(icons/arrow_down.png);\n"
+"    width: 18px;\n"
+"    height: 18px;\n"
+"}\n"
+"\n"
+"QDateEdit::down-arrow:on {\n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}")
         self.tr_dateCreation_do3.setFrame(False)
         self.tr_dateCreation_do3.setAlignment(QtCore.Qt.AlignCenter)
         self.tr_dateCreation_do3.setAccelerated(True)
@@ -2984,26 +3398,23 @@ class Ui_MainWindow(object):
         self.tr_dateCreation_do3.setCalendarPopup(True)
         self.tr_dateCreation_do3.setDate(QtCore.QDate(2014, 10, 28))
         self.tr_dateCreation_do3.setObjectName("tr_dateCreation_do3")
-        self.gridLayout_3.addWidget(self.tr_dateCreation_do3, 2, 1, 1, 1)
-        self.infoButton_16 = QtWidgets.QToolButton(self.tabWidgetPage6)
-        self.infoButton_16.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_16.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
-"\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
-"\n"
-"QToolButton:flat {border: none;}")
-        self.infoButton_16.setText("")
-        self.infoButton_16.setIcon(icon1)
-        self.infoButton_16.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_16.setAutoRaise(True)
-        self.infoButton_16.setObjectName("infoButton_16")
-        self.gridLayout_3.addWidget(self.infoButton_16, 2, 2, 1, 1)
+        self.gridLayout_3.addWidget(self.tr_dateCreation_do3, 1, 1, 1, 1)
+        self.tr_dateCreation_lb = QtWidgets.QLabel(self.tabWidgetPage6)
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setWeight(50)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.tr_dateCreation_lb.setFont(font)
+        self.tr_dateCreation_lb.setObjectName("tr_dateCreation_lb")
+        self.gridLayout_3.addWidget(self.tr_dateCreation_lb, 1, 0, 1, 1)
         self.horizontalLayout_4.addLayout(self.gridLayout_3)
-        spacerItem56 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem56)
+        spacerItem57 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem57)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
-        spacerItem57 = QtWidgets.QSpacerItem(17, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout.addItem(spacerItem57)
+        spacerItem58 = QtWidgets.QSpacerItem(17, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem58)
         self.line_2 = QtWidgets.QFrame(self.tabWidgetPage6)
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -3146,21 +3557,21 @@ class Ui_MainWindow(object):
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.verticalLayout.addWidget(self.line_2)
-        spacerItem58 = QtWidgets.QSpacerItem(17, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout.addItem(spacerItem58)
+        spacerItem59 = QtWidgets.QSpacerItem(17, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem59)
         self.horizontalLayout_67 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_67.setObjectName("horizontalLayout_67")
         self.verticalLayout_29 = QtWidgets.QVBoxLayout()
         self.verticalLayout_29.setObjectName("verticalLayout_29")
-        spacerItem59 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_29.addItem(spacerItem59)
+        spacerItem60 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_29.addItem(spacerItem60)
         self.horizontalLayout_55 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_55.setObjectName("horizontalLayout_55")
         self.tr_period_lb = QtWidgets.QLabel(self.tabWidgetPage6)
         self.tr_period_lb.setMinimumSize(QtCore.QSize(130, 27))
         self.tr_period_lb.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(True)
         font.setUnderline(True)
@@ -3169,11 +3580,11 @@ class Ui_MainWindow(object):
         self.tr_period_lb.setFont(font)
         self.tr_period_lb.setObjectName("tr_period_lb")
         self.horizontalLayout_55.addWidget(self.tr_period_lb)
-        spacerItem60 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_55.addItem(spacerItem60)
+        spacerItem61 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_55.addItem(spacerItem61)
         self.verticalLayout_29.addLayout(self.horizontalLayout_55)
-        spacerItem61 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_29.addItem(spacerItem61)
+        spacerItem62 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_29.addItem(spacerItem62)
         self.horizontalLayout_67.addLayout(self.verticalLayout_29)
         self.verticalLayout_16 = QtWidgets.QVBoxLayout()
         self.verticalLayout_16.setObjectName("verticalLayout_16")
@@ -3183,7 +3594,7 @@ class Ui_MainWindow(object):
         self.label_7.setMinimumSize(QtCore.QSize(60, 30))
         self.label_7.setMaximumSize(QtCore.QSize(60, 30))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -3191,27 +3602,62 @@ class Ui_MainWindow(object):
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
         self.horizontalLayout_32.addWidget(self.label_7)
-        spacerItem62 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_32.addItem(spacerItem62)
+        spacerItem63 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_32.addItem(spacerItem63)
         self.tr_dateStart_do4 = QtWidgets.QDateEdit(self.tabWidgetPage6)
         self.tr_dateStart_do4.setMinimumSize(QtCore.QSize(130, 27))
         self.tr_dateStart_do4.setMaximumSize(QtCore.QSize(130, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.tr_dateStart_do4.setFont(font)
-        self.tr_dateStart_do4.setStyleSheet("QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}\n"
+        self.tr_dateStart_do4.setStyleSheet("QDateEdit {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
 "\n"
-"QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
+"QDateEdit:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+"}\n"
 "\n"
-"QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
+"QDateEdit::drop-down  {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
 "\n"
-"QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}\n"
+"QDateEdit::drop-down:hover{\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
 "\n"
-"QDateEdit::down-arrow:on {top: 1px; left: 1px;}")
+"QDateEdit::down-arrow {\n"
+"    image: url(icons/arrow_down.png);\n"
+"    width: 18px;\n"
+"    height: 18px;\n"
+"}\n"
+"\n"
+"QDateEdit::down-arrow:on {\n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}")
         self.tr_dateStart_do4.setFrame(False)
         self.tr_dateStart_do4.setAlignment(QtCore.Qt.AlignCenter)
         self.tr_dateStart_do4.setAccelerated(True)
@@ -3220,27 +3666,62 @@ class Ui_MainWindow(object):
         self.tr_dateStart_do4.setDate(QtCore.QDate(2014, 10, 28))
         self.tr_dateStart_do4.setObjectName("tr_dateStart_do4")
         self.horizontalLayout_32.addWidget(self.tr_dateStart_do4)
-        spacerItem63 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_32.addItem(spacerItem63)
+        spacerItem64 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_32.addItem(spacerItem64)
         self.tr_dateEnd_do5 = QtWidgets.QDateEdit(self.tabWidgetPage6)
         self.tr_dateEnd_do5.setMinimumSize(QtCore.QSize(130, 27))
         self.tr_dateEnd_do5.setMaximumSize(QtCore.QSize(130, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.tr_dateEnd_do5.setFont(font)
-        self.tr_dateEnd_do5.setStyleSheet("QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}\n"
+        self.tr_dateEnd_do5.setStyleSheet("QDateEdit {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
 "\n"
-"QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
+"QDateEdit:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+"}\n"
 "\n"
-"QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
+"QDateEdit::drop-down  {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
 "\n"
-"QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}\n"
+"QDateEdit::drop-down:hover{\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
 "\n"
-"QDateEdit::down-arrow:on {top: 1px; left: 1px;}")
+"QDateEdit::down-arrow {\n"
+"    image: url(icons/arrow_down.png);\n"
+"    width: 18px;\n"
+"    height: 18px;\n"
+"}\n"
+"\n"
+"QDateEdit::down-arrow:on {\n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}")
         self.tr_dateEnd_do5.setFrame(False)
         self.tr_dateEnd_do5.setAlignment(QtCore.Qt.AlignCenter)
         self.tr_dateEnd_do5.setAccelerated(True)
@@ -3248,95 +3729,140 @@ class Ui_MainWindow(object):
         self.tr_dateEnd_do5.setDate(QtCore.QDate(2014, 10, 28))
         self.tr_dateEnd_do5.setObjectName("tr_dateEnd_do5")
         self.horizontalLayout_32.addWidget(self.tr_dateEnd_do5)
-        spacerItem64 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_32.addItem(spacerItem64)
+        spacerItem65 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_32.addItem(spacerItem65)
         self.delButton_10 = QtWidgets.QToolButton(self.tabWidgetPage6)
         self.delButton_10.setEnabled(False)
         self.delButton_10.setMinimumSize(QtCore.QSize(27, 27))
         self.delButton_10.setMaximumSize(QtCore.QSize(27, 27))
-        self.delButton_10.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.delButton_10.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.delButton_10.setText("")
         self.delButton_10.setIcon(icon3)
         self.delButton_10.setIconSize(QtCore.QSize(27, 27))
-        self.delButton_10.setAutoRaise(True)
+        self.delButton_10.setAutoRaise(False)
         self.delButton_10.setObjectName("delButton_10")
         self.horizontalLayout_32.addWidget(self.delButton_10)
         self.verticalLayout_16.addLayout(self.horizontalLayout_32)
         self.verticalLayout_15 = QtWidgets.QVBoxLayout()
         self.verticalLayout_15.setObjectName("verticalLayout_15")
         self.verticalLayout_16.addLayout(self.verticalLayout_15)
-        spacerItem65 = QtWidgets.QSpacerItem(20, 17, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_16.addItem(spacerItem65)
+        spacerItem66 = QtWidgets.QSpacerItem(20, 17, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_16.addItem(spacerItem66)
         self.horizontalLayout_67.addLayout(self.verticalLayout_16)
         self.verticalLayout_40 = QtWidgets.QVBoxLayout()
         self.verticalLayout_40.setObjectName("verticalLayout_40")
-        spacerItem66 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_40.addItem(spacerItem66)
+        spacerItem67 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_40.addItem(spacerItem67)
         self.horizontalLayout_66 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_66.setObjectName("horizontalLayout_66")
-        spacerItem67 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_66.addItem(spacerItem67)
+        spacerItem68 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_66.addItem(spacerItem68)
         self.plusButton_3 = QtWidgets.QToolButton(self.tabWidgetPage6)
         self.plusButton_3.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_3.setMaximumSize(QtCore.QSize(27, 27))
-        self.plusButton_3.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.plusButton_3.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.plusButton_3.setText("")
         self.plusButton_3.setIcon(icon2)
         self.plusButton_3.setIconSize(QtCore.QSize(27, 27))
-        self.plusButton_3.setAutoRaise(True)
+        self.plusButton_3.setAutoRaise(False)
         self.plusButton_3.setObjectName("plusButton_3")
         self.horizontalLayout_66.addWidget(self.plusButton_3)
-        spacerItem68 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_66.addItem(spacerItem68)
+        spacerItem69 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_66.addItem(spacerItem69)
         self.infoButton_17 = QtWidgets.QToolButton(self.tabWidgetPage6)
         self.infoButton_17.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_17.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_17.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_17.setText("")
         self.infoButton_17.setIcon(icon1)
         self.infoButton_17.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_17.setAutoRaise(True)
+        self.infoButton_17.setAutoRaise(False)
         self.infoButton_17.setObjectName("infoButton_17")
         self.horizontalLayout_66.addWidget(self.infoButton_17)
         self.verticalLayout_40.addLayout(self.horizontalLayout_66)
-        spacerItem69 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_40.addItem(spacerItem69)
+        spacerItem70 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_40.addItem(spacerItem70)
         self.horizontalLayout_67.addLayout(self.verticalLayout_40)
         self.verticalLayout.addLayout(self.horizontalLayout_67)
         self.gridLayout_21.addLayout(self.verticalLayout, 1, 1, 1, 2)
-        spacerItem70 = QtWidgets.QSpacerItem(102, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_21.addItem(spacerItem70, 1, 3, 1, 1)
-        spacerItem71 = QtWidgets.QSpacerItem(20, 238, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_21.addItem(spacerItem71, 2, 2, 1, 1)
+        spacerItem71 = QtWidgets.QSpacerItem(102, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_21.addItem(spacerItem71, 1, 3, 1, 1)
+        spacerItem72 = QtWidgets.QSpacerItem(20, 238, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_21.addItem(spacerItem72, 2, 2, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage6, "")
         self.tabWidgetPage7 = QtWidgets.QWidget()
         self.tabWidgetPage7.setObjectName("tabWidgetPage7")
         self.gridLayout_12 = QtWidgets.QGridLayout(self.tabWidgetPage7)
         self.gridLayout_12.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_12.setObjectName("gridLayout_12")
-        spacerItem72 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_12.addItem(spacerItem72, 1, 0, 1, 1)
-        spacerItem73 = QtWidgets.QSpacerItem(236, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_12.addItem(spacerItem73, 1, 2, 1, 1)
-        spacerItem74 = QtWidgets.QSpacerItem(20, 447, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_12.addItem(spacerItem74, 2, 1, 1, 1)
+        spacerItem73 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_12.addItem(spacerItem73, 1, 0, 1, 1)
+        spacerItem74 = QtWidgets.QSpacerItem(236, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_12.addItem(spacerItem74, 1, 2, 1, 1)
+        spacerItem75 = QtWidgets.QSpacerItem(20, 447, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_12.addItem(spacerItem75, 2, 1, 1, 1)
         self.verticalLayout_35 = QtWidgets.QVBoxLayout()
         self.verticalLayout_35.setObjectName("verticalLayout_35")
         self.horizontalLayout_56 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_56.setObjectName("horizontalLayout_56")
-        spacerItem75 = QtWidgets.QSpacerItem(60, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_56.addItem(spacerItem75)
+        spacerItem76 = QtWidgets.QSpacerItem(60, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_56.addItem(spacerItem76)
         self.qv_obsRadio = QtWidgets.QRadioButton(self.tabWidgetPage7)
         self.qv_obsRadio.setMinimumSize(QtCore.QSize(20, 27))
         self.qv_obsRadio.setMaximumSize(QtCore.QSize(20, 27))
@@ -3347,38 +3873,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.qv_obsRadio.setFont(font)
-        self.qv_obsRadio.setStyleSheet("QRadioButton {\n"
-"    spacing: 5px;\n"
-"}\n"
-"\n"
-"QRadioButton::indicator {\n"
-"    width: 20px;\n"
-"    height: 20px;\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:unchecked {\n"
-"    image: url(icons/radiobox_icon_unchecked.png);\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:unchecked:hover {\n"
-"    image: url(icons/radiobox_icon_unchecked.png);\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:unchecked:pressed {\n"
-"    image: url(icons/radiobox_icon_unchecked.png);\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:checked {\n"
-"    image: url(icons/radiobox_icon_checked.png);\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:checked:hover {\n"
-"    image: url(icons/radiobox_icon_checked.png);\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:checked:pressed {\n"
-"    image: url(icons/radiobox_icon_checked.png);\n"
-"}")
+        self.qv_obsRadio.setStyleSheet("")
         self.qv_obsRadio.setText("")
         self.qv_obsRadio.setObjectName("qv_obsRadio")
         self.buttonGroup = QtWidgets.QButtonGroup(MainWindow)
@@ -3389,16 +3884,16 @@ class Ui_MainWindow(object):
         self.qv_obsLab.setMinimumSize(QtCore.QSize(350, 27))
         self.qv_obsLab.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.qv_obsLab.setFont(font)
         self.qv_obsLab.setObjectName("qv_obsLab")
         self.horizontalLayout_56.addWidget(self.qv_obsLab)
-        spacerItem76 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_56.addItem(spacerItem76)
+        spacerItem77 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_56.addItem(spacerItem77)
         self.qv_insituRadio = QtWidgets.QRadioButton(self.tabWidgetPage7)
         self.qv_insituRadio.setMinimumSize(QtCore.QSize(20, 27))
         self.qv_insituRadio.setMaximumSize(QtCore.QSize(20, 27))
@@ -3409,38 +3904,7 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.qv_insituRadio.setFont(font)
-        self.qv_insituRadio.setStyleSheet("QRadioButton {\n"
-"    spacing: 5px;\n"
-"}\n"
-"\n"
-"QRadioButton::indicator {\n"
-"    width: 20px;\n"
-"    height: 20px;\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:unchecked {\n"
-"    image: url(icons/radiobox_icon_unchecked.png);\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:unchecked:hover {\n"
-"    image: url(icons/radiobox_icon_unchecked.png);\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:unchecked:pressed {\n"
-"    image: url(icons/radiobox_icon_unchecked.png);\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:checked {\n"
-"    image: url(icons/radiobox_icon_checked.png);\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:checked:hover {\n"
-"    image: url(icons/radiobox_icon_checked.png);\n"
-"}\n"
-"\n"
-"QRadioButton::indicator:checked:pressed {\n"
-"    image: url(icons/radiobox_icon_checked.png);\n"
-"}")
+        self.qv_insituRadio.setStyleSheet("")
         self.qv_insituRadio.setText("")
         self.qv_insituRadio.setObjectName("qv_insituRadio")
         self.buttonGroup.addButton(self.qv_insituRadio)
@@ -3449,63 +3913,78 @@ class Ui_MainWindow(object):
         self.qv_insituLab.setMinimumSize(QtCore.QSize(250, 27))
         self.qv_insituLab.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.qv_insituLab.setFont(font)
         self.qv_insituLab.setObjectName("qv_insituLab")
         self.horizontalLayout_56.addWidget(self.qv_insituLab)
-        spacerItem77 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_56.addItem(spacerItem77)
+        spacerItem78 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_56.addItem(spacerItem78)
         self.infoButton_26 = QtWidgets.QToolButton(self.tabWidgetPage7)
         self.infoButton_26.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_26.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_26.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_26.setText("")
         self.infoButton_26.setIcon(icon1)
         self.infoButton_26.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_26.setAutoRaise(True)
+        self.infoButton_26.setAutoRaise(False)
         self.infoButton_26.setObjectName("infoButton_26")
         self.horizontalLayout_56.addWidget(self.infoButton_26)
-        spacerItem78 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_56.addItem(spacerItem78)
+        spacerItem79 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_56.addItem(spacerItem79)
         self.verticalLayout_35.addLayout(self.horizontalLayout_56)
         self.verticalLayout_25 = QtWidgets.QVBoxLayout()
         self.verticalLayout_25.setObjectName("verticalLayout_25")
         self.verticalLayout_35.addLayout(self.verticalLayout_25)
         self.gridLayout_12.addLayout(self.verticalLayout_35, 1, 1, 1, 1)
-        spacerItem79 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_12.addItem(spacerItem79, 0, 1, 1, 1)
+        spacerItem80 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_12.addItem(spacerItem80, 0, 1, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage7, "")
         self.tabWidgetPage8 = QtWidgets.QWidget()
         self.tabWidgetPage8.setObjectName("tabWidgetPage8")
         self.gridLayout_6 = QtWidgets.QGridLayout(self.tabWidgetPage8)
         self.gridLayout_6.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_6.setObjectName("gridLayout_6")
-        spacerItem80 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_6.addItem(spacerItem80, 0, 2, 1, 1)
-        spacerItem81 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_6.addItem(spacerItem81, 1, 0, 1, 1)
+        spacerItem81 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_6.addItem(spacerItem81, 0, 2, 1, 1)
+        spacerItem82 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_6.addItem(spacerItem82, 1, 0, 1, 1)
         self.verticalLayout_52 = QtWidgets.QVBoxLayout()
         self.verticalLayout_52.setObjectName("verticalLayout_52")
         self.horizontalLayout_82 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_82.setObjectName("horizontalLayout_82")
         self.verticalLayout_50 = QtWidgets.QVBoxLayout()
         self.verticalLayout_50.setObjectName("verticalLayout_50")
-        spacerItem82 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_50.addItem(spacerItem82)
+        spacerItem83 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_50.addItem(spacerItem83)
         self.horizontalLayout_80 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_80.setObjectName("horizontalLayout_80")
         self.au_conditions_lb = QtWidgets.QLabel(self.tabWidgetPage8)
-        self.au_conditions_lb.setMinimumSize(QtCore.QSize(140, 40))
+        self.au_conditions_lb.setMinimumSize(QtCore.QSize(160, 40))
         self.au_conditions_lb.setMaximumSize(QtCore.QSize(16777215, 40))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -3515,8 +3994,8 @@ class Ui_MainWindow(object):
         self.au_conditions_lb.setObjectName("au_conditions_lb")
         self.horizontalLayout_80.addWidget(self.au_conditions_lb)
         self.verticalLayout_50.addLayout(self.horizontalLayout_80)
-        spacerItem83 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_50.addItem(spacerItem83)
+        spacerItem84 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_50.addItem(spacerItem84)
         self.horizontalLayout_82.addLayout(self.verticalLayout_50)
         self.verticalLayout_51 = QtWidgets.QVBoxLayout()
         self.verticalLayout_51.setObjectName("verticalLayout_51")
@@ -3526,8 +4005,8 @@ class Ui_MainWindow(object):
         self.au_conditions_ta.setMinimumSize(QtCore.QSize(600, 100))
         self.au_conditions_ta.setMaximumSize(QtCore.QSize(600, 100))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
@@ -3544,15 +4023,30 @@ class Ui_MainWindow(object):
         self.delButton_5.setEnabled(False)
         self.delButton_5.setMinimumSize(QtCore.QSize(27, 27))
         self.delButton_5.setMaximumSize(QtCore.QSize(27, 27))
-        self.delButton_5.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.delButton_5.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.delButton_5.setText("")
         self.delButton_5.setIcon(icon3)
         self.delButton_5.setIconSize(QtCore.QSize(27, 27))
-        self.delButton_5.setAutoRaise(True)
+        self.delButton_5.setAutoRaise(False)
         self.delButton_5.setObjectName("delButton_5")
         self.horizontalLayout_18.addWidget(self.delButton_5)
         self.verticalLayout_51.addLayout(self.horizontalLayout_18)
@@ -3562,48 +4056,78 @@ class Ui_MainWindow(object):
         self.horizontalLayout_82.addLayout(self.verticalLayout_51)
         self.verticalLayout_43 = QtWidgets.QVBoxLayout()
         self.verticalLayout_43.setObjectName("verticalLayout_43")
-        spacerItem84 = QtWidgets.QSpacerItem(20, 36, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_43.addItem(spacerItem84)
+        spacerItem85 = QtWidgets.QSpacerItem(20, 36, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_43.addItem(spacerItem85)
         self.horizontalLayout_81 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_81.setObjectName("horizontalLayout_81")
-        spacerItem85 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_81.addItem(spacerItem85)
+        spacerItem86 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_81.addItem(spacerItem86)
         self.plusButton_5 = QtWidgets.QToolButton(self.tabWidgetPage8)
         self.plusButton_5.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_5.setMaximumSize(QtCore.QSize(27, 27))
-        self.plusButton_5.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.plusButton_5.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.plusButton_5.setText("")
         self.plusButton_5.setIcon(icon2)
         self.plusButton_5.setIconSize(QtCore.QSize(27, 27))
-        self.plusButton_5.setAutoRaise(True)
+        self.plusButton_5.setAutoRaise(False)
         self.plusButton_5.setObjectName("plusButton_5")
         self.horizontalLayout_81.addWidget(self.plusButton_5)
-        spacerItem86 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_81.addItem(spacerItem86)
+        spacerItem87 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_81.addItem(spacerItem87)
         self.infoButton_18 = QtWidgets.QToolButton(self.tabWidgetPage8)
         self.infoButton_18.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_18.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_18.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_18.setText("")
         self.infoButton_18.setIcon(icon1)
         self.infoButton_18.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_18.setAutoRaise(True)
+        self.infoButton_18.setAutoRaise(False)
         self.infoButton_18.setObjectName("infoButton_18")
         self.horizontalLayout_81.addWidget(self.infoButton_18)
         self.verticalLayout_43.addLayout(self.horizontalLayout_81)
-        spacerItem87 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_43.addItem(spacerItem87)
+        spacerItem88 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_43.addItem(spacerItem88)
         self.horizontalLayout_82.addLayout(self.verticalLayout_43)
         self.verticalLayout_52.addLayout(self.horizontalLayout_82)
-        spacerItem88 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_52.addItem(spacerItem88)
+        spacerItem89 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_52.addItem(spacerItem89)
         self.line = QtWidgets.QFrame(self.tabWidgetPage8)
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -3746,21 +4270,21 @@ class Ui_MainWindow(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.verticalLayout_52.addWidget(self.line)
-        spacerItem89 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_52.addItem(spacerItem89)
+        spacerItem90 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_52.addItem(spacerItem90)
         self.horizontalLayout_79 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_79.setObjectName("horizontalLayout_79")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout()
         self.verticalLayout_11.setObjectName("verticalLayout_11")
-        spacerItem90 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_11.addItem(spacerItem90)
+        spacerItem91 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_11.addItem(spacerItem91)
         self.horizontalLayout_33 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_33.setObjectName("horizontalLayout_33")
         self.au_limitations_lb = QtWidgets.QLabel(self.tabWidgetPage8)
-        self.au_limitations_lb.setMinimumSize(QtCore.QSize(140, 40))
+        self.au_limitations_lb.setMinimumSize(QtCore.QSize(160, 40))
         self.au_limitations_lb.setMaximumSize(QtCore.QSize(16777215, 40))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -3770,8 +4294,8 @@ class Ui_MainWindow(object):
         self.au_limitations_lb.setObjectName("au_limitations_lb")
         self.horizontalLayout_33.addWidget(self.au_limitations_lb)
         self.verticalLayout_11.addLayout(self.horizontalLayout_33)
-        spacerItem91 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_11.addItem(spacerItem91)
+        spacerItem92 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_11.addItem(spacerItem92)
         self.horizontalLayout_79.addLayout(self.verticalLayout_11)
         self.verticalLayout_9 = QtWidgets.QVBoxLayout()
         self.verticalLayout_9.setObjectName("verticalLayout_9")
@@ -3781,8 +4305,8 @@ class Ui_MainWindow(object):
         self.au_limitations_ta.setMinimumSize(QtCore.QSize(600, 100))
         self.au_limitations_ta.setMaximumSize(QtCore.QSize(600, 100))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
@@ -3799,79 +4323,124 @@ class Ui_MainWindow(object):
         self.delButton_6.setEnabled(False)
         self.delButton_6.setMinimumSize(QtCore.QSize(27, 27))
         self.delButton_6.setMaximumSize(QtCore.QSize(27, 27))
-        self.delButton_6.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.delButton_6.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.delButton_6.setText("")
         self.delButton_6.setIcon(icon3)
         self.delButton_6.setIconSize(QtCore.QSize(27, 27))
-        self.delButton_6.setAutoRaise(True)
+        self.delButton_6.setAutoRaise(False)
         self.delButton_6.setObjectName("delButton_6")
         self.horizontalLayout_17.addWidget(self.delButton_6)
         self.verticalLayout_9.addLayout(self.horizontalLayout_17)
         self.verticalLayout_10 = QtWidgets.QVBoxLayout()
         self.verticalLayout_10.setObjectName("verticalLayout_10")
         self.verticalLayout_9.addLayout(self.verticalLayout_10)
-        spacerItem92 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_9.addItem(spacerItem92)
+        spacerItem93 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_9.addItem(spacerItem93)
         self.horizontalLayout_79.addLayout(self.verticalLayout_9)
         self.verticalLayout_12 = QtWidgets.QVBoxLayout()
         self.verticalLayout_12.setObjectName("verticalLayout_12")
-        spacerItem93 = QtWidgets.QSpacerItem(20, 36, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_12.addItem(spacerItem93)
+        spacerItem94 = QtWidgets.QSpacerItem(20, 36, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_12.addItem(spacerItem94)
         self.horizontalLayout_52 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_52.setObjectName("horizontalLayout_52")
-        spacerItem94 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_52.addItem(spacerItem94)
+        spacerItem95 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_52.addItem(spacerItem95)
         self.plusButton_6 = QtWidgets.QToolButton(self.tabWidgetPage8)
         self.plusButton_6.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_6.setMaximumSize(QtCore.QSize(27, 27))
-        self.plusButton_6.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.plusButton_6.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.plusButton_6.setText("")
         self.plusButton_6.setIcon(icon2)
         self.plusButton_6.setIconSize(QtCore.QSize(27, 27))
-        self.plusButton_6.setAutoRaise(True)
+        self.plusButton_6.setAutoRaise(False)
         self.plusButton_6.setObjectName("plusButton_6")
         self.horizontalLayout_52.addWidget(self.plusButton_6)
-        spacerItem95 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_52.addItem(spacerItem95)
+        spacerItem96 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_52.addItem(spacerItem96)
         self.infoButton_19 = QtWidgets.QToolButton(self.tabWidgetPage8)
         self.infoButton_19.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_19.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_19.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_19.setText("")
         self.infoButton_19.setIcon(icon1)
         self.infoButton_19.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_19.setAutoRaise(True)
+        self.infoButton_19.setAutoRaise(False)
         self.infoButton_19.setObjectName("infoButton_19")
         self.horizontalLayout_52.addWidget(self.infoButton_19)
         self.verticalLayout_12.addLayout(self.horizontalLayout_52)
-        spacerItem96 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_12.addItem(spacerItem96)
+        spacerItem97 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_12.addItem(spacerItem97)
         self.horizontalLayout_79.addLayout(self.verticalLayout_12)
         self.verticalLayout_52.addLayout(self.horizontalLayout_79)
         self.gridLayout_6.addLayout(self.verticalLayout_52, 1, 1, 1, 2)
-        spacerItem97 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_6.addItem(spacerItem97, 1, 3, 1, 1)
-        spacerItem98 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_6.addItem(spacerItem98, 2, 1, 1, 1)
+        spacerItem98 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_6.addItem(spacerItem98, 1, 3, 1, 1)
+        spacerItem99 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_6.addItem(spacerItem99, 2, 1, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage8, "")
         self.tabWidgetPage9 = QtWidgets.QWidget()
         self.tabWidgetPage9.setObjectName("tabWidgetPage9")
         self.gridLayout_14 = QtWidgets.QGridLayout(self.tabWidgetPage9)
         self.gridLayout_14.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_14.setObjectName("gridLayout_14")
-        spacerItem99 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_14.addItem(spacerItem99, 0, 1, 1, 1)
+        spacerItem100 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_14.addItem(spacerItem100, 0, 1, 1, 1)
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.gridLayout_9 = QtWidgets.QGridLayout()
@@ -3881,7 +4450,7 @@ class Ui_MainWindow(object):
         self.ro_responsibleParty_lb.setMinimumSize(QtCore.QSize(0, 0))
         self.ro_responsibleParty_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -3893,8 +4462,8 @@ class Ui_MainWindow(object):
         self.ro_responsibleParty_ln.setMinimumSize(QtCore.QSize(250, 27))
         self.ro_responsibleParty_ln.setMaximumSize(QtCore.QSize(250, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
@@ -3909,22 +4478,37 @@ class Ui_MainWindow(object):
         self.gridLayout_9.addWidget(self.ro_responsibleParty_ln, 0, 1, 1, 1)
         self.infoButton_20 = QtWidgets.QToolButton(self.tabWidgetPage9)
         self.infoButton_20.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_20.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_20.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_20.setText("")
         self.infoButton_20.setIcon(icon1)
         self.infoButton_20.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_20.setAutoRaise(True)
+        self.infoButton_20.setAutoRaise(False)
         self.infoButton_20.setObjectName("infoButton_20")
         self.gridLayout_9.addWidget(self.infoButton_20, 0, 2, 1, 1)
         self.ro_responsibleEmail_lb = QtWidgets.QLabel(self.tabWidgetPage9)
         self.ro_responsibleEmail_lb.setMinimumSize(QtCore.QSize(0, 0))
         self.ro_responsibleEmail_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -3936,8 +4520,8 @@ class Ui_MainWindow(object):
         self.ro_responsibleEmail_ln.setMinimumSize(QtCore.QSize(250, 27))
         self.ro_responsibleEmail_ln.setMaximumSize(QtCore.QSize(250, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
@@ -3952,48 +4536,93 @@ class Ui_MainWindow(object):
         self.gridLayout_9.addWidget(self.ro_responsibleEmail_ln, 1, 1, 1, 1)
         self.infoButton_21 = QtWidgets.QToolButton(self.tabWidgetPage9)
         self.infoButton_21.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_21.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_21.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_21.setText("")
         self.infoButton_21.setIcon(icon1)
         self.infoButton_21.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_21.setAutoRaise(True)
+        self.infoButton_21.setAutoRaise(False)
         self.infoButton_21.setObjectName("infoButton_21")
         self.gridLayout_9.addWidget(self.infoButton_21, 1, 2, 1, 1)
-        spacerItem100 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_9.addItem(spacerItem100, 1, 3, 1, 1)
+        spacerItem101 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_9.addItem(spacerItem101, 1, 3, 1, 1)
         self.delButton_8 = QtWidgets.QToolButton(self.tabWidgetPage9)
         self.delButton_8.setEnabled(False)
         self.delButton_8.setMinimumSize(QtCore.QSize(27, 27))
         self.delButton_8.setMaximumSize(QtCore.QSize(27, 27))
-        self.delButton_8.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.delButton_8.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.delButton_8.setText("")
         self.delButton_8.setIcon(icon3)
         self.delButton_8.setIconSize(QtCore.QSize(27, 27))
         self.delButton_8.setAutoRaise(True)
         self.delButton_8.setObjectName("delButton_8")
         self.gridLayout_9.addWidget(self.delButton_8, 1, 4, 1, 1)
-        spacerItem101 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_9.addItem(spacerItem101, 1, 5, 1, 1)
+        spacerItem102 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_9.addItem(spacerItem102, 1, 5, 1, 1)
         self.plusButton_7 = QtWidgets.QToolButton(self.tabWidgetPage9)
         self.plusButton_7.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_7.setMaximumSize(QtCore.QSize(27, 27))
-        self.plusButton_7.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.plusButton_7.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.plusButton_7.setText("")
         self.plusButton_7.setIcon(icon2)
         self.plusButton_7.setIconSize(QtCore.QSize(27, 27))
-        self.plusButton_7.setAutoRaise(True)
+        self.plusButton_7.setAutoRaise(False)
         self.plusButton_7.setObjectName("plusButton_7")
         self.gridLayout_9.addWidget(self.plusButton_7, 1, 6, 1, 1)
         self.ro_label_3 = QtWidgets.QLabel(self.tabWidgetPage9)
@@ -4005,7 +4634,7 @@ class Ui_MainWindow(object):
         self.ro_label_3.setMinimumSize(QtCore.QSize(0, 0))
         self.ro_label_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -4014,19 +4643,32 @@ class Ui_MainWindow(object):
         self.ro_label_3.setObjectName("ro_label_3")
         self.gridLayout_9.addWidget(self.ro_label_3, 2, 0, 1, 1)
         self.ro_responsibleRole_rl1 = QtWidgets.QComboBox(self.tabWidgetPage9)
-        self.ro_responsibleRole_rl1.setMinimumSize(QtCore.QSize(170, 27))
-        self.ro_responsibleRole_rl1.setMaximumSize(QtCore.QSize(170, 27))
+        self.ro_responsibleRole_rl1.setMinimumSize(QtCore.QSize(200, 27))
+        self.ro_responsibleRole_rl1.setMaximumSize(QtCore.QSize(200, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.ro_responsibleRole_rl1.setFont(font)
         self.ro_responsibleRole_rl1.setStyleSheet("QComboBox {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QComboBox:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -4049,20 +4691,20 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png);\n"
+"    image: url(icons/arrow_down.png); \n"
 "    width: 18px;\n"
-"    height: 18px;\n"
+"    height: 18px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
-"    top: 1px;\n"
+"    top: 1px; \n"
 "    left: 1px;\n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    background-color: rgb(240,240,240);\n"
+"    selection-background-color: transparent;\n"
 "    selection-color: blue;\n"
-"   padding: 1px 4px 1px 1px 1px\n"
+"    border: 0px, solid black;\n"
 "}")
         self.ro_responsibleRole_rl1.setObjectName("ro_responsibleRole_rl1")
         self.ro_responsibleRole_rl1.addItem("")
@@ -4079,38 +4721,53 @@ class Ui_MainWindow(object):
         self.gridLayout_9.addWidget(self.ro_responsibleRole_rl1, 2, 1, 1, 1)
         self.infoButton_22 = QtWidgets.QToolButton(self.tabWidgetPage9)
         self.infoButton_22.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_22.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_22.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_22.setText("")
         self.infoButton_22.setIcon(icon1)
         self.infoButton_22.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_22.setAutoRaise(True)
+        self.infoButton_22.setAutoRaise(False)
         self.infoButton_22.setObjectName("infoButton_22")
         self.gridLayout_9.addWidget(self.infoButton_22, 2, 2, 1, 1)
         self.verticalLayout_5.addLayout(self.gridLayout_9)
         self.verticalLayout_18 = QtWidgets.QVBoxLayout()
         self.verticalLayout_18.setObjectName("verticalLayout_18")
         self.verticalLayout_5.addLayout(self.verticalLayout_18)
-        spacerItem102 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_5.addItem(spacerItem102)
+        spacerItem103 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_5.addItem(spacerItem103)
         self.gridLayout_14.addLayout(self.verticalLayout_5, 1, 1, 2, 1)
-        spacerItem103 = QtWidgets.QSpacerItem(302, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_14.addItem(spacerItem103, 1, 2, 1, 1)
-        spacerItem104 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_14.addItem(spacerItem104, 2, 0, 1, 1)
-        spacerItem105 = QtWidgets.QSpacerItem(20, 191, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_14.addItem(spacerItem105, 3, 1, 1, 1)
+        spacerItem104 = QtWidgets.QSpacerItem(302, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_14.addItem(spacerItem104, 1, 2, 1, 1)
+        spacerItem105 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_14.addItem(spacerItem105, 2, 0, 1, 1)
+        spacerItem106 = QtWidgets.QSpacerItem(20, 191, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_14.addItem(spacerItem106, 3, 1, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage9, "")
         self.tabWidgetPage10 = QtWidgets.QWidget()
         self.tabWidgetPage10.setObjectName("tabWidgetPage10")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.tabWidgetPage10)
         self.gridLayout_7.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_7.setObjectName("gridLayout_7")
-        spacerItem106 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_7.addItem(spacerItem106, 0, 1, 1, 1)
+        spacerItem107 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_7.addItem(spacerItem107, 0, 1, 1, 1)
         self.verticalLayout_39 = QtWidgets.QVBoxLayout()
         self.verticalLayout_39.setObjectName("verticalLayout_39")
         self.horizontalLayout_37 = QtWidgets.QHBoxLayout()
@@ -4121,7 +4778,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.mm_date_lb = QtWidgets.QLabel(self.tabWidgetPage10)
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -4133,21 +4790,56 @@ class Ui_MainWindow(object):
         self.mm_date_do1.setMinimumSize(QtCore.QSize(120, 27))
         self.mm_date_do1.setMaximumSize(QtCore.QSize(120, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.mm_date_do1.setFont(font)
-        self.mm_date_do1.setStyleSheet("QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}\n"
+        self.mm_date_do1.setStyleSheet("QDateEdit {\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
 "\n"
-"QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
+"QDateEdit:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+"}\n"
 "\n"
-"QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}\n"
+"QDateEdit::drop-down  {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
 "\n"
-"QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}\n"
+"QDateEdit::drop-down:hover{\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 27px;\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid;\n"
+"    border-top-right-radius: 3px;\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
 "\n"
-"QDateEdit::down-arrow:on {top: 1px; left: 1px;}")
+"QDateEdit::down-arrow {\n"
+"    image: url(icons/arrow_down.png);\n"
+"    width: 18px;\n"
+"    height: 18px;\n"
+"}\n"
+"\n"
+"QDateEdit::down-arrow:on {\n"
+"    top: 1px;\n"
+"    left: 1px;\n"
+"}")
         self.mm_date_do1.setWrapping(False)
         self.mm_date_do1.setFrame(False)
         self.mm_date_do1.setAlignment(QtCore.Qt.AlignCenter)
@@ -4160,26 +4852,41 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.mm_date_do1)
         self.infoButton_23 = QtWidgets.QToolButton(self.tabWidgetPage10)
         self.infoButton_23.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_23.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_23.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_23.setText("")
         self.infoButton_23.setIcon(icon1)
         self.infoButton_23.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_23.setAutoRaise(True)
+        self.infoButton_23.setAutoRaise(False)
         self.infoButton_23.setObjectName("infoButton_23")
         self.horizontalLayout_7.addWidget(self.infoButton_23)
         self.verticalLayout_6.addLayout(self.horizontalLayout_7)
-        spacerItem107 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_6.addItem(spacerItem107)
+        spacerItem108 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_6.addItem(spacerItem108)
         self.horizontalLayout_22 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_22.setObjectName("horizontalLayout_22")
         self.mm_label_2 = QtWidgets.QLabel(self.tabWidgetPage10)
         self.mm_label_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -4191,16 +4898,29 @@ class Ui_MainWindow(object):
         self.mm_language_rl1.setMinimumSize(QtCore.QSize(120, 27))
         self.mm_language_rl1.setMaximumSize(QtCore.QSize(120, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.mm_language_rl1.setFont(font)
         self.mm_language_rl1.setStyleSheet("QComboBox {\n"
-"    border-radius: 3px;\n"
-"   padding: 1px 4px 1px 4px;\n"
-"    background-color:  rgb(240, 240, 240);\n"
+"    border: 1px solid #acacac;\n"
+"    border-radius: 1px;\n"
+"    padding-left: 5px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+"}\n"
+"\n"
+"QComboBox:disabled {\n"
+"    background-color:  rgb(200,200,200);\n"
+"}\n"
+"\n"
+"QComboBox:hover {\n"
+"    border: 1px solid #7eb4ea;\n"
+"    border-radius: 1px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
+"                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -4223,20 +4943,20 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png);\n"
+"    image: url(icons/arrow_down.png); \n"
 "    width: 18px;\n"
-"    height: 18px;\n"
+"    height: 18px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
-"    top: 1px;\n"
+"    top: 1px; \n"
 "    left: 1px;\n"
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    background-color: rgb(240,240,240);\n"
+"    selection-background-color: transparent;\n"
 "    selection-color: blue;\n"
-"   padding: 1px 4px 1px 1px 1px\n"
+"    border: 0px, solid black;\n"
 "}")
         self.mm_language_rl1.setObjectName("mm_language_rl1")
         self.mm_language_rl1.addItem("")
@@ -4265,49 +4985,64 @@ class Ui_MainWindow(object):
         self.horizontalLayout_22.addWidget(self.mm_language_rl1)
         self.infoButton_24 = QtWidgets.QToolButton(self.tabWidgetPage10)
         self.infoButton_24.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_24.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_24.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_24.setText("")
         self.infoButton_24.setIcon(icon1)
         self.infoButton_24.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_24.setAutoRaise(True)
+        self.infoButton_24.setAutoRaise(False)
         self.infoButton_24.setObjectName("infoButton_24")
         self.horizontalLayout_22.addWidget(self.infoButton_24)
         self.verticalLayout_6.addLayout(self.horizontalLayout_22)
         self.horizontalLayout_37.addLayout(self.verticalLayout_6)
-        spacerItem108 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_37.addItem(spacerItem108)
+        spacerItem109 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_37.addItem(spacerItem109)
         self.verticalLayout_39.addLayout(self.horizontalLayout_37)
-        spacerItem109 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_39.addItem(spacerItem109)
+        spacerItem110 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_39.addItem(spacerItem110)
         self.horizontalLayout_65 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_65.setObjectName("horizontalLayout_65")
         self.verticalLayout_19 = QtWidgets.QVBoxLayout()
         self.verticalLayout_19.setObjectName("verticalLayout_19")
-        spacerItem110 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_19.addItem(spacerItem110)
+        spacerItem111 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_19.addItem(spacerItem111)
         self.horizontalLayout_54 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_54.setObjectName("horizontalLayout_54")
         self.mm_label_3 = QtWidgets.QLabel(self.tabWidgetPage10)
-        self.mm_label_3.setMinimumSize(QtCore.QSize(0, 0))
-        self.mm_label_3.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.mm_label_3.setMinimumSize(QtCore.QSize(0, 27))
+        self.mm_label_3.setMaximumSize(QtCore.QSize(16777215, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setUnderline(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setUnderline(False)
+        font.setWeight(50)
         self.mm_label_3.setFont(font)
         self.mm_label_3.setObjectName("mm_label_3")
         self.horizontalLayout_54.addWidget(self.mm_label_3)
-        spacerItem111 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_54.addItem(spacerItem111)
+        spacerItem112 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_54.addItem(spacerItem112)
         self.verticalLayout_19.addLayout(self.horizontalLayout_54)
-        spacerItem112 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.verticalLayout_19.addItem(spacerItem112)
+        spacerItem113 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
+        self.verticalLayout_19.addItem(spacerItem113)
         self.horizontalLayout_65.addLayout(self.verticalLayout_19)
         self.verticalLayout_13 = QtWidgets.QVBoxLayout()
         self.verticalLayout_13.setObjectName("verticalLayout_13")
@@ -4321,7 +5056,7 @@ class Ui_MainWindow(object):
         self.mm_contactName_lb.setMinimumSize(QtCore.QSize(0, 0))
         self.mm_contactName_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -4333,8 +5068,8 @@ class Ui_MainWindow(object):
         self.mm_contactName_ln.setMinimumSize(QtCore.QSize(250, 27))
         self.mm_contactName_ln.setMaximumSize(QtCore.QSize(250, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
@@ -4354,7 +5089,7 @@ class Ui_MainWindow(object):
         self.mm_contactEmail_lb.setMinimumSize(QtCore.QSize(0, 0))
         self.mm_contactEmail_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
         font.setBold(False)
         font.setWeight(50)
@@ -4366,8 +5101,8 @@ class Ui_MainWindow(object):
         self.mm_contactEmail_ln.setMinimumSize(QtCore.QSize(250, 27))
         self.mm_contactEmail_ln.setMaximumSize(QtCore.QSize(250, 27))
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
-        font.setPointSize(10)
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(9)
         font.setBold(False)
         font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
@@ -4382,86 +5117,131 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.addWidget(self.mm_contactEmail_ln)
         self.verticalLayout_3.addLayout(self.horizontalLayout_25)
         self.horizontalLayout_26.addLayout(self.verticalLayout_3)
-        spacerItem113 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_26.addItem(spacerItem113)
+        spacerItem114 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_26.addItem(spacerItem114)
         self.delButton_7 = QtWidgets.QToolButton(self.tabWidgetPage10)
         self.delButton_7.setEnabled(False)
         self.delButton_7.setMinimumSize(QtCore.QSize(27, 27))
         self.delButton_7.setMaximumSize(QtCore.QSize(27, 27))
-        self.delButton_7.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.delButton_7.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.delButton_7.setText("")
         self.delButton_7.setIcon(icon3)
         self.delButton_7.setIconSize(QtCore.QSize(27, 27))
-        self.delButton_7.setAutoRaise(True)
+        self.delButton_7.setAutoRaise(False)
         self.delButton_7.setObjectName("delButton_7")
         self.horizontalLayout_26.addWidget(self.delButton_7)
         self.verticalLayout_13.addLayout(self.horizontalLayout_26)
         self.verticalLayout_14 = QtWidgets.QVBoxLayout()
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.verticalLayout_13.addLayout(self.verticalLayout_14)
-        spacerItem114 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_13.addItem(spacerItem114)
+        spacerItem115 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_13.addItem(spacerItem115)
         self.horizontalLayout_65.addLayout(self.verticalLayout_13)
         self.verticalLayout_38 = QtWidgets.QVBoxLayout()
         self.verticalLayout_38.setObjectName("verticalLayout_38")
-        spacerItem115 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_38.addItem(spacerItem115)
+        spacerItem116 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_38.addItem(spacerItem116)
         self.horizontalLayout_59 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_59.setObjectName("horizontalLayout_59")
-        spacerItem116 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_59.addItem(spacerItem116)
+        spacerItem117 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_59.addItem(spacerItem117)
         self.plusButton_8 = QtWidgets.QToolButton(self.tabWidgetPage10)
         self.plusButton_8.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_8.setMaximumSize(QtCore.QSize(27, 27))
-        self.plusButton_8.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.plusButton_8.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.plusButton_8.setText("")
         self.plusButton_8.setIcon(icon2)
         self.plusButton_8.setIconSize(QtCore.QSize(27, 27))
-        self.plusButton_8.setAutoRaise(True)
+        self.plusButton_8.setAutoRaise(False)
         self.plusButton_8.setObjectName("plusButton_8")
         self.horizontalLayout_59.addWidget(self.plusButton_8)
-        spacerItem117 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_59.addItem(spacerItem117)
+        spacerItem118 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_59.addItem(spacerItem118)
         self.infoButton_25 = QtWidgets.QToolButton(self.tabWidgetPage10)
         self.infoButton_25.setMaximumSize(QtCore.QSize(27, 27))
-        self.infoButton_25.setStyleSheet("QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}\n"
+        self.infoButton_25.setStyleSheet("QToolButton {\n"
+"    border: 1px solid transparent;\n"
+"    background-color: transparent;\n"
+"    width: 27px;\n"
+"    height: 27px;\n"
+"}\n"
 "\n"
-"QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}\n"
+"QToolButton:hover {\n"
+"    border: 1px solid gray;\n"
+"    border-radius: 3px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"}\n"
 "\n"
-"QToolButton:flat {border: none;}")
+"QToolButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QToolButton:flat {\n"
+"    border: none;\n"
+"}")
         self.infoButton_25.setText("")
         self.infoButton_25.setIcon(icon1)
         self.infoButton_25.setIconSize(QtCore.QSize(27, 27))
-        self.infoButton_25.setAutoRaise(True)
+        self.infoButton_25.setAutoRaise(False)
         self.infoButton_25.setObjectName("infoButton_25")
         self.horizontalLayout_59.addWidget(self.infoButton_25)
         self.verticalLayout_38.addLayout(self.horizontalLayout_59)
-        spacerItem118 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.verticalLayout_38.addItem(spacerItem118)
+        spacerItem119 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
+        self.verticalLayout_38.addItem(spacerItem119)
         self.horizontalLayout_65.addLayout(self.verticalLayout_38)
         self.verticalLayout_39.addLayout(self.horizontalLayout_65)
         self.gridLayout_7.addLayout(self.verticalLayout_39, 1, 1, 2, 1)
-        spacerItem119 = QtWidgets.QSpacerItem(172, 17, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_7.addItem(spacerItem119, 1, 2, 1, 1)
-        spacerItem120 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_7.addItem(spacerItem120, 2, 0, 1, 1)
-        spacerItem121 = QtWidgets.QSpacerItem(20, 154, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_7.addItem(spacerItem121, 3, 1, 1, 1)
+        spacerItem120 = QtWidgets.QSpacerItem(172, 17, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_7.addItem(spacerItem120, 1, 2, 1, 1)
+        spacerItem121 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_7.addItem(spacerItem121, 2, 0, 1, 1)
+        spacerItem122 = QtWidgets.QSpacerItem(20, 154, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_7.addItem(spacerItem122, 3, 1, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage10, "")
         self.gridLayout_4.addWidget(self.tabWidget, 0, 0, 1, 1)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.gridLayout.addWidget(self.scrollArea, 0, 0, 1, 2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1000, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1094, 26))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -4473,10 +5253,10 @@ class Ui_MainWindow(object):
         icon4.addPixmap(QtGui.QPixmap("icons/new_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionNew.setIcon(icon4)
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.actionNew.setFont(font)
         self.actionNew.setIconVisibleInMenu(True)
@@ -4486,10 +5266,10 @@ class Ui_MainWindow(object):
         icon5.addPixmap(QtGui.QPixmap("icons/save_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionSave.setIcon(icon5)
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.actionSave.setFont(font)
         self.actionSave.setIconVisibleInMenu(True)
@@ -4499,10 +5279,10 @@ class Ui_MainWindow(object):
         icon6.addPixmap(QtGui.QPixmap("icons/save_as_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionSave_As.setIcon(icon6)
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.actionSave_As.setFont(font)
         self.actionSave_As.setIconVisibleInMenu(True)
@@ -4512,10 +5292,10 @@ class Ui_MainWindow(object):
         icon7.addPixmap(QtGui.QPixmap("icons/open_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionOpen.setIcon(icon7)
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.actionOpen.setFont(font)
         self.actionOpen.setIconVisibleInMenu(True)
@@ -4525,10 +5305,10 @@ class Ui_MainWindow(object):
         icon8.addPixmap(QtGui.QPixmap("icons/exit_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionExit.setIcon(icon8)
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.actionExit.setFont(font)
         self.actionExit.setIconVisibleInMenu(True)
@@ -4538,10 +5318,10 @@ class Ui_MainWindow(object):
         icon9.addPixmap(QtGui.QPixmap("icons/about_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionEUFAR_CreatorAbout.setIcon(icon9)
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.actionEUFAR_CreatorAbout.setFont(font)
         self.actionEUFAR_CreatorAbout.setIconVisibleInMenu(True)
@@ -4551,10 +5331,10 @@ class Ui_MainWindow(object):
         icon10.addPixmap(QtGui.QPixmap("icons/inspire_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionINSPIRE_Standard.setIcon(icon10)
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.actionINSPIRE_Standard.setFont(font)
         self.actionINSPIRE_Standard.setIconVisibleInMenu(True)
@@ -4564,10 +5344,10 @@ class Ui_MainWindow(object):
         icon11.addPixmap(QtGui.QPixmap("icons/eufar_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionEUFAR_N7SP.setIcon(icon11)
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.actionEUFAR_N7SP.setFont(font)
         self.actionEUFAR_N7SP.setIconVisibleInMenu(True)
@@ -4582,10 +5362,10 @@ class Ui_MainWindow(object):
         icon13.addPixmap(QtGui.QPixmap("icons/changelog_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.actionChangelog.setIcon(icon13)
         font = QtGui.QFont()
-        font.setFamily("font/SourceSansPro-Regular.ttf")
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.actionChangelog.setFont(font)
         self.actionChangelog.setIconVisibleInMenu(True)
@@ -4626,6 +5406,15 @@ class Ui_MainWindow(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         self.actionObject.setFont(font)
         self.actionObject.setObjectName("actionObject")
+        self.actionHelp = QtWidgets.QAction(MainWindow)
+        self.actionHelp.setIcon(icon11)
+        font = QtGui.QFont()
+        font.setFamily("fonts/SourceSansPro-Regular.ttf")
+        font.setPointSize(10)
+        font.setKerning(True)
+        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
+        self.actionHelp.setFont(font)
+        self.actionHelp.setObjectName("actionHelp")
         self.menuFile.addAction(self.actionNew)
         self.menuFile.addAction(self.actionOpen)
         self.menuFile.addAction(self.actionSave)
@@ -4634,6 +5423,7 @@ class Ui_MainWindow(object):
         self.menuAbout.addAction(self.actionEUFAR_CreatorAbout)
         self.menuAbout.addAction(self.actionINSPIRE_Standard)
         self.menuAbout.addAction(self.actionEUFAR_N7SP)
+        self.menuAbout.addAction(self.actionHelp)
         self.menuAbout.addSeparator()
         self.menuAbout.addAction(self.actionChangelog)
         self.menubar.addAction(self.menuFile.menuAction())
@@ -4652,10 +5442,15 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "EUFAR Metadata Creator"))
-        self.id_resourceTitle_lb.setText(_translate("MainWindow", "Project acronym:"))
+        self.id_resourceTitle_lb.setText(_translate("MainWindow", "Project title:"))
+        self.id_resourceIdent_lb.setText(_translate("MainWindow", "Project acronym:"))
+        self.id_resourceAbstract_lb.setText(_translate("MainWindow", "Project abstract:"))
+        self.id_label_3.setText(_translate("MainWindow", "Resource type:"))
         self.id_resourceType_rl1.setItemText(0, _translate("MainWindow", "Dataset"))
         self.id_resourceType_rl1.setItemText(1, _translate("MainWindow", "Series"))
+        self.id_resourceLocator_lb.setText(_translate("MainWindow", "Resource locator:"))
         self.id_resourceLocator_ln.setText(_translate("MainWindow", "http://browse.ceda.ac.uk/browse/badc/eufar/docs/00eufararchivecontents.html"))
+        self.id_label_6.setText(_translate("MainWindow", "Resource language:"))
         self.id_resourceLang_rl2.setItemText(0, _translate("MainWindow", "Bulgarian"))
         self.id_resourceLang_rl2.setItemText(1, _translate("MainWindow", "Czech"))
         self.id_resourceLang_rl2.setItemText(2, _translate("MainWindow", "Danish"))
@@ -4679,11 +5474,6 @@ class Ui_MainWindow(object):
         self.id_resourceLang_rl2.setItemText(20, _translate("MainWindow", "Slovenian"))
         self.id_resourceLang_rl2.setItemText(21, _translate("MainWindow", "Spanish"))
         self.id_resourceLang_rl2.setItemText(22, _translate("MainWindow", "Swedish"))
-        self.id_label_6.setText(_translate("MainWindow", "Resource language:"))
-        self.id_resourceIdent_lb.setText(_translate("MainWindow", "Unique resource identifier:"))
-        self.id_resourceLocator_lb.setText(_translate("MainWindow", "Resource locator:"))
-        self.id_label_3.setText(_translate("MainWindow", "Resource type:"))
-        self.id_resourceAbstract_lb.setText(_translate("MainWindow", "Project abstract:"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage1), _translate("MainWindow", "Identification"))
         self.cl_topicIntelligence_ck.setToolTip(_translate("MainWindow", "<html><head/><body><p>Military bases, structures, activities</p></body></html>"))
         self.cl_topicIntelligence_ck.setText(_translate("MainWindow", "Intelligence / Military"))
@@ -4837,12 +5627,10 @@ class Ui_MainWindow(object):
         self.gl_resolution_rl1.setItemText(0, _translate("MainWindow", "Scale"))
         self.gl_resolution_rl1.setItemText(1, _translate("MainWindow", "Distance"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage5), _translate("MainWindow", "Geographic Information"))
-        self.tr_datePublication_lb.setText(_translate("MainWindow", "Date of publication:"))
-        self.tr_datePublication_do1.setDisplayFormat(_translate("MainWindow", "yyyy-MM-dd"))
-        self.tr_dateRevision_lb.setText(_translate("MainWindow", "Date of last revision:"))
         self.tr_dateRevision_do2.setDisplayFormat(_translate("MainWindow", "yyyy-MM-dd"))
-        self.tr_dateCreation_lb.setText(_translate("MainWindow", "Date of creation:"))
+        self.tr_dateRevision_lb.setText(_translate("MainWindow", "Date of last revision:"))
         self.tr_dateCreation_do3.setDisplayFormat(_translate("MainWindow", "yyyy-MM-dd"))
+        self.tr_dateCreation_lb.setText(_translate("MainWindow", "Date of creation:"))
         self.tr_period_lb.setText(_translate("MainWindow", "Temporal extent:"))
         self.label_7.setText(_translate("MainWindow", "Phase 1:"))
         self.tr_dateStart_do4.setDisplayFormat(_translate("MainWindow", "yyyy-MM-dd"))
@@ -4897,7 +5685,7 @@ class Ui_MainWindow(object):
         self.mm_language_rl1.setItemText(20, _translate("MainWindow", "Slovenian"))
         self.mm_language_rl1.setItemText(21, _translate("MainWindow", "Spanish"))
         self.mm_language_rl1.setItemText(22, _translate("MainWindow", "Swedish"))
-        self.mm_label_3.setText(_translate("MainWindow", "Metadata point of contact:"))
+        self.mm_label_3.setText(_translate("MainWindow", "EMC XML file has been created by"))
         self.mm_contactName_lb.setText(_translate("MainWindow", "Name:"))
         self.mm_contactEmail_lb.setText(_translate("MainWindow", "E-mail:"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabWidgetPage10), _translate("MainWindow", "Metadata on Metadata"))
@@ -4917,4 +5705,5 @@ class Ui_MainWindow(object):
         self.actionMemory.setText(_translate("MainWindow", "Memory"))
         self.actionCPU.setText(_translate("MainWindow", "CPU"))
         self.actionObject.setText(_translate("MainWindow", "Object"))
+        self.actionHelp.setText(_translate("MainWindow", "Help..."))
 

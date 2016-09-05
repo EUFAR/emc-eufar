@@ -94,6 +94,16 @@ def objectsInit(self):
     self.instrument_list = []
     self.instModel_list = []
     self.instManufacturer_list = []
+    
+    self.ai_acft = 0
+    self.ai_horlay_2 = []
+    self.ai_delbut_2 = []
+    self.ai_lab_5 = []
+    self.ai_lab_6 = []
+    self.ai_lab_7 = []
+    self.ai_lab_8 = []
+    self.aircraft_list = []
+    
     cur = self.db.cursor()
     query1 = cur.execute("SELECT Model FROM instrumentsInformations").fetchall()
     query2 = cur.execute("SELECT Manufacturer FROM instrumentsInformations").fetchall()

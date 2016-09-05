@@ -1,7 +1,7 @@
 # emc-eufar
 
 A detailed changelog can be found in the Documentation directory. Stand-alone versions for Windows and Linux can be found in the Release directory.
-Current version: 1.0.5
+Current version: 1.1.0
 
 Overview
 

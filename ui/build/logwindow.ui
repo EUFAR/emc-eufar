@@ -25,6 +25,11 @@
    <iconset>
     <normaloff>icons/changelog_icon.png</normaloff>icons/changelog_icon.png</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	background-color: rgb(230,230,230);
+}</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTextBrowser" name="log_txBrower">
@@ -35,6 +40,11 @@
        <stylestrategy>PreferAntialias</stylestrategy>
        <kerning>true</kerning>
       </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTextBrowser {
+    background-color: rgb(240,240,240);
+}</string>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarAlwaysOff</enum>
@@ -51,25 +61,28 @@
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>40</width>
+         <width>20</width>
          <height>20</height>
         </size>
        </property>
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="lg_okButton">
+      <widget class="QToolButton" name="lg_okButton">
        <property name="minimumSize">
         <size>
-         <width>50</width>
+         <width>93</width>
          <height>27</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>50</width>
+         <width>93</width>
          <height>27</height>
         </size>
        </property>
@@ -80,6 +93,28 @@
          <stylestrategy>PreferAntialias</stylestrategy>
          <kerning>true</kerning>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QToolButton {
+	border: 1px solid #acacac;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #f0f0f0, stop:1 #e5e5e5);
+}
+
+QToolButton:hover {
+	border: 1px solid #7eb4ea;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #ecf4fc, stop:1 #dcecfc);
+}
+
+QToolButton:pressed {
+	border: 1px solid #579de5;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #daecfc, stop:1 #c4e0fc);
+}</string>
        </property>
        <property name="text">
         <string>Ok</string>

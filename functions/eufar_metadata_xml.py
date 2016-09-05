@@ -57,7 +57,7 @@ def create_eufar_xml(self, out_file_name):
     dateIdent1 = add_element(doc, "gmd:date", citationIdent1CI)
     dateIdent1CI = add_element(doc, "gmd:CI_Date", dateIdent1)
     dateIdent2 = add_element(doc, "gmd:date", dateIdent1CI)
-    add_element(doc, "gco:Date", dateIdent2, self.tr_datePublication_do1.date().toString(Qt.ISODate))
+    add_element(doc, "gco:Date", dateIdent2, QDate.currentDate().toString(Qt.ISODate))
     dateTypeIdent1 = add_element(doc, "gmd:dateType", dateIdent1CI)
     dateTypeCodeIdent1CI = add_element(doc, "gmd:CI_DateTypeCode", dateTypeIdent1, "publication")
     dateTypeCodeIdent1CI.setAttribute("codeList", "http://standards.iso.org/ittf/PubliclyAvailableS"
@@ -344,56 +344,27 @@ def create_eufar_xml(self, out_file_name):
     ############################
     # Aircraft and Instruments
     ############################
-    if self.ai_otherAircraft == 0:
-        query = sql_valueRead(self, 'languageRole', 'Id', self.ai_label_9.text())
-        acquisitionInfo1 = add_element(doc, "gmd:acquisitionInfo", doc_root)
+    acquisitionInfo1 = add_element(doc, "gmd:acquisitionInfo", doc_root)
+    for sublist in self.aircraft_list:
         aircraftInfo1 = add_element(doc, "gmd:platformInfo", acquisitionInfo1)
         aircraftInfo1AI = add_element(doc, "gmd:PI_PlatformInfo", aircraftInfo1)
         aircraftManufacturer = add_element(doc, "gmd:platformManufacturer", aircraftInfo1AI)
-        add_element(doc, "gco:CharacterString", aircraftManufacturer, self.ai_label_7.text())
+        add_element(doc, "gco:CharacterString", aircraftManufacturer, sublist[0])
         aircraftType = add_element(doc, "gmd:platformType", aircraftInfo1AI)
-        add_element(doc, "gco:CharacterString", aircraftType, self.ai_label_8.text())
+        add_element(doc, "gco:CharacterString", aircraftType, sublist[1])
         aircraftOperator = add_element(doc, "gmd:platformOperator", aircraftInfo1AI)
-        if query:
-            add_element(doc, "gco:CharacterString", aircraftOperator, query[0][1])
-        else:
-            add_element(doc, "gco:CharacterString", aircraftOperator, "")
+        add_element(doc, "gco:CharacterString", aircraftOperator, sublist[2])
         aircraftCountry = add_element(doc, "gmd:platformCountry", aircraftInfo1AI)
-        add_element(doc, "gco:CharacterString", aircraftCountry, self.ai_label_10.text())
+        add_element(doc, "gco:CharacterString", aircraftCountry, sublist[3])
         aircraftRegistration = add_element(doc, "gmd:platformRegistration", aircraftInfo1AI)
-        add_element(doc, "gco:CharacterString", aircraftRegistration, self.ai_label_11.text())
-    else:
-        acquisitionInfo1 = add_element(doc, "gmd:acquisitionInfo", doc_root)
-        aircraftInfo1 = add_element(doc, "gmd:platformInfo", acquisitionInfo1)
-        aircraftInfo1AI = add_element(doc, "gmd:PI_PlatformInfo", aircraftInfo1)
-        aircraftManufacturer = add_element(doc, "gmd:platformManufacturer", aircraftInfo1AI)
-        add_element(doc, "gco:CharacterString", aircraftManufacturer, self.ai_manufacturer_ln.text())
-        aircraftType = add_element(doc, "gmd:platformType", aircraftInfo1AI)
-        add_element(doc, "gco:CharacterString", aircraftType, self.ai_type_ln.text())
-        aircraftOperator = add_element(doc, "gmd:platformOperator", aircraftInfo1AI)
-        add_element(doc, "gco:CharacterString", aircraftOperator, self.ai_operator_ln.text())
-        aircraftCountry = add_element(doc, "gmd:platformCountry", aircraftInfo1AI)
-        if self.ai_country_rl.currentText() != "Make a choice...":
-            add_element(doc, "gco:CharacterString", aircraftCountry, self.ai_country_rl.currentText())
-        else:
-            add_element(doc, "gco:CharacterString", aircraftCountry, "")
-        aircraftRegistration = add_element(doc, "gmd:platformRegistration", aircraftInfo1AI)
-        add_element(doc, "gco:CharacterString", aircraftRegistration, self.ai_number_ln.text())
-    if self.instModel_list:
-        for i in range(0, len(self.instModel_list)):
+        add_element(doc, "gco:CharacterString", aircraftRegistration, sublist[4])
+    for i in range(0, len(self.instModel_list)):
             instrumentInfo1 = add_element(doc, "gmd:instrumentInfo", acquisitionInfo1)
             instrumentInfo1II = add_element(doc, "gmd:II_InstrumentInfo", instrumentInfo1)
             instrumentManufacturer = add_element(doc, "gmd:instrumentManufacturer", instrumentInfo1II)
             instrumentType = add_element(doc, "gmd:instrumentType", instrumentInfo1II)
             add_element(doc, "gco:CharacterString", instrumentManufacturer, self.instManufacturer_list[i])
             add_element(doc, "gco:CharacterString", instrumentType, self.instModel_list[i])
-    else:
-        instrumentInfo1 = add_element(doc, "gmd:instrumentInfo", acquisitionInfo1)
-        instrumentInfo1II = add_element(doc, "gmd:II_InstrumentInfo", instrumentInfo1)
-        instrumentManufacturer = add_element(doc, "gmd:instrumentManufacturer", instrumentInfo1II)
-        instrumentType = add_element(doc, "gmd:instrumentType", instrumentInfo1II)
-        add_element(doc, "gco:CharacterString", instrumentManufacturer, "")
-        add_element(doc, "gco:CharacterString", instrumentType, "")
 
 
     ############################
@@ -481,7 +452,6 @@ def read_eufar_xml(self, in_file_name):
     for node in nodes:
         tmp1 = get_element(node, "gmd:date")
         elements.append(get_element_value(tmp1, "gco:Date"))
-    self.tr_datePublication_do1.setDate(QDate.fromString(elements[0], Qt.ISODate))
     self.tr_dateRevision_do2.setDate(QDate.fromString(elements[1], Qt.ISODate))
     self.tr_dateCreation_do3.setDate(QDate.fromString(elements[2], Qt.ISODate))
     
@@ -722,7 +692,7 @@ def read_eufar_xml(self, in_file_name):
     lineageQuality1LI = get_element(lineageQuality1, "gmd:LI_Lineage")
     statementQuality1 = get_element(lineageQuality1LI, "gmd:statement")
     statement = get_element_value(statementQuality1, "gco:CharacterString")
-    if statement != "":
+    if statement != "" and statement != None:
         self.read_statement(statement)
     
 
@@ -730,45 +700,25 @@ def read_eufar_xml(self, in_file_name):
     # Aircraft and Instruments
     ############################
     self.tabWidget.setCurrentIndex(3)
-    acquisitionInfo1 = get_element(doc_root, "gmd:acquisitionInfo")
-    aircraftInfo1 = get_element(acquisitionInfo1, "gmd:platformInfo")
-    aircraftInfo11AI = get_element(aircraftInfo1, "gmd:PI_PlatformInfo")
-    aircraftRegistration = get_element(aircraftInfo11AI, "gmd:platformRegistration")
-    aircraftManufacturer = get_element(aircraftInfo11AI, "gmd:platformManufacturer")
-    aircraftType = get_element(aircraftInfo11AI, "gmd:platformType")
-    aircraftOperator = get_element(aircraftInfo11AI, "gmd:platformOperator")
-    manufacturer = get_element_value(aircraftManufacturer, "gco:CharacterString")
-    atype = get_element_value(aircraftType, "gco:CharacterString")
-    operator = get_element_value(aircraftOperator, "gco:CharacterString")
-    areg = get_element_value(aircraftRegistration, "gco:CharacterString")
-    if areg == None and operator == None and atype == None and manufacturer == None:
-        self.ai_aircraft_rl1.setCurrentIndex(0)
-        ai_aircraftRolebox_changed(self)
-    elif areg != None and operator != None and atype != None and manufacturer != None:
-        query = sql_valueRead(self, "aircraftInformations", "Code", areg)
-        if query:
-            self.ai_aircraft_rl1.setCurrentIndex(self.ai_aircraft_rl1.findText(query[0][0]))
-            ai_aircraftRolebox_changed(self)
-        else :
+    nodes = doc_root.getElementsByTagName("gmd:platformInfo")
+    
+    if len(nodes) > 0:
+        i = 0
+        for i in range(0, len(nodes)):
+    
+            aircraftInfo11AI = get_element(nodes[i], "gmd:PI_PlatformInfo")
+            aircraftRegistration = get_element(aircraftInfo11AI, "gmd:platformRegistration")
+            aircraftManufacturer = get_element(aircraftInfo11AI, "gmd:platformManufacturer")
+            aircraftType = get_element(aircraftInfo11AI, "gmd:platformType")
+            aircraftOperator = get_element(aircraftInfo11AI, "gmd:platformOperator")
             aircraftCountry = get_element(aircraftInfo11AI, "gmd:platformCountry")
+            manufacturer = get_element_value(aircraftManufacturer, "gco:CharacterString")
+            aircraft = get_element_value(aircraftType, "gco:CharacterString")
+            operator = get_element_value(aircraftOperator, "gco:CharacterString")
+            identification = get_element_value(aircraftRegistration, "gco:CharacterString")
             country = get_element_value(aircraftCountry, "gco:CharacterString")
-            self.ai_aircraft_rl1.setCurrentIndex(1)
-            ai_aircraftRolebox_changed(self)
-            self.ai_manufacturer_ln.setText(manufacturer)
-            self.ai_type_ln.setText(atype)
-            self.ai_operator_ln.setText(operator)
-            self.ai_number_ln.setText(areg)
-            self.ai_country_rl.setCurrentIndex(self.ai_country_rl.findText(country))
-    else:
-        aircraftCountry = get_element(aircraftInfo11AI, "gmd:platformCountry")
-        country = get_element_value(aircraftCountry, "gco:CharacterString")
-        self.ai_aircraft_rl1.setCurrentIndex(1)
-        ai_aircraftRolebox_changed(self)
-        self.ai_manufacturer_ln.setText(manufacturer)
-        self.ai_type_ln.setText(atype)
-        self.ai_operator_ln.setText(operator)
-        self.ai_number_ln.setText(areg)
-        self.ai_country_rl.setCurrentIndex(self.ai_country_rl.findText(country))
+            button_functions.plusButton_10_clicked(self, aircraft, operator, manufacturer, identification, country)
+    
     nodes = doc_root.getElementsByTagName("gmd:instrumentInfo")
     if len(nodes) > 0:
         i = 0
@@ -778,8 +728,6 @@ def read_eufar_xml(self, in_file_name):
             manufacturer = get_element_value(instrumentManufacturer, "gco:CharacterString")
             instrumentModel = get_element(instrument1AI, "gmd:instrumentType")
             model = get_element_value(instrumentModel, "gco:CharacterString")
-            '''self.instModel_list.append(model)
-            self.instManufacturer_list.append(manufacturer)'''
             button_functions.plusButton_4_clicked(self, manufacturer + " - " + model)
     
   
@@ -851,9 +799,9 @@ def save_statement_observation(self):
     statement = statement + "|Problems with position information / Interpolated position information: "
     statement = statement + getAnswer(self.qv_obsPosInfo_rd1, self.qv_obsPosInfo_rd2)
     statement = statement + "|Problems with attitude information / Interpolated attitude information: "
-    statement = statement + getAnswer(self.qv_obsAttInfo_rd1, self.qv_obsAttInfo_rd2)
+    statement = statement + getAnswer(self.qv_obsAttInf_rd1, self.qv_obsAttInf_rd2)
     statement = statement + "|Synchronization problems: "
-    statement = statement + getAnswer(self.qv_obsSynProb_rd1, self.qv_obsSynProb_rd2)
+    statement = statement + getAnswer(self.qv_obsSynprob_rd1, self.qv_obsSynprob_rd2)
     statement = statement + "|Interpolated pixels during geocoding: "
     statement = statement + getAnswer(self.qv_obsIntGeo_rd1, self.qv_obsIntGeo_rd2)
     statement = statement + "|Failure of atmospheric correction: "
@@ -875,19 +823,26 @@ def save_statement_observation(self):
 
 def save_statement_insitu(self):
     statement = "Atmospheric/In-situ measurements|Link to the procedure's description: "
-    statement = statement + str(self.qv_insituCalDesc_ln.text()) + "|Source of calibration constants: "
-    statement = statement + str(self.qv_insituCalCons_ln.text()) + "|Source of calibration materials: "
-    statement = statement + str(self.qv_insituCalMat_ln.text()) + "|Data converted to geophysical units: "
+    statement = statement + str(self.qv_insituCalDesc_ln.toPlainText()) + "|Source of calibration constants: "
+    statement = statement + str(self.qv_insituCalCons_ln.toPlainText()) + "|Source of calibration materials: "
+    statement = statement + str(self.qv_insituCalMat_ln.toPlainText()) + "|Data converted to geophysical units: "
     statement = statement + getAnswer(self.qv_insituGeoUnit_rd1, self.qv_insituGeoUnit_rd2) + "|Output format: "
+    format_list = []
     answer = ""
-    if self.qv_insituOutFormat_rd1.isChecked() == True:
-        answer = "NetCDF"
-    elif self.qv_insituOutFormat_rd2.isChecked() == True:
-        answer = "HDF"
-    elif self.qv_insituOutFormat_rd3.isChecked() == True: 
-        answer = "NASA/Ames"
-    elif self.qv_insituOutFormat_rd4.isChecked() == True: 
-        answer = "Other/" + self.qv_other_ln.text()
+    if self.qv_insituOutFormat_ck1.isChecked() == True:
+        format_list.append("NetCDF")
+    if self.qv_insituOutFormat_ck2.isChecked() == True:
+        format_list.append("HDF")
+    if self.qv_insituOutFormat_ck3.isChecked() == True: 
+        format_list.append("NASA/Ames")
+    if self.qv_insituOutFormat_ck4.isChecked() == True: 
+        format_list.append("Other/" + self.qv_insituOutFormat_ln.text())
+    if len(format_list) > 1:
+        for item in format_list:
+            answer = answer + item + "; "
+        answer = answer[:-2]
+    elif len(format_list) == 1:
+        answer = format_list[0]
     statement = statement + answer + "|Quality-control flagging applied to individual data points: "
     statement = statement + str(self.qv_insituQuaFlag_ln.toPlainText()) + "|Assumption: "
     statement = statement + str(self.qv_insituAssumption_ln.toPlainText()) + "|"
@@ -963,8 +918,8 @@ def read_statement_observation(self, statement):
     pushAnswer(self.qv_obsSatPix_rd1, self.qv_obsSatPix_rd2, statement[index155:index16])
     pushAnswer(self.qv_obsSpeNeigh_rd1, self.qv_obsSpeNeigh_rd2, statement[index166:index17])
     pushAnswer(self.qv_obsPosInfo_rd1, self.qv_obsPosInfo_rd2, statement[index177:index18])
-    pushAnswer(self.qv_obsAttInfo_rd1, self.qv_obsAttInfo_rd2, statement[index188:index19])
-    pushAnswer(self.qv_obsSynProb_rd1, self.qv_obsSynProb_rd2, statement[index199:index20])
+    pushAnswer(self.qv_obsAttInf_rd1, self.qv_obsAttInf_rd2, statement[index188:index19])
+    pushAnswer(self.qv_obsSynprob_rd1, self.qv_obsSynprob_rd2, statement[index199:index20])
     pushAnswer(self.qv_obsIntGeo_rd1, self.qv_obsIntGeo_rd2, statement[index200:index21])
     pushAnswer(self.qv_obsAtmCorr_rd1, self.qv_obsAtmCorr_rd2, statement[index211:index23])
     pushAnswer(self.qv_obsCldMask_rd1, self.qv_obsCldMask_rd2, statement[index233:index24])
@@ -989,22 +944,23 @@ def read_statement_insitu(self, statement):
     index66 = index6 + len("|Quality-control flagging applied to individual data points: ")
     index7 = statement.find("|Assumption: ")
     index77 = index7 + len("|Assumption: ")
-    self.qv_insituCalDesc_ln.setText(statement[index11:index2])
-    self.qv_insituCalCons_ln.setText(statement[index22:index3])
-    self.qv_insituCalMat_ln.setText(statement[index33:index4])
+    self.qv_insituCalDesc_ln.setPlainText(statement[index11:index2])
+    self.qv_insituCalCons_ln.setPlainText(statement[index22:index3])
+    self.qv_insituCalMat_ln.setPlainText(statement[index33:index4])
     pushAnswer(self.qv_insituGeoUnit_rd1, self.qv_insituGeoUnit_rd2, statement[index44:index5])
-    format = statement[index55:index6]  # @ReservedAssignment
-    if format == "NetCDF":
-        self.qv_insituOutFormat_rd1.setChecked(True)
-    elif format == "HDF":
-        self.qv_insituOutFormat_rd2.setChecked(True)
-    elif format == "NASA/Ames":
-        self.qv_insituOutFormat_rd3.setChecked(True)
-    elif "Other" in format:
-        self.qv_insituOutFormat_rd4.setChecked(True)
+    format = statement[index55:index6]
+    if "NetCDF" in format:
+        self.qv_insituOutFormat_ck1.setChecked(True)
+    if "HDF" in format:
+        self.qv_insituOutFormat_ck2.setChecked(True)
+    if "NASA/Ames" in format:
+        self.qv_insituOutFormat_ck3.setChecked(True)
+    if "Other" in format:
+        self.qv_insituOutFormat_ck4.setChecked(True)
         qv_output_other(self)
-        other_format = format[6:]
-        self.qv_other_ln.setText(other_format)
+        other_index = format.find("Other")
+        other_format = format[other_index + len("Other/"):]
+        self.qv_insituOutFormat_ln.setText(other_format)
     self.qv_insituQuaFlag_ln.setPlainText(statement[index66:index7])
     self.qv_insituAssumption_ln.setPlainText(statement[index77:-1]) 
 

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>500</height>
+    <width>800</width>
+    <height>720</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,14 +18,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>600</width>
-    <height>500</height>
+    <width>800</width>
+    <height>720</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>600</width>
-    <height>16777215</height>
+    <width>800</width>
+    <height>720</height>
    </size>
   </property>
   <property name="font">
@@ -38,6 +38,15 @@
   </property>
   <property name="windowTitle">
    <string>About EUFAR Metadata Creator</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>icons/inspire_icon.png</normaloff>icons/inspire_icon.png</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget {
+	background-color: rgb(230,230,230);
+}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -64,7 +73,7 @@
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>icons/about_icon.png</pixmap>
+            <pixmap>icons/inspire_icon.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -96,7 +105,7 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>20</width>
+           <width>10</width>
            <height>20</height>
           </size>
          </property>
@@ -106,8 +115,8 @@
         <widget class="QLabel" name="aw_label_1">
          <property name="minimumSize">
           <size>
-           <width>480</width>
-           <height>500</height>
+           <width>690</width>
+           <height>400</height>
           </size>
          </property>
          <property name="maximumSize">
@@ -125,7 +134,7 @@
           </font>
          </property>
          <property name="text">
-          <string/>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;INSPIRE is 'an European Union initiative to establish an infrastructure for spatial information in Europe that is geared to help to make spatial or geographical information more accessible and interoperable for a wide range of purposes supporting sustainable development.'&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;The INSPIRE directive lays down a general framework for a Spatial Data Infrastructure (SDI) for the purposes of European Community environmental policies and policies or activities which may have an impact on the environment. The INSPIRE Directive entered into force on 15 May 2007.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;INSPIRE is based on the infrastructures for spatial information established and operated by the member states of the European Union. The directive addresses 34 spatial data themes needed for environmental applications. To ensure that the spatial data infrastructures of the member states are compatible and usable in a community and transboundary context, the INSPIRE Directive requires that additional legislation or common Implementing Rules (IR) are adopted for a number of specific areas (metadata, interoperability of spatial data sets and services, network services, data and service sharing, monitoring and reporting). These are published either as Commission Regulations or as Decisions.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;The Commission is assisted in the process of adopting such rules by a regulatory committee, INSPIRE Committee, composed of representatives of the member states and chaired by a representative of the Commission (this is known as the Comitology procedure).&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Wikipedia - Infrastructure for Spatial Information in the European Community (&lt;a href=&quot;https://en.wikipedia.org/wiki/Infrastructure_for_Spatial_Information_in_the_European_Community&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://en.wikipedia.org/wiki/Infrastructure_for_Spatial_Information_in_the_Eu ropean_Community&lt;/span&gt;&lt;/a&gt;)&lt;/p&gt;&lt;p&gt;Link to the INSPIRE regulation: &lt;a href=&quot;http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:32008R1205&amp;amp;from=EN&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;Link to the INSPIRE website: &lt;a href=&quot;http://inspire.ec.europa.eu/index.cfm&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://inspire.ec.europa.eu/index.cfm&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -157,25 +166,28 @@
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>40</width>
+           <width>20</width>
            <height>20</height>
           </size>
          </property>
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="aw_okButton">
+        <widget class="QToolButton" name="aw_okButton">
          <property name="minimumSize">
           <size>
-           <width>50</width>
+           <width>93</width>
            <height>27</height>
           </size>
          </property>
          <property name="maximumSize">
           <size>
-           <width>50</width>
+           <width>93</width>
            <height>27</height>
           </size>
          </property>
@@ -188,8 +200,30 @@
            <stylestrategy>PreferDefault</stylestrategy>
           </font>
          </property>
+         <property name="styleSheet">
+          <string notr="true">QToolButton {
+	border: 1px solid #acacac;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #f0f0f0, stop:1 #e5e5e5);
+}
+
+QToolButton:hover {
+	border: 1px solid #7eb4ea;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #ecf4fc, stop:1 #dcecfc);
+}
+
+QToolButton:pressed {
+	border: 1px solid #579de5;
+	border-radius: 1px;
+	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+									stop:0 #daecfc, stop:1 #c4e0fc);
+}</string>
+         </property>
          <property name="text">
-          <string>OK</string>
+          <string>Ok</string>
          </property>
         </widget>
        </item>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1000</width>
-    <height>585</height>
+    <width>1094</width>
+    <height>673</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -80,8 +80,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1019</width>
-         <height>568</height>
+         <width>1072</width>
+         <height>625</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
@@ -109,8 +109,8 @@
            <font>
             <family>FreeSans</family>
             <pointsize>10</pointsize>
-            <weight>75</weight>
-            <bold>true</bold>
+            <weight>50</weight>
+            <bold>false</bold>
             <stylestrategy>PreferAntialias</stylestrategy>
            </font>
           </property>
@@ -150,7 +150,7 @@ QTabBar::tab:hover {
 }
 
 QTabBar::tab:selected {
-    background-color: rgb(230,230,230);
+    background: rgb(230,230,230);
 }
 
 QTabBar::tab:!selected {
@@ -177,7 +177,7 @@ QTabBar::tab:!selected {
             <string>Identification</string>
            </attribute>
            <layout class="QGridLayout" name="gridLayout_15">
-            <item row="0" column="1">
+            <item row="0" column="2">
              <spacer name="verticalSpacer_63">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -196,7 +196,7 @@ QTabBar::tab:!selected {
             <item row="1" column="1" rowspan="2" colspan="2">
              <layout class="QGridLayout" name="gridLayout_2">
               <property name="verticalSpacing">
-               <number>15</number>
+               <number>20</number>
               </property>
               <item row="0" column="0">
                <widget class="QLabel" name="id_resourceTitle_lb">
@@ -225,7 +225,7 @@ QTabBar::tab:!selected {
                  <string/>
                 </property>
                 <property name="text">
-                 <string>Project acronym:</string>
+                 <string>Project title:</string>
                 </property>
                </widget>
               </item>
@@ -244,20 +244,20 @@ QTabBar::tab:!selected {
                  <widget class="QLineEdit" name="id_resourceTitle_ln">
                   <property name="minimumSize">
                    <size>
-                    <width>350</width>
+                    <width>450</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>350</width>
+                    <width>450</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
                     <family>FreeSans</family>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
@@ -290,11 +290,26 @@ QTabBar::tab:!selected {
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -313,7 +328,7 @@ QToolButton:flat {border: none;}</string>
                    <enum>QToolButton::DelayedPopup</enum>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                   <property name="arrowType">
                    <enum>Qt::NoArrow</enum>
@@ -335,7 +350,178 @@ QToolButton:flat {border: none;}</string>
                 </item>
                </layout>
               </item>
-              <item row="1" column="1" rowspan="3">
+              <item row="1" column="0">
+               <widget class="QLabel" name="id_resourceIdent_lb">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>FreeSans</family>
+                  <pointsize>10</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                  <stylestrategy>PreferAntialias</stylestrategy>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="text">
+                 <string>Project acronym:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="1">
+               <layout class="QHBoxLayout" name="horizontalLayout_38">
+                <property name="spacing">
+                 <number>6</number>
+                </property>
+                <item>
+                 <widget class="QLineEdit" name="id_resourceIdent_ln">
+                  <property name="minimumSize">
+                   <size>
+                    <width>450</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>450</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>FreeSans</family>
+                    <pointsize>9</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                    <stylestrategy>PreferAntialias</stylestrategy>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit {
+	border-radius: 3px;
+   padding: 1px 4px 1px 4px;
+	background-color:  rgb(240, 240, 240);
+}</string>
+                  </property>
+                  <property name="frame">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QToolButton" name="infoButton_5">
+                  <property name="minimumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
+
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset>
+                    <normaloff>icons/info_icon.png</normaloff>icons/info_icon.png</iconset>
+                  </property>
+                  <property name="iconSize">
+                   <size>
+                    <width>27</width>
+                    <height>27</height>
+                   </size>
+                  </property>
+                  <property name="autoRaise">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_14">
+                  <property name="orientation">
+                   <enum>Qt::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>13</width>
+                    <height>24</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item row="2" column="0">
+               <widget class="QLabel" name="id_resourceAbstract_lb">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>FreeSans</family>
+                  <pointsize>10</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                  <stylestrategy>PreferAntialias</stylestrategy>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="text">
+                 <string>Project abstract:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="2" column="1">
                <layout class="QHBoxLayout" name="horizontalLayout_9">
                 <property name="spacing">
                  <number>6</number>
@@ -347,7 +533,7 @@ QToolButton:flat {border: none;}</string>
                  <widget class="QPlainTextEdit" name="id_resourceAbstract_ta">
                   <property name="minimumSize">
                    <size>
-                    <width>500</width>
+                    <width>600</width>
                     <height>120</height>
                    </size>
                   </property>
@@ -360,7 +546,7 @@ QToolButton:flat {border: none;}</string>
                   <property name="font">
                    <font>
                     <family>FreeSans</family>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
@@ -393,11 +579,26 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -413,13 +614,44 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
                </layout>
               </item>
-              <item row="4" column="1">
+              <item row="3" column="0">
+               <widget class="QLabel" name="id_label_3">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>FreeSans</family>
+                  <pointsize>10</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                  <stylestrategy>PreferAntialias</stylestrategy>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="text">
+                 <string>Resource type:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="3" column="1">
                <layout class="QHBoxLayout" name="horizontalLayout_29">
                 <property name="spacing">
                  <number>6</number>
@@ -431,20 +663,20 @@ QToolButton:flat {border: none;}</string>
                  <widget class="QComboBox" name="id_resourceType_rl1">
                   <property name="minimumSize">
                    <size>
-                    <width>100</width>
+                    <width>120</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
+                    <width>120</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
                     <family>FreeSans</family>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
@@ -452,45 +684,58 @@ QToolButton:flat {border: none;}</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">QComboBox {
-	border-radius: 3px;
-   padding: 1px 4px 1px 4px;
-	background-color:  rgb(240, 240, 240);
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
+
+QComboBox:disabled {
+	background-color:  rgb(200,200,200);
+}
+
+QComboBox:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
 }
 
 QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::drop-down:hover {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-left-width: 1px;
-    border-left-color: darkgray;
-    border-left-style: solid;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::down-arrow {
-    image: url(icons/arrow_down.png);
+	image: url(icons/arrow_down.png); 
 	width: 18px;
-	height: 18px;
+	height: 18px
 }
 
 QComboBox::down-arrow:on {
-    top: 1px;
-    left: 1px;
+	top: 1px; 
+	left: 1px;
 }
 
 QComboBox QAbstractItemView {
-	background-color: rgb(240,240,240);
+	selection-background-color: transparent;
 	selection-color: blue;
-    padding: 1px 4px 1px 1px 1px
+	border: 0px, solid black;
 }</string>
                   </property>
                   <property name="currentIndex">
@@ -526,11 +771,26 @@ QComboBox QAbstractItemView {
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -546,7 +806,7 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -565,7 +825,38 @@ QToolButton:flat {border: none;}</string>
                 </item>
                </layout>
               </item>
-              <item row="5" column="1">
+              <item row="4" column="0">
+               <widget class="QLabel" name="id_resourceLocator_lb">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>FreeSans</family>
+                  <pointsize>10</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                  <stylestrategy>PreferAntialias</stylestrategy>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="text">
+                 <string>Resource locator:</string>
+                </property>
+               </widget>
+              </item>
+              <item row="4" column="1">
                <layout class="QHBoxLayout" name="horizontalLayout_36">
                 <property name="spacing">
                  <number>6</number>
@@ -574,20 +865,20 @@ QToolButton:flat {border: none;}</string>
                  <widget class="QLineEdit" name="id_resourceLocator_ln">
                   <property name="minimumSize">
                    <size>
-                    <width>350</width>
+                    <width>450</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>350</width>
+                    <width>450</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
                     <family>FreeSans</family>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
@@ -629,11 +920,26 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -649,7 +955,7 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -668,101 +974,38 @@ QToolButton:flat {border: none;}</string>
                 </item>
                </layout>
               </item>
-              <item row="6" column="1">
-               <layout class="QHBoxLayout" name="horizontalLayout_38">
-                <property name="spacing">
-                 <number>6</number>
+              <item row="5" column="0">
+               <widget class="QLabel" name="id_label_6">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>0</height>
+                 </size>
                 </property>
-                <item>
-                 <widget class="QLineEdit" name="id_resourceIdent_ln">
-                  <property name="minimumSize">
-                   <size>
-                    <width>350</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>350</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>FreeSans</family>
-                    <pointsize>10</pointsize>
-                    <weight>50</weight>
-                    <bold>false</bold>
-                    <stylestrategy>PreferAntialias</stylestrategy>
-                   </font>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QLineEdit {
-	border-radius: 3px;
-   padding: 1px 4px 1px 4px;
-	background-color:  rgb(240, 240, 240);
-}</string>
-                  </property>
-                  <property name="frame">
-                   <bool>false</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QToolButton" name="infoButton_5">
-                  <property name="minimumSize">
-                   <size>
-                    <width>27</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>27</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
-
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
-
-QToolButton:flat {border: none;}</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="icon">
-                   <iconset>
-                    <normaloff>icons/info_icon.png</normaloff>icons/info_icon.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>27</width>
-                    <height>27</height>
-                   </size>
-                  </property>
-                  <property name="autoRaise">
-                   <bool>true</bool>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="horizontalSpacer_14">
-                  <property name="orientation">
-                   <enum>Qt::Horizontal</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>13</width>
-                    <height>24</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="font">
+                 <font>
+                  <family>FreeSans</family>
+                  <pointsize>10</pointsize>
+                  <weight>50</weight>
+                  <bold>false</bold>
+                  <stylestrategy>PreferAntialias</stylestrategy>
+                 </font>
+                </property>
+                <property name="toolTip">
+                 <string/>
+                </property>
+                <property name="text">
+                 <string>Resource language:</string>
+                </property>
+               </widget>
               </item>
-              <item row="7" column="1">
+              <item row="5" column="1">
                <layout class="QHBoxLayout" name="horizontalLayout_42">
                 <property name="spacing">
                  <number>6</number>
@@ -774,20 +1017,20 @@ QToolButton:flat {border: none;}</string>
                  <widget class="QComboBox" name="id_resourceLang_rl2">
                   <property name="minimumSize">
                    <size>
-                    <width>100</width>
+                    <width>120</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
+                    <width>120</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
                     <family>FreeSans</family>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
@@ -795,45 +1038,58 @@ QToolButton:flat {border: none;}</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">QComboBox {
-	border-radius: 3px;
-   padding: 1px 4px 1px 4px;
-	background-color:  rgb(240, 240, 240);
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
+
+QComboBox:disabled {
+	background-color:  rgb(200,200,200);
+}
+
+QComboBox:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
 }
 
 QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::drop-down:hover {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-left-width: 1px;
-    border-left-color: darkgray;
-    border-left-style: solid;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::down-arrow {
-    image: url(icons/arrow_down.png);
+	image: url(icons/arrow_down.png); 
 	width: 18px;
-	height: 18px;
+	height: 18px
 }
 
 QComboBox::down-arrow:on {
-    top: 1px;
-    left: 1px;
+	top: 1px; 
+	left: 1px;
 }
 
 QComboBox QAbstractItemView {
-	background-color: rgb(240,240,240);
+	selection-background-color: transparent;
 	selection-color: blue;
-   padding: 1px 4px 1px 1px 1px
+	border: 0px, solid black;
 }</string>
                   </property>
                   <property name="currentIndex">
@@ -968,11 +1224,26 @@ QComboBox QAbstractItemView {
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -988,7 +1259,7 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -1006,161 +1277,6 @@ QToolButton:flat {border: none;}</string>
                  </spacer>
                 </item>
                </layout>
-              </item>
-              <item row="7" column="0">
-               <widget class="QLabel" name="id_label_6">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>FreeSans</family>
-                  <pointsize>10</pointsize>
-                  <weight>50</weight>
-                  <bold>false</bold>
-                  <stylestrategy>PreferAntialias</stylestrategy>
-                 </font>
-                </property>
-                <property name="toolTip">
-                 <string/>
-                </property>
-                <property name="text">
-                 <string>Resource language:</string>
-                </property>
-               </widget>
-              </item>
-              <item row="6" column="0">
-               <widget class="QLabel" name="id_resourceIdent_lb">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>FreeSans</family>
-                  <pointsize>10</pointsize>
-                  <weight>50</weight>
-                  <bold>false</bold>
-                  <stylestrategy>PreferAntialias</stylestrategy>
-                 </font>
-                </property>
-                <property name="toolTip">
-                 <string/>
-                </property>
-                <property name="text">
-                 <string>Unique resource identifier:</string>
-                </property>
-               </widget>
-              </item>
-              <item row="5" column="0">
-               <widget class="QLabel" name="id_resourceLocator_lb">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>FreeSans</family>
-                  <pointsize>10</pointsize>
-                  <weight>50</weight>
-                  <bold>false</bold>
-                  <stylestrategy>PreferAntialias</stylestrategy>
-                 </font>
-                </property>
-                <property name="toolTip">
-                 <string/>
-                </property>
-                <property name="text">
-                 <string>Resource locator:</string>
-                </property>
-               </widget>
-              </item>
-              <item row="4" column="0">
-               <widget class="QLabel" name="id_label_3">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>FreeSans</family>
-                  <pointsize>10</pointsize>
-                  <weight>50</weight>
-                  <bold>false</bold>
-                  <stylestrategy>PreferAntialias</stylestrategy>
-                 </font>
-                </property>
-                <property name="toolTip">
-                 <string/>
-                </property>
-                <property name="text">
-                 <string>Resource type:</string>
-                </property>
-               </widget>
-              </item>
-              <item row="2" column="0">
-               <widget class="QLabel" name="id_resourceAbstract_lb">
-                <property name="minimumSize">
-                 <size>
-                  <width>0</width>
-                  <height>0</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>16777215</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <family>FreeSans</family>
-                  <pointsize>10</pointsize>
-                  <weight>50</weight>
-                  <bold>false</bold>
-                  <stylestrategy>PreferAntialias</stylestrategy>
-                 </font>
-                </property>
-                <property name="toolTip">
-                 <string/>
-                </property>
-                <property name="text">
-                 <string>Project abstract:</string>
-                </property>
-               </widget>
               </item>
              </layout>
             </item>
@@ -1193,7 +1309,7 @@ QToolButton:flat {border: none;}</string>
               </property>
              </spacer>
             </item>
-            <item row="3" column="2">
+            <item row="3" column="1">
              <spacer name="verticalSpacer_44">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -1944,11 +2060,26 @@ QToolButton:flat {border: none;}</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                 <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -1964,7 +2095,7 @@ QToolButton:flat {border: none;}</string>
                  </size>
                 </property>
                 <property name="autoRaise">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
@@ -4224,11 +4355,26 @@ QToolButton:flat {border: none;}</string>
                  </size>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                 <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                 </property>
                 <property name="text">
                  <string/>
@@ -4244,7 +4390,7 @@ QToolButton:flat {border: none;}</string>
                  </size>
                 </property>
                 <property name="autoRaise">
-                 <bool>true</bool>
+                 <bool>false</bool>
                 </property>
                </widget>
               </item>
@@ -4315,7 +4461,7 @@ QToolButton:flat {border: none;}</string>
               </property>
              </spacer>
             </item>
-            <item row="1" column="1" rowspan="3" colspan="3">
+            <item row="1" column="1" rowspan="2" colspan="2">
              <layout class="QVBoxLayout" name="verticalLayout_20">
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -4365,20 +4511,20 @@ QToolButton:flat {border: none;}</string>
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>200</width>
+                        <width>220</width>
                         <height>27</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>200</width>
+                        <width>220</width>
                         <height>27</height>
                        </size>
                       </property>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>9</pointsize>
                         <weight>50</weight>
                         <bold>false</bold>
                         <stylestrategy>PreferAntialias</stylestrategy>
@@ -4386,45 +4532,58 @@ QToolButton:flat {border: none;}</string>
                       </property>
                       <property name="styleSheet">
                        <string notr="true">QComboBox {
-	border-radius: 3px;
-   padding: 1px 4px 1px 4px;
-	background-color:  rgb(240, 240, 240);
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
+
+QComboBox:disabled {
+	background-color:  rgb(200,200,200);
+}
+
+QComboBox:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
 }
 
 QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::drop-down:hover {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-left-width: 1px;
-    border-left-color: darkgray;
-    border-left-style: solid;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::down-arrow {
-    image: url(icons/arrow_down.png);
+	image: url(icons/arrow_down.png); 
 	width: 18px;
-	height: 18px;
+	height: 18px
 }
 
 QComboBox::down-arrow:on {
-    top: 1px;
-    left: 1px;
+	top: 1px; 
+	left: 1px;
 }
 
 QComboBox QAbstractItemView {
-	background-color: rgb(240,240,240);
+	selection-background-color: transparent;
 	selection-color: blue;
-   padding: 1px 4px 1px 1px 1px
+	border: 0px, solid black;
 }</string>
                       </property>
                       <property name="currentIndex">
@@ -4543,6 +4702,76 @@ QComboBox QAbstractItemView {
                      </widget>
                     </item>
                     <item>
+                     <widget class="QToolButton" name="plusButton_9">
+                      <property name="minimumSize">
+                       <size>
+                        <width>27</width>
+                        <height>27</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>27</width>
+                        <height>27</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
+
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
+
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="icon">
+                       <iconset>
+                        <normaloff>icons/plus_icon.png</normaloff>icons/plus_icon.png</iconset>
+                      </property>
+                      <property name="iconSize">
+                       <size>
+                        <width>27</width>
+                        <height>27</height>
+                       </size>
+                      </property>
+                      <property name="autoRaise">
+                       <bool>false</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <spacer name="horizontalSpacer_34">
+                      <property name="orientation">
+                       <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="sizeType">
+                       <enum>QSizePolicy::Fixed</enum>
+                      </property>
+                      <property name="sizeHint" stdset="0">
+                       <size>
+                        <width>20</width>
+                        <height>20</height>
+                       </size>
+                      </property>
+                     </spacer>
+                    </item>
+                    <item>
                      <widget class="QToolButton" name="infoButton_9">
                       <property name="minimumSize">
                        <size>
@@ -4557,11 +4786,26 @@ QComboBox QAbstractItemView {
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -4577,7 +4821,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -4587,7 +4831,7 @@ QToolButton:flat {border: none;}</string>
                        <enum>Qt::Horizontal</enum>
                       </property>
                       <property name="sizeType">
-                       <enum>QSizePolicy::Fixed</enum>
+                       <enum>QSizePolicy::Expanding</enum>
                       </property>
                       <property name="sizeHint" stdset="0">
                        <size>
@@ -5534,20 +5778,20 @@ QToolButton:flat {border: none;}</string>
                     </property>
                     <property name="minimumSize">
                      <size>
-                      <width>280</width>
+                      <width>320</width>
                       <height>27</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>280</width>
+                      <width>320</width>
                       <height>27</height>
                      </size>
                     </property>
                     <property name="font">
                      <font>
                       <family>FreeSans</family>
-                      <pointsize>10</pointsize>
+                      <pointsize>9</pointsize>
                       <weight>50</weight>
                       <bold>false</bold>
                       <stylestrategy>PreferAntialias</stylestrategy>
@@ -5555,45 +5799,58 @@ QToolButton:flat {border: none;}</string>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QComboBox {
-	border-radius: 3px;
-   padding: 1px 4px 1px 4px;
-	background-color:  rgb(240, 240, 240);
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
+
+QComboBox:disabled {
+	background-color:  rgb(200,200,200);
+}
+
+QComboBox:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
 }
 
 QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::drop-down:hover {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-left-width: 1px;
-    border-left-color: darkgray;
-    border-left-style: solid;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::down-arrow {
-    image: url(icons/arrow_down.png);
+	image: url(icons/arrow_down.png); 
 	width: 18px;
-	height: 18px;
+	height: 18px
 }
 
 QComboBox::down-arrow:on {
-    top: 1px;
-    left: 1px;
+	top: 1px; 
+	left: 1px;
 }
 
 QComboBox QAbstractItemView {
-	background-color: rgb(240,240,240);
+	selection-background-color: transparent;
 	selection-color: blue;
-   padding: 1px 4px 1px 1px 1px
+	border: 0px, solid black;
 }</string>
                     </property>
                     <property name="currentIndex">
@@ -5619,11 +5876,26 @@ QComboBox QAbstractItemView {
                      </size>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                     <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                     </property>
                     <property name="text">
                      <string/>
@@ -5639,7 +5911,7 @@ QToolButton:flat {border: none;}</string>
                      </size>
                     </property>
                     <property name="autoRaise">
-                     <bool>true</bool>
+                     <bool>false</bool>
                     </property>
                    </widget>
                   </item>
@@ -5674,11 +5946,26 @@ QToolButton:flat {border: none;}</string>
                      </size>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                     <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                     </property>
                     <property name="text">
                      <string/>
@@ -5694,7 +5981,7 @@ QToolButton:flat {border: none;}</string>
                      </size>
                     </property>
                     <property name="autoRaise">
-                     <bool>true</bool>
+                     <bool>false</bool>
                     </property>
                    </widget>
                   </item>
@@ -5726,7 +6013,7 @@ QToolButton:flat {border: none;}</string>
               </item>
              </layout>
             </item>
-            <item row="2" column="4">
+            <item row="2" column="3">
              <spacer name="horizontalSpacer_62">
               <property name="orientation">
                <enum>Qt::Horizontal</enum>
@@ -5739,42 +6026,7 @@ QToolButton:flat {border: none;}</string>
               </property>
              </spacer>
             </item>
-            <item row="3" column="3">
-             <widget class="QToolButton" name="delButton_9">
-              <property name="enabled">
-               <bool>false</bool>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>27</width>
-                <height>27</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>27</width>
-                <height>27</height>
-               </size>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset>
-                <normaloff>icons/none_icon.png</normaloff>icons/none_icon.png</iconset>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>27</width>
-                <height>27</height>
-               </size>
-              </property>
-              <property name="autoRaise">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="2">
+            <item row="3" column="2">
              <spacer name="verticalSpacer_16">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
@@ -5788,6 +6040,47 @@ QToolButton:flat {border: none;}</string>
              </spacer>
             </item>
            </layout>
+           <widget class="QToolButton" name="delButton_9">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="geometry">
+             <rect>
+              <x>925</x>
+              <y>397</y>
+              <width>27</width>
+              <height>27</height>
+             </rect>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>27</width>
+              <height>27</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>27</width>
+              <height>27</height>
+             </size>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset>
+              <normaloff>icons/none_icon.png</normaloff>icons/none_icon.png</iconset>
+            </property>
+            <property name="iconSize">
+             <size>
+              <width>27</width>
+              <height>27</height>
+             </size>
+            </property>
+            <property name="autoRaise">
+             <bool>true</bool>
+            </property>
+           </widget>
           </widget>
           <widget class="QWidget" name="tabWidgetPage5">
            <attribute name="title">
@@ -5866,20 +6159,20 @@ QToolButton:flat {border: none;}</string>
                  <widget class="QComboBox" name="gl_category_rl1">
                   <property name="minimumSize">
                    <size>
-                    <width>140</width>
+                    <width>160</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>16777215</width>
+                    <width>160</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
                     <family>FreeSans</family>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
@@ -5888,45 +6181,58 @@ QToolButton:flat {border: none;}</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">QComboBox {
-	border-radius: 3px;
-   padding: 1px 4px 1px 4px;
-	background-color:  rgb(240, 240, 240);
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
+
+QComboBox:disabled {
+	background-color:  rgb(200,200,200);
+}
+
+QComboBox:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
 }
 
 QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::drop-down:hover {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-left-width: 1px;
-    border-left-color: darkgray;
-    border-left-style: solid;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::down-arrow {
-    image: url(icons/arrow_down.png);
+	image: url(icons/arrow_down.png); 
 	width: 18px;
-	height: 18px;
+	height: 18px
 }
 
 QComboBox::down-arrow:on {
-    top: 1px;
-    left: 1px;
+	top: 1px; 
+	left: 1px;
 }
 
 QComboBox QAbstractItemView {
-	background-color: rgb(240,240,240);
+	selection-background-color: transparent;
 	selection-color: blue;
-   padding: 1px 4px 1px 1px 1px
+	border: 0px, solid black;
 }</string>
                   </property>
                   <item>
@@ -6009,7 +6315,7 @@ QComboBox QAbstractItemView {
                     <property name="font">
                      <font>
                       <family>FreeSans</family>
-                      <pointsize>10</pointsize>
+                      <pointsize>9</pointsize>
                       <weight>50</weight>
                       <bold>false</bold>
                       <stylestrategy>PreferAntialias</stylestrategy>
@@ -6017,19 +6323,60 @@ QComboBox QAbstractItemView {
                      </font>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QComboBox {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}
+                     <string notr="true">QComboBox {
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
 
-QComboBox:disabled {background-color:  rgb(200,200,200);}
+QComboBox:disabled {
+	background-color:  rgb(200,200,200);
+}
 
-QComboBox::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QComboBox:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
+}
 
-QComboBox::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QComboBox::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}
+QComboBox::drop-down:hover {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QComboBox::down-arrow:on {top: 1px; left: 1px;}
+QComboBox::down-arrow {
+	image: url(icons/arrow_down.png); 
+	width: 18px;
+	height: 18px
+}
 
-QComboBox QAbstractItemView {background-color: rgb(240,240,240); selection-color: blue; padding: 4px 1px 4px 1px;}</string>
+QComboBox::down-arrow:on {
+	top: 1px; 
+	left: 1px;
+}
+
+QComboBox QAbstractItemView {
+	selection-background-color: transparent;
+	selection-color: blue;
+	border: 0px, solid black;
+}</string>
                     </property>
                     <property name="maxVisibleItems">
                      <number>20</number>
@@ -6059,11 +6406,26 @@ QComboBox QAbstractItemView {background-color: rgb(240,240,240); selection-color
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -6079,7 +6441,7 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -6182,7 +6544,7 @@ QToolButton:flat {border: none;}</string>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>9</pointsize>
                         <weight>50</weight>
                         <bold>false</bold>
                         <stylestrategy>PreferAntialias</stylestrategy>
@@ -6253,7 +6615,7 @@ QToolButton:flat {border: none;}</string>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>9</pointsize>
                         <weight>50</weight>
                         <bold>false</bold>
                         <stylestrategy>PreferAntialias</stylestrategy>
@@ -6349,7 +6711,7 @@ QToolButton:flat {border: none;}</string>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>9</pointsize>
                         <weight>50</weight>
                         <bold>false</bold>
                         <stylestrategy>PreferAntialias</stylestrategy>
@@ -6417,7 +6779,7 @@ QToolButton:flat {border: none;}</string>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>9</pointsize>
                         <weight>50</weight>
                         <bold>false</bold>
                         <stylestrategy>PreferAntialias</stylestrategy>
@@ -6464,11 +6826,26 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -6484,7 +6861,7 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -6571,20 +6948,20 @@ QToolButton:flat {border: none;}</string>
                  <widget class="QComboBox" name="gl_resolution_rl1">
                   <property name="minimumSize">
                    <size>
-                    <width>100</width>
+                    <width>110</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>100</width>
+                    <width>110</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
                     <family>FreeSans</family>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
@@ -6592,45 +6969,58 @@ QToolButton:flat {border: none;}</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">QComboBox {
-	border-radius: 3px;
-   padding: 1px 4px 1px 4px;
-	background-color:  rgb(240, 240, 240);
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
+
+QComboBox:disabled {
+	background-color:  rgb(200,200,200);
+}
+
+QComboBox:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
 }
 
 QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::drop-down:hover {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-left-width: 1px;
-    border-left-color: darkgray;
-    border-left-style: solid;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::down-arrow {
-    image: url(icons/arrow_down.png);
+	image: url(icons/arrow_down.png); 
 	width: 18px;
-	height: 18px;
+	height: 18px
 }
 
 QComboBox::down-arrow:on {
-    top: 1px;
-    left: 1px;
+	top: 1px; 
+	left: 1px;
 }
 
 QComboBox QAbstractItemView {
-	background-color: rgb(240,240,240);
+	selection-background-color: transparent;
 	selection-color: blue;
-   padding: 1px 4px 1px 1px 1px
+	border: 0px, solid black;
 }</string>
                   </property>
                   <property name="frame">
@@ -6686,7 +7076,7 @@ QComboBox QAbstractItemView {
                     <property name="font">
                      <font>
                       <family>FreeSans</family>
-                      <pointsize>10</pointsize>
+                      <pointsize>9</pointsize>
                       <weight>50</weight>
                       <bold>false</bold>
                       <stylestrategy>PreferAntialias</stylestrategy>
@@ -6715,11 +7105,26 @@ QComboBox QAbstractItemView {
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -6738,7 +7143,7 @@ QToolButton:flat {border: none;}</string>
                    <enum>QToolButton::InstantPopup</enum>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -6849,24 +7254,8 @@ QToolButton:flat {border: none;}</string>
                   <property name="verticalSpacing">
                    <number>29</number>
                   </property>
-                  <item row="0" column="0">
-                   <widget class="QLabel" name="tr_datePublication_lb">
-                    <property name="font">
-                     <font>
-                      <family>FreeSans</family>
-                      <pointsize>10</pointsize>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                      <stylestrategy>PreferAntialias</stylestrategy>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Date of publication:</string>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="0" column="1">
-                   <widget class="QDateEdit" name="tr_datePublication_do1">
+                   <widget class="QDateEdit" name="tr_dateRevision_do2">
                     <property name="minimumSize">
                      <size>
                       <width>130</width>
@@ -6882,25 +7271,57 @@ QToolButton:flat {border: none;}</string>
                     <property name="font">
                      <font>
                       <family>FreeSans</family>
-                      <pointsize>10</pointsize>
+                      <pointsize>9</pointsize>
                       <weight>50</weight>
                       <bold>false</bold>
                       <stylestrategy>PreferAntialias</stylestrategy>
                      </font>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}
+                     <string notr="true">QDateEdit {
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
 
-QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QDateEdit:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
+}
 
-QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QDateEdit::drop-down  {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}
+QDateEdit::drop-down:hover{
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
-                    </property>
-                    <property name="wrapping">
-                     <bool>false</bool>
+QDateEdit::down-arrow {
+    image: url(icons/arrow_down.png);
+    width: 18px;
+    height: 18px;
+}
+
+QDateEdit::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
                     </property>
                     <property name="frame">
                      <bool>false</bool>
@@ -6933,7 +7354,7 @@ QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
                    </widget>
                   </item>
                   <item row="0" column="2">
-                   <widget class="QToolButton" name="infoButton_14">
+                   <widget class="QToolButton" name="infoButton_15">
                     <property name="maximumSize">
                      <size>
                       <width>27</width>
@@ -6941,11 +7362,26 @@ QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
                      </size>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                     <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                     </property>
                     <property name="text">
                      <string/>
@@ -6961,11 +7397,11 @@ QToolButton:flat {border: none;}</string>
                      </size>
                     </property>
                     <property name="autoRaise">
-                     <bool>true</bool>
+                     <bool>false</bool>
                     </property>
                    </widget>
                   </item>
-                  <item row="1" column="0">
+                  <item row="0" column="0">
                    <widget class="QLabel" name="tr_dateRevision_lb">
                     <property name="font">
                      <font>
@@ -6981,72 +7417,8 @@ QToolButton:flat {border: none;}</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="1" column="1">
-                   <widget class="QDateEdit" name="tr_dateRevision_do2">
-                    <property name="minimumSize">
-                     <size>
-                      <width>130</width>
-                      <height>27</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>130</width>
-                      <height>27</height>
-                     </size>
-                    </property>
-                    <property name="font">
-                     <font>
-                      <family>FreeSans</family>
-                      <pointsize>10</pointsize>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                      <stylestrategy>PreferAntialias</stylestrategy>
-                     </font>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}
-
-QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
-
-QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
-
-QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}
-
-QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
-                    </property>
-                    <property name="frame">
-                     <bool>false</bool>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="accelerated">
-                     <bool>true</bool>
-                    </property>
-                    <property name="currentSection">
-                     <enum>QDateTimeEdit::YearSection</enum>
-                    </property>
-                    <property name="displayFormat">
-                     <string>yyyy-MM-dd</string>
-                    </property>
-                    <property name="calendarPopup">
-                     <bool>true</bool>
-                    </property>
-                    <property name="timeSpec">
-                     <enum>Qt::UTC</enum>
-                    </property>
-                    <property name="date">
-                     <date>
-                      <year>2014</year>
-                      <month>10</month>
-                      <day>7</day>
-                     </date>
-                    </property>
-                   </widget>
-                  </item>
                   <item row="1" column="2">
-                   <widget class="QToolButton" name="infoButton_15">
+                   <widget class="QToolButton" name="infoButton_16">
                     <property name="maximumSize">
                      <size>
                       <width>27</width>
@@ -7054,11 +7426,26 @@ QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
                      </size>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                     <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                     </property>
                     <property name="text">
                      <string/>
@@ -7074,27 +7461,11 @@ QToolButton:flat {border: none;}</string>
                      </size>
                     </property>
                     <property name="autoRaise">
-                     <bool>true</bool>
+                     <bool>false</bool>
                     </property>
                    </widget>
                   </item>
-                  <item row="2" column="0">
-                   <widget class="QLabel" name="tr_dateCreation_lb">
-                    <property name="font">
-                     <font>
-                      <family>FreeSans</family>
-                      <pointsize>10</pointsize>
-                      <weight>50</weight>
-                      <bold>false</bold>
-                      <stylestrategy>PreferAntialias</stylestrategy>
-                     </font>
-                    </property>
-                    <property name="text">
-                     <string>Date of creation:</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="2" column="1">
+                  <item row="1" column="1">
                    <widget class="QDateEdit" name="tr_dateCreation_do3">
                     <property name="minimumSize">
                      <size>
@@ -7111,22 +7482,57 @@ QToolButton:flat {border: none;}</string>
                     <property name="font">
                      <font>
                       <family>FreeSans</family>
-                      <pointsize>10</pointsize>
+                      <pointsize>9</pointsize>
                       <weight>50</weight>
                       <bold>false</bold>
                       <stylestrategy>PreferAntialias</stylestrategy>
                      </font>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}
+                     <string notr="true">QDateEdit {
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
 
-QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QDateEdit:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
+}
 
-QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QDateEdit::drop-down  {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}
+QDateEdit::drop-down:hover{
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
+QDateEdit::down-arrow {
+    image: url(icons/arrow_down.png);
+    width: 18px;
+    height: 18px;
+}
+
+QDateEdit::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
                     </property>
                     <property name="frame">
                      <bool>false</bool>
@@ -7155,36 +7561,19 @@ QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
                     </property>
                    </widget>
                   </item>
-                  <item row="2" column="2">
-                   <widget class="QToolButton" name="infoButton_16">
-                    <property name="maximumSize">
-                     <size>
-                      <width>27</width>
-                      <height>27</height>
-                     </size>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
-
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
-
-QToolButton:flat {border: none;}</string>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="tr_dateCreation_lb">
+                    <property name="font">
+                     <font>
+                      <family>FreeSans</family>
+                      <pointsize>10</pointsize>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                      <stylestrategy>PreferAntialias</stylestrategy>
+                     </font>
                     </property>
                     <property name="text">
-                     <string/>
-                    </property>
-                    <property name="icon">
-                     <iconset>
-                      <normaloff>icons/info_icon.png</normaloff>icons/info_icon.png</iconset>
-                    </property>
-                    <property name="iconSize">
-                     <size>
-                      <width>27</width>
-                      <height>27</height>
-                     </size>
-                    </property>
-                    <property name="autoRaise">
-                     <bool>true</bool>
+                     <string>Date of creation:</string>
                     </property>
                    </widget>
                   </item>
@@ -7808,22 +8197,57 @@ QToolButton:flat {border: none;}</string>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>9</pointsize>
                         <weight>50</weight>
                         <bold>false</bold>
                         <stylestrategy>PreferAntialias</stylestrategy>
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}
+                       <string notr="true">QDateEdit {
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
 
-QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QDateEdit:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
+}
 
-QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QDateEdit::drop-down  {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}
+QDateEdit::drop-down:hover{
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
+QDateEdit::down-arrow {
+    image: url(icons/arrow_down.png);
+    width: 18px;
+    height: 18px;
+}
+
+QDateEdit::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
                       </property>
                       <property name="frame">
                        <bool>false</bool>
@@ -7885,22 +8309,57 @@ QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>9</pointsize>
                         <weight>50</weight>
                         <bold>false</bold>
                         <stylestrategy>PreferAntialias</stylestrategy>
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}
+                       <string notr="true">QDateEdit {
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
 
-QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QDateEdit:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
+}
 
-QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QDateEdit::drop-down  {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}
+QDateEdit::drop-down:hover{
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
+QDateEdit::down-arrow {
+    image: url(icons/arrow_down.png);
+    width: 18px;
+    height: 18px;
+}
+
+QDateEdit::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
                       </property>
                       <property name="frame">
                        <bool>false</bool>
@@ -7960,11 +8419,26 @@ QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -7980,7 +8454,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -8055,11 +8529,26 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -8075,7 +8564,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -8104,11 +8593,26 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -8124,7 +8628,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -8268,38 +8772,7 @@ QToolButton:flat {border: none;}</string>
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QRadioButton {
-    spacing: 5px;
-}
-
-QRadioButton::indicator {
-    width: 20px;
-    height: 20px;
-}
-
-QRadioButton::indicator:unchecked {
-    image: url(icons/radiobox_icon_unchecked.png);
-}
-
-QRadioButton::indicator:unchecked:hover {
-    image: url(icons/radiobox_icon_unchecked.png);
-}
-
-QRadioButton::indicator:unchecked:pressed {
-    image: url(icons/radiobox_icon_unchecked.png);
-}
-
-QRadioButton::indicator:checked {
-    image: url(icons/radiobox_icon_checked.png);
-}
-
-QRadioButton::indicator:checked:hover {
-    image: url(icons/radiobox_icon_checked.png);
-}
-
-QRadioButton::indicator:checked:pressed {
-    image: url(icons/radiobox_icon_checked.png);
-}</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string/>
@@ -8327,8 +8800,8 @@ QRadioButton::indicator:checked:pressed {
                    <font>
                     <family>FreeSans</family>
                     <pointsize>10</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
+                    <weight>50</weight>
+                    <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
                    </font>
                   </property>
@@ -8377,38 +8850,7 @@ QRadioButton::indicator:checked:pressed {
                    </font>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QRadioButton {
-    spacing: 5px;
-}
-
-QRadioButton::indicator {
-    width: 20px;
-    height: 20px;
-}
-
-QRadioButton::indicator:unchecked {
-    image: url(icons/radiobox_icon_unchecked.png);
-}
-
-QRadioButton::indicator:unchecked:hover {
-    image: url(icons/radiobox_icon_unchecked.png);
-}
-
-QRadioButton::indicator:unchecked:pressed {
-    image: url(icons/radiobox_icon_unchecked.png);
-}
-
-QRadioButton::indicator:checked {
-    image: url(icons/radiobox_icon_checked.png);
-}
-
-QRadioButton::indicator:checked:hover {
-    image: url(icons/radiobox_icon_checked.png);
-}
-
-QRadioButton::indicator:checked:pressed {
-    image: url(icons/radiobox_icon_checked.png);
-}</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string/>
@@ -8436,8 +8878,8 @@ QRadioButton::indicator:checked:pressed {
                    <font>
                     <family>FreeSans</family>
                     <pointsize>10</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
+                    <weight>50</weight>
+                    <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
                    </font>
                   </property>
@@ -8471,11 +8913,26 @@ QRadioButton::indicator:checked:pressed {
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -8491,7 +8948,7 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -8601,7 +9058,7 @@ QToolButton:flat {border: none;}</string>
                      <widget class="QLabel" name="au_conditions_lb">
                       <property name="minimumSize">
                        <size>
-                        <width>140</width>
+                        <width>160</width>
                         <height>40</height>
                        </size>
                       </property>
@@ -8666,7 +9123,7 @@ QToolButton:flat {border: none;}</string>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>9</pointsize>
                         <weight>50</weight>
                         <bold>false</bold>
                         <stylestrategy>PreferAntialias</stylestrategy>
@@ -8705,11 +9162,26 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -8725,7 +9197,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -8787,11 +9259,26 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -8807,7 +9294,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -8836,11 +9323,26 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -8856,7 +9358,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -9362,7 +9864,7 @@ QToolButton:flat {border: none;}</string>
                      <widget class="QLabel" name="au_limitations_lb">
                       <property name="minimumSize">
                        <size>
-                        <width>140</width>
+                        <width>160</width>
                         <height>40</height>
                        </size>
                       </property>
@@ -9427,7 +9929,7 @@ QToolButton:flat {border: none;}</string>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>9</pointsize>
                         <weight>50</weight>
                         <bold>false</bold>
                         <stylestrategy>PreferAntialias</stylestrategy>
@@ -9466,11 +9968,26 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -9486,7 +10003,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -9561,11 +10078,26 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -9581,7 +10113,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -9610,11 +10142,26 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -9630,7 +10177,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -9763,7 +10310,7 @@ QToolButton:flat {border: none;}</string>
                   <property name="font">
                    <font>
                     <family>FreeSans</family>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
@@ -9790,11 +10337,26 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -9810,7 +10372,7 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -9859,7 +10421,7 @@ QToolButton:flat {border: none;}</string>
                   <property name="font">
                    <font>
                     <family>FreeSans</family>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
@@ -9886,11 +10448,26 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -9906,7 +10483,7 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -9944,11 +10521,26 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -9999,11 +10591,26 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -10019,7 +10626,7 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -10061,20 +10668,20 @@ QToolButton:flat {border: none;}</string>
                  <widget class="QComboBox" name="ro_responsibleRole_rl1">
                   <property name="minimumSize">
                    <size>
-                    <width>170</width>
+                    <width>200</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>170</width>
+                    <width>200</width>
                     <height>27</height>
                    </size>
                   </property>
                   <property name="font">
                    <font>
                     <family>FreeSans</family>
-                    <pointsize>10</pointsize>
+                    <pointsize>9</pointsize>
                     <weight>50</weight>
                     <bold>false</bold>
                     <stylestrategy>PreferAntialias</stylestrategy>
@@ -10082,45 +10689,58 @@ QToolButton:flat {border: none;}</string>
                   </property>
                   <property name="styleSheet">
                    <string notr="true">QComboBox {
-	border-radius: 3px;
-   padding: 1px 4px 1px 4px;
-	background-color:  rgb(240, 240, 240);
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
+
+QComboBox:disabled {
+	background-color:  rgb(200,200,200);
+}
+
+QComboBox:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
 }
 
 QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::drop-down:hover {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-left-width: 1px;
-    border-left-color: darkgray;
-    border-left-style: solid;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::down-arrow {
-    image: url(icons/arrow_down.png);
+	image: url(icons/arrow_down.png); 
 	width: 18px;
-	height: 18px;
+	height: 18px
 }
 
 QComboBox::down-arrow:on {
-    top: 1px;
-    left: 1px;
+	top: 1px; 
+	left: 1px;
 }
 
 QComboBox QAbstractItemView {
-	background-color: rgb(240,240,240);
+	selection-background-color: transparent;
 	selection-color: blue;
-   padding: 1px 4px 1px 1px 1px
+	border: 0px, solid black;
 }</string>
                   </property>
                   <property name="currentIndex">
@@ -10192,11 +10812,26 @@ QComboBox QAbstractItemView {
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                   <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                   </property>
                   <property name="text">
                    <string/>
@@ -10212,7 +10847,7 @@ QToolButton:flat {border: none;}</string>
                    </size>
                   </property>
                   <property name="autoRaise">
-                   <bool>true</bool>
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
@@ -10348,22 +10983,57 @@ QToolButton:flat {border: none;}</string>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>9</pointsize>
                         <weight>50</weight>
                         <bold>false</bold>
                         <stylestrategy>PreferAntialias</stylestrategy>
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QDateEdit {border-radius: 3px; padding: 1px 4px 1px 4px; background-color: rgb(240, 240, 240);}
+                       <string notr="true">QDateEdit {
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
 
-QDateEdit::drop-down {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QDateEdit:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
+}
 
-QDateEdit::drop-down:hover {subcontrol-origin: padding; subcontrol-position: top right; width: 27px; border-left-width: 1px; border-left-color: darkgray; border-left-style: solid; border-top-right-radius: 3px; border-bottom-right-radius: 3px;}
+QDateEdit::drop-down  {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QDateEdit::down-arrow {image: url(icons/arrow_down.png); width: 18px; height: 18px;}
+QDateEdit::drop-down:hover{
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
 
-QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
+QDateEdit::down-arrow {
+    image: url(icons/arrow_down.png);
+    width: 18px;
+    height: 18px;
+}
+
+QDateEdit::down-arrow:on {
+    top: 1px;
+    left: 1px;
+}</string>
                       </property>
                       <property name="wrapping">
                        <bool>false</bool>
@@ -10407,11 +11077,26 @@ QDateEdit::down-arrow:on {top: 1px; left: 1px;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -10427,7 +11112,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -10490,7 +11175,7 @@ QToolButton:flat {border: none;}</string>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
-                        <pointsize>10</pointsize>
+                        <pointsize>9</pointsize>
                         <weight>50</weight>
                         <bold>false</bold>
                         <stylestrategy>PreferAntialias</stylestrategy>
@@ -10498,45 +11183,58 @@ QToolButton:flat {border: none;}</string>
                       </property>
                       <property name="styleSheet">
                        <string notr="true">QComboBox {
-	border-radius: 3px;
-   padding: 1px 4px 1px 4px;
-	background-color:  rgb(240, 240, 240);
+	border: 1px solid #acacac;
+    border-radius: 1px;
+	padding-left: 5px;
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #f0f0f0, stop: 1 #e5e5e5);
+}
+
+QComboBox:disabled {
+	background-color:  rgb(200,200,200);
+}
+
+QComboBox:hover {
+	border: 1px solid #7eb4ea;
+    border-radius: 1px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, 
+								stop: 0 #ecf4fc, stop: 1 #dcecfc);
 }
 
 QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::drop-down:hover {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 27px;
-    border-left-width: 1px;
-    border-left-color: darkgray;
-    border-left-style: solid;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 27px;
+	border-left-width: 1px;
+	border-left-color: darkgray;
+	border-left-style: solid;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
 }
 
 QComboBox::down-arrow {
-    image: url(icons/arrow_down.png);
+	image: url(icons/arrow_down.png); 
 	width: 18px;
-	height: 18px;
+	height: 18px
 }
 
 QComboBox::down-arrow:on {
-    top: 1px;
-    left: 1px;
+	top: 1px; 
+	left: 1px;
 }
 
 QComboBox QAbstractItemView {
-	background-color: rgb(240,240,240);
+	selection-background-color: transparent;
 	selection-color: blue;
-   padding: 1px 4px 1px 1px 1px
+	border: 0px, solid black;
 }</string>
                       </property>
                       <property name="currentIndex">
@@ -10668,11 +11366,26 @@ QComboBox QAbstractItemView {
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -10688,7 +11401,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -10754,26 +11467,26 @@ QToolButton:flat {border: none;}</string>
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
-                        <height>0</height>
+                        <height>27</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>16777215</height>
+                        <height>27</height>
                        </size>
                       </property>
                       <property name="font">
                        <font>
                         <family>FreeSans</family>
                         <pointsize>10</pointsize>
-                        <weight>75</weight>
-                        <bold>true</bold>
-                        <underline>true</underline>
+                        <weight>50</weight>
+                        <bold>false</bold>
+                        <underline>false</underline>
                        </font>
                       </property>
                       <property name="text">
-                       <string>Metadata point of contact:</string>
+                       <string>EMC XML file has been created by</string>
                       </property>
                      </widget>
                     </item>
@@ -10866,7 +11579,7 @@ QToolButton:flat {border: none;}</string>
                           <property name="font">
                            <font>
                             <family>FreeSans</family>
-                            <pointsize>10</pointsize>
+                            <pointsize>9</pointsize>
                             <weight>50</weight>
                             <bold>false</bold>
                             <stylestrategy>PreferAntialias</stylestrategy>
@@ -10933,7 +11646,7 @@ QToolButton:flat {border: none;}</string>
                           <property name="font">
                            <font>
                             <family>FreeSans</family>
-                            <pointsize>10</pointsize>
+                            <pointsize>9</pointsize>
                             <weight>50</weight>
                             <bold>false</bold>
                             <stylestrategy>PreferAntialias</stylestrategy>
@@ -10989,11 +11702,26 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -11009,7 +11737,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -11084,11 +11812,26 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -11104,7 +11847,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -11133,11 +11876,26 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QToolButton:hover {border: 1px solid gray; border-radius: 4px; background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde); width: 27px; height: 27px;}
+                       <string notr="true">QToolButton {
+	border: 1px solid transparent;
+	background-color: transparent;
+	width: 27px;
+	height: 27px;
+}
 
-QToolButton:pressed {background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);}
+QToolButton:hover {
+	border: 1px solid gray;
+	border-radius: 3px;
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f6f7fa, stop: 1 #dadbde);
+}
 
-QToolButton:flat {border: none;}</string>
+QToolButton:pressed {
+	background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QToolButton:flat {
+	border: none;
+}</string>
                       </property>
                       <property name="text">
                        <string/>
@@ -11153,7 +11911,7 @@ QToolButton:flat {border: none;}</string>
                        </size>
                       </property>
                       <property name="autoRaise">
-                       <bool>true</bool>
+                       <bool>false</bool>
                       </property>
                      </widget>
                     </item>
@@ -11241,8 +11999,8 @@ QToolButton:flat {border: none;}</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1000</width>
-     <height>23</height>
+     <width>1094</width>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -11262,6 +12020,7 @@ QToolButton:flat {border: none;}</string>
     <addaction name="actionEUFAR_CreatorAbout"/>
     <addaction name="actionINSPIRE_Standard"/>
     <addaction name="actionEUFAR_N7SP"/>
+    <addaction name="actionHelp"/>
     <addaction name="separator"/>
     <addaction name="actionChangelog"/>
    </widget>
@@ -11280,8 +12039,8 @@ QToolButton:flat {border: none;}</string>
     <font>
      <family>FreeSans</family>
      <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
      <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
@@ -11301,8 +12060,8 @@ QToolButton:flat {border: none;}</string>
     <font>
      <family>FreeSans</family>
      <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
      <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
@@ -11322,8 +12081,8 @@ QToolButton:flat {border: none;}</string>
     <font>
      <family>FreeSans</family>
      <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
      <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
@@ -11343,8 +12102,8 @@ QToolButton:flat {border: none;}</string>
     <font>
      <family>FreeSans</family>
      <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
      <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
@@ -11367,8 +12126,8 @@ QToolButton:flat {border: none;}</string>
     <font>
      <family>FreeSans</family>
      <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
      <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
@@ -11388,8 +12147,8 @@ QToolButton:flat {border: none;}</string>
     <font>
      <family>FreeSans</family>
      <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
      <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
@@ -11409,8 +12168,8 @@ QToolButton:flat {border: none;}</string>
     <font>
      <family>FreeSans</family>
      <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
      <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
@@ -11430,8 +12189,8 @@ QToolButton:flat {border: none;}</string>
     <font>
      <family>FreeSans</family>
      <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
      <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
@@ -11460,8 +12219,8 @@ QToolButton:flat {border: none;}</string>
     <font>
      <family>FreeSans</family>
      <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <weight>50</weight>
+     <bold>false</bold>
      <stylestrategy>PreferAntialias</stylestrategy>
     </font>
    </property>
@@ -11520,6 +12279,23 @@ QToolButton:flat {border: none;}</string>
      <weight>75</weight>
      <bold>true</bold>
      <stylestrategy>PreferAntialias</stylestrategy>
+    </font>
+   </property>
+  </action>
+  <action name="actionHelp">
+   <property name="icon">
+    <iconset>
+     <normaloff>icons/eufar_icon.png</normaloff>icons/eufar_icon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Help...</string>
+   </property>
+   <property name="font">
+    <font>
+     <family>FreeSans</family>
+     <pointsize>10</pointsize>
+     <stylestrategy>PreferAntialias</stylestrategy>
+     <kerning>true</kerning>
     </font>
    </property>
   </action>
