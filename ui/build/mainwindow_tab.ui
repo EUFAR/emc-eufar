@@ -4462,7 +4462,7 @@ QToolButton:flat {
              </spacer>
             </item>
             <item row="1" column="1" rowspan="2" colspan="2">
-             <layout class="QVBoxLayout" name="verticalLayout_20">
+             <layout class="QVBoxLayout" name="verticalLayout_22">
               <item>
                <layout class="QHBoxLayout" name="horizontalLayout_6">
                 <item>
@@ -4702,7 +4702,7 @@ QComboBox QAbstractItemView {
                      </widget>
                     </item>
                     <item>
-                     <widget class="QToolButton" name="plusButton_9">
+                     <widget class="QToolButton" name="plusButton_10">
                       <property name="minimumSize">
                        <size>
                         <width>27</width>
@@ -5312,6 +5312,9 @@ QToolButton:flat {
                  </layout>
                 </item>
                </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_21"/>
               </item>
               <item>
                <widget class="Line" name="ai_line_1">
