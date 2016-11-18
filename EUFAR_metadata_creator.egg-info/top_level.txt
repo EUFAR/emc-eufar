@@ -1,7 +1,7 @@
-ui
 Documentation
 eufar_aircrafts
-font
+fonts
 functions
 icons
 sqlite
+ui

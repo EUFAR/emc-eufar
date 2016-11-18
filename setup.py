@@ -16,7 +16,7 @@ except ImportError:
     from distutils.core import setup
 
 classifiers = """\
-Development Status :: 4 - Beta
+Development Status :: 5 - Production/Stable
 Environment :: X11 Applications :: Qt
 Environment :: Win32 (MS Windows)
 Intended Audience :: Developers
@@ -24,7 +24,7 @@ Intended Audience :: Education
 Intended Audience :: Science/Research
 License :: OSI Approved :: BSD License
 Natural Language :: English
-Programming Language :: Python
+Programming Language :: Python :: 3.5
 Topic :: Scientific/Engineering :: Atmospheric Science
 Topic :: Text Processing :: Markup :: XML
 """
@@ -43,7 +43,7 @@ setup(name='eufar_metadata_creator',
       download_url='https://github.com/eufarn7sp/emc-eufar',
       license='New BSD License',
       keywords=['airbornescience', 'xml', 'eufar', 'science', 'metadata'],
-      packages=['ui','Documentation','eufar_aircrafts','font','functions','icons','sqlite'],
+      packages=['Documentation','eufar_aircrafts','fonts','functions','icons','sqlite','ui'],
       classifiers=filter(None, classifiers.split("\n")),
       requires=['PyQt5']
       )

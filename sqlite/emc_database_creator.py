@@ -25,7 +25,7 @@ aircraft_informations = (
      + " Raumfahrt (DLR)", "Germany", "D-CODE", "DLR - DO228-2.png", "DLR, CC-BY 3.0"),
 	("DLR - Falcon 20", "Dassault Aviation", "Mystere/Falcon 20", "Deutsches Zentrum fur Luft- und "
      + "Raumfahrt (DLR)", "Germany", "D-CMET", "FALCON20-DLR.png", "DLR, CC-BY 3.0"),
-	("Make a choice...", " ", " ", " ", " ", " ", "logo_eufar_emc.png", " "),
+	("Make a choice...", " ", " ", " ", " ", " ", "logo_eufar_emc.png", "EUFAR"),
 	("ENVISCOPE - Learjet 35", "Learjet Aircraft Company", "Learjet 35", "ENVISCOPE", "Germany", "D"
      + "-CGFD", "LEARJET25-ENVISCOPE-3.png", "ENVISCOPE GmbH"),
 	("ENVISCOPE - Partenavia", "Partenavia / Vulcanair", "P-68", "ENVISCOPE", "Germany", "D-GERY", 
@@ -700,7 +700,12 @@ window_messages = (
      + " correction, critical conditions should be addressed. The strength of the BRDF effect is a "
      + "function of viewing / illumination geometry, terrain as well as land cover. Therefore stron"
      + "gly affected areas can be detected based on these parameters and are subsequently flagged.<"
-     + "/p>")
+     + "/p>"),
+    ("infoButton_44","Each form has to be linked to an instrument. All instruments selected in the "
+     + "'Aircraft and Instrument' section will be displayed here.<p>Use the list on the left to sel"
+     + "ect an instrument.</p>"),
+    ("infoButton_45","With the tab controls, you have the possibility to copy/paste any information"
+     + " entered in the current form to a new form or another existing form.")
     )
 
 
@@ -1359,90 +1364,6 @@ instruments_classification = [
 	["Remote Sensing Instruments","Thermal/Radiation Detectors","Solarimeters"],
 	]
 
-
-elements_informations = [
-	["5","cl_label_1","Topic Category","Classification",""],
-	["6","kw_category_lb1","Keywords","Keywords",""],
-	["1","id_resourceTitle_ln","Resource title","Identification","text"],
-	["2","id_resourceAbstract_ta","Resource abstract","Identification","text"],
-	["3","id_resourceLocator_ln","Resource locator","Identification","text"],
-	["4","id_resourceIdent_ln","Unique resource identifier","Identification","text"],
-	["8","ai_label_1","Aircraft","Aircraft and Instruments",""],
-    
-    ["8.1","ai_manufacturer_ln","Aircraft - Manufacturer","Aircraft and Instruments","text"],
-    ["8.2","ai_type_ln","Aircraft - Type","Aircraft and Instruments","text"],
-    ["8.3","ai_operator_ln","Aircraft - Operator","Aircraft and Instruments","text"],
-    ["8.4","ai_country_lb","Aircraft - Country","Aircraft and Instruments",""],
-    ["8.5","ai_number_ln","Aircraft - Registration number","Aircraft and Instruments","text"],
-    
-	["9","ai_label_13","Instrument","Aircraft and Instruments",""],
-    ["9.1","ai_newname_ln","Instrument - Name","Aircraft and Instruments","text"],
-    ["9.2","ai_newmanufacturer_ln","Instrument - Manufacturer","Aircraft and Instruments","text"],
-    
-	["10","gl_location_lb","Location","Geographic Information",""],
-	["11","gl_northBound_ln","Geographic bounding box - North","Geographic Information","float"],
-	["12","gl_southBound_ln","Geographic bounding box - South","Geographic Information","float"],
-	["13","gl_eastBound_ln","Geographic bounding box - East","Geographic Information","float"],
-	["14","gl_westBound_ln","Geographic bounding box - West","Geographic Information","float"],
-	["15","gl_resolution_ln","Spatial Resolution","Geographic Information","float"],
-	["16","gl_unit_ln","Spatial Resolution - Unit","Geographic Information","text"],
-	["17","tr_datePublication_do","Date of publication","Temporal Reference","date"],
-	["18","tr_dateRevision_do","Date of last revision","Temporal Reference","date"],
-	["19","tr_dateCreation_do","Date of creation","Temporal Reference","date"],
-	["20","tr_temporal_extent","Temporal extent - Phase 1","Temporal Reference","date"],
-    
-    ["21","qv_insituLab","Selection of the domain","Quality and Validity",""],
-    ["22","qv_insituCalDesc_ln","Link to the procedure's description","Quality and Validity","text"],
-    ["23","qv_insituCalCons_ln","Source of constants","Quality and Validity","text"],
-    ["24","qv_insituCalMat_ln","Source of materials","Quality and Validity","text"],
-    ["25","qv_insituGeoUni","Conversion to geophysical units","Quality and Validity",""],
-    ["26","qv_insituOutFormat","Output in standardized format","Quality and Validity",""],
-    ["27","qv_insituOutFormat_ln","Output in standardized format - Other","Quality and Validity","text"],
-    ["28","qv_insituQuaFlag_ln","Quality-control flagging","Quality and Validity","text"],
-    ["29","qv_insituAssumption_ln","Assumption","Quality and Validity","text"],
-    
-    ["21","qv_obsCalLabo_ln","Name of calibration laboratory","Quality and Validity","text"],
-    ["22","qv_obsRadCal_do1","Date of radiometric calibration","Quality and Validity","date"],
-    ["23","qv_obsSpeCal_do2","Date of spectral calibration","Quality and Validity","date"],
-    ["24","qv_obsSpeBand_ln","Number of spectral bands","Quality and Validity","float"],
-    ["25","qv_obsFltHdg_ln","Overall fligh direction","Quality and Validity","float"],
-    ["26","qv_obsFltAlt_ln","Overall altitude ASL","Quality and Validity","float"],
-    ["27","qv_obsSolZen_ln","Solar zenith","Quality and Validity","float"],
-    ["28","qv_obsSolAzi_ln","Solar azimuth","Quality and Validity","float"],
-    ["29","qv_obsAnoAcq_ln","Report anomalies in data acquisition","Quality and Validity","text"],
-    ["30","qv_obsProLvl","Processing level","Quality and Validity",""],
-    ["31","qv_obsDrkCur","Dark current correction","Quality and Validity",""],
-    ["32","qv_obsIntMask","Aggregated interpolated pixel mask","Quality and Validity",""],
-    ["33","qv_obsBadMask","Aggregated bad pixel mask","Quality and Validity",""],
-    ["34","qv_obsSatPix","Saturated pixels / overflow","Quality and Validity",""],
-    ["35","qv_obsSpeNeigh","Pixels affected by saturation","Quality and Validity",""],
-    ["36","qv_obsPosInfo","Problems with position information","Quality and Validity",""],
-    ["37","qv_obsAttInfo","Problems with attitude information","Quality and Validity",""],
-    ["38","qv_obsSynProb","Synchronization problems","Quality and Validity",""],
-    ["39","qv_obsIntGeo","Interpolated pixels during geocoding","Quality and Validity",""],
-    ["40","qv_obsAtmCorr","Failure of atmospheric correction","Quality and Validity",""],
-    ["41","qv_obsCldMask","Cloud mask","Quality and Validity",""],
-    ["42","qv_obsShdMask","Cloud shadow mask","Quality and Validity",""],
-    ["43","qv_obsHazMask","Haze mask","Quality and Validity",""],
-    ["44","qv_obsDEMMea","Terrain correction based on DEM roughness measure","Quality and Validity",""],
-    ["45","qv_obsIllAng","Terrain correction based on illumination angle","Quality and Validity",""],
-    ["46","qv_obsBRDFGeo","BRDF geometry based on sun-sensor-terrain geometry","Quality and Validity",""],
-    
-	["47","au_conditions_ta","Conditions applying to access and use","Access and Use Constraints","text"],
-	["48","au_limitations_ta","Limitations on public access","Access and Use Constraints","text"],
-	["49","au_wn_con_ta","Conditions applying to access and use","Access and Use Constraints","text"],
-	["50","au_wn_lim_ta","Limitations on public access","Access and Use Constraints","text"],
-	["51","ro_responsibleParty_ln","Responsible party","Responsible Organisations","text"],
-	["52","ro_responsibleEmail_ln","Responsible party e-mail","Responsible Organisations","text"],
-	["53","ro_rlPy_ln","Responsible party","Responsible Organisations","text"],
-	["54","ro_rlEm_ln","Responsible party e-mail","Responsible Organisations","text"],
-	["55","mm_date_do","Metadata date","Metadata on Metadata","date"],
-	["56","mm_contactName_ln","Name","Metadata on Metadata","text"],
-	["57","mm_contactEmail_ln","E-mail","Metadata on Metadata","text"],
-	["58","mm_conName_ln","Name","Metadata on Metadata","text"],
-	["59","mm_conEmail_ln","E-mail","Metadata on Metadata","text"],
-	]
-
 path = os.getcwd()
 
 if path == "/home/henryo/Travail/python/EUFAR_metadata_creator":
@@ -1488,11 +1409,6 @@ with con:
     cur.execute("DROP TABLE IF EXISTS instrumentsClassification")
     cur.execute("CREATE TABLE instrumentsClassification(Domain TEXT, Category TEXT, Type TEXT)")
     cur.executemany("INSERT INTO instrumentsClassification VALUES(?, ?, ?)", instruments_classification)
-    
-    cur = con.cursor()    
-    cur.execute("DROP TABLE IF EXISTS elementsInformation")
-    cur.execute("CREATE TABLE elementsInformation(Place INT, Object TEXT, Name TEXT, Page TEXT, Type TEXT)")
-    cur.executemany("INSERT INTO elementsInformation VALUES(?, ?, ?, ?, ?)", elements_informations)
     
     cur = con.cursor()    
     cur.execute("DROP TABLE IF EXISTS emcLocations")

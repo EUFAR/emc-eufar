@@ -35,7 +35,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>icons/warning_icon2.png</normaloff>icons/warning_icon2.png</iconset>
+    <normaloff>icons/warning_popup_icon.svg</normaloff>icons/warning_popup_icon.svg</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget {
@@ -53,21 +53,21 @@
           <widget class="QLabel" name="fw_label_2">
            <property name="minimumSize">
             <size>
-             <width>55</width>
-             <height>55</height>
+             <width>50</width>
+             <height>50</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>55</width>
-             <height>55</height>
+             <width>50</width>
+             <height>50</height>
             </size>
            </property>
            <property name="text">
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap>icons/warning_icon2.png</pixmap>
+            <pixmap>icons/warning_popup_icon.svg</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -130,7 +130,7 @@
           </font>
          </property>
          <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;All mandatory fields have not been filled in, or have been incorrectly filled in. You can save your file if you want to complete/correct it later. All fields which have not been completely filled in are indicated in &lt;span style=&quot; font-weight:600; color:#c80000;&quot;&gt;red&lt;/span&gt;, and in &lt;span style=&quot; font-weight:600; color:#0000c8;&quot;&gt;blue&lt;/span&gt; for those incorrectly filled in (see Details to have a complete list). &lt;span style=&quot; font-weight:600;&quot;&gt;Do not use an incomplete/incorrect xml file for storage and/or sql queries.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;All mandatory fields have not been filled in, or have been incorrectly filled in. You can save your file if you want to complete/correct it later.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;All fields which have not been completely filled in are indicated in &lt;span style=&quot; font-weight:600; color:#c80000;&quot;&gt;red&lt;/span&gt;, and in &lt;span style=&quot; font-weight:600; color:#0000c8;&quot;&gt;blue&lt;/span&gt; for those incorrectly filled in.&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Do not use an incomplete/incorrect xml file for storage and/or sql queries.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
          </property>
          <property name="wordWrap">
           <bool>true</bool>
@@ -313,80 +313,7 @@ QToolButton:pressed {
          </property>
         </spacer>
        </item>
-       <item>
-        <widget class="QToolButton" name="fw_detailButton">
-         <property name="minimumSize">
-          <size>
-           <width>120</width>
-           <height>27</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>140</width>
-           <height>27</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>FreeSans</family>
-           <pointsize>10</pointsize>
-           <weight>50</weight>
-           <bold>false</bold>
-           <stylestrategy>PreferDefault</stylestrategy>
-           <kerning>true</kerning>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QToolButton {
-	border: 1px solid #acacac;
-	border-radius: 1px;
-	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-									stop:0 #f0f0f0, stop:1 #e5e5e5);
-}
-
-QToolButton:hover {
-	border: 1px solid #7eb4ea;
-	border-radius: 1px;
-	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-									stop:0 #ecf4fc, stop:1 #dcecfc);
-}
-
-QToolButton:pressed {
-	border: 1px solid #579de5;
-	border-radius: 1px;
-	background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-									stop:0 #daecfc, stop:1 #c4e0fc);
-}</string>
-         </property>
-         <property name="text">
-          <string>Show details</string>
-         </property>
-         <property name="toolButtonStyle">
-          <enum>Qt::ToolButtonTextOnly</enum>
-         </property>
-        </widget>
-       </item>
       </layout>
-     </item>
-     <item>
-      <spacer name="verticalSpacer_2">
-       <property name="orientation">
-        <enum>Qt::Vertical</enum>
-       </property>
-       <property name="sizeType">
-        <enum>QSizePolicy::Fixed</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>20</width>
-         <height>13</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout"/>
      </item>
     </layout>
    </item>

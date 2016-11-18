@@ -22,7 +22,7 @@ class Ui_infoWindow(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         infoWindow.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icons/info_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("icons/info_popup_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         infoWindow.setWindowIcon(icon)
         infoWindow.setStyleSheet("QWidget {\n"
 "    background-color: rgb(230,230,230);\n"
@@ -36,10 +36,10 @@ class Ui_infoWindow(object):
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.iw_label_2 = QtWidgets.QLabel(infoWindow)
-        self.iw_label_2.setMinimumSize(QtCore.QSize(55, 55))
-        self.iw_label_2.setMaximumSize(QtCore.QSize(55, 55))
+        self.iw_label_2.setMinimumSize(QtCore.QSize(50, 50))
+        self.iw_label_2.setMaximumSize(QtCore.QSize(50, 50))
         self.iw_label_2.setText("")
-        self.iw_label_2.setPixmap(QtGui.QPixmap("icons/info_icon.png"))
+        self.iw_label_2.setPixmap(QtGui.QPixmap("icons/info_popup_icon.svg"))
         self.iw_label_2.setScaledContents(True)
         self.iw_label_2.setObjectName("iw_label_2")
         self.verticalLayout.addWidget(self.iw_label_2)

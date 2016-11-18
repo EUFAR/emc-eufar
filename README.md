@@ -1,10 +1,7 @@
 # emc-eufar
 
-!! WARNING !!
-Because of heavy modifications in the "Quality & Validity" section brought to the EMC Online, the current version of EMC Offline is deprecated and should not be used. A new version should be released in the following days.
-
 A detailed changelog can be found in the Documentation directory. Stand-alone versions for Windows and Linux can be found in the Release directory.
-Current version: 1.1.0
+Current version: 1.2.0
 
 Overview
 

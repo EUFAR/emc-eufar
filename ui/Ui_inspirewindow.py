@@ -26,7 +26,7 @@ class Ui_inspireWindow(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         inspireWindow.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icons/inspire_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("icons/inspire_popup_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         inspireWindow.setWindowIcon(icon)
         inspireWindow.setStyleSheet("QWidget {\n"
 "    background-color: rgb(230,230,230);\n"
@@ -40,10 +40,10 @@ class Ui_inspireWindow(object):
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.aw_label_2 = QtWidgets.QLabel(inspireWindow)
-        self.aw_label_2.setMinimumSize(QtCore.QSize(55, 55))
-        self.aw_label_2.setMaximumSize(QtCore.QSize(55, 55))
+        self.aw_label_2.setMinimumSize(QtCore.QSize(50, 50))
+        self.aw_label_2.setMaximumSize(QtCore.QSize(50, 50))
         self.aw_label_2.setText("")
-        self.aw_label_2.setPixmap(QtGui.QPixmap("icons/inspire_icon.png"))
+        self.aw_label_2.setPixmap(QtGui.QPixmap("icons/inspire_popup_icon.svg"))
         self.aw_label_2.setScaledContents(True)
         self.aw_label_2.setObjectName("aw_label_2")
         self.verticalLayout.addWidget(self.aw_label_2)

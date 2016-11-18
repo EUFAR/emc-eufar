@@ -22,7 +22,7 @@ class Ui_presaveWindow(object):
         font.setStyleStrategy(QtGui.QFont.PreferAntialias)
         presaveWindow.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("icons/warning_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("icons/warning_popup_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         presaveWindow.setWindowIcon(icon)
         presaveWindow.setStyleSheet("QWidget {\n"
 "    background-color: rgb(230,230,230);\n"
@@ -36,10 +36,10 @@ class Ui_presaveWindow(object):
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.iw_label_2 = QtWidgets.QLabel(presaveWindow)
-        self.iw_label_2.setMinimumSize(QtCore.QSize(55, 55))
-        self.iw_label_2.setMaximumSize(QtCore.QSize(55, 55))
+        self.iw_label_2.setMinimumSize(QtCore.QSize(50, 50))
+        self.iw_label_2.setMaximumSize(QtCore.QSize(50, 50))
         self.iw_label_2.setText("")
-        self.iw_label_2.setPixmap(QtGui.QPixmap("icons/warning_icon2.png"))
+        self.iw_label_2.setPixmap(QtGui.QPixmap("icons/warning_popup_icon.svg"))
         self.iw_label_2.setScaledContents(True)
         self.iw_label_2.setObjectName("iw_label_2")
         self.verticalLayout.addWidget(self.iw_label_2)
@@ -102,7 +102,7 @@ class Ui_presaveWindow(object):
 "    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
 "                                    stop:0 #daecfc, stop:1 #c4e0fc);\n"
 "}")
-        self.iw_nosaveButton.setIconSize(QtCore.QSize(25, 25))
+        self.iw_nosaveButton.setToolButtonStyle(QtCore.Qt.ToolButtonTextOnly)
         self.iw_nosaveButton.setObjectName("iw_nosaveButton")
         self.horizontalLayout_2.addWidget(self.iw_nosaveButton)
         spacerItem3 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
@@ -137,7 +137,7 @@ class Ui_presaveWindow(object):
 "    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
 "                                    stop:0 #daecfc, stop:1 #c4e0fc);\n"
 "}")
-        self.iw_cancelButton.setIconSize(QtCore.QSize(25, 25))
+        self.iw_cancelButton.setToolButtonStyle(QtCore.Qt.ToolButtonTextOnly)
         self.iw_cancelButton.setObjectName("iw_cancelButton")
         self.horizontalLayout_2.addWidget(self.iw_cancelButton)
         spacerItem4 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
@@ -172,7 +172,7 @@ class Ui_presaveWindow(object):
 "    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,\n"
 "                                    stop:0 #daecfc, stop:1 #c4e0fc);\n"
 "}")
-        self.iw_saveButton.setIconSize(QtCore.QSize(25, 25))
+        self.iw_saveButton.setToolButtonStyle(QtCore.Qt.ToolButtonTextOnly)
         self.iw_saveButton.setObjectName("iw_saveButton")
         self.horizontalLayout_2.addWidget(self.iw_saveButton)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)

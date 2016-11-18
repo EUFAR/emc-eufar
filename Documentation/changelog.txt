@@ -11,6 +11,21 @@ OFFLINE VERSION TESTED ON:
     - Windows 8.1 (32 and 64 bits)
 
 
+November 16 2016, Release version 1.2.0 [ONLINE]
+=============================================
+  A new "Quality and Validity" section has been introduced to take into account multiple instruments and multiple data. Each QV form has to be linked to one instrument. Old QV xml code can still be read but EMC will ask the user to save again his/her document.
+  The function to check each field has been reworked for simplification and better performance.
+  
+  FIXED:
+    - if a user try to save an incomplete file, abort the saving and clear the file, all fields are not reseted.
+    - fixed an issue when checking checkboxes in the QV section.
+    - a combobox in the Geographic Information section wasn't checked carefully.
+    - the control tab system didn't function properly if used from an "imagery" QV tab.
+  
+  MODIFIED:
+    - changed few parameters to save the xml file for harmonisation between offline and online versions.
+
+
 September 5 2016, Release version 1.1.0 [OFFLINE]
 =====================================
   Style has been reworked for harmonisation with other EUFAR software. Recommendations from the EUFAR N7SP/N8DB meeting have been introduced.

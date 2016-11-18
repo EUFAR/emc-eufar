@@ -23,20 +23,17 @@ from .Ui_presavewindow import Ui_presaveWindow
 from ._version import _version, _py_version, _qt_version, _inspire_version
 from functions.eufar_metadata_xml import create_eufar_xml
 from functions.eufar_metadata_xml import read_eufar_xml
-from functions.eufar_metadata_xml import save_statement_observation
-from functions.eufar_metadata_xml import save_statement_insitu
-from functions.eufar_metadata_xml import read_statement_observation
-from functions.eufar_metadata_xml import read_statement_insitu
 from functions import button_functions
-from functions.button_functions import gl_rolebox_changed
+from functions.button_functions import gl_rolebox_changed, close_imagery_tab
 from functions.button_functions import ai_aircraftRolebox_changed
 from functions.button_functions import gl_categoryRolebox_changed
 from functions.button_functions import ai_instrument_changed
-from functions.button_functions import qv_domain_changed
+from functions.button_functions import close_insitu_tab
 from functions.button_functions import qv_output_other
 from functions.sql_functions import objectsInit
 from functions.check_functions import fill_all_fields
 from PyQt5.Qt import Qt
+from PyQt5.QtGui import QColor
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -71,11 +68,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.gl_category_rl1.activated.connect(lambda: self.category_changed())
         self.gl_resolution_rl1.activated.connect(lambda: self.rolebox_changed())
         self.ai_instrument_rl1.activated.connect(lambda: self.instrument_changed())
-        self.qv_obsRadio.clicked.connect(lambda: self.quality_domain())
-        self.qv_insituRadio.clicked.connect(lambda: self.quality_domain())
+        self.qv_tabWidget.tabCloseRequested.connect(self.close_tab)
         self.id_resourceLocator_ln.setCursorPosition(0)
+        self.qv_tabWidget.setVisible(False)
         self.make_window_title()
-        
+        self.qv_spacerItem = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, 
+                                                                          QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_20.addItem(self.qv_spacerItem)
+        self.ai_airManufacturer_ln.hide()
+        self.ai_airType_ln.hide()
+        self.ai_airOperator_ln.hide()
+        self.ai_country_rl.hide()
+        self.ai_airNumber_ln.hide()
+        self.ai_newname_lb.hide()
+        self.ai_insName_ln.hide()
+        self.ai_newmanufacturer_lb.hide()
+        self.ai_insManufacturer_ln.hide()
+        self.plusButton_9.hide()
+        self.gl_unit_lb.hide()
+        self.gl_unit_rl.hide()
+
 
     @pyqtSlot()
     def on_actionNew_triggered(self):
@@ -143,8 +155,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         x1, y1, w1, h1 = self.geometry().getRect()
         x2, y2, w2, h2 = self.inspireWindow.geometry().getRect()  # @UnusedVariable
         self.inspireWindow.setGeometry(x1 + w1/2 - w2/2, y1 + h1/2 - h2/2, w2, h2)
-        self.inspireWindow.setMinimumSize(QtCore.QSize(800, 300)) #self.inspireWindow.sizeHint().height()))
-        self.inspireWindow.setMaximumSize(QtCore.QSize(800, 600)) #self.inspireWindow.sizeHint().height()))
+        self.inspireWindow.setMinimumSize(QtCore.QSize(800, self.inspireWindow.sizeHint().height()))
+        self.inspireWindow.setMaximumSize(QtCore.QSize(800, self.inspireWindow.sizeHint().height()))
         self.inspireWindow.exec_()
 
     @pyqtSlot()
@@ -196,7 +208,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if not self.modified:
             self.modified = True
             self.make_window_title()
-            
 
     def save_document(self, save_as=False):
         cancel = fill_all_fields(self)
@@ -219,6 +230,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         return str(out_file_name)
 
     def reset_all_fields(self):
+        labels = self.findChildren(QLabel)
+        for label in labels:
+            label.setStyleSheet("color: black")
+        for i in range(self.tabWidget.count()):
+            self.tabWidget.tabBar().setTabTextColor(i, QColor(0,0,0))
         if self.au_wn_con_ta:
             for i in reversed(list(range(0, len(self.au_wn_con_ta)))):
                 button_functions.delButton_5_clicked(self, i)
@@ -234,6 +250,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         if self.ro_lab_1:
             for i in reversed(list(range(0, len(self.ro_lab_1)))):
                 button_functions.delButton_8_clicked(self, i)
+        if self.aircraft_list:
+            for i in reversed(list(range(0, len(self.aircraft_list)))):
+                button_functions.delButton_9_clicked(self, i)
         if self.ai_lab_1:
             for i in reversed(list(range(0, len(self.ai_lab_1)))):
                 button_functions.delButton_4_clicked(self, i)
@@ -266,7 +285,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.ai_label_9.clear()
         self.ai_label_10.clear()
         self.ai_label_11.clear()
-        self.ai_label_12.clear()
+        self.ai_label_12.setText("EUFAR")
         self.id_resourceLocator_ln.setText("http://browse.ceda.ac.uk/browse/badc/eufar/docs/00eufar"
                                            + "archivecontents.html")
         self.id_resourceLocator_ln.setCursorPosition(0)
@@ -275,11 +294,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                                            + "d to aknowledge the data providers in any publication"
                                            + " based on EUFAR data.")
         self.au_limitations_ta.setPlainText("No limitations.")
-        self.buttonGroup.setExclusive(False)        
-        self.qv_obsRadio.setChecked(False)
-        self.qv_insituRadio.setChecked(False)
-        self.buttonGroup.setExclusive(True)
-        qv_domain_changed(self)
+        for i in reversed(list(range(self.qv_tabWidget.count()))):
+            self.close_tab(i)
         self.gl_roleBox = 0
         self.out_file_name = None
         self.modified = False
@@ -357,6 +373,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mm_contactName_ln.setText(self.mm_conName_ln[0].text())
             self.mm_contactEmail_ln.setText(self.mm_conEmail_ln[0].text())
             getattr(button_functions, "delButton_7_clicked")(self, 0)
+        elif "qv_insitu_contBut" in self.sender().objectName():
+            getattr(button_functions, "qv_tab_cloning")(self, "insitu", int(self.sender().objectName()[20:]))
+        elif "qv_imagery_contBut" in self.sender().objectName():
+            getattr(button_functions, "qv_tab_cloning")(self, "imagery", int(self.sender().objectName()[21:]))
         elif self.sender().objectName() == "":
             return
         else:
@@ -374,29 +394,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def instrument_changed(self):
         ai_instrument_changed(self)
         
-    def quality_domain(self):
-        qv_domain_changed(self)
-      
     def output_other(self):
         qv_output_other(self)
         
-    def save_statement(self):
-        statement = ""
-        if self.qv_obsRadio.isChecked() == True:
-            statement = save_statement_observation(self)
-        elif self.qv_insituRadio.isChecked() == True:
-            statement = save_statement_insitu(self)
-        return statement
-        
-    def read_statement(self, statement):
-        if statement.find("Earth observation/Remote sensing data") != -1:
-            self.qv_obsRadio.setChecked(True)
-            qv_domain_changed(self)
-            read_statement_observation(self, statement)
-        else:
-            self.qv_insituRadio.setChecked(True)
-            qv_domain_changed(self)
-            read_statement_insitu(self, statement)
+    def close_tab(self, index):
+        string = self.qv_tabWidget.tabText(index)
+        if "Earth" in string:
+            imagery_index = int(string[38:]) - 1
+            close_imagery_tab(self, index, imagery_index)
+        elif "Atmospheric" in string:
+            insitu_index = int(string[25:]) - 1
+            close_insitu_tab(self, index, insitu_index)
 
 
 class MyLog(QtWidgets.QDialog, Ui_Changelog):

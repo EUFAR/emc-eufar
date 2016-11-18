@@ -1,34 +1,25 @@
 # -*- coding: utf-8 -*-
 
-NAMESPACE_URI1 = "http://www.isotc211.org/2005/gmd"
-NAMESPACE_URI2 = "http://www.isotc211.org/2005/gco"
-NAMESPACE_URI3 = "http://www.opengis.net/gml"
-NAMESPACE_URI4 = "http://www.w3.org/2001/XMLSchema-instance"
-NAMESPACE_URI5 = "http://www.isotc211.org/2005/srv"
-NAMESPACE_URI6 = "http://www.w3.org/1999/xlink"
-
 import xml.dom.minidom
-from PyQt5 import QtWidgets
-from PyQt5.QtCore import Qt
-from PyQt5.QtCore import QDate
-from PyQt5.QtWidgets import QCheckBox
+from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5.QtCore import Qt, QDate
+from PyQt5.QtWidgets import QCheckBox, QWidget
 from functions import button_functions
 from functions.sql_functions import sql_valueRead
 from functions.button_functions import gl_categoryRolebox_changed
-from functions.button_functions import ai_aircraftRolebox_changed
 from functions.button_functions import qv_output_other
-
-
-try:
-    _encoding = QtWidgets.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtWidgets.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtWidgets.QApplication.translate(context, text, disambig)
+from functions.button_functions import plusButton_12_clicked
+from functions.button_functions import plusButton_11_clicked
+from ui.Ui_aboutwindow import Ui_aboutWindow
 
 
 def create_eufar_xml(self, out_file_name):
+    NAMESPACE_URI1 = "http://www.isotc211.org/2005/gmd"
+    NAMESPACE_URI2 = "http://www.isotc211.org/2005/gco"
+    NAMESPACE_URI3 = "http://www.opengis.net/gml"
+    NAMESPACE_URI4 = "http://www.w3.org/2001/XMLSchema-instance"
+    NAMESPACE_URI5 = "http://www.isotc211.org/2005/srv"
+    NAMESPACE_URI6 = "http://www.w3.org/1999/xlink"
     doc = xml.dom.minidom.Document()
     doc_root = add_element(doc, "gmd:MD_Metadata", doc)
     doc_root.setAttribute("xmlns:gmd", NAMESPACE_URI1)
@@ -180,8 +171,11 @@ def create_eufar_xml(self, out_file_name):
         distanceIdent1 = add_element(doc, "gmd:distance", resolutionIdent1MD)
         distanceIdent2 = add_element(doc, "gco:Distance", distanceIdent1, self.gl_resolution_ln.
                                      text())
-        query = sql_valueRead(self, 'unit', 'Main', self.gl_unit_rl.currentText())
-        distanceIdent2.setAttribute("uom", query[0][1])
+        if self.gl_unit_rl.currentText() == "Make a choice...":
+            distanceIdent2.setAttribute("uom", "")
+        else:
+            query = sql_valueRead(self, 'unit', 'Main', self.gl_unit_rl.currentText())
+            distanceIdent2.setAttribute("uom", query[0][1])
     elif self.gl_resolution_rl1.currentText() == 'Scale':
         scaleIdent1 = add_element(doc, "gmd:equivalentScale", resolutionIdent1MD)
         fractionIdent1MD = add_element(doc, "gmd:MD_RepresentativeFraction", scaleIdent1)
@@ -307,15 +301,21 @@ def create_eufar_xml(self, out_file_name):
     ############################
     # Data Quality
     ############################
+    stringBuilder = []
+    for i in range(len(self.qv_insitu_tab_1)):
+        stringBuilder.append(save_statement_insitu(self, i))
+    for i in range(len(self.qv_imagery_tab_1)):
+        stringBuilder.append(save_statement_imagery(self, i))
+    statement = ''.join(stringBuilder)
     qualityInfo1 = add_element(doc, "gmd:dataQualityInfo", doc_root)
     dataQuality1DQ = add_element(doc, "gmd:DQ_DataQuality", qualityInfo1)
     lineageQuality1 = add_element(doc, "gmd:lineage", dataQuality1DQ)
     lineageQuality1LI = add_element(doc, "gmd:LI_Lineage", lineageQuality1)
     statementQuality1 = add_element(doc, "gmd:statement", lineageQuality1LI)
-    if self.qv_obsRadio.isChecked() == False and self.qv_insituRadio.isChecked() == False:
+    '''if self.qv_obsRadio.isChecked() == False and self.qv_insituRadio.isChecked() == False:
         statement = ""
     else:
-        statement = self.save_statement()
+        statement = self.save_statement()'''
     add_element(doc, "gco:CharacterString", statementQuality1, statement)
     reportQuality1 = add_element(doc, "gmd:report", dataQuality1DQ)
     domainConsistency1DQ = add_element(doc, "gmd:DQ_DomainConsistency", reportQuality1)
@@ -418,8 +418,8 @@ def create_eufar_xml(self, out_file_name):
     ############################
     # File Creation
     ############################
-    f = open(out_file_name, 'w')
-    f.write(doc.toprettyxml())
+    f = open(out_file_name, 'wb')
+    f.write(doc.toprettyxml(indent="    ", encoding="UTF-8"))
     f.close()
     self.saved = True
     self.modified = False
@@ -683,29 +683,13 @@ def read_eufar_xml(self, in_file_name):
   
 
     ############################
-    # Data Quality
-    ############################
-    self.tabWidget.setCurrentIndex(6)
-    qualityInfo1 = get_element(doc_root, "gmd:dataQualityInfo")
-    dataQuality1DQ = get_element(qualityInfo1, "gmd:DQ_DataQuality")
-    lineageQuality1 = get_element(dataQuality1DQ, "gmd:lineage")
-    lineageQuality1LI = get_element(lineageQuality1, "gmd:LI_Lineage")
-    statementQuality1 = get_element(lineageQuality1LI, "gmd:statement")
-    statement = get_element_value(statementQuality1, "gco:CharacterString")
-    if statement != "" and statement != None:
-        self.read_statement(statement)
-    
-
-    ############################
     # Aircraft and Instruments
     ############################
     self.tabWidget.setCurrentIndex(3)
     nodes = doc_root.getElementsByTagName("gmd:platformInfo")
-    
     if len(nodes) > 0:
         i = 0
         for i in range(0, len(nodes)):
-    
             aircraftInfo11AI = get_element(nodes[i], "gmd:PI_PlatformInfo")
             aircraftRegistration = get_element(aircraftInfo11AI, "gmd:platformRegistration")
             aircraftManufacturer = get_element(aircraftInfo11AI, "gmd:platformManufacturer")
@@ -718,7 +702,6 @@ def read_eufar_xml(self, in_file_name):
             identification = get_element_value(aircraftRegistration, "gco:CharacterString")
             country = get_element_value(aircraftCountry, "gco:CharacterString")
             button_functions.plusButton_10_clicked(self, aircraft, operator, manufacturer, identification, country)
-    
     nodes = doc_root.getElementsByTagName("gmd:instrumentInfo")
     if len(nodes) > 0:
         i = 0
@@ -730,6 +713,54 @@ def read_eufar_xml(self, in_file_name):
             model = get_element_value(instrumentModel, "gco:CharacterString")
             button_functions.plusButton_4_clicked(self, manufacturer + " - " + model)
     
+    
+    ############################
+    # Data Quality
+    ############################
+    old_format = 0
+    self.tabWidget.setCurrentIndex(6)
+    qualityInfo1 = get_element(doc_root, "gmd:dataQualityInfo")
+    dataQuality1DQ = get_element(qualityInfo1, "gmd:DQ_DataQuality")
+    lineageQuality1 = get_element(dataQuality1DQ, "gmd:lineage")
+    lineageQuality1LI = get_element(lineageQuality1, "gmd:LI_Lineage")
+    statementQuality1 = get_element(lineageQuality1LI, "gmd:statement")
+    statement = get_element_value(statementQuality1, "gco:CharacterString")
+    if statement != "" and statement != None:
+        stringList = []
+        indexStart = statement.find("[", 0)
+        if indexStart != -1:
+            indexEnd = statement.find("]", 0)
+            stringList.append(statement[indexStart + 1 : indexEnd])
+            indexStart += 1
+            indexEnd += 1
+            while indexStart < len(statement):
+                indexStart = statement.find("[", indexStart)
+                if indexStart == -1:
+                    break
+                indexEnd = statement.find("]", indexEnd)
+                stringList.append(statement[indexStart + 1 : indexEnd])
+                indexStart += 1
+                indexEnd += 1
+            indexInsitu = 0
+            indexImagery = 0
+            for string in stringList:
+                if "Atmospheric" in string:
+                    plusButton_12_clicked(self)
+                    read_statement_insitu(self, string, indexInsitu)
+                    indexInsitu += 1
+                elif "Earth" in string:
+                    plusButton_11_clicked(self)
+                    read_statement_imagery(self, string, indexImagery)
+                    indexImagery += 1
+        else:
+            old_format = 1
+            if "Atmospheric" in statement:
+                plusButton_12_clicked(self)
+                read_statement_insitu_old(self, statement, 0)
+            elif "Earth" in statement:
+                plusButton_11_clicked(self)
+                read_statement_imagery_old(self, statement, 0)
+  
   
     ############################
     # Metadata Date
@@ -739,6 +770,14 @@ def read_eufar_xml(self, in_file_name):
     self.mm_date_do1.setDate(QDate.fromString(date, Qt.ISODate))
 
     self.tabWidget.setCurrentIndex(currentIndex)
+    if old_format == 1:
+        self.aboutWindow = MyAbout()
+        x1, y1, w1, h1 = self.geometry().getRect()
+        x2, y2, w2, h2 = self.aboutWindow.geometry().getRect()  # @UnusedVariable
+        self.aboutWindow.setGeometry(x1 + w1/2 - w2/2, y1 + h1/2 - h2/2, w2, h2)
+        self.aboutWindow.setMinimumSize(QtCore.QSize(450, self.aboutWindow.sizeHint().height()))
+        self.aboutWindow.setMaximumSize(QtCore.QSize(450, self.aboutWindow.sizeHint().height()))
+        self.aboutWindow.exec_()
 
 
 def get_element(parent, element_name):
@@ -771,72 +810,82 @@ def add_element(doc, element_name, parent, value=None):
     parent.appendChild(new_element)
     return new_element
 
-def save_statement_observation(self):
-    statement = "Earth observation/Remote sensing data|Name of calibration laboratory: "
-    statement = statement + str(self.qv_obsCalLabo_ln.text()) + "|Date of radiometric calibration: "
-    statement = statement + str(self.qv_obsRadCal_dt.date().toString(Qt.ISODate)) + "|Date of spectral calibration: "
-    statement = statement + str(self.qv_obsSpeCal_dt.date().toString(Qt.ISODate)) + "|Number of spectral bands: "
-    statement = statement + str(self.qv_obsSpeBand_ln.text()) + "|Overall heading / fligh direction (dd): "
-    statement = statement + str(self.qv_obsFltHdg_ln.text()) + "|Overall altitude / average height ASL (m): "
-    statement = statement + str(self.qv_obsFltAlt_ln.text()) + "|Solar zenith (dd): "
-    statement = statement + str(self.qv_obsSolZen_ln.text()) + "|Solar azimuth (dd): "
-    statement = statement + str(self.qv_obsSolAzi_ln.text()) + "|Report anomalies in data acquisition: "
-    statement = statement + str(self.qv_obsAnoAcq_ln.text()) + "|Processing level: "
-    if self.qv_obsProLvl_rl.currentText() == "Make a choice...":
+def save_statement_imagery(self, index):
+    statement = "[Earth observation/Remote sensing data " + str(index + 1) + "|Instrument: "
+    if self.qv_imagery_list_2[index].currentText() == "Make a choice...":
+        instrument = ""
+    else:
+        instrument = str(self.qv_imagery_list_2[index].currentText())
+    statement = statement + instrument + "|Name of calibration laboratory: "
+    statement = statement + str(self.qv_imagery_line_1[index].text()) + "|Date of radiometric calibration: "
+    statement = statement + str(self.qv_imagery_date_1[index].date().toString(Qt.ISODate)) + "|Date of spectral calibration: "
+    statement = statement + str(self.qv_imagery_date_2[index].date().toString(Qt.ISODate)) + "|Number of spectral bands: "
+    statement = statement + str(self.qv_imagery_line_2[index].text()) + "|Overall heading / fligh direction (dd): "
+    statement = statement + str(self.qv_imagery_line_3[index].text()) + "|Overall altitude / average height ASL (m): "
+    statement = statement + str(self.qv_imagery_line_4[index].text()) + "|Solar zenith (dd): "
+    statement = statement + str(self.qv_imagery_line_5[index].text()) + "|Solar azimuth (dd): "
+    statement = statement + str(self.qv_imagery_line_6[index].text()) + "|Report anomalies in data acquisition: "
+    statement = statement + str(self.qv_imagery_line_7[index].text()) + "|Processing level: "
+    if self.qv_imagery_list_1[index].currentText() == "Make a choice...":
         choice = ""
     else:
-        choice = self.qv_obsProLvl_rl.currentText()
+        choice = self.qv_imagery_list_1[index].currentText()
     statement = statement + choice + "|Dark current (DC) correction: "
-    statement = statement + getAnswer(self.qv_obsDrkCur_rd1, self.qv_obsDrkCur_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_1[index], self.qv_imagery_check_2[index])
     statement = statement + "|Aggregated interpolated pixel mask: "
-    statement = statement + getAnswer(self.qv_obsIntMask_rd1, self.qv_obsIntMask_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_3[index], self.qv_imagery_check_4[index])
     statement = statement + "|Aggregated bad pixel mask: "
-    statement = statement + getAnswer(self.qv_obsBadMask_rd1, self.qv_obsBadMask_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_5[index], self.qv_imagery_check_6[index])
     statement = statement + "|Saturated pixels / overflow: "
-    statement = statement + getAnswer(self.qv_obsSatPix_rd1, self.qv_obsSatPix_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_7[index], self.qv_imagery_check_8[index])
     statement = statement + "|Problems with affected by saturation in spatial/spectral neighbourhood: "
-    statement = statement + getAnswer(self.qv_obsSpeNeigh_rd1, self.qv_obsSpeNeigh_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_9[index], self.qv_imagery_check_10[index])
     statement = statement + "|Problems with position information / Interpolated position information: "
-    statement = statement + getAnswer(self.qv_obsPosInfo_rd1, self.qv_obsPosInfo_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_11[index], self.qv_imagery_check_12[index])
     statement = statement + "|Problems with attitude information / Interpolated attitude information: "
-    statement = statement + getAnswer(self.qv_obsAttInf_rd1, self.qv_obsAttInf_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_13[index], self.qv_imagery_check_14[index])
     statement = statement + "|Synchronization problems: "
-    statement = statement + getAnswer(self.qv_obsSynprob_rd1, self.qv_obsSynprob_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_15[index], self.qv_imagery_check_16[index])
     statement = statement + "|Interpolated pixels during geocoding: "
-    statement = statement + getAnswer(self.qv_obsIntGeo_rd1, self.qv_obsIntGeo_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_17[index], self.qv_imagery_check_18[index])
     statement = statement + "|Failure of atmospheric correction: "
-    statement = statement + getAnswer(self.qv_obsAtmCorr_rd1, self.qv_obsAtmCorr_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_19[index], self.qv_imagery_check_20[index])
     statement = statement + "|Cloud mask: "
-    statement = statement + getAnswer(self.qv_obsCldMask_rd1, self.qv_obsCldMask_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_21[index], self.qv_imagery_check_22[index])
     statement = statement + "|Cloud shadow mask: "
-    statement = statement + getAnswer(self.qv_obsShdMask_rd1, self.qv_obsShdMask_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_23[index], self.qv_imagery_check_24[index])
     statement = statement + "|Haze mask: "
-    statement = statement + getAnswer(self.qv_obsHazMask_rd1, self.qv_obsHazMask_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_25[index], self.qv_imagery_check_26[index])
     statement = statement + "|Critical terrain correction based on DEM roughness measure: "
-    statement = statement + getAnswer(self.qv_obsDEMMea_rd1, self.qv_obsDEMMea_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_27[index], self.qv_imagery_check_28[index])
     statement = statement + "|Critical terrain correction based on slope/local illumination angle: "
-    statement = statement + getAnswer(self.qv_obsIllAng_rd1, self.qv_obsIllAng_rd2)
+    statement = statement + getAnswer(self.qv_imagery_check_29[index], self.qv_imagery_check_30[index])
     statement = statement + "|Critical BRDF geometry based on sun-sensor-terrain geometry: "
-    statement = statement + getAnswer(self.qv_obsBRDFGeo_rd1, self.qv_obsBRDFGeo_rd2)
-    statement = statement + "|"
+    statement = statement + getAnswer(self.qv_imagery_check_31[index], self.qv_imagery_check_32[index])
+    statement = statement + "]"
     return statement
 
-def save_statement_insitu(self):
-    statement = "Atmospheric/In-situ measurements|Link to the procedure's description: "
-    statement = statement + str(self.qv_insituCalDesc_ln.toPlainText()) + "|Source of calibration constants: "
-    statement = statement + str(self.qv_insituCalCons_ln.toPlainText()) + "|Source of calibration materials: "
-    statement = statement + str(self.qv_insituCalMat_ln.toPlainText()) + "|Data converted to geophysical units: "
-    statement = statement + getAnswer(self.qv_insituGeoUnit_rd1, self.qv_insituGeoUnit_rd2) + "|Output format: "
+def save_statement_insitu(self, index):
+    statement = "[Atmospheric/In-situ measurements " + str(index + 1) + "|Instrument: "
+    if self.qv_insitu_list_1[index].currentText() == "Make a choice...":
+        instrument = ""
+    else:
+        instrument = str(self.qv_insitu_list_1[index].currentText())
+    statement = statement + instrument + "|Link to the procedure's description: "
+    statement = statement + str(self.qv_insitu_line_1[index].text()) + "|Source of calibration constants: "
+    statement = statement + str(self.qv_insitu_line_2[index].text()) + "|Source of calibration materials: "
+    statement = statement + str(self.qv_insitu_line_3[index].text()) + "|Data converted to geophysical units: "
+    statement = statement + getAnswer(self.qv_insitu_round_1[index], self.qv_insitu_round_2[index]) + "|Output format: "
     format_list = []
     answer = ""
-    if self.qv_insituOutFormat_ck1.isChecked() == True:
+    if self.qv_insitu_check_1[index].isChecked() == True:
         format_list.append("NetCDF")
-    if self.qv_insituOutFormat_ck2.isChecked() == True:
+    if self.qv_insitu_check_3[index].isChecked() == True:
         format_list.append("HDF")
-    if self.qv_insituOutFormat_ck3.isChecked() == True: 
+    if self.qv_insitu_check_2[index].isChecked() == True: 
         format_list.append("NASA/Ames")
-    if self.qv_insituOutFormat_ck4.isChecked() == True: 
-        format_list.append("Other/" + self.qv_insituOutFormat_ln.text())
+    if self.qv_insitu_check_4[index].isChecked() == True: 
+        format_list.append("Other/" + self.qv_insitu_line_4[index].text())
     if len(format_list) > 1:
         for item in format_list:
             answer = answer + item + "; "
@@ -844,125 +893,185 @@ def save_statement_insitu(self):
     elif len(format_list) == 1:
         answer = format_list[0]
     statement = statement + answer + "|Quality-control flagging applied to individual data points: "
-    statement = statement + str(self.qv_insituQuaFlag_ln.toPlainText()) + "|Assumption: "
-    statement = statement + str(self.qv_insituAssumption_ln.toPlainText()) + "|"
+    statement = statement + str(self.qv_insitu_area_1[index].toPlainText()) + "|Assumption: "
+    statement = statement + str(self.qv_insitu_area_2[index].toPlainText()) + "]"
     return statement
 
-def read_statement_observation(self, statement):
-    index1 = statement.find("Name of calibration laboratory: ")
-    index11 = index1 + len("Name of calibration laboratory: ")
-    index2 = statement.find("|Date of radiometric calibration: ")
-    index22 = index2 + len("|Date of radiometric calibration: ")
-    index3 = statement.find("|Date of spectral calibration: ")
-    index33 = index3 + len("|Date of spectral calibration: ")
-    index4 = statement.find("|Number of spectral bands: ")
-    index44 = index4 + len("|Number of spectral bands: ")
-    index5 = statement.find("|Overall heading / fligh direction (dd): ")
-    index55 = index5 + len("|Overall heading / fligh direction (dd): ")
-    index6 = statement.find("|Overall altitude / average height ASL (m): ")
-    index66 = index6 + len("|Overall altitude / average height ASL (m): ")
-    index7 = statement.find("|Solar zenith (dd): ")
-    index77 = index7 + len("|Solar zenith (dd): ")
-    index8 = statement.find("|Solar azimuth (dd): ")
-    index88 = index8 + len("|Solar azimuth (dd): ")
-    index9 = statement.find("|Report anomalies in data acquisition: ")
-    index99 = index9 + len("|Report anomalies in data acquisition: ")
-    index10 = statement.find("|Processing level: ")
-    index100 = index10 + len("|Processing level: ")
-    index12 = statement.find("|Dark current (DC) correction: ")
-    index122 = index12 + len("|Dark current (DC) correction: ")
-    index13 = statement.find("|Aggregated interpolated pixel mask: ")
-    index133 = index13 + len("|Aggregated interpolated pixel mask: ")
-    index14 = statement.find("|Aggregated bad pixel mask: ")
-    index144 = index14 + len("|Aggregated bad pixel mask: ")
-    index15 = statement.find("|Saturated pixels / overflow: ")
-    index155 = index15 + len("|Saturated pixels / overflow: ")
-    index16 = statement.find("|Problems with affected by saturation in spatial/spectral neighbourhood: ")
-    index166 = index16 + len("|Problems with affected by saturation in spatial/spectral neighbourhood: ")
-    index17 = statement.find("|Problems with position information / Interpolated position information: ")
-    index177 = index17 + len("|Problems with position information / Interpolated position information: ")
-    index18 = statement.find("|Problems with attitude information / Interpolated attitude information: ")
-    index188 = index18 + len("|Problems with attitude information / Interpolated attitude information: ")
-    index19 = statement.find("|Synchronization problems: ")
-    index199 = index19 + len("|Synchronization problems: ")
-    index20 = statement.find("|Interpolated pixels during geocoding: ")
-    index200 = index20 + len("|Interpolated pixels during geocoding: ")
-    index21 = statement.find("|Failure of atmospheric correction: ")
-    index211 = index21 + len("|Failure of atmospheric correction: ")
-    index23 = statement.find("|Cloud mask: ")
-    index233 = index23 + len("|Cloud mask: ")
-    index24 = statement.find("|Cloud shadow mask: ")
-    index244 = index24 + len("|Cloud shadow mask: ")
-    index25 = statement.find("|Haze mask: ")
-    index255 = index25 + len("|Haze mask: ")
-    index26 = statement.find("|Critical terrain correction based on DEM roughness measure: ")
-    index266 = index26 + len("|Critical terrain correction based on DEM roughness measure: ")
-    index27 = statement.find("|Critical terrain correction based on slope/local illumination angle: ")
-    index277 = index27 + len("|Critical terrain correction based on slope/local illumination angle: ")
-    index28 = statement.find("|Critical BRDF geometry based on sun-sensor-terrain geometry: ")
-    index288 = index28 + len("|Critical BRDF geometry based on sun-sensor-terrain geometry: ")
-    self.qv_obsCalLabo_ln.setText(statement[index11:index2])
-    self.qv_obsRadCal_dt.setDate(QDate.fromString(statement[index22:index3], Qt.ISODate))
-    self.qv_obsSpeCal_dt.setDate(QDate.fromString(statement[index33:index4], Qt.ISODate))
-    self.qv_obsSpeBand_ln.setText(statement[index44:index5])
-    self.qv_obsFltHdg_ln.setText(statement[index55:index6])
-    self.qv_obsFltAlt_ln.setText(statement[index66:index7])
-    self.qv_obsSolZen_ln.setText(statement[index77:index8])
-    self.qv_obsSolAzi_ln.setText(statement[index88:index9])
-    self.qv_obsAnoAcq_ln.setText(statement[index99:index10])
-    if statement[index100:index12] != "":
-        self.qv_obsProLvl_rl.setCurrentIndex(self.qv_obsProLvl_rl.findText(statement[index100:index12]))
-    pushAnswer(self.qv_obsDrkCur_rd1, self.qv_obsDrkCur_rd2, statement[index122:index13])
-    pushAnswer(self.qv_obsIntMask_rd1, self.qv_obsIntMask_rd2, statement[index133:index14])
-    pushAnswer(self.qv_obsBadMask_rd1, self.qv_obsBadMask_rd2, statement[index144:index15])
-    pushAnswer(self.qv_obsSatPix_rd1, self.qv_obsSatPix_rd2, statement[index155:index16])
-    pushAnswer(self.qv_obsSpeNeigh_rd1, self.qv_obsSpeNeigh_rd2, statement[index166:index17])
-    pushAnswer(self.qv_obsPosInfo_rd1, self.qv_obsPosInfo_rd2, statement[index177:index18])
-    pushAnswer(self.qv_obsAttInf_rd1, self.qv_obsAttInf_rd2, statement[index188:index19])
-    pushAnswer(self.qv_obsSynprob_rd1, self.qv_obsSynprob_rd2, statement[index199:index20])
-    pushAnswer(self.qv_obsIntGeo_rd1, self.qv_obsIntGeo_rd2, statement[index200:index21])
-    pushAnswer(self.qv_obsAtmCorr_rd1, self.qv_obsAtmCorr_rd2, statement[index211:index23])
-    pushAnswer(self.qv_obsCldMask_rd1, self.qv_obsCldMask_rd2, statement[index233:index24])
-    pushAnswer(self.qv_obsShdMask_rd1, self.qv_obsShdMask_rd2, statement[index244:index25])
-    pushAnswer(self.qv_obsHazMask_rd1, self.qv_obsHazMask_rd2, statement[index255:index26])
-    pushAnswer(self.qv_obsDEMMea_rd1, self.qv_obsDEMMea_rd2, statement[index266:index27])
-    pushAnswer(self.qv_obsIllAng_rd1, self.qv_obsIllAng_rd2, statement[index277:index28])
-    pushAnswer(self.qv_obsBRDFGeo_rd1, self.qv_obsBRDFGeo_rd2, statement[index288:-1])
+def read_statement_imagery(self, statement, index):
+    stringList = []
+    indexStart = statement.find(":", 40)
+    indexEnd = statement.find("|", 40)
+    stringList.append(statement[indexStart + 2 : indexEnd])
+    indexStart += 1
+    indexEnd += 1
+    while indexStart < len(statement):
+        indexStart = statement.find(":", indexStart)
+        if indexStart == -1:
+            break
+        indexEnd = statement.find("|", indexEnd)
+        if indexEnd == -1:
+            stringList.append(statement[indexStart + 2 :])
+        else:
+            stringList.append(statement[indexStart + 2 : indexEnd])
+        indexStart += 1
+        indexEnd += 1
+    if self.qv_imagery_list_2[index].findText(stringList[0]) == -1:
+        self.qv_imagery_list_2[index].setCurrentIndex(0)
+    else:
+        self.qv_imagery_list_2[index].setCurrentIndex(self.qv_imagery_list_2[index].findText(stringList[0]))
+    self.qv_imagery_line_1[index].setText(stringList[1])
+    self.qv_imagery_date_1[index].setDate(QDate.fromString(stringList[2], Qt.ISODate))
+    self.qv_imagery_date_2[index].setDate(QDate.fromString(stringList[3], Qt.ISODate))
+    self.qv_imagery_line_2[index].setText(stringList[4])
+    self.qv_imagery_line_3[index].setText(stringList[5])
+    self.qv_imagery_line_4[index].setText(stringList[6])
+    self.qv_imagery_line_5[index].setText(stringList[7])
+    self.qv_imagery_line_6[index].setText(stringList[8])
+    self.qv_imagery_line_7[index].setText(stringList[9])
+    if self.qv_imagery_list_1[index].findText(stringList[10]) == -1:
+        self.qv_imagery_list_1[index].setCurrentIndex(0)
+    else:
+        self.qv_imagery_list_1[index].setCurrentIndex(self.qv_imagery_list_1[index].findText(stringList[10]))
+    pushAnswer(self.qv_imagery_check_1[index], self.qv_imagery_check_2[index], stringList[11])
+    pushAnswer(self.qv_imagery_check_3[index], self.qv_imagery_check_4[index], stringList[12])
+    pushAnswer(self.qv_imagery_check_5[index], self.qv_imagery_check_6[index], stringList[13])
+    pushAnswer(self.qv_imagery_check_7[index], self.qv_imagery_check_8[index], stringList[14])
+    pushAnswer(self.qv_imagery_check_9[index], self.qv_imagery_check_10[index], stringList[15])
+    pushAnswer(self.qv_imagery_check_11[index], self.qv_imagery_check_12[index], stringList[16])
+    pushAnswer(self.qv_imagery_check_13[index], self.qv_imagery_check_14[index], stringList[17])
+    pushAnswer(self.qv_imagery_check_15[index], self.qv_imagery_check_16[index], stringList[18])
+    pushAnswer(self.qv_imagery_check_17[index], self.qv_imagery_check_18[index], stringList[19])
+    pushAnswer(self.qv_imagery_check_19[index], self.qv_imagery_check_20[index], stringList[20])
+    pushAnswer(self.qv_imagery_check_21[index], self.qv_imagery_check_22[index], stringList[21])
+    pushAnswer(self.qv_imagery_check_23[index], self.qv_imagery_check_24[index], stringList[22])
+    pushAnswer(self.qv_imagery_check_25[index], self.qv_imagery_check_26[index], stringList[23])
+    pushAnswer(self.qv_imagery_check_27[index], self.qv_imagery_check_28[index], stringList[24])
+    pushAnswer(self.qv_imagery_check_29[index], self.qv_imagery_check_30[index], stringList[25])
+    pushAnswer(self.qv_imagery_check_31[index], self.qv_imagery_check_32[index], stringList[26])
     
-def read_statement_insitu(self, statement):
-    index1 = statement.find("Link to the procedure's description: ")
-    index11 = index1 + len("Link to the procedure's description: ")
-    index2 = statement.find("|Source of calibration constants: ")
-    index22 = index2 + len("|Source of calibration constants: ")
-    index3 = statement.find("|Source of calibration materials: ")
-    index33 = index3 + len("|Source of calibration materials: ")
-    index4 = statement.find("|Data converted to geophysical units: ")
-    index44 = index4 + len("|Data converted to geophysical units: ")
-    index5 = statement.find("|Output format: ")
-    index55 = index5 + len("|Output format: ")
-    index6 = statement.find("|Quality-control flagging applied to individual data points: ")
-    index66 = index6 + len("|Quality-control flagging applied to individual data points: ")
-    index7 = statement.find("|Assumption: ")
-    index77 = index7 + len("|Assumption: ")
-    self.qv_insituCalDesc_ln.setPlainText(statement[index11:index2])
-    self.qv_insituCalCons_ln.setPlainText(statement[index22:index3])
-    self.qv_insituCalMat_ln.setPlainText(statement[index33:index4])
-    pushAnswer(self.qv_insituGeoUnit_rd1, self.qv_insituGeoUnit_rd2, statement[index44:index5])
-    format = statement[index55:index6]
-    if "NetCDF" in format:
-        self.qv_insituOutFormat_ck1.setChecked(True)
-    if "HDF" in format:
-        self.qv_insituOutFormat_ck2.setChecked(True)
-    if "NASA/Ames" in format:
-        self.qv_insituOutFormat_ck3.setChecked(True)
-    if "Other" in format:
-        self.qv_insituOutFormat_ck4.setChecked(True)
-        qv_output_other(self)
-        other_index = format.find("Other")
-        other_format = format[other_index + len("Other/"):]
-        self.qv_insituOutFormat_ln.setText(other_format)
-    self.qv_insituQuaFlag_ln.setPlainText(statement[index66:index7])
-    self.qv_insituAssumption_ln.setPlainText(statement[index77:-1]) 
+def read_statement_imagery_old(self, statement, index):
+    stringList = []
+    indexStart = statement.find(":", 40)
+    indexEnd = statement.find("|", 40)
+    stringList.append(statement[indexStart + 2 : indexEnd])
+    indexStart += 1
+    indexEnd += 1
+    while indexStart < len(statement):
+        indexStart = statement.find(":", indexStart)
+        if indexStart == -1:
+            break
+        indexEnd = statement.find("|", indexEnd)
+        if indexEnd == -1:
+            stringList.append(statement[indexStart + 2 :])
+        else:
+            stringList.append(statement[indexStart + 2 : indexEnd])
+        indexStart += 1
+        indexEnd += 1
+    self.qv_imagery_line_1[index].setText(stringList[0])
+    self.qv_imagery_date_1[index].setDate(QDate.fromString(stringList[1], Qt.ISODate))
+    self.qv_imagery_date_2[index].setDate(QDate.fromString(stringList[2], Qt.ISODate))
+    self.qv_imagery_line_2[index].setText(stringList[3])
+    self.qv_imagery_line_3[index].setText(stringList[4])
+    self.qv_imagery_line_4[index].setText(stringList[5])
+    self.qv_imagery_line_5[index].setText(stringList[6])
+    self.qv_imagery_line_6[index].setText(stringList[7])
+    self.qv_imagery_line_7[index].setText(stringList[8])
+    if self.qv_imagery_list_1[index].findText(stringList[9]) == -1:
+        self.qv_imagery_list_1[index].setCurrentIndex(0)
+    else:
+        self.qv_imagery_list_1[index].setCurrentIndex(self.qv_imagery_list_1[index].findText(stringList[9]))
+    pushAnswer(self.qv_imagery_check_1[index], self.qv_imagery_check_2[index], stringList[10])
+    pushAnswer(self.qv_imagery_check_3[index], self.qv_imagery_check_4[index], stringList[11])
+    pushAnswer(self.qv_imagery_check_5[index], self.qv_imagery_check_6[index], stringList[12])
+    pushAnswer(self.qv_imagery_check_7[index], self.qv_imagery_check_8[index], stringList[13])
+    pushAnswer(self.qv_imagery_check_9[index], self.qv_imagery_check_10[index], stringList[14])
+    pushAnswer(self.qv_imagery_check_11[index], self.qv_imagery_check_12[index], stringList[15])
+    pushAnswer(self.qv_imagery_check_13[index], self.qv_imagery_check_14[index], stringList[16])
+    pushAnswer(self.qv_imagery_check_15[index], self.qv_imagery_check_16[index], stringList[17])
+    pushAnswer(self.qv_imagery_check_17[index], self.qv_imagery_check_18[index], stringList[18])
+    pushAnswer(self.qv_imagery_check_19[index], self.qv_imagery_check_20[index], stringList[19])
+    pushAnswer(self.qv_imagery_check_21[index], self.qv_imagery_check_22[index], stringList[20])
+    pushAnswer(self.qv_imagery_check_23[index], self.qv_imagery_check_24[index], stringList[21])
+    pushAnswer(self.qv_imagery_check_25[index], self.qv_imagery_check_26[index], stringList[22])
+    pushAnswer(self.qv_imagery_check_27[index], self.qv_imagery_check_28[index], stringList[23])
+    pushAnswer(self.qv_imagery_check_29[index], self.qv_imagery_check_30[index], stringList[24])
+    pushAnswer(self.qv_imagery_check_31[index], self.qv_imagery_check_32[index], stringList[25])
+    
+def read_statement_insitu(self, statement, index):
+    stringList = []
+    indexStart = statement.find(":", 35)
+    indexEnd = statement.find("|", 35)
+    stringList.append(statement[indexStart + 2 : indexEnd])
+    indexStart += 1
+    indexEnd += 1
+    while indexStart < len(statement):
+        indexStart = statement.find(":", indexStart)
+        if indexStart == -1:
+            break
+        indexEnd = statement.find("|", indexEnd)
+        if indexEnd == -1:
+            stringList.append(statement[indexStart + 2 :])
+        else:
+            stringList.append(statement[indexStart + 2 : indexEnd])
+        indexStart += 1
+        indexEnd += 1  
+    if self.qv_insitu_list_1[index].findText(stringList[0]) == -1:
+        self.qv_insitu_list_1[index].setCurrentIndex(0)
+    else:
+        self.qv_insitu_list_1[index].setCurrentIndex(self.qv_insitu_list_1[index].findText(stringList[0]))
+    self.qv_insitu_line_1[index].setText(stringList[1])
+    self.qv_insitu_line_2[index].setText(stringList[2])
+    self.qv_insitu_line_3[index].setText(stringList[3])
+    pushAnswer(self.qv_insitu_round_1[index], self.qv_insitu_round_2[index], stringList[4])
+    if "NetCDF" in stringList[5]:
+        self.qv_insitu_check_1[index].setChecked(True)
+    if "HDF" in stringList[5]:
+        self.qv_insitu_check_3[index].setChecked(True)
+    if "NASA/Ames" in stringList[5]:
+        self.qv_insitu_check_2[index].setChecked(True)
+    if "Other" in stringList[5]:
+        self.qv_insitu_check_4[index].setChecked(True)
+        qv_output_other(self, index)
+        findOther = stringList[5].find("Other")
+        self.qv_insitu_line_4[index].setText(stringList[5][findOther + 6 :])
+    self.qv_insitu_area_1[index].setPlainText(stringList[6])
+    self.qv_insitu_area_2[index].setPlainText(stringList[7])
+    
+def read_statement_insitu_old(self, statement, index):
+    stringList = []
+    indexStart = statement.find(":", 35)
+    indexEnd = statement.find("|", 35)
+    stringList.append(statement[indexStart + 2 : indexEnd])
+    indexStart += 1
+    indexEnd += 1
+    while indexStart < len(statement):
+        indexStart = statement.find(":", indexStart)
+        if indexStart == -1:
+            break
+        indexEnd = statement.find("|", indexEnd)
+        if indexEnd == -1:
+            stringList.append(statement[indexStart + 2 :])
+        else:
+            stringList.append(statement[indexStart + 2 : indexEnd])
+        indexStart += 1
+        indexEnd += 1  
+    self.qv_insitu_line_1[index].setText(stringList[0])
+    self.qv_insitu_line_2[index].setText(stringList[1])
+    self.qv_insitu_line_3[index].setText(stringList[2])
+    pushAnswer(self.qv_insitu_round_1[index], self.qv_insitu_round_2[index], stringList[3])
+    if "NetCDF" in stringList[4]:
+        self.qv_insitu_check_1[index].setChecked(True)
+    if "HDF" in stringList[4]:
+        self.qv_insitu_check_3[index].setChecked(True)
+    if "NASA/Ames" in stringList[4]:
+        self.qv_insitu_check_2[index].setChecked(True)
+    if "Other" in stringList[4]:
+        self.qv_insitu_check_4[index].setChecked(True)
+        qv_output_other(self, index)
+        findOther = stringList[4].find("Other")
+        self.qv_insitu_line_4[index].setText(stringList[4][findOther + 6 :])
+    self.qv_insitu_area_1[index].setPlainText(stringList[5])
+    self.qv_insitu_area_2[index].setPlainText(stringList[6])
 
 def getAnswer(radioButton1, radioButton2):
     answer = ""
@@ -977,4 +1086,28 @@ def pushAnswer(radioButton1, radioButton2, answer):
         radioButton1.setChecked(True)
     elif answer == "no":
         radioButton2.setChecked(True)
-    
+
+
+class MyAbout(QtWidgets.QDialog, Ui_aboutWindow):
+    def __init__(self):
+        QWidget.__init__(self)
+        self.setupUi(self)
+        aboutText = ("<html><head/><body><p align=justify>The EMC has detected that the Quality and "
+                + "Validity section of your XML file has been produced with an old version of the EM"
+                + "C. Since the version 1.1.0, the XML code for the Quality and Validity section has"
+                + " been replaced to take into account multiple instruments and multiple forms.</p><"
+                + "span align=justify>All Quality and Validity data in the XML file have been loaded"
+                + " into a new form. In order to convert the old XML code to the new one, <b>after s"
+                + "electing an instrument in your Quality and Validity form</b>, please save your do"
+                + "cument to a new file.</span>")
+        self.aw_label_1.setText(aboutText)
+        self.aw_okButton.clicked.connect(self.closeWindow)
+        self.aw_okButton.setFocus(True)
+        self.aw_label_2.setPixmap(QtGui.QPixmap("icons/warning_popup_icon.svg"))
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("icons/warning_popup_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.setWindowIcon(icon)
+        self.setWindowTitle("Old Quality & Validity section detected")
+
+    def closeWindow(self):
+        self.close()
