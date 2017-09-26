@@ -1,9 +1,0 @@
-include *.py
-include ui/*.py
-include ui/build/*.ui
-include Documentation/*.txt
-include eufar_aircrafts/*.png
-include fonts/*.*
-include functions/*.py
-include icons/*.png *.ico *.svg
-include sqlite/*.db *.py

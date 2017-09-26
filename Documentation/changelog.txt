@@ -5,14 +5,36 @@ CHANGELOG
     
 OFFLINE VERSION TESTED ON:
 =========================
-    - Mageia 4
+    - Mageia 4, 6
     - Xubuntu 14.04, 15.04, 15.10, 16.04 (64 bits)
-    - Windows 7 (64 bits)
-    - Windows 8.1 (32 and 64 bits)
+    - Windows 7, 8.1, 10
 
 
-November 16 2016, Release version 1.2.0 [ONLINE]
-=============================================
+September 26 2017, Release version 1.3.0 [OFFLINE]
+========================================
+  The new API of the EUFAR website has been implemented in EMC. The user has now the possibility to select a project from the Project acronym textbox, the function will then fill in different fields automatically.
+
+  MODIFIED:
+    - the list of countries has been modified to reflect the ISO 3166-1 list with alpha-2 codes.
+    - letter to separate QV elements has been changed.
+    - the functions to read, write, print and check xml code have been modified to take into account the new API, the new operators/aircraft object and the new country list.
+    - the aircraft selection system has been modified to handle the JSON aircraft object.
+    
+  FIXED:
+    - it was possible to add the same aircraft several times, now it's not possible anymore.
+    - if a user only forgot to create and fill a QV form, there was no popup to warn him if he wanted to save his file. It has been fixed.
+    
+  ADDED:
+    - a logging system has been introduced (finally !).
+    - a new function to retrieve data from EUFAR database has been put in place.
+    - the arcraft, operators and instruments are now updated automatically based on EUFAR database.
+    - a new popup panel has been added to inform all users of the different modifications induced by the integration of the new API.
+    - an autocompleter system has been introduced based on project acronym.
+    - a .ini file has been introduced to handle logging options and the news API information window. It will be used for future options.
+
+
+November 16 2016, Release version 1.2.0 [OFFLINE]
+=======================================
   A new "Quality and Validity" section has been introduced to take into account multiple instruments and multiple data. Each QV form has to be linked to one instrument. Old QV xml code can still be read but EMC will ask the user to save again his/her document.
   The function to check each field has been reworked for simplification and better performance.
   
@@ -27,7 +49,7 @@ November 16 2016, Release version 1.2.0 [ONLINE]
 
 
 September 5 2016, Release version 1.1.0 [OFFLINE]
-=====================================
+=======================================
   Style has been reworked for harmonisation with other EUFAR software. Recommendations from the EUFAR N7SP/N8DB meeting have been introduced.
   
   MODIFIED:

@@ -1,30 +1,30 @@
-# -*- coding: utf-8 -*-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QDate
-from PyQt5.QtWidgets import QWidget, QToolButton, QDateEdit
-from PyQt5.QtGui import QCursor
-from functions.sql_functions import sql_valueRead
 from ui.Ui_infowindow import Ui_infoWindow
+from functions import utility_functions
+import urllib
+import logging
 
 
 def infoButton_clicked(self, button):
-    query = sql_valueRead(self, 'windowsMessage', 'Button', button)
-    if query:
-        self.infoWindow = MyInfo(query[0][1])
+    logging.debug('button_functions.py - infoButton_clicked - button ' + button)
+    text = self.window_messages[button]
+    if text:
+        self.infoWindow = MyInfo(text)
         self.infoWindow.setMinimumSize(QtCore.QSize(450, self.infoWindow.sizeHint().height()))
         self.infoWindow.setMaximumSize(QtCore.QSize(450, self.infoWindow.sizeHint().height()))
-        self.infoWindow.setGeometry(QCursor.pos().x() - 225, QCursor.pos().y() + 50, 450, 
+        self.infoWindow.setGeometry(QtGui.QCursor.pos().x() - 225, QtGui.QCursor.pos().y() + 50, 450, 
                                     self.infoWindow.sizeHint().height())
     else:
         self.infoWindow = MyInfo("No information entered for this item.")
         self.infoWindow.setMinimumSize(QtCore.QSize(450, 100))
         self.infoWindow.setMaximumSize(QtCore.QSize(450, 100))
-        self.infoWindow.setGeometry(QCursor.pos().x() - 225, QCursor.pos().y() + 50, 450, 150)
+        self.infoWindow.setGeometry(QtGui.QCursor.pos().x() - 225, QtGui.QCursor.pos().y() + 50, 450, 150)
     self.infoWindow.exec_()
 
 
 def plusButton_11_clicked(self):
+    logging.debug('button_functions.py - plusButton_11_clicked - self.qv_insitu ' + str(self.qv_insitu)
+                 + ' ; self.qv_imagery ' + str(self.qv_imagery))
     if self.qv_insitu == 0 and self.qv_imagery == 0:
         self.qv_tabWidget.setVisible(True)
         self.qv_tabWidget.setEnabled(True)
@@ -128,6 +128,7 @@ def plusButton_11_clicked(self):
     icon.addPixmap(QtGui.QPixmap("icons/info_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
     icon2 = QtGui.QIcon()
     icon2.addPixmap(QtGui.QPixmap("icons/continue_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+    itemDelegate = QtWidgets.QStyledItemDelegate()
     self.qv_imagery_tab_1.append(QtWidgets.QWidget())
     self.qv_imagery_tab_1[self.qv_imagery].setObjectName("qv_imagery_tab_1_" + str(self.qv_imagery))
     self.qv_tabWidget.addTab(self.qv_imagery_tab_1[self.qv_imagery], "Earth observation/Remote sensing data " + str(self.qv_imagery + 1))
@@ -308,7 +309,7 @@ def plusButton_11_clicked(self):
     "    border-radius: 1px;\n"
     "    padding-left: 5px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+    "                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
     "}\n"
     "\n"
     "QComboBox:disabled {\n"
@@ -319,7 +320,7 @@ def plusButton_11_clicked(self):
     "    border: 1px solid #7eb4ea;\n"
     "    border-radius: 1px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+    "                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
     "}\n"
     "\n"
     "QComboBox::drop-down {\n"
@@ -342,9 +343,9 @@ def plusButton_11_clicked(self):
     "}\n"
     "\n"
     "QComboBox::down-arrow {\n"
-    "    image: url(icons/arrow_down.png); \n"
-    "    width: 18px;\n"
-    "    height: 18px\n"
+    "    image: url(icons/down_arrow_icon.svg); \n"
+    "    width: 16px;\n"
+    "    height: 16px\n"
     "}\n"
     "\n"
     "QComboBox::down-arrow:on {\n"
@@ -353,15 +354,21 @@ def plusButton_11_clicked(self):
     "}\n"
     "\n"
     "QComboBox QAbstractItemView {\n"
-    "    selection-background-color: transparent;\n"
-    "    selection-color: blue;\n"
-    "    border: 0px, solid black;\n"
+    "    selection-background-color: rgb(200,200,200);\n"
+    "    selection-color: black;\n"
+    "    background: #f0f0f0;\n"
+    "    border: 0px solid #f0f0f0;\n"
+    "}\n"
+    "\n"
+    "QComboBox QAbstractItemView::item {\n"
+    "    margin: 5px 5px 5px 5px;\n"
     "}")
     self.qv_imagery_list_3[self.qv_imagery].setFrame(False)
     self.qv_imagery_list_3[self.qv_imagery].setObjectName("qv_imagery_list_3_" + str(self.qv_imagery))
     self.qv_imagery_list_3[self.qv_imagery].addItem("Make a choice...")
     self.qv_imagery_list_3[self.qv_imagery].addItem("Copy all form content to a new tab")
     self.qv_imagery_list_3[self.qv_imagery].addItem("Copy all form content to an existing tab")
+    self.qv_imagery_list_3[self.qv_imagery].setItemDelegate(itemDelegate)
     self.qv_imagery_horlay_34[self.qv_imagery].addWidget(self.qv_imagery_list_3[self.qv_imagery])
     self.qv_imagery_lab_37.append(QtWidgets.QLabel())
     self.qv_imagery_lab_37[self.qv_imagery].setMinimumSize(QtCore.QSize(15, 15))
@@ -383,7 +390,7 @@ def plusButton_11_clicked(self):
     "    border-radius: 1px;\n"
     "    padding-left: 5px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+    "                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
     "}\n"
     "\n"
     "QComboBox:disabled {\n"
@@ -394,7 +401,7 @@ def plusButton_11_clicked(self):
     "    border: 1px solid #7eb4ea;\n"
     "    border-radius: 1px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+    "                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
     "}\n"
     "\n"
     "QComboBox::drop-down {\n"
@@ -417,9 +424,9 @@ def plusButton_11_clicked(self):
     "}\n"
     "\n"
     "QComboBox::down-arrow {\n"
-    "    image: url(icons/arrow_down.png); \n"
-    "    width: 18px;\n"
-    "    height: 18px\n"
+    "    image: url(icons/down_arrow_icon.svg); \n"
+    "    width: 16px;\n"
+    "    height: 16px\n"
     "}\n"
     "\n"
     "QComboBox::down-arrow:on {\n"
@@ -428,14 +435,20 @@ def plusButton_11_clicked(self):
     "}\n"
     "\n"
     "QComboBox QAbstractItemView {\n"
-    "    selection-background-color: transparent;\n"
-    "    selection-color: blue;\n"
-    "    border: 0px, solid black;\n"
+    "    selection-background-color: rgb(200,200,200);\n"
+    "    selection-color: black;\n"
+    "    background: #f0f0f0;\n"
+    "    border: 0px solid #f0f0f0;\n"
+    "}\n"
+    "\n"
+    "QComboBox QAbstractItemView::item {\n"
+    "    margin: 5px 5px 5px 5px;\n"
     "}")
     self.qv_imagery_list_4[self.qv_imagery].setFrame(False)
     self.qv_imagery_list_4[self.qv_imagery].setObjectName("qv_imagery_list_4_" + str(self.qv_imagery))
     self.qv_imagery_list_4[self.qv_imagery].hide()
     self.qv_imagery_list_4[self.qv_imagery].setDisabled(True)
+    self.qv_imagery_list_4[self.qv_imagery].setItemDelegate(itemDelegate)
     self.qv_imagery_horlay_34[self.qv_imagery].addWidget(self.qv_imagery_list_4[self.qv_imagery])
     self.qv_imagery_contBut_1.append(QtWidgets.QToolButton())
     self.qv_imagery_contBut_1[self.qv_imagery].setMaximumSize(QtCore.QSize(27, 27))
@@ -489,7 +502,6 @@ def plusButton_11_clicked(self):
     self.qv_imagery_horlay_33[self.qv_imagery].addWidget(self.qv_imagery_lab_35[self.qv_imagery])
     self.qv_imagery_horlay_33[self.qv_imagery].addItem(QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, 
                                                                           QtWidgets.QSizePolicy.Minimum))
-    
     self.qv_imagery_list_2.append(QtWidgets.QComboBox())
     self.qv_imagery_list_2[self.qv_imagery].setMinimumSize(QtCore.QSize(220, 27))
     self.qv_imagery_list_2[self.qv_imagery].setMaximumSize(QtCore.QSize(220, 27))
@@ -499,7 +511,7 @@ def plusButton_11_clicked(self):
     "    border-radius: 1px;\n"
     "    padding-left: 5px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+    "                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
     "}\n"
     "\n"
     "QComboBox:disabled {\n"
@@ -510,7 +522,7 @@ def plusButton_11_clicked(self):
     "    border: 1px solid #7eb4ea;\n"
     "    border-radius: 1px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+    "                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
     "}\n"
     "\n"
     "QComboBox::drop-down {\n"
@@ -533,9 +545,9 @@ def plusButton_11_clicked(self):
     "}\n"
     "\n"
     "QComboBox::down-arrow {\n"
-    "    image: url(icons/arrow_down.png); \n"
-    "    width: 18px;\n"
-    "    height: 18px\n"
+    "    image: url(icons/down_arrow_icon.svg); \n"
+    "    width: 16px;\n"
+    "    height: 16px\n"
     "}\n"
     "\n"
     "QComboBox::down-arrow:on {\n"
@@ -544,14 +556,19 @@ def plusButton_11_clicked(self):
     "}\n"
     "\n"
     "QComboBox QAbstractItemView {\n"
-    "    selection-background-color: transparent;\n"
-    "    selection-color: blue;\n"
-    "    border: 0px, solid black;\n"
+    "    selection-background-color: rgb(200,200,200);\n"
+    "    selection-color: black;\n"
+    "    background: #f0f0f0;\n"
+    "    border: 0px solid #f0f0f0;\n"
+    "}\n"
+    "\n"
+    "QComboBox QAbstractItemView::item {\n"
+    "    margin: 5px 5px 5px 5px;\n"
     "}")
     self.qv_imagery_list_2[self.qv_imagery].setFrame(False)
     self.qv_imagery_list_2[self.qv_imagery].setObjectName("qv_imagery_list_2_" + str(self.qv_imagery))
+    self.qv_imagery_list_2[self.qv_imagery].setItemDelegate(itemDelegate)
     self.qv_imagery_horlay_33[self.qv_imagery].addWidget(self.qv_imagery_list_2[self.qv_imagery])
-    
     self.qv_imagery_infBut_14.append(QtWidgets.QToolButton())
     self.qv_imagery_infBut_14[self.qv_imagery].setMaximumSize(QtCore.QSize(27, 27))
     self.qv_imagery_infBut_14[self.qv_imagery].setStyleSheet("QToolButton {\n"
@@ -955,7 +972,7 @@ def plusButton_11_clicked(self):
     "    border-radius: 1px;\n"
     "    padding-left: 5px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+    "                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
     "}\n"
     "\n"
     "QComboBox:disabled {\n"
@@ -966,7 +983,7 @@ def plusButton_11_clicked(self):
     "    border: 1px solid #7eb4ea;\n"
     "    border-radius: 1px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+    "                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
     "}\n"
     "\n"
     "QComboBox::drop-down {\n"
@@ -989,9 +1006,9 @@ def plusButton_11_clicked(self):
     "}\n"
     "\n"
     "QComboBox::down-arrow {\n"
-    "    image: url(icons/arrow_down.png); \n"
-    "    width: 18px;\n"
-    "    height: 18px\n"
+    "    image: url(icons/down_arrow_icon.svg); \n"
+    "    width: 16px;\n"
+    "    height: 16px\n"
     "}\n"
     "\n"
     "QComboBox::down-arrow:on {\n"
@@ -1000,9 +1017,14 @@ def plusButton_11_clicked(self):
     "}\n"
     "\n"
     "QComboBox QAbstractItemView {\n"
-    "    selection-background-color: transparent;\n"
-    "    selection-color: blue;\n"
-    "    border: 0px, solid black;\n"
+    "    selection-background-color: rgb(200,200,200);\n"
+    "    selection-color: black;\n"
+    "    background: #f0f0f0;\n"
+    "    border: 0px solid #f0f0f0;\n"
+    "}\n"
+    "\n"
+    "QComboBox QAbstractItemView::item {\n"
+    "    margin: 5px 5px 5px 5px;\n"
     "}")
     self.qv_imagery_list_1[self.qv_imagery].setFrame(False)
     self.qv_imagery_list_1[self.qv_imagery].setObjectName("qv_imagery_list_1_" + str(self.qv_imagery))
@@ -1011,6 +1033,7 @@ def plusButton_11_clicked(self):
     self.qv_imagery_list_1[self.qv_imagery].addItem("Level 2 geo")
     self.qv_imagery_list_1[self.qv_imagery].addItem("Level 2 atm")
     self.qv_imagery_list_1[self.qv_imagery].addItem("Level 2")
+    self.qv_imagery_list_1[self.qv_imagery].setItemDelegate(itemDelegate)
     self.qv_imagery_gridlay_3[self.qv_imagery].addWidget(self.qv_imagery_list_1[self.qv_imagery], 0, 1, 1, 1)
     self.qv_imagery_lab_14.append(QtWidgets.QLabel())
     self.qv_imagery_lab_14[self.qv_imagery].setMinimumSize(QtCore.QSize(0, 27))
@@ -1765,21 +1788,21 @@ def plusButton_11_clicked(self):
     self.qv_imagery_horlay_32[self.qv_imagery].addWidget(self.qv_imagery_infBut_13[self.qv_imagery])
     self.qv_imagery_verlay_1[self.qv_imagery].addItem(QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, 
                                                                            QtWidgets.QSizePolicy.Expanding))
-    all_info_boxes = self.qv_imagery_tab_1[self.qv_imagery].findChildren(QToolButton)
+    all_info_boxes = self.qv_imagery_tab_1[self.qv_imagery].findChildren(QtWidgets.QToolButton)
     for widget in all_info_boxes:
         widget.clicked.connect(lambda: self.button_clicked())
     all_radio_buttons = self.qv_imagery_tab_1[self.qv_imagery].findChildren(QtWidgets.QRadioButton)
     for widget in all_radio_buttons:
-        widget.clicked.connect(lambda: self.set_modified())
+        widget.clicked.connect(lambda: utility_functions.set_modified(self))
     all_line_edits = self.qv_imagery_tab_1[self.qv_imagery].findChildren(QtWidgets.QLineEdit)
     for widget in all_line_edits:
-        widget.textChanged.connect(lambda: self.set_modified())
-    all_date_edits = self.qv_imagery_tab_1[self.qv_imagery].findChildren(QDateEdit)
+        widget.textChanged.connect(lambda: utility_functions.set_modified(self))
+    all_date_edits = self.qv_imagery_tab_1[self.qv_imagery].findChildren(QtWidgets.QDateEdit)
     for widget in all_date_edits:    
-        widget.dateChanged.connect(lambda: self.set_modified())
-        widget.setDate(QDate.currentDate())
-    self.qv_imagery_list_1[self.qv_imagery].activated.connect(lambda: self.set_modified())
-    self.qv_imagery_list_2[self.qv_imagery].activated.connect(lambda: self.set_modified())
+        widget.dateChanged.connect(lambda: utility_functions.set_modified(self))
+        widget.setDate(QtCore.QDate.currentDate())
+    self.qv_imagery_list_1[self.qv_imagery].activated.connect(lambda: utility_functions.set_modified(self))
+    self.qv_imagery_list_2[self.qv_imagery].activated.connect(lambda: utility_functions.set_modified(self))
     self.qv_imagery_list_3[self.qv_imagery].activated.connect(lambda: qv_activate_tab_list(self))
     self.qv_imagery_line_list[0].append([self.qv_imagery_line_1[self.qv_imagery], self.qv_imagery_lab_2[self.qv_imagery], "text", 
                                         self.qv_tabWidget.indexOf(self.qv_imagery_tab_1[self.qv_imagery])])
@@ -1839,355 +1862,357 @@ def plusButton_11_clicked(self):
     qv_update_tab_list(self, "imagery")
     self.qv_imagery += 1
 
-def close_imagery_tab(self, index, insitu_index):
+def close_imagery_tab(self, index, imagery_index):
+    logging.debug('button_functions.py - close_imagery_tab - index ' + str(index) + ' ; imagery_index '
+                 + str(imagery_index))
     self.qv_tabWidget.removeTab(index)
-    self.qv_imagery_verlay_1[insitu_index].deleteLater()
-    self.qv_imagery_horlay_1[insitu_index].deleteLater()
-    self.qv_imagery_horlay_2[insitu_index].deleteLater()
-    self.qv_imagery_horlay_3[insitu_index].deleteLater()
-    self.qv_imagery_horlay_4[insitu_index].deleteLater()
-    self.qv_imagery_horlay_5[insitu_index].deleteLater()
-    self.qv_imagery_horlay_6[insitu_index].deleteLater()
-    self.qv_imagery_horlay_7[insitu_index].deleteLater()
-    self.qv_imagery_horlay_8[insitu_index].deleteLater()
-    self.qv_imagery_horlay_9[insitu_index].deleteLater()
-    self.qv_imagery_horlay_10[insitu_index].deleteLater()
-    self.qv_imagery_horlay_11[insitu_index].deleteLater()
-    self.qv_imagery_horlay_12[insitu_index].deleteLater()
-    self.qv_imagery_horlay_13[insitu_index].deleteLater()
-    self.qv_imagery_horlay_14[insitu_index].deleteLater()
-    self.qv_imagery_horlay_15[insitu_index].deleteLater()
-    self.qv_imagery_horlay_16[insitu_index].deleteLater()
-    self.qv_imagery_horlay_17[insitu_index].deleteLater()
-    self.qv_imagery_horlay_18[insitu_index].deleteLater()
-    self.qv_imagery_horlay_19[insitu_index].deleteLater()
-    self.qv_imagery_horlay_20[insitu_index].deleteLater()
-    self.qv_imagery_horlay_21[insitu_index].deleteLater()
-    self.qv_imagery_horlay_22[insitu_index].deleteLater()
-    self.qv_imagery_horlay_23[insitu_index].deleteLater()
-    self.qv_imagery_horlay_24[insitu_index].deleteLater()
-    self.qv_imagery_horlay_25[insitu_index].deleteLater()
-    self.qv_imagery_horlay_26[insitu_index].deleteLater()
-    self.qv_imagery_horlay_27[insitu_index].deleteLater()
-    self.qv_imagery_horlay_28[insitu_index].deleteLater()
-    self.qv_imagery_horlay_29[insitu_index].deleteLater()
-    self.qv_imagery_horlay_30[insitu_index].deleteLater()
-    self.qv_imagery_horlay_31[insitu_index].deleteLater()
-    self.qv_imagery_horlay_32[insitu_index].deleteLater()
-    self.qv_imagery_gridlay_1[insitu_index].deleteLater()
-    self.qv_imagery_gridlay_2[insitu_index].deleteLater()
-    self.qv_imagery_gridlay_3[insitu_index].deleteLater()
-    self.qv_imagery_gridlay_4[insitu_index].deleteLater()
-    self.qv_imagery_gridlay_5[insitu_index].deleteLater()
-    self.qv_imagery_gridlay_6[insitu_index].deleteLater()
-    self.qv_imagery_gridlay_7[insitu_index].deleteLater()
-    self.qv_imagery_gridlay_8[insitu_index].deleteLater()
-    self.qv_imagery_infBut_1[insitu_index].deleteLater()
-    self.qv_imagery_infBut_2[insitu_index].deleteLater()
-    self.qv_imagery_infBut_3[insitu_index].deleteLater()
-    self.qv_imagery_infBut_4[insitu_index].deleteLater()
-    self.qv_imagery_infBut_5[insitu_index].deleteLater()
-    self.qv_imagery_infBut_6[insitu_index].deleteLater()
-    self.qv_imagery_infBut_7[insitu_index].deleteLater()
-    self.qv_imagery_infBut_8[insitu_index].deleteLater()
-    self.qv_imagery_infBut_9[insitu_index].deleteLater()
-    self.qv_imagery_infBut_10[insitu_index].deleteLater()
-    self.qv_imagery_infBut_11[insitu_index].deleteLater()
-    self.qv_imagery_infBut_12[insitu_index].deleteLater()
-    self.qv_imagery_infBut_13[insitu_index].deleteLater()
-    self.qv_imagery_lab_1[insitu_index].deleteLater()
-    self.qv_imagery_lab_2[insitu_index].deleteLater()
-    self.qv_imagery_lab_3[insitu_index].deleteLater()
-    self.qv_imagery_lab_4[insitu_index].deleteLater()
-    self.qv_imagery_lab_5[insitu_index].deleteLater()
-    self.qv_imagery_lab_6[insitu_index].deleteLater()
-    self.qv_imagery_lab_7[insitu_index].deleteLater()
-    self.qv_imagery_lab_8[insitu_index].deleteLater()
-    self.qv_imagery_lab_9[insitu_index].deleteLater()
-    self.qv_imagery_lab_10[insitu_index].deleteLater()
-    self.qv_imagery_lab_11[insitu_index].deleteLater()
-    self.qv_imagery_lab_12[insitu_index].deleteLater()
-    self.qv_imagery_lab_13[insitu_index].deleteLater()
-    self.qv_imagery_lab_14[insitu_index].deleteLater()
-    self.qv_imagery_lab_15[insitu_index].deleteLater()
-    self.qv_imagery_lab_16[insitu_index].deleteLater()
-    self.qv_imagery_lab_17[insitu_index].deleteLater()
-    self.qv_imagery_lab_18[insitu_index].deleteLater()
-    self.qv_imagery_lab_19[insitu_index].deleteLater()
-    self.qv_imagery_lab_20[insitu_index].deleteLater()
-    self.qv_imagery_lab_21[insitu_index].deleteLater()
-    self.qv_imagery_lab_22[insitu_index].deleteLater()
-    self.qv_imagery_lab_23[insitu_index].deleteLater()
-    self.qv_imagery_lab_24[insitu_index].deleteLater()
-    self.qv_imagery_lab_25[insitu_index].deleteLater()
-    self.qv_imagery_lab_26[insitu_index].deleteLater()
-    self.qv_imagery_lab_27[insitu_index].deleteLater()
-    self.qv_imagery_lab_28[insitu_index].deleteLater()
-    self.qv_imagery_lab_29[insitu_index].deleteLater()
-    self.qv_imagery_lab_30[insitu_index].deleteLater()
-    self.qv_imagery_lab_31[insitu_index].deleteLater()
-    self.qv_imagery_lab_32[insitu_index].deleteLater()
-    self.qv_imagery_lab_33[insitu_index].deleteLater()
-    self.qv_imagery_lab_34[insitu_index].deleteLater()
-    self.qv_imagery_line_1[insitu_index].deleteLater()
-    self.qv_imagery_line_2[insitu_index].deleteLater()
-    self.qv_imagery_line_3[insitu_index].deleteLater()
-    self.qv_imagery_line_4[insitu_index].deleteLater()
-    self.qv_imagery_line_5[insitu_index].deleteLater()
-    self.qv_imagery_line_6[insitu_index].deleteLater()
-    self.qv_imagery_line_7[insitu_index].deleteLater()
-    self.qv_imagery_date_1[insitu_index].deleteLater()
-    self.qv_imagery_date_2[insitu_index].deleteLater()
-    self.qv_imagery_list_1[insitu_index].deleteLater()
-    self.qv_imagery_check_1[insitu_index].deleteLater()
-    self.qv_imagery_check_2[insitu_index].deleteLater()
-    self.qv_imagery_check_3[insitu_index].deleteLater()
-    self.qv_imagery_check_4[insitu_index].deleteLater()
-    self.qv_imagery_check_5[insitu_index].deleteLater()
-    self.qv_imagery_check_6[insitu_index].deleteLater()
-    self.qv_imagery_check_7[insitu_index].deleteLater()
-    self.qv_imagery_check_8[insitu_index].deleteLater()
-    self.qv_imagery_check_9[insitu_index].deleteLater()
-    self.qv_imagery_check_10[insitu_index].deleteLater()
-    self.qv_imagery_check_11[insitu_index].deleteLater()
-    self.qv_imagery_check_12[insitu_index].deleteLater()
-    self.qv_imagery_check_13[insitu_index].deleteLater()
-    self.qv_imagery_check_14[insitu_index].deleteLater()
-    self.qv_imagery_check_15[insitu_index].deleteLater()
-    self.qv_imagery_check_16[insitu_index].deleteLater()
-    self.qv_imagery_check_17[insitu_index].deleteLater()
-    self.qv_imagery_check_18[insitu_index].deleteLater()
-    self.qv_imagery_check_19[insitu_index].deleteLater()
-    self.qv_imagery_check_20[insitu_index].deleteLater()
-    self.qv_imagery_check_21[insitu_index].deleteLater()
-    self.qv_imagery_check_22[insitu_index].deleteLater()
-    self.qv_imagery_check_23[insitu_index].deleteLater()
-    self.qv_imagery_check_24[insitu_index].deleteLater()
-    self.qv_imagery_check_25[insitu_index].deleteLater()
-    self.qv_imagery_check_26[insitu_index].deleteLater()
-    self.qv_imagery_check_27[insitu_index].deleteLater()
-    self.qv_imagery_check_28[insitu_index].deleteLater()
-    self.qv_imagery_check_29[insitu_index].deleteLater()
-    self.qv_imagery_check_30[insitu_index].deleteLater()
-    self.qv_imagery_check_31[insitu_index].deleteLater()
-    self.qv_imagery_check_32[insitu_index].deleteLater()
-    self.qv_imagery_group_1[insitu_index].deleteLater()
-    self.qv_imagery_group_2[insitu_index].deleteLater()
-    self.qv_imagery_group_3[insitu_index].deleteLater()
-    self.qv_imagery_group_4[insitu_index].deleteLater()
-    self.qv_imagery_group_5[insitu_index].deleteLater()
-    self.qv_imagery_group_6[insitu_index].deleteLater()
-    self.qv_imagery_group_7[insitu_index].deleteLater()
-    self.qv_imagery_group_8[insitu_index].deleteLater()
-    self.qv_imagery_group_9[insitu_index].deleteLater()
-    self.qv_imagery_group_10[insitu_index].deleteLater()
-    self.qv_imagery_group_11[insitu_index].deleteLater()
-    self.qv_imagery_group_12[insitu_index].deleteLater()
-    self.qv_imagery_group_13[insitu_index].deleteLater()
-    self.qv_imagery_group_14[insitu_index].deleteLater()
-    self.qv_imagery_group_15[insitu_index].deleteLater()
-    self.qv_imagery_group_16[insitu_index].deleteLater()
-    self.qv_imagery_tab_1[insitu_index].deleteLater()
-    self.qv_imagery_scroll_1[insitu_index].deleteLater()
-    self.qv_imagery_scroll_2[insitu_index].deleteLater()
-    self.qv_imagery_verlay_1.pop(insitu_index)
-    self.qv_imagery_horlay_1.pop(insitu_index)
-    self.qv_imagery_horlay_2.pop(insitu_index)
-    self.qv_imagery_horlay_3.pop(insitu_index)
-    self.qv_imagery_horlay_4.pop(insitu_index)
-    self.qv_imagery_horlay_5.pop(insitu_index)
-    self.qv_imagery_horlay_6.pop(insitu_index)
-    self.qv_imagery_horlay_7.pop(insitu_index)
-    self.qv_imagery_horlay_8.pop(insitu_index)
-    self.qv_imagery_horlay_9.pop(insitu_index)
-    self.qv_imagery_horlay_10.pop(insitu_index)
-    self.qv_imagery_horlay_11.pop(insitu_index)
-    self.qv_imagery_horlay_12.pop(insitu_index)
-    self.qv_imagery_horlay_13.pop(insitu_index)
-    self.qv_imagery_horlay_14.pop(insitu_index)
-    self.qv_imagery_horlay_15.pop(insitu_index)
-    self.qv_imagery_horlay_16.pop(insitu_index)
-    self.qv_imagery_horlay_17.pop(insitu_index)
-    self.qv_imagery_horlay_18.pop(insitu_index)
-    self.qv_imagery_horlay_19.pop(insitu_index)
-    self.qv_imagery_horlay_20.pop(insitu_index)
-    self.qv_imagery_horlay_21.pop(insitu_index)
-    self.qv_imagery_horlay_22.pop(insitu_index)
-    self.qv_imagery_horlay_23.pop(insitu_index)
-    self.qv_imagery_horlay_24.pop(insitu_index)
-    self.qv_imagery_horlay_25.pop(insitu_index)
-    self.qv_imagery_horlay_26.pop(insitu_index)
-    self.qv_imagery_horlay_27.pop(insitu_index)
-    self.qv_imagery_horlay_28.pop(insitu_index)
-    self.qv_imagery_horlay_29.pop(insitu_index)
-    self.qv_imagery_horlay_30.pop(insitu_index)
-    self.qv_imagery_horlay_31.pop(insitu_index)
-    self.qv_imagery_horlay_32.pop(insitu_index)
-    self.qv_imagery_gridlay_1.pop(insitu_index)
-    self.qv_imagery_gridlay_2.pop(insitu_index)
-    self.qv_imagery_gridlay_3.pop(insitu_index)
-    self.qv_imagery_gridlay_4.pop(insitu_index)
-    self.qv_imagery_gridlay_5.pop(insitu_index)
-    self.qv_imagery_gridlay_6.pop(insitu_index)
-    self.qv_imagery_gridlay_7.pop(insitu_index)
-    self.qv_imagery_gridlay_8.pop(insitu_index)
-    self.qv_imagery_infBut_1.pop(insitu_index)
-    self.qv_imagery_infBut_2.pop(insitu_index)
-    self.qv_imagery_infBut_3.pop(insitu_index)
-    self.qv_imagery_infBut_4.pop(insitu_index)
-    self.qv_imagery_infBut_5.pop(insitu_index)
-    self.qv_imagery_infBut_6.pop(insitu_index)
-    self.qv_imagery_infBut_7.pop(insitu_index)
-    self.qv_imagery_infBut_8.pop(insitu_index)
-    self.qv_imagery_infBut_9.pop(insitu_index)
-    self.qv_imagery_infBut_10.pop(insitu_index)
-    self.qv_imagery_infBut_11.pop(insitu_index)
-    self.qv_imagery_infBut_12.pop(insitu_index)
-    self.qv_imagery_infBut_13.pop(insitu_index)
-    self.qv_imagery_lab_1.pop(insitu_index)
-    self.qv_imagery_lab_2.pop(insitu_index)
-    self.qv_imagery_lab_3.pop(insitu_index)
-    self.qv_imagery_lab_4.pop(insitu_index)
-    self.qv_imagery_lab_5.pop(insitu_index)
-    self.qv_imagery_lab_6.pop(insitu_index)
-    self.qv_imagery_lab_7.pop(insitu_index)
-    self.qv_imagery_lab_8.pop(insitu_index)
-    self.qv_imagery_lab_9.pop(insitu_index)
-    self.qv_imagery_lab_10.pop(insitu_index)
-    self.qv_imagery_lab_11.pop(insitu_index)
-    self.qv_imagery_lab_12.pop(insitu_index)
-    self.qv_imagery_lab_13.pop(insitu_index)
-    self.qv_imagery_lab_14.pop(insitu_index)
-    self.qv_imagery_lab_15.pop(insitu_index)
-    self.qv_imagery_lab_16.pop(insitu_index)
-    self.qv_imagery_lab_17.pop(insitu_index)
-    self.qv_imagery_lab_18.pop(insitu_index)
-    self.qv_imagery_lab_19.pop(insitu_index)
-    self.qv_imagery_lab_20.pop(insitu_index)
-    self.qv_imagery_lab_21.pop(insitu_index)
-    self.qv_imagery_lab_22.pop(insitu_index)
-    self.qv_imagery_lab_23.pop(insitu_index)
-    self.qv_imagery_lab_24.pop(insitu_index)
-    self.qv_imagery_lab_25.pop(insitu_index)
-    self.qv_imagery_lab_26.pop(insitu_index)
-    self.qv_imagery_lab_27.pop(insitu_index)
-    self.qv_imagery_lab_28.pop(insitu_index)
-    self.qv_imagery_lab_29.pop(insitu_index)
-    self.qv_imagery_lab_30.pop(insitu_index)
-    self.qv_imagery_lab_31.pop(insitu_index)
-    self.qv_imagery_lab_32.pop(insitu_index)
-    self.qv_imagery_lab_33.pop(insitu_index)
-    self.qv_imagery_lab_34.pop(insitu_index)
-    self.qv_imagery_line_1.pop(insitu_index)
-    self.qv_imagery_line_2.pop(insitu_index)
-    self.qv_imagery_line_3.pop(insitu_index)
-    self.qv_imagery_line_4.pop(insitu_index)
-    self.qv_imagery_line_5.pop(insitu_index)
-    self.qv_imagery_line_6.pop(insitu_index)
-    self.qv_imagery_line_7.pop(insitu_index)
-    self.qv_imagery_date_1.pop(insitu_index)
-    self.qv_imagery_date_2.pop(insitu_index)
-    self.qv_imagery_list_1.pop(insitu_index)
-    self.qv_imagery_check_1.pop(insitu_index)
-    self.qv_imagery_check_2.pop(insitu_index)
-    self.qv_imagery_check_3.pop(insitu_index)
-    self.qv_imagery_check_4.pop(insitu_index)
-    self.qv_imagery_check_5.pop(insitu_index)
-    self.qv_imagery_check_6.pop(insitu_index)
-    self.qv_imagery_check_7.pop(insitu_index)
-    self.qv_imagery_check_8.pop(insitu_index)
-    self.qv_imagery_check_9.pop(insitu_index)
-    self.qv_imagery_check_10.pop(insitu_index)
-    self.qv_imagery_check_11.pop(insitu_index)
-    self.qv_imagery_check_12.pop(insitu_index)
-    self.qv_imagery_check_13.pop(insitu_index)
-    self.qv_imagery_check_14.pop(insitu_index)
-    self.qv_imagery_check_15.pop(insitu_index)
-    self.qv_imagery_check_16.pop(insitu_index)
-    self.qv_imagery_check_17.pop(insitu_index)
-    self.qv_imagery_check_18.pop(insitu_index)
-    self.qv_imagery_check_19.pop(insitu_index)
-    self.qv_imagery_check_20.pop(insitu_index)
-    self.qv_imagery_check_21.pop(insitu_index)
-    self.qv_imagery_check_22.pop(insitu_index)
-    self.qv_imagery_check_23.pop(insitu_index)
-    self.qv_imagery_check_24.pop(insitu_index)
-    self.qv_imagery_check_25.pop(insitu_index)
-    self.qv_imagery_check_26.pop(insitu_index)
-    self.qv_imagery_check_27.pop(insitu_index)
-    self.qv_imagery_check_28.pop(insitu_index)
-    self.qv_imagery_check_29.pop(insitu_index)
-    self.qv_imagery_check_30.pop(insitu_index)
-    self.qv_imagery_check_31.pop(insitu_index)
-    self.qv_imagery_check_32.pop(insitu_index)
-    self.qv_imagery_group_1.pop(insitu_index)
-    self.qv_imagery_group_2.pop(insitu_index)
-    self.qv_imagery_group_3.pop(insitu_index)
-    self.qv_imagery_group_4.pop(insitu_index)
-    self.qv_imagery_group_5.pop(insitu_index)
-    self.qv_imagery_group_6.pop(insitu_index)
-    self.qv_imagery_group_7.pop(insitu_index)
-    self.qv_imagery_group_8.pop(insitu_index)
-    self.qv_imagery_group_9.pop(insitu_index)
-    self.qv_imagery_group_10.pop(insitu_index)
-    self.qv_imagery_group_11.pop(insitu_index)
-    self.qv_imagery_group_12.pop(insitu_index)
-    self.qv_imagery_group_13.pop(insitu_index)
-    self.qv_imagery_group_14.pop(insitu_index)
-    self.qv_imagery_group_15.pop(insitu_index)
-    self.qv_imagery_group_16.pop(insitu_index)
-    self.qv_imagery_tab_1.pop(insitu_index)
-    self.qv_imagery_scroll_1.pop(insitu_index)
-    self.qv_imagery_scroll_2.pop(insitu_index)
-    self.qv_imagery_line_list[0].pop(insitu_index)
-    self.qv_imagery_line_list[1].pop(insitu_index)
-    self.qv_imagery_line_list[2].pop(insitu_index)
-    self.qv_imagery_line_list[3].pop(insitu_index)
-    self.qv_imagery_line_list[4].pop(insitu_index)
-    self.qv_imagery_line_list[5].pop(insitu_index)
-    self.qv_imagery_line_list[6].pop(insitu_index)
-    self.qv_imagery_combo_list[0].pop(insitu_index)
-    self.qv_imagery_combo_list[1].pop(insitu_index)
-    self.qv_imagery_date_list[0].pop(insitu_index)
-    self.qv_imagery_date_list[1].pop(insitu_index)
-    self.qv_imagery_radio_list[0].pop(insitu_index)
-    self.qv_imagery_radio_list[1].pop(insitu_index)
-    self.qv_imagery_radio_list[2].pop(insitu_index)
-    self.qv_imagery_radio_list[3].pop(insitu_index)
-    self.qv_imagery_radio_list[4].pop(insitu_index)
-    self.qv_imagery_radio_list[5].pop(insitu_index)
-    self.qv_imagery_radio_list[6].pop(insitu_index)
-    self.qv_imagery_radio_list[7].pop(insitu_index)
-    self.qv_imagery_radio_list[8].pop(insitu_index)
-    self.qv_imagery_radio_list[9].pop(insitu_index)
-    self.qv_imagery_radio_list[10].pop(insitu_index)
-    self.qv_imagery_radio_list[11].pop(insitu_index)
-    self.qv_imagery_radio_list[12].pop(insitu_index)
-    self.qv_imagery_radio_list[13].pop(insitu_index)
-    self.qv_imagery_radio_list[14].pop(insitu_index)
-    self.qv_imagery_radio_list[15].pop(insitu_index)
-    self.qv_imagery_horlay_33[insitu_index].deleteLater()
-    self.qv_imagery_horlay_33.pop(insitu_index)
-    self.qv_imagery_lab_35[insitu_index].deleteLater()
-    self.qv_imagery_lab_35.pop(insitu_index)
-    self.qv_imagery_list_2[insitu_index].deleteLater()
-    self.qv_imagery_list_2.pop(insitu_index)
-    self.qv_imagery_infBut_14[insitu_index].deleteLater()
-    self.qv_imagery_infBut_14.pop(insitu_index)
-    self.qv_imagery_horlay_34[insitu_index].deleteLater()
-    self.qv_imagery_lab_36[insitu_index].deleteLater()
-    self.qv_imagery_list_3[insitu_index].deleteLater()
-    self.qv_imagery_lab_37[insitu_index].deleteLater()
-    self.qv_imagery_list_4[insitu_index].deleteLater()
-    self.qv_imagery_contBut_1[insitu_index].deleteLater()
-    self.qv_imagery_infBut_15[insitu_index].deleteLater()
-    self.qv_imagery_horlay_34.pop(insitu_index)
-    self.qv_imagery_lab_36.pop(insitu_index)
-    self.qv_imagery_list_3.pop(insitu_index)
-    self.qv_imagery_lab_37.pop(insitu_index)
-    self.qv_imagery_list_4.pop(insitu_index)
-    self.qv_imagery_contBut_1.pop(insitu_index)
-    self.qv_imagery_infBut_15.pop(insitu_index)
+    self.qv_imagery_verlay_1[imagery_index].deleteLater()
+    self.qv_imagery_horlay_1[imagery_index].deleteLater()
+    self.qv_imagery_horlay_2[imagery_index].deleteLater()
+    self.qv_imagery_horlay_3[imagery_index].deleteLater()
+    self.qv_imagery_horlay_4[imagery_index].deleteLater()
+    self.qv_imagery_horlay_5[imagery_index].deleteLater()
+    self.qv_imagery_horlay_6[imagery_index].deleteLater()
+    self.qv_imagery_horlay_7[imagery_index].deleteLater()
+    self.qv_imagery_horlay_8[imagery_index].deleteLater()
+    self.qv_imagery_horlay_9[imagery_index].deleteLater()
+    self.qv_imagery_horlay_10[imagery_index].deleteLater()
+    self.qv_imagery_horlay_11[imagery_index].deleteLater()
+    self.qv_imagery_horlay_12[imagery_index].deleteLater()
+    self.qv_imagery_horlay_13[imagery_index].deleteLater()
+    self.qv_imagery_horlay_14[imagery_index].deleteLater()
+    self.qv_imagery_horlay_15[imagery_index].deleteLater()
+    self.qv_imagery_horlay_16[imagery_index].deleteLater()
+    self.qv_imagery_horlay_17[imagery_index].deleteLater()
+    self.qv_imagery_horlay_18[imagery_index].deleteLater()
+    self.qv_imagery_horlay_19[imagery_index].deleteLater()
+    self.qv_imagery_horlay_20[imagery_index].deleteLater()
+    self.qv_imagery_horlay_21[imagery_index].deleteLater()
+    self.qv_imagery_horlay_22[imagery_index].deleteLater()
+    self.qv_imagery_horlay_23[imagery_index].deleteLater()
+    self.qv_imagery_horlay_24[imagery_index].deleteLater()
+    self.qv_imagery_horlay_25[imagery_index].deleteLater()
+    self.qv_imagery_horlay_26[imagery_index].deleteLater()
+    self.qv_imagery_horlay_27[imagery_index].deleteLater()
+    self.qv_imagery_horlay_28[imagery_index].deleteLater()
+    self.qv_imagery_horlay_29[imagery_index].deleteLater()
+    self.qv_imagery_horlay_30[imagery_index].deleteLater()
+    self.qv_imagery_horlay_31[imagery_index].deleteLater()
+    self.qv_imagery_horlay_32[imagery_index].deleteLater()
+    self.qv_imagery_gridlay_1[imagery_index].deleteLater()
+    self.qv_imagery_gridlay_2[imagery_index].deleteLater()
+    self.qv_imagery_gridlay_3[imagery_index].deleteLater()
+    self.qv_imagery_gridlay_4[imagery_index].deleteLater()
+    self.qv_imagery_gridlay_5[imagery_index].deleteLater()
+    self.qv_imagery_gridlay_6[imagery_index].deleteLater()
+    self.qv_imagery_gridlay_7[imagery_index].deleteLater()
+    self.qv_imagery_gridlay_8[imagery_index].deleteLater()
+    self.qv_imagery_infBut_1[imagery_index].deleteLater()
+    self.qv_imagery_infBut_2[imagery_index].deleteLater()
+    self.qv_imagery_infBut_3[imagery_index].deleteLater()
+    self.qv_imagery_infBut_4[imagery_index].deleteLater()
+    self.qv_imagery_infBut_5[imagery_index].deleteLater()
+    self.qv_imagery_infBut_6[imagery_index].deleteLater()
+    self.qv_imagery_infBut_7[imagery_index].deleteLater()
+    self.qv_imagery_infBut_8[imagery_index].deleteLater()
+    self.qv_imagery_infBut_9[imagery_index].deleteLater()
+    self.qv_imagery_infBut_10[imagery_index].deleteLater()
+    self.qv_imagery_infBut_11[imagery_index].deleteLater()
+    self.qv_imagery_infBut_12[imagery_index].deleteLater()
+    self.qv_imagery_infBut_13[imagery_index].deleteLater()
+    self.qv_imagery_lab_1[imagery_index].deleteLater()
+    self.qv_imagery_lab_2[imagery_index].deleteLater()
+    self.qv_imagery_lab_3[imagery_index].deleteLater()
+    self.qv_imagery_lab_4[imagery_index].deleteLater()
+    self.qv_imagery_lab_5[imagery_index].deleteLater()
+    self.qv_imagery_lab_6[imagery_index].deleteLater()
+    self.qv_imagery_lab_7[imagery_index].deleteLater()
+    self.qv_imagery_lab_8[imagery_index].deleteLater()
+    self.qv_imagery_lab_9[imagery_index].deleteLater()
+    self.qv_imagery_lab_10[imagery_index].deleteLater()
+    self.qv_imagery_lab_11[imagery_index].deleteLater()
+    self.qv_imagery_lab_12[imagery_index].deleteLater()
+    self.qv_imagery_lab_13[imagery_index].deleteLater()
+    self.qv_imagery_lab_14[imagery_index].deleteLater()
+    self.qv_imagery_lab_15[imagery_index].deleteLater()
+    self.qv_imagery_lab_16[imagery_index].deleteLater()
+    self.qv_imagery_lab_17[imagery_index].deleteLater()
+    self.qv_imagery_lab_18[imagery_index].deleteLater()
+    self.qv_imagery_lab_19[imagery_index].deleteLater()
+    self.qv_imagery_lab_20[imagery_index].deleteLater()
+    self.qv_imagery_lab_21[imagery_index].deleteLater()
+    self.qv_imagery_lab_22[imagery_index].deleteLater()
+    self.qv_imagery_lab_23[imagery_index].deleteLater()
+    self.qv_imagery_lab_24[imagery_index].deleteLater()
+    self.qv_imagery_lab_25[imagery_index].deleteLater()
+    self.qv_imagery_lab_26[imagery_index].deleteLater()
+    self.qv_imagery_lab_27[imagery_index].deleteLater()
+    self.qv_imagery_lab_28[imagery_index].deleteLater()
+    self.qv_imagery_lab_29[imagery_index].deleteLater()
+    self.qv_imagery_lab_30[imagery_index].deleteLater()
+    self.qv_imagery_lab_31[imagery_index].deleteLater()
+    self.qv_imagery_lab_32[imagery_index].deleteLater()
+    self.qv_imagery_lab_33[imagery_index].deleteLater()
+    self.qv_imagery_lab_34[imagery_index].deleteLater()
+    self.qv_imagery_line_1[imagery_index].deleteLater()
+    self.qv_imagery_line_2[imagery_index].deleteLater()
+    self.qv_imagery_line_3[imagery_index].deleteLater()
+    self.qv_imagery_line_4[imagery_index].deleteLater()
+    self.qv_imagery_line_5[imagery_index].deleteLater()
+    self.qv_imagery_line_6[imagery_index].deleteLater()
+    self.qv_imagery_line_7[imagery_index].deleteLater()
+    self.qv_imagery_date_1[imagery_index].deleteLater()
+    self.qv_imagery_date_2[imagery_index].deleteLater()
+    self.qv_imagery_list_1[imagery_index].deleteLater()
+    self.qv_imagery_check_1[imagery_index].deleteLater()
+    self.qv_imagery_check_2[imagery_index].deleteLater()
+    self.qv_imagery_check_3[imagery_index].deleteLater()
+    self.qv_imagery_check_4[imagery_index].deleteLater()
+    self.qv_imagery_check_5[imagery_index].deleteLater()
+    self.qv_imagery_check_6[imagery_index].deleteLater()
+    self.qv_imagery_check_7[imagery_index].deleteLater()
+    self.qv_imagery_check_8[imagery_index].deleteLater()
+    self.qv_imagery_check_9[imagery_index].deleteLater()
+    self.qv_imagery_check_10[imagery_index].deleteLater()
+    self.qv_imagery_check_11[imagery_index].deleteLater()
+    self.qv_imagery_check_12[imagery_index].deleteLater()
+    self.qv_imagery_check_13[imagery_index].deleteLater()
+    self.qv_imagery_check_14[imagery_index].deleteLater()
+    self.qv_imagery_check_15[imagery_index].deleteLater()
+    self.qv_imagery_check_16[imagery_index].deleteLater()
+    self.qv_imagery_check_17[imagery_index].deleteLater()
+    self.qv_imagery_check_18[imagery_index].deleteLater()
+    self.qv_imagery_check_19[imagery_index].deleteLater()
+    self.qv_imagery_check_20[imagery_index].deleteLater()
+    self.qv_imagery_check_21[imagery_index].deleteLater()
+    self.qv_imagery_check_22[imagery_index].deleteLater()
+    self.qv_imagery_check_23[imagery_index].deleteLater()
+    self.qv_imagery_check_24[imagery_index].deleteLater()
+    self.qv_imagery_check_25[imagery_index].deleteLater()
+    self.qv_imagery_check_26[imagery_index].deleteLater()
+    self.qv_imagery_check_27[imagery_index].deleteLater()
+    self.qv_imagery_check_28[imagery_index].deleteLater()
+    self.qv_imagery_check_29[imagery_index].deleteLater()
+    self.qv_imagery_check_30[imagery_index].deleteLater()
+    self.qv_imagery_check_31[imagery_index].deleteLater()
+    self.qv_imagery_check_32[imagery_index].deleteLater()
+    self.qv_imagery_group_1[imagery_index].deleteLater()
+    self.qv_imagery_group_2[imagery_index].deleteLater()
+    self.qv_imagery_group_3[imagery_index].deleteLater()
+    self.qv_imagery_group_4[imagery_index].deleteLater()
+    self.qv_imagery_group_5[imagery_index].deleteLater()
+    self.qv_imagery_group_6[imagery_index].deleteLater()
+    self.qv_imagery_group_7[imagery_index].deleteLater()
+    self.qv_imagery_group_8[imagery_index].deleteLater()
+    self.qv_imagery_group_9[imagery_index].deleteLater()
+    self.qv_imagery_group_10[imagery_index].deleteLater()
+    self.qv_imagery_group_11[imagery_index].deleteLater()
+    self.qv_imagery_group_12[imagery_index].deleteLater()
+    self.qv_imagery_group_13[imagery_index].deleteLater()
+    self.qv_imagery_group_14[imagery_index].deleteLater()
+    self.qv_imagery_group_15[imagery_index].deleteLater()
+    self.qv_imagery_group_16[imagery_index].deleteLater()
+    self.qv_imagery_tab_1[imagery_index].deleteLater()
+    self.qv_imagery_scroll_1[imagery_index].deleteLater()
+    self.qv_imagery_scroll_2[imagery_index].deleteLater()
+    self.qv_imagery_verlay_1.pop(imagery_index)
+    self.qv_imagery_horlay_1.pop(imagery_index)
+    self.qv_imagery_horlay_2.pop(imagery_index)
+    self.qv_imagery_horlay_3.pop(imagery_index)
+    self.qv_imagery_horlay_4.pop(imagery_index)
+    self.qv_imagery_horlay_5.pop(imagery_index)
+    self.qv_imagery_horlay_6.pop(imagery_index)
+    self.qv_imagery_horlay_7.pop(imagery_index)
+    self.qv_imagery_horlay_8.pop(imagery_index)
+    self.qv_imagery_horlay_9.pop(imagery_index)
+    self.qv_imagery_horlay_10.pop(imagery_index)
+    self.qv_imagery_horlay_11.pop(imagery_index)
+    self.qv_imagery_horlay_12.pop(imagery_index)
+    self.qv_imagery_horlay_13.pop(imagery_index)
+    self.qv_imagery_horlay_14.pop(imagery_index)
+    self.qv_imagery_horlay_15.pop(imagery_index)
+    self.qv_imagery_horlay_16.pop(imagery_index)
+    self.qv_imagery_horlay_17.pop(imagery_index)
+    self.qv_imagery_horlay_18.pop(imagery_index)
+    self.qv_imagery_horlay_19.pop(imagery_index)
+    self.qv_imagery_horlay_20.pop(imagery_index)
+    self.qv_imagery_horlay_21.pop(imagery_index)
+    self.qv_imagery_horlay_22.pop(imagery_index)
+    self.qv_imagery_horlay_23.pop(imagery_index)
+    self.qv_imagery_horlay_24.pop(imagery_index)
+    self.qv_imagery_horlay_25.pop(imagery_index)
+    self.qv_imagery_horlay_26.pop(imagery_index)
+    self.qv_imagery_horlay_27.pop(imagery_index)
+    self.qv_imagery_horlay_28.pop(imagery_index)
+    self.qv_imagery_horlay_29.pop(imagery_index)
+    self.qv_imagery_horlay_30.pop(imagery_index)
+    self.qv_imagery_horlay_31.pop(imagery_index)
+    self.qv_imagery_horlay_32.pop(imagery_index)
+    self.qv_imagery_gridlay_1.pop(imagery_index)
+    self.qv_imagery_gridlay_2.pop(imagery_index)
+    self.qv_imagery_gridlay_3.pop(imagery_index)
+    self.qv_imagery_gridlay_4.pop(imagery_index)
+    self.qv_imagery_gridlay_5.pop(imagery_index)
+    self.qv_imagery_gridlay_6.pop(imagery_index)
+    self.qv_imagery_gridlay_7.pop(imagery_index)
+    self.qv_imagery_gridlay_8.pop(imagery_index)
+    self.qv_imagery_infBut_1.pop(imagery_index)
+    self.qv_imagery_infBut_2.pop(imagery_index)
+    self.qv_imagery_infBut_3.pop(imagery_index)
+    self.qv_imagery_infBut_4.pop(imagery_index)
+    self.qv_imagery_infBut_5.pop(imagery_index)
+    self.qv_imagery_infBut_6.pop(imagery_index)
+    self.qv_imagery_infBut_7.pop(imagery_index)
+    self.qv_imagery_infBut_8.pop(imagery_index)
+    self.qv_imagery_infBut_9.pop(imagery_index)
+    self.qv_imagery_infBut_10.pop(imagery_index)
+    self.qv_imagery_infBut_11.pop(imagery_index)
+    self.qv_imagery_infBut_12.pop(imagery_index)
+    self.qv_imagery_infBut_13.pop(imagery_index)
+    self.qv_imagery_lab_1.pop(imagery_index)
+    self.qv_imagery_lab_2.pop(imagery_index)
+    self.qv_imagery_lab_3.pop(imagery_index)
+    self.qv_imagery_lab_4.pop(imagery_index)
+    self.qv_imagery_lab_5.pop(imagery_index)
+    self.qv_imagery_lab_6.pop(imagery_index)
+    self.qv_imagery_lab_7.pop(imagery_index)
+    self.qv_imagery_lab_8.pop(imagery_index)
+    self.qv_imagery_lab_9.pop(imagery_index)
+    self.qv_imagery_lab_10.pop(imagery_index)
+    self.qv_imagery_lab_11.pop(imagery_index)
+    self.qv_imagery_lab_12.pop(imagery_index)
+    self.qv_imagery_lab_13.pop(imagery_index)
+    self.qv_imagery_lab_14.pop(imagery_index)
+    self.qv_imagery_lab_15.pop(imagery_index)
+    self.qv_imagery_lab_16.pop(imagery_index)
+    self.qv_imagery_lab_17.pop(imagery_index)
+    self.qv_imagery_lab_18.pop(imagery_index)
+    self.qv_imagery_lab_19.pop(imagery_index)
+    self.qv_imagery_lab_20.pop(imagery_index)
+    self.qv_imagery_lab_21.pop(imagery_index)
+    self.qv_imagery_lab_22.pop(imagery_index)
+    self.qv_imagery_lab_23.pop(imagery_index)
+    self.qv_imagery_lab_24.pop(imagery_index)
+    self.qv_imagery_lab_25.pop(imagery_index)
+    self.qv_imagery_lab_26.pop(imagery_index)
+    self.qv_imagery_lab_27.pop(imagery_index)
+    self.qv_imagery_lab_28.pop(imagery_index)
+    self.qv_imagery_lab_29.pop(imagery_index)
+    self.qv_imagery_lab_30.pop(imagery_index)
+    self.qv_imagery_lab_31.pop(imagery_index)
+    self.qv_imagery_lab_32.pop(imagery_index)
+    self.qv_imagery_lab_33.pop(imagery_index)
+    self.qv_imagery_lab_34.pop(imagery_index)
+    self.qv_imagery_line_1.pop(imagery_index)
+    self.qv_imagery_line_2.pop(imagery_index)
+    self.qv_imagery_line_3.pop(imagery_index)
+    self.qv_imagery_line_4.pop(imagery_index)
+    self.qv_imagery_line_5.pop(imagery_index)
+    self.qv_imagery_line_6.pop(imagery_index)
+    self.qv_imagery_line_7.pop(imagery_index)
+    self.qv_imagery_date_1.pop(imagery_index)
+    self.qv_imagery_date_2.pop(imagery_index)
+    self.qv_imagery_list_1.pop(imagery_index)
+    self.qv_imagery_check_1.pop(imagery_index)
+    self.qv_imagery_check_2.pop(imagery_index)
+    self.qv_imagery_check_3.pop(imagery_index)
+    self.qv_imagery_check_4.pop(imagery_index)
+    self.qv_imagery_check_5.pop(imagery_index)
+    self.qv_imagery_check_6.pop(imagery_index)
+    self.qv_imagery_check_7.pop(imagery_index)
+    self.qv_imagery_check_8.pop(imagery_index)
+    self.qv_imagery_check_9.pop(imagery_index)
+    self.qv_imagery_check_10.pop(imagery_index)
+    self.qv_imagery_check_11.pop(imagery_index)
+    self.qv_imagery_check_12.pop(imagery_index)
+    self.qv_imagery_check_13.pop(imagery_index)
+    self.qv_imagery_check_14.pop(imagery_index)
+    self.qv_imagery_check_15.pop(imagery_index)
+    self.qv_imagery_check_16.pop(imagery_index)
+    self.qv_imagery_check_17.pop(imagery_index)
+    self.qv_imagery_check_18.pop(imagery_index)
+    self.qv_imagery_check_19.pop(imagery_index)
+    self.qv_imagery_check_20.pop(imagery_index)
+    self.qv_imagery_check_21.pop(imagery_index)
+    self.qv_imagery_check_22.pop(imagery_index)
+    self.qv_imagery_check_23.pop(imagery_index)
+    self.qv_imagery_check_24.pop(imagery_index)
+    self.qv_imagery_check_25.pop(imagery_index)
+    self.qv_imagery_check_26.pop(imagery_index)
+    self.qv_imagery_check_27.pop(imagery_index)
+    self.qv_imagery_check_28.pop(imagery_index)
+    self.qv_imagery_check_29.pop(imagery_index)
+    self.qv_imagery_check_30.pop(imagery_index)
+    self.qv_imagery_check_31.pop(imagery_index)
+    self.qv_imagery_check_32.pop(imagery_index)
+    self.qv_imagery_group_1.pop(imagery_index)
+    self.qv_imagery_group_2.pop(imagery_index)
+    self.qv_imagery_group_3.pop(imagery_index)
+    self.qv_imagery_group_4.pop(imagery_index)
+    self.qv_imagery_group_5.pop(imagery_index)
+    self.qv_imagery_group_6.pop(imagery_index)
+    self.qv_imagery_group_7.pop(imagery_index)
+    self.qv_imagery_group_8.pop(imagery_index)
+    self.qv_imagery_group_9.pop(imagery_index)
+    self.qv_imagery_group_10.pop(imagery_index)
+    self.qv_imagery_group_11.pop(imagery_index)
+    self.qv_imagery_group_12.pop(imagery_index)
+    self.qv_imagery_group_13.pop(imagery_index)
+    self.qv_imagery_group_14.pop(imagery_index)
+    self.qv_imagery_group_15.pop(imagery_index)
+    self.qv_imagery_group_16.pop(imagery_index)
+    self.qv_imagery_tab_1.pop(imagery_index)
+    self.qv_imagery_scroll_1.pop(imagery_index)
+    self.qv_imagery_scroll_2.pop(imagery_index)
+    self.qv_imagery_line_list[0].pop(imagery_index)
+    self.qv_imagery_line_list[1].pop(imagery_index)
+    self.qv_imagery_line_list[2].pop(imagery_index)
+    self.qv_imagery_line_list[3].pop(imagery_index)
+    self.qv_imagery_line_list[4].pop(imagery_index)
+    self.qv_imagery_line_list[5].pop(imagery_index)
+    self.qv_imagery_line_list[6].pop(imagery_index)
+    self.qv_imagery_combo_list[0].pop(imagery_index)
+    self.qv_imagery_combo_list[1].pop(imagery_index)
+    self.qv_imagery_date_list[0].pop(imagery_index)
+    self.qv_imagery_date_list[1].pop(imagery_index)
+    self.qv_imagery_radio_list[0].pop(imagery_index)
+    self.qv_imagery_radio_list[1].pop(imagery_index)
+    self.qv_imagery_radio_list[2].pop(imagery_index)
+    self.qv_imagery_radio_list[3].pop(imagery_index)
+    self.qv_imagery_radio_list[4].pop(imagery_index)
+    self.qv_imagery_radio_list[5].pop(imagery_index)
+    self.qv_imagery_radio_list[6].pop(imagery_index)
+    self.qv_imagery_radio_list[7].pop(imagery_index)
+    self.qv_imagery_radio_list[8].pop(imagery_index)
+    self.qv_imagery_radio_list[9].pop(imagery_index)
+    self.qv_imagery_radio_list[10].pop(imagery_index)
+    self.qv_imagery_radio_list[11].pop(imagery_index)
+    self.qv_imagery_radio_list[12].pop(imagery_index)
+    self.qv_imagery_radio_list[13].pop(imagery_index)
+    self.qv_imagery_radio_list[14].pop(imagery_index)
+    self.qv_imagery_radio_list[15].pop(imagery_index)
+    self.qv_imagery_horlay_33[imagery_index].deleteLater()
+    self.qv_imagery_horlay_33.pop(imagery_index)
+    self.qv_imagery_lab_35[imagery_index].deleteLater()
+    self.qv_imagery_lab_35.pop(imagery_index)
+    self.qv_imagery_list_2[imagery_index].deleteLater()
+    self.qv_imagery_list_2.pop(imagery_index)
+    self.qv_imagery_infBut_14[imagery_index].deleteLater()
+    self.qv_imagery_infBut_14.pop(imagery_index)
+    self.qv_imagery_horlay_34[imagery_index].deleteLater()
+    self.qv_imagery_lab_36[imagery_index].deleteLater()
+    self.qv_imagery_list_3[imagery_index].deleteLater()
+    self.qv_imagery_lab_37[imagery_index].deleteLater()
+    self.qv_imagery_list_4[imagery_index].deleteLater()
+    self.qv_imagery_contBut_1[imagery_index].deleteLater()
+    self.qv_imagery_infBut_15[imagery_index].deleteLater()
+    self.qv_imagery_horlay_34.pop(imagery_index)
+    self.qv_imagery_lab_36.pop(imagery_index)
+    self.qv_imagery_list_3.pop(imagery_index)
+    self.qv_imagery_lab_37.pop(imagery_index)
+    self.qv_imagery_list_4.pop(imagery_index)
+    self.qv_imagery_contBut_1.pop(imagery_index)
+    self.qv_imagery_infBut_15.pop(imagery_index)
     self.qv_imagery -= 1
     if self.qv_insitu == 0 and self.qv_imagery == 0:
         self.qv_tabWidget.setVisible(False)
@@ -2377,6 +2402,8 @@ def close_imagery_tab(self, index, insitu_index):
     qv_update_tab_list(self, "imagery")
 
 def plusButton_12_clicked(self):
+    logging.debug('button_functions.py - plusButton_12_clicked - self.qv_insitu ' + str(self.qv_insitu)
+                 + ' ; self.qv_imagery ' + str(self.qv_imagery))
     if self.qv_insitu == 0 and self.qv_imagery == 0:
         self.qv_tabWidget.setVisible(True)
         self.qv_tabWidget.setEnabled(True)
@@ -2474,6 +2501,8 @@ def plusButton_12_clicked(self):
     icon.addPixmap(QtGui.QPixmap("icons/info_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
     icon2 = QtGui.QIcon()
     icon2.addPixmap(QtGui.QPixmap("icons/continue_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+    itemDelegate = QtWidgets.QStyledItemDelegate()
+        
     self.qv_insitu_tab_1.append(QtWidgets.QWidget())
     self.qv_insitu_tab_1[self.qv_insitu].setObjectName("qv_insitu_tab_1_" + str(self.qv_insitu))
     self.qv_tabWidget.addTab(self.qv_insitu_tab_1[self.qv_insitu], "Atmospheric/In-situ data " + str(self.qv_insitu + 1))
@@ -2657,7 +2686,7 @@ def plusButton_12_clicked(self):
     "    border-radius: 1px;\n"
     "    padding-left: 5px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+    "                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
     "}\n"
     "\n"
     "QComboBox:disabled {\n"
@@ -2668,7 +2697,7 @@ def plusButton_12_clicked(self):
     "    border: 1px solid #7eb4ea;\n"
     "    border-radius: 1px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+    "                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
     "}\n"
     "\n"
     "QComboBox::drop-down {\n"
@@ -2691,9 +2720,9 @@ def plusButton_12_clicked(self):
     "}\n"
     "\n"
     "QComboBox::down-arrow {\n"
-    "    image: url(icons/arrow_down.png); \n"
-    "    width: 18px;\n"
-    "    height: 18px\n"
+    "    image: url(icons/down_arrow_icon.svg); \n"
+    "    width: 16px;\n"
+    "    height: 16px\n"
     "}\n"
     "\n"
     "QComboBox::down-arrow:on {\n"
@@ -2702,15 +2731,21 @@ def plusButton_12_clicked(self):
     "}\n"
     "\n"
     "QComboBox QAbstractItemView {\n"
-    "    selection-background-color: transparent;\n"
-    "    selection-color: blue;\n"
-    "    border: 0px, solid black;\n"
+    "    selection-background-color: rgb(200,200,200);\n"
+    "    selection-color: black;\n"
+    "    background: #f0f0f0;\n"
+    "    border: 0px solid #f0f0f0;\n"
+    "}\n"
+    "\n"
+    "QComboBox QAbstractItemView::item {\n"
+    "    margin: 5px 5px 5px 5px;\n"
     "}")
     self.qv_insitu_list_2[self.qv_insitu].setFrame(False)
     self.qv_insitu_list_2[self.qv_insitu].setObjectName("qv_insitu_list_2_" + str(self.qv_insitu))
     self.qv_insitu_list_2[self.qv_insitu].addItem("Make a choice...")
     self.qv_insitu_list_2[self.qv_insitu].addItem("Copy all form content to a new tab")
     self.qv_insitu_list_2[self.qv_insitu].addItem("Copy all form content to an existing tab")
+    self.qv_insitu_list_2[self.qv_insitu].setItemDelegate(itemDelegate)
     self.qv_insitu_horlay_15[self.qv_insitu].addWidget(self.qv_insitu_list_2[self.qv_insitu])
     self.qv_insitu_lab_12.append(QtWidgets.QLabel())
     self.qv_insitu_lab_12[self.qv_insitu].setMinimumSize(QtCore.QSize(15, 15))
@@ -2732,7 +2767,7 @@ def plusButton_12_clicked(self):
     "    border-radius: 1px;\n"
     "    padding-left: 5px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+    "                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
     "}\n"
     "\n"
     "QComboBox:disabled {\n"
@@ -2743,7 +2778,7 @@ def plusButton_12_clicked(self):
     "    border: 1px solid #7eb4ea;\n"
     "    border-radius: 1px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+    "                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
     "}\n"
     "\n"
     "QComboBox::drop-down {\n"
@@ -2766,9 +2801,9 @@ def plusButton_12_clicked(self):
     "}\n"
     "\n"
     "QComboBox::down-arrow {\n"
-    "    image: url(icons/arrow_down.png); \n"
-    "    width: 18px;\n"
-    "    height: 18px\n"
+    "    image: url(icons/down_arrow_icon.svg); \n"
+    "    width: 16px;\n"
+    "    height: 16px\n"
     "}\n"
     "\n"
     "QComboBox::down-arrow:on {\n"
@@ -2777,14 +2812,20 @@ def plusButton_12_clicked(self):
     "}\n"
     "\n"
     "QComboBox QAbstractItemView {\n"
-    "    selection-background-color: transparent;\n"
-    "    selection-color: blue;\n"
-    "    border: 0px, solid black;\n"
+    "    selection-background-color: rgb(200,200,200);\n"
+    "    selection-color: black;\n"
+    "    background: #f0f0f0;\n"
+    "    border: 0px solid #f0f0f0;\n"
+    "}\n"
+    "\n"
+    "QComboBox QAbstractItemView::item {\n"
+    "    margin: 5px 5px 5px 5px;\n"
     "}")
     self.qv_insitu_list_3[self.qv_insitu].setFrame(False)
     self.qv_insitu_list_3[self.qv_insitu].setObjectName("qv_insitu_list_3_" + str(self.qv_insitu))
     self.qv_insitu_list_3[self.qv_insitu].hide()
     self.qv_insitu_list_3[self.qv_insitu].setDisabled(True)
+    self.qv_insitu_list_3[self.qv_insitu].setItemDelegate(itemDelegate)
     self.qv_insitu_horlay_15[self.qv_insitu].addWidget(self.qv_insitu_list_3[self.qv_insitu])
     self.qv_insitu_contBut_1.append(QtWidgets.QToolButton())
     self.qv_insitu_contBut_1[self.qv_insitu].setMaximumSize(QtCore.QSize(27, 27))
@@ -2848,7 +2889,7 @@ def plusButton_12_clicked(self):
     "    border-radius: 1px;\n"
     "    padding-left: 5px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
+    "                                stop: 0 #f0f0f0, stop: 1 #e5e5e5);\n"
     "}\n"
     "\n"
     "QComboBox:disabled {\n"
@@ -2859,7 +2900,7 @@ def plusButton_12_clicked(self):
     "    border: 1px solid #7eb4ea;\n"
     "    border-radius: 1px;\n"
     "    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, \n"
-    "stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
+    "                                stop: 0 #ecf4fc, stop: 1 #dcecfc);\n"
     "}\n"
     "\n"
     "QComboBox::drop-down {\n"
@@ -2882,9 +2923,9 @@ def plusButton_12_clicked(self):
     "}\n"
     "\n"
     "QComboBox::down-arrow {\n"
-    "    image: url(icons/arrow_down.png); \n"
-    "    width: 18px;\n"
-    "    height: 18px\n"
+    "    image: url(icons/down_arrow_icon.svg); \n"
+    "    width: 16px;\n"
+    "    height: 16px\n"
     "}\n"
     "\n"
     "QComboBox::down-arrow:on {\n"
@@ -2893,14 +2934,19 @@ def plusButton_12_clicked(self):
     "}\n"
     "\n"
     "QComboBox QAbstractItemView {\n"
-    "    selection-background-color: transparent;\n"
-    "    selection-color: blue;\n"
-    "    border: 0px, solid black;\n"
+    "    selection-background-color: rgb(200,200,200);\n"
+    "    selection-color: black;\n"
+    "    background: #f0f0f0;\n"
+    "    border: 0px solid #f0f0f0;\n"
+    "}\n"
+    "\n"
+    "QComboBox QAbstractItemView::item {\n"
+    "    margin: 5px 5px 5px 5px;\n"
     "}")
     self.qv_insitu_list_1[self.qv_insitu].setFrame(False)
     self.qv_insitu_list_1[self.qv_insitu].setObjectName("qv_insitu_list_1_" + str(self.qv_insitu))
+    self.qv_insitu_list_1[self.qv_insitu].setItemDelegate(itemDelegate)
     self.qv_insitu_horlay_14[self.qv_insitu].addWidget(self.qv_insitu_list_1[self.qv_insitu])
-    
     self.qv_insitu_infBut_5.append(QtWidgets.QToolButton())
     self.qv_insitu_infBut_5[self.qv_insitu].setMaximumSize(QtCore.QSize(27, 27))
     self.qv_insitu_infBut_5[self.qv_insitu].setStyleSheet("QToolButton {\n"
@@ -3250,22 +3296,22 @@ def plusButton_12_clicked(self):
                                                                            QtWidgets.QSizePolicy.Minimum))
     self.qv_insitu_verlay_1[self.qv_insitu].addItem(QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, 
                                                                            QtWidgets.QSizePolicy.Expanding))
-    all_info_boxes = self.qv_insitu_tab_1[self.qv_insitu].findChildren(QToolButton)
+    all_info_boxes = self.qv_insitu_tab_1[self.qv_insitu].findChildren(QtWidgets.QToolButton)
     for widget in all_info_boxes:
         widget.clicked.connect(lambda: self.button_clicked())
     all_radio_buttons = self.qv_insitu_tab_1[self.qv_insitu].findChildren(QtWidgets.QRadioButton)
     for widget in all_radio_buttons:
-        widget.clicked.connect(lambda: self.set_modified())
+        widget.clicked.connect(lambda: utility_functions.set_modified(self))
     all_line_edits = self.qv_insitu_tab_1[self.qv_insitu].findChildren(QtWidgets.QLineEdit)
     for widget in all_line_edits:
-        widget.textChanged.connect(lambda: self.set_modified())
+        widget.textChanged.connect(lambda: utility_functions.set_modified(self))
     all_text_edits = self.qv_insitu_tab_1[self.qv_insitu].findChildren(QtWidgets.QLineEdit)
     for widget in all_text_edits:
-        widget.textChanged.connect(lambda: self.set_modified())
+        widget.textChanged.connect(lambda: utility_functions.set_modified(self))
     all_checkboxes = self.qv_insitu_tab_1[self.qv_insitu].findChildren(QtWidgets.QCheckBox)
     for widget in all_checkboxes:
-        widget.clicked.connect(lambda: self.set_modified())
-    self.qv_insitu_list_1[self.qv_insitu].activated.connect(lambda: self.set_modified())
+        widget.clicked.connect(lambda: utility_functions.set_modified(self))
+    self.qv_insitu_list_1[self.qv_insitu].activated.connect(lambda: utility_functions.set_modified(self))
     self.qv_insitu_check_4[self.qv_insitu].clicked.connect(lambda: self.output_other())
     self.qv_insitu_list_2[self.qv_insitu].activated.connect(lambda: qv_activate_tab_list(self))
     self.qv_insitu_line_list[0].append([self.qv_insitu_line_1[self.qv_insitu], self.qv_insitu_lab_2[self.qv_insitu], "text", 
@@ -3289,6 +3335,8 @@ def plusButton_12_clicked(self):
     self.qv_insitu += 1
 
 def close_insitu_tab(self, index, insitu_index):
+    logging.debug('button_functions.py - close_insitu_tab - index ' + str(index) + ' ; insitu_index '
+                 + str(insitu_index))
     self.qv_tabWidget.removeTab(index)
     self.qv_insitu_verlay_1[insitu_index].deleteLater()
     self.qv_insitu_verlay_1.pop(insitu_index)
@@ -3482,6 +3530,9 @@ def close_insitu_tab(self, index, insitu_index):
     qv_update_tab_list(self, "insitu")
 
 def plusButton_10_clicked(self, aircraft = None, operator = None, manufacturer = None, identification = None, country = None):
+    logging.debug('button_functions.py - plusButton_10_clicked - aircraft ' + aircraft + ' ; operator ' + operator
+                 + ' ; manufacturer ' + manufacturer + ' ; identification ' + identification + ' ; country '
+                 + country)
     if aircraft == None:
         if self.ai_aircraft_rl1.currentText() != "Make a choice...":
             if self.ai_aircraft_rl1.currentText() == "Other...":
@@ -3501,6 +3552,11 @@ def plusButton_10_clicked(self, aircraft = None, operator = None, manufacturer =
                 manufacturer = str(self.ai_label_7.text())
                 identification = str(self.ai_label_11.text())
                 country = str(self.ai_label_10.text())
+            for item in self.aircraft_list:
+                if (manufacturer == item[0] and aircraft == item[1] and operator == item[2]
+                    and  country == item[3] and identification == item[4]):
+                    return
+                    break
             self.aircraft_list.append([manufacturer, aircraft, operator, country, identification])
             font1 = QtGui.QFont()
             font1.setFamily("font/SourceSansPro-Regular.ttf")
@@ -3553,7 +3609,7 @@ def plusButton_10_clicked(self, aircraft = None, operator = None, manufacturer =
             tmp4 = QtWidgets.QLabel()
             self.ai_lab_6.append(tmp4)
             self.ai_lab_6[self.ai_acft].setFont(font2)
-            self.ai_lab_6[self.ai_acft].setMinimumSize(QtCore.QSize(250, 30))
+            self.ai_lab_6[self.ai_acft].setMinimumSize(QtCore.QSize(150, 30))
             self.ai_lab_6[self.ai_acft].setMaximumSize(QtCore.QSize(16777215, 30))
             self.ai_lab_6[self.ai_acft].setText(operator)
             self.ai_horlay_2[self.ai_acft].addWidget(self.ai_lab_6[self.ai_acft])
@@ -3569,17 +3625,31 @@ def plusButton_10_clicked(self, aircraft = None, operator = None, manufacturer =
             tmp6 = QtWidgets.QLabel()
             self.ai_lab_8.append(tmp6)
             self.ai_lab_8[self.ai_acft].setFont(font2)
-            self.ai_lab_8[self.ai_acft].setMinimumSize(QtCore.QSize(200, 30))
-            self.ai_lab_8[self.ai_acft].setMaximumSize(QtCore.QSize(16777215, 30))
+            self.ai_lab_8[self.ai_acft].setMinimumSize(QtCore.QSize(250, 30))
+            self.ai_lab_8[self.ai_acft].setMaximumSize(QtCore.QSize(250, 30))
             self.ai_lab_8[self.ai_acft].setText(aircraft)
             self.ai_horlay_2[self.ai_acft].addWidget(self.ai_lab_8[self.ai_acft])
+            tmp7 = QtWidgets.QLabel()
+            self.ai_lab_9.append(tmp7)
+            self.ai_lab_9[self.ai_acft].setFont(font1)
+            self.ai_lab_9[self.ai_acft].setMinimumSize(QtCore.QSize(180, 30))
+            self.ai_lab_9[self.ai_acft].setMaximumSize(QtCore.QSize(180, 30))
+            self.ai_lab_9[self.ai_acft].setText("Registration number:")
+            self.ai_horlay_2[self.ai_acft].addWidget(self.ai_lab_9[self.ai_acft])
+            tmp8 = QtWidgets.QLabel()
+            self.ai_lab_10.append(tmp8)
+            self.ai_lab_10[self.ai_acft].setFont(font2)
+            self.ai_lab_10[self.ai_acft].setMinimumSize(QtCore.QSize(70, 30))
+            self.ai_lab_10[self.ai_acft].setMaximumSize(QtCore.QSize(70, 30))
+            self.ai_lab_10[self.ai_acft].setText(identification)
+            self.ai_horlay_2[self.ai_acft].addWidget(self.ai_lab_10[self.ai_acft])
             spacer4 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
             self.ai_horlay_2[self.ai_acft].addItem(spacer4)
             self.ai_delbut_2[self.ai_acft].clicked.connect(lambda: self.button_clicked())
             self.verticalLayout_21.addLayout(self.ai_horlay_2[self.ai_acft])
             self.ai_acft += 1
             self.modified = True
-            self.make_window_title() 
+            utility_functions.make_window_title(self)
     else:
         self.aircraft_list.append([manufacturer, aircraft, operator, country, identification])
         font1 = QtGui.QFont()
@@ -3633,7 +3703,7 @@ def plusButton_10_clicked(self, aircraft = None, operator = None, manufacturer =
         tmp4 = QtWidgets.QLabel()
         self.ai_lab_6.append(tmp4)
         self.ai_lab_6[self.ai_acft].setFont(font2)
-        self.ai_lab_6[self.ai_acft].setMinimumSize(QtCore.QSize(250, 30))
+        self.ai_lab_6[self.ai_acft].setMinimumSize(QtCore.QSize(150, 30))
         self.ai_lab_6[self.ai_acft].setMaximumSize(QtCore.QSize(16777215, 30))
         self.ai_lab_6[self.ai_acft].setText(operator)
         self.ai_horlay_2[self.ai_acft].addWidget(self.ai_lab_6[self.ai_acft])
@@ -3649,10 +3719,24 @@ def plusButton_10_clicked(self, aircraft = None, operator = None, manufacturer =
         tmp6 = QtWidgets.QLabel()
         self.ai_lab_8.append(tmp6)
         self.ai_lab_8[self.ai_acft].setFont(font2)
-        self.ai_lab_8[self.ai_acft].setMinimumSize(QtCore.QSize(200, 30))
+        self.ai_lab_8[self.ai_acft].setMinimumSize(QtCore.QSize(250, 30))
         self.ai_lab_8[self.ai_acft].setMaximumSize(QtCore.QSize(16777215, 30))
         self.ai_lab_8[self.ai_acft].setText(aircraft)
         self.ai_horlay_2[self.ai_acft].addWidget(self.ai_lab_8[self.ai_acft])
+        tmp7 = QtWidgets.QLabel()
+        self.ai_lab_9.append(tmp7)
+        self.ai_lab_9[self.ai_acft].setFont(font1)
+        self.ai_lab_9[self.ai_acft].setMinimumSize(QtCore.QSize(180, 30))
+        self.ai_lab_9[self.ai_acft].setMaximumSize(QtCore.QSize(180, 30))
+        self.ai_lab_9[self.ai_acft].setText("Registration number:")
+        self.ai_horlay_2[self.ai_acft].addWidget(self.ai_lab_9[self.ai_acft])
+        tmp8 = QtWidgets.QLabel()
+        self.ai_lab_10.append(tmp8)
+        self.ai_lab_10[self.ai_acft].setFont(font2)
+        self.ai_lab_10[self.ai_acft].setMinimumSize(QtCore.QSize(70, 30))
+        self.ai_lab_10[self.ai_acft].setMaximumSize(QtCore.QSize(70, 30))
+        self.ai_lab_10[self.ai_acft].setText(identification)
+        self.ai_horlay_2[self.ai_acft].addWidget(self.ai_lab_10[self.ai_acft])
         spacer4 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.ai_horlay_2[self.ai_acft].addItem(spacer4) 
         self.verticalLayout_21.addLayout(self.ai_horlay_2[self.ai_acft])
@@ -3660,6 +3744,7 @@ def plusButton_10_clicked(self, aircraft = None, operator = None, manufacturer =
         self.ai_acft += 1
 
 def plusButton_9_clicked(self):
+    logging.debug('button_functions.py - plusButton_9_clicked')
     model = self.ai_newname_ln.text()
     manufacturer = self.ai_newmanufacturer_ln.text()
     if model != "" and manufacturer !="":
@@ -3743,9 +3828,10 @@ def plusButton_9_clicked(self):
         qv_update_instrument_list(self)
         self.ai_inst += 1
         self.modified = True
-        self.make_window_title()
+        utility_functions.make_window_title(self)
 
 def plusButton_8_clicked(self):
+    logging.debug('button_functions.py - plusButton_8_clicked')
     icon2 = QtGui.QIcon()
     icon2.addPixmap(QtGui.QPixmap("icons/del_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
     font = QtGui.QFont()
@@ -3828,9 +3914,10 @@ def plusButton_8_clicked(self):
     self.mm_delBut[self.mm_pofc].clicked.connect(lambda: self.button_clicked())
     self.mm_pofc += 1
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
 
 def plusButton_7_clicked(self):
+    logging.debug('button_functions.py - plusButton_7_clicked')
     icon = QtGui.QIcon()
     icon.addPixmap(QtGui.QPixmap("icons/none_icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
     icon2 = QtGui.QIcon()
@@ -3951,10 +4038,12 @@ def plusButton_7_clicked(self):
     self.ro_lab_3[self.ro_roPy].setObjectName("ro_lab_3" + str(self.ro_roPy))
     self.ro_grilay_1[self.ro_roPy].addWidget(self.ro_lab_3[self.ro_roPy], 2, 0, 1, 1)
     self.ro_rlRl_ln.append(QtWidgets.QComboBox())
+    itemDelegate = QtWidgets.QStyledItemDelegate()
+    self.ro_rlRl_ln[self.ro_roPy].setItemDelegate(itemDelegate)
     self.ro_rlRl_ln[self.ro_roPy].setMinimumSize(QtCore.QSize(200, 27))
     self.ro_rlRl_ln[self.ro_roPy].setMaximumSize(QtCore.QSize(200, 27))
     self.ro_rlRl_ln[self.ro_roPy].setObjectName("ro_rlRl_ln" + str(self.ro_roPy))
-    for i in range(11):  # @UnusedVariable
+    for _ in range(11):
         self.ro_rlRl_ln[self.ro_roPy].addItem("")
     self.ro_rlRl_ln[self.ro_roPy].setFont(font)
     self.ro_rlRl_ln[self.ro_roPy].setStyleSheet("QComboBox {\n"
@@ -3996,9 +4085,9 @@ def plusButton_7_clicked(self):
     "}\n"
     "\n"
     "QComboBox::down-arrow {\n"
-    "    image: url(icons/arrow_down.png); \n"
-    "    width: 18px;\n"
-    "    height: 18px\n"
+    "    image: url(icons/down_arrow_icon.svg); \n"
+    "    width: 16px;\n"
+    "    height: 16px\n"
     "}\n"
     "\n"
     "QComboBox::down-arrow:on {\n"
@@ -4007,9 +4096,14 @@ def plusButton_7_clicked(self):
     "}\n"
     "\n"
     "QComboBox QAbstractItemView {\n"
-    "    selection-background-color: transparent;\n"
-    "    selection-color: blue;\n"
-    "    border: 0px, solid black;\n"
+    "    selection-background-color: rgb(200,200,200);\n"
+    "    selection-color: black;\n"
+    "    background: #f0f0f0;\n"
+    "    border: 0px solid #f0f0f0;\n"
+    "}\n"
+    "\n"
+    "QComboBox QAbstractItemView::item {\n"
+    "    margin: 5px 5px 5px 5px;\n"
     "}")
     self.ro_grilay_1[self.ro_roPy].addWidget(self.ro_rlRl_ln[self.ro_roPy], 2, 1, 1, 1)
     self.ro_infBut_3.append(QtWidgets.QToolButton())
@@ -4060,9 +4154,10 @@ def plusButton_7_clicked(self):
     self.ro_delBut[self.ro_roPy].clicked.connect(lambda: self.button_clicked())
     self.ro_roPy += 1
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
 
 def plusButton_6_clicked(self):
+    logging.debug('button_functions.py - plusButton_6_clicked')
     icon = QtGui.QIcon()
     icon.addPixmap(QtGui.QPixmap("icons/del_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
     font1 = QtGui.QFont()
@@ -4105,9 +4200,10 @@ def plusButton_6_clicked(self):
     self.au_delBut_2[self.au_wn_2].clicked.connect(lambda: self.button_clicked())
     self.au_wn_2 += 1
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
 
 def plusButton_5_clicked(self):
+    logging.debug('button_functions.py - plusButton_5_clicked')
     icon = QtGui.QIcon()
     icon.addPixmap(QtGui.QPixmap("icons/del_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
     font1 = QtGui.QFont()
@@ -4150,9 +4246,10 @@ def plusButton_5_clicked(self):
     self.au_delBut_1[self.au_wn_1].clicked.connect(lambda: self.button_clicked())
     self.au_wn_1 += 1
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
 
 def plusButton_4_clicked(self, instrument=None):
+    logging.debug('button_functions.py - plusButton_4_clicked - instrument ' + str(instrument))
     if instrument == None:
         instrument = str(self.ai_instrument_rl1.currentText())
     if instrument != "Make a choice...":
@@ -4235,9 +4332,10 @@ def plusButton_4_clicked(self, instrument=None):
         qv_update_instrument_list(self)
         self.ai_inst += 1
         self.modified = True
-        self.make_window_title()
+        utility_functions.make_window_title(self)
 
 def plusButton_3_clicked(self):
+    logging.debug('button_functions.py - plusButton_3_clicked')
     icon2 = QtGui.QIcon()
     icon2.addPixmap(QtGui.QPixmap("icons/del_icon.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
     font = QtGui.QFont()
@@ -4389,16 +4487,17 @@ def plusButton_3_clicked(self):
     self.tr_lab_1[self.tr_tpex].setText("Phase " + str(self.tr_tpex + 2) +":")
     self.tr_dtSt_1[self.tr_tpex].setDisplayFormat("yyyy-MM-dd")
     self.tr_dtEd_1[self.tr_tpex].setDisplayFormat("yyyy-MM-dd")
-    self.tr_dtSt_1[self.tr_tpex].setDate(QDate.currentDate())
-    self.tr_dtEd_1[self.tr_tpex].setDate(QDate.currentDate())
+    self.tr_dtSt_1[self.tr_tpex].setDate(QtCore.QDate.currentDate())
+    self.tr_dtEd_1[self.tr_tpex].setDate(QtCore.QDate.currentDate())
     self.tr_delBut[self.tr_tpex].clicked.connect(lambda: self.button_clicked())
     self.tr_tpex += 1
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
 
 def delButton_9_clicked(self, index=None):
     if index == None:
         index = int(self.sender().objectName()[15:])
+    logging.debug('button_functions.py - delButton_9_clicked - index ' + str(index))
     self.aircraft_list.pop(index)
     self.ai_lab_5[index].deleteLater()
     self.ai_lab_5.pop(index)
@@ -4408,6 +4507,10 @@ def delButton_9_clicked(self, index=None):
     self.ai_lab_7.pop(index)
     self.ai_lab_8[index].deleteLater()
     self.ai_lab_8.pop(index)
+    self.ai_lab_9[index].deleteLater()
+    self.ai_lab_9.pop(index)
+    self.ai_lab_10[index].deleteLater()
+    self.ai_lab_10.pop(index)
     self.ai_delbut_2[index].deleteLater()
     self.ai_delbut_2.pop(index)
     self.ai_horlay_2[index].deleteLater()
@@ -4418,11 +4521,12 @@ def delButton_9_clicked(self, index=None):
             self.ai_horlay_2[i].setObjectName("ai_horlay_2_" + str(i))
             self.ai_delbut_2[i].setObjectName("ai_delButton_2_" + str(i))
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
 
 def delButton_8_clicked(self, index=None):
     if index == None:
         index = int(self.sender().objectName()[10:])
+    logging.debug('button_functions.py - delButton_8_clicked - index ' + str(index))
     self.ro_verlay_2[index].deleteLater()
     self.ro_verlay_2.pop(index)
     self.ro_grilay_1[index].deleteLater()
@@ -4459,11 +4563,12 @@ def delButton_8_clicked(self, index=None):
         self.delButton_8.setEnabled(False)
         self.delButton_8.setIcon(icon)
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
     
 def delButton_7_clicked(self, index=None):
     if index == None:
         index = int(self.sender().objectName()[10:])
+    logging.debug('button_functions.py - delButton_7_clicked - index ' + str(index))
     self.mm_verlay_1[index].deleteLater()
     self.mm_verlay_1.pop(index)
     self.mm_verlay_2[index].deleteLater()
@@ -4493,7 +4598,7 @@ def delButton_7_clicked(self, index=None):
         self.delButton_7.setEnabled(False)
         self.delButton_7.setIcon(icon)
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
     if len(self.mm_horlay_3) > 0:
         for i in range(0, len(self.mm_horlay_3)):
             self.mm_delBut[i].setObjectName("mm_delBut_" + str(i))
@@ -4501,6 +4606,7 @@ def delButton_7_clicked(self, index=None):
 def delButton_5_clicked(self, index=None):
     if index == None:
         index = int(self.sender().objectName()[12:])
+    logging.debug('button_functions.py - delButton_5_clicked - index ' + str(index))
     self.au_horlay_1[index].deleteLater()
     self.au_horlay_1.pop(index)
     self.au_wn_con_ta[index].deleteLater()
@@ -4517,11 +4623,12 @@ def delButton_5_clicked(self, index=None):
         self.delButton_5.setEnabled(False)
         self.delButton_5.setIcon(icon)
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
 
 def delButton_6_clicked(self, index=None):
     if index == None:
         index = int(self.sender().objectName()[12:])
+    logging.debug('button_functions.py - delButton_6_clicked - index ' + str(index))
     self.au_horlay_2[index].deleteLater()
     self.au_horlay_2.pop(index)
     self.au_wn_lim_ta[index].deleteLater()
@@ -4538,11 +4645,12 @@ def delButton_6_clicked(self, index=None):
         self.delButton_6.setEnabled(False)
         self.delButton_6.setIcon(icon)
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
 
 def delButton_4_clicked(self, index=None):
     if index == None:
         index = int(self.sender().objectName()[13:])
+    logging.debug('button_functions.py - delButton_4_clicked - index ' + str(index))
     self.instModel_list.pop(index)
     self.instManufacturer_list.pop(index)
     self.ai_lab_4[index].deleteLater()
@@ -4564,11 +4672,12 @@ def delButton_4_clicked(self, index=None):
             self.ai_horlay[i].setObjectName("ai_horlay_" + str(i))
             self.ai_delbut[i].setObjectName("ai_delButton_" + str(i))
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
 
 def delButton_3_clicked(self, index=None):
     if index == None:
         index = int(self.sender().objectName()[10:])
+    logging.debug('button_functions.py - delButton_3_clicked - index ' + str(index))
     self.tr_horlay_1[index].deleteLater()
     self.tr_horlay_1.pop(index)
     self.tr_lab_1[index].deleteLater()
@@ -4586,7 +4695,7 @@ def delButton_3_clicked(self, index=None):
         self.delButton_10.setEnabled(False)
         self.delButton_10.setIcon(icon)
     self.modified = True
-    self.make_window_title()
+    utility_functions.make_window_title(self)
     if len(self.tr_horlay_1) > 0:
         for i in range(0, len(self.tr_horlay_1)):
             self.tr_horlay_1[i].setObjectName("tr_horlay_1" + str(i))
@@ -4597,6 +4706,8 @@ def delButton_3_clicked(self, index=None):
             self.tr_delBut[i].setObjectName("tr_delBut_" + str(i))
 
 def gl_rolebox_changed(self):
+    logging.debug('button_functions.py - gl_rolebox_changed - self.gl_resolution_rl1.currentText() '
+                 + str(self.gl_resolution_rl1.currentText()))
     if self.gl_resolution_rl1.currentText() == 'Scale':
         self.gl_unit_lb.hide()
         self.gl_unit_rl.hide()
@@ -4610,6 +4721,8 @@ def gl_rolebox_changed(self):
         self.gl_unit_rl.setCurrentIndex(0)
 
 def ai_aircraftRolebox_changed(self):
+    logging.debug('button_functions.py - ai_aircraftRolebox_changed - self.ai_aircraft_rl1.currentText() '
+                 + self.ai_aircraft_rl1.currentText())
     if self.ai_aircraft_rl1.currentText() != "Other...":
         self.gridLayout_22.setVerticalSpacing(17)
         self.ai_label_7.show()
@@ -4617,7 +4730,6 @@ def ai_aircraftRolebox_changed(self):
         self.ai_label_9.show()
         self.ai_label_10.show()
         self.ai_label_11.show()
-        self.ai_label_12.show()
         self.ai_airManufacturer_ln.hide()
         self.ai_airType_ln.hide()
         self.ai_airOperator_ln.hide()
@@ -4628,15 +4740,64 @@ def ai_aircraftRolebox_changed(self):
         self.ai_airOperator_ln.setEnabled(True)
         self.ai_country_rl.setEnabled(True)
         self.ai_airNumber_ln.setEnabled(True)
-        query = sql_valueRead(self, "aircraftInformations", "Id", self.ai_aircraft_rl1.currentText())
-        self.ai_image_bx.setPixmap(QtGui.QPixmap("eufar_aircrafts/" + query[0][6]))
-        self.ai_label_7.setText(query[0][1])
-        self.ai_label_8.setText(query[0][2])
-        self.ai_label_9.setText(query[0][3])
-        self.ai_label_10.setText(query[0][4])
-        self.ai_label_11.setText(query[0][5])
-        self.ai_label_12.setText(query[0][7])
-        self.ai_otherAircraft = 0
+        if self.ai_aircraft_rl1.currentText() == 'Make a choice...':
+            self.ai_label_7.setText("")
+            self.ai_label_8.setText("")
+            self.ai_label_9.setText("")
+            self.ai_label_10.setText("")
+            self.ai_label_11.setText("")
+            self.ai_image_bx.setPixmap(QtGui.QPixmap('eufar_aircrafts/eufar_logo.png'))
+        else:
+            manufacturer = ''
+            aircraft = ''
+            operator = ''
+            country = ''
+            registration = ''
+            picture = ''
+            index = self.ai_aircraft_rl1.currentText().find(' - ')
+            operator = self.ai_aircraft_rl1.currentText()[: index]
+            aircraft = self.ai_aircraft_rl1.currentText()[index + 3:]
+            index = aircraft.find(' - ')
+            if index != -1 and len(aircraft[index + 3:]) > 3:
+                registration = aircraft[index + 3:]
+                aircraft = aircraft[: index]
+            for item in self.new_operators_aircraft:
+                if registration != '':
+                    if registration == item[2]:
+                        country = item[3]
+                        picture = item[4]
+                        manufacturer = item[1][: item[1].find(', ')]
+                        break
+                else:
+                    if aircraft == item[1][item[1].find(', ') + 2:] and operator == item[0]:
+                        country = item[3]
+                        picture = item[4]
+                        manufacturer = item[1][: item[1].find(', ')]
+                        registration = item[2]
+                        break
+            for key, value in self.new_country_code.items():
+                if country == value:
+                    country = key
+                    break
+            self.ai_label_7.setText(manufacturer)
+            self.ai_label_8.setText(aircraft)
+            self.ai_label_9.setText(operator)
+            self.ai_label_10.setText(country)
+            self.ai_label_11.setText(registration)
+            if 'http://' in picture or 'https://' in picture:
+                try:
+                    data = urllib.request.urlopen(picture).read()
+                    image = QtGui.QImage()
+                    image.loadFromData(data)
+                    self.ai_image_bx.setPixmap(QtGui.QPixmap(image))
+                except:
+                    pass
+            else:
+                try:
+                    self.ai_image_bx.setPixmap(QtGui.QPixmap("eufar_aircrafts/" + picture))
+                except:
+                    pass
+            self.ai_otherAircraft = 0
     else:
         self.gridLayout_22.setVerticalSpacing(28)
         self.ai_label_7.setText("")
@@ -4644,7 +4805,6 @@ def ai_aircraftRolebox_changed(self):
         self.ai_label_9.setText("")
         self.ai_label_10.setText("")
         self.ai_label_11.setText("")
-        self.ai_label_12.setText("EUFAR")
         self.ai_label_7.hide()
         self.ai_label_8.hide()
         self.ai_label_9.hide()
@@ -4660,18 +4820,17 @@ def ai_aircraftRolebox_changed(self):
         self.ai_airOperator_ln.setEnabled(True)
         self.ai_country_rl.setEnabled(True)
         self.ai_airNumber_ln.setEnabled(True)
-        self.ai_image_bx.setPixmap(QtGui.QPixmap("eufar_aircrafts/logo_eufar_emc.png"))
-        query = sql_valueRead(self, "emcLocations", "Category", "Countries")
-        i = 0
+        self.ai_image_bx.setPixmap(QtGui.QPixmap("eufar_aircrafts/eufar_logo.png")) 
         self.ai_country_rl.clear()
-        self.ai_country_rl.addItem("")
-        self.ai_country_rl.setItemText(i, "Make a choice...")
-        for item in query:
-            i += 1
-            self.ai_country_rl.addItem("")
-            self.ai_country_rl.setItemText(i, item[1])
+        self.ai_country_rl.addItem('Make a choice...')
+        location_list = []
+        for key, _ in self.new_country_code.items():
+            location_list.append(key)
+        self.ai_country_rl.addItems(sorted(location_list))
 
 def ai_instrument_changed(self):
+    logging.debug('button_functions.py - ai_instrument_changed - self.ai_instrument_rl1.currentText() '
+                 + self.ai_instrument_rl1.currentText())
     if self.ai_instrument_rl1.currentText() == "Other...":
         self.ai_newname_lb.show()
         self.ai_insName_ln.show()
@@ -4700,31 +4859,30 @@ def ai_instrument_changed(self):
         self.plusButton_4.setEnabled(True)
 
 def gl_categoryRolebox_changed(self):
+    logging.debug('button_functions.py - gl_categoryRolebox_changed - self.gl_category_rl1.currentText() '
+                 + self.gl_category_rl1.currentText())
     if self.gl_category_rl1.currentText() == "Make a choice...":    
         self.gl_details_rl2.clear()
         self.gl_details_rl2.setEnabled(False)
     else:
-        query = sql_valueRead(self, "emcLocations", "Category", self.gl_category_rl1.currentText())
         self.gl_details_rl2.clear()
         self.gl_details_rl2.setEnabled(True)
-        i = 0
-        self.gl_details_rl2.addItem("")
-        self.gl_details_rl2.setItemText(i, "Make a choice...")
-        for item in query:
-            i += 1
-            self.gl_details_rl2.addItem("")
-            self.gl_details_rl2.setItemText(i, item[1])
-    
-def clearLayout(layout):
-    for i in reversed(range(layout.count())):   
-        item = layout.itemAt(i)
-        if isinstance(item, QtWidgets.QWidgetItem):
-            item.widget().deleteLater()
-        elif isinstance(item, QtWidgets.QLayout):
-            clearLayout(item.layout())
-        layout.removeItem(item)        
+        self.gl_details_rl2.addItem('Make a choice...')
+        location_list = []
+        if self.gl_category_rl1.currentText() == 'Continents':
+            location_list = self.emc_continents
+        elif self.gl_category_rl1.currentText() == 'Countries':
+            for key, _ in self.new_country_code.items():
+                location_list.append(key)
+        elif self.gl_category_rl1.currentText() == 'Oceans':
+            location_list = self.emc_oceans
+        elif self.gl_category_rl1.currentText() == 'Regions':
+            location_list = self.emc_regions
+        self.gl_details_rl2.addItems(sorted(location_list))
+            
     
 def qv_output_other(self, index = None):
+    logging.debug('button_functions.py - qv_output_other - index ' + str(index))
     if index == None:
         index = int(self.sender().objectName()[18:])
     if self.qv_insitu_check_4[index].isChecked() == True:
@@ -4737,8 +4895,7 @@ def qv_output_other(self, index = None):
         self.qv_insitu_line_4[index].setDisabled(True)
 
 def qv_update_instrument_list(self):
-    self.instModel_list
-    self.instManufacturer_list
+    logging.debug('button_functions.py - qv_update_instrument_list')
     instrument_list = []
     for i in range(len(self.instManufacturer_list)):
         instrument_list.append(self.instManufacturer_list[i] + " - " + self.instModel_list[i])
@@ -4765,6 +4922,8 @@ def qv_update_instrument_list(self):
             widget.setCurrentIndex(widget.findText(current_text))        
 
 def qv_activate_tab_list(self):
+    logging.debug('button_functions.py - qv_activate_tab_list - self.sender().objectName() '
+                 + self.sender().objectName())
     if "insitu" in self.sender().objectName():
         index = int(self.sender().objectName()[17:])
         if self.sender().currentText() == "Make a choice..." or self.sender().currentText() == "Copy all form content to a new tab":
@@ -4793,6 +4952,7 @@ def qv_activate_tab_list(self):
             qv_update_tab_list(self, "imagery")
 
 def qv_update_tab_list(self, domain):
+    logging.debug('button_functions.py - qv_update_tab_list - domain ' + domain)
     if domain == "insitu":
         tab_num = self.qv_tabWidget.count()
         tab_list = []
@@ -4829,6 +4989,7 @@ def qv_update_tab_list(self, domain):
                 widget.setCurrentIndex(widget.findText(current_text))
 
 def qv_tab_cloning(self, domain, index):
+    logging.debug('button_functions.py - qv_tab_cloning - domain ' + str(domain) + ' ; index ' + str(index))
     from functions.eufar_metadata_xml import save_statement_insitu
     from functions.eufar_metadata_xml import read_statement_insitu
     from functions.eufar_metadata_xml import save_statement_imagery
@@ -4857,10 +5018,13 @@ def qv_tab_cloning(self, domain, index):
 
 class MyInfo(QtWidgets.QDialog, Ui_infoWindow):
     def __init__(self, infoText):
-        QWidget.__init__(self)
+        logging.debug('button_functions.py - MyInfo')
+        QtWidgets.QWidget.__init__(self)
         self.setupUi(self)
         self.iw_label_1.setText(infoText)
         self.iw_okButton.clicked.connect(self.closeWindow)
 
     def closeWindow(self):
+        logging.debug('button_functions.py - closeWindow')
         self.close()
+        

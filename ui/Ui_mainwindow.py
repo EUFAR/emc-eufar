@@ -18,10 +18,6 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
         MainWindow.setSizePolicy(sizePolicy)
         MainWindow.setMinimumSize(QtCore.QSize(0, 0))
-        font = QtGui.QFont()
-        font.setFamily("fonts/SourceSansPro-Regular.ttf")
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        MainWindow.setFont(font)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("icons/emc_icon.ico"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -532,9 +528,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png); \n"
-"    width: 18px;\n"
-"    height: 18px\n"
+"    image: url(icons/down_arrow_icon.svg); \n"
+"    width: 16px;\n"
+"    height: 16px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
@@ -543,9 +539,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    selection-background-color: transparent;\n"
-"    selection-color: blue;\n"
-"    border: 0px, solid black;\n"
+"    selection-background-color: rgb(200,200,200);\n"
+"    selection-color: black;\n"
+"    background: #f0f0f0;\n"
+"    border: 0px solid #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    margin: 5px 5px 5px 5px;\n"
 "}")
         self.id_resourceType_rl1.setFrame(False)
         self.id_resourceType_rl1.setObjectName("id_resourceType_rl1")
@@ -698,9 +699,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png); \n"
-"    width: 18px;\n"
-"    height: 18px\n"
+"    image: url(icons/down_arrow_icon.svg); \n"
+"    width: 16px;\n"
+"    height: 16px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
@@ -709,9 +710,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    selection-background-color: transparent;\n"
-"    selection-color: blue;\n"
-"    border: 0px, solid black;\n"
+"    selection-background-color: rgb(200,200,200);\n"
+"    selection-color: black;\n"
+"    background: #f0f0f0;\n"
+"    border: 0px solid #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    margin: 5px 5px 5px 5px;\n"
 "}")
         self.id_resourceLang_rl2.setFrame(False)
         self.id_resourceLang_rl2.setObjectName("id_resourceLang_rl2")
@@ -2598,9 +2604,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png); \n"
-"    width: 18px;\n"
-"    height: 18px\n"
+"    image: url(icons/down_arrow_icon.svg); \n"
+"    width: 16px;\n"
+"    height: 16px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
@@ -2609,9 +2615,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    selection-background-color: transparent;\n"
-"    selection-color: blue;\n"
-"    border: 0px, solid black;\n"
+"    selection-background-color: rgb(200,200,200);\n"
+"    selection-color: black;\n"
+"    background: #f0f0f0;\n"
+"    border: 0px solid #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    margin: 5px 5px 5px 5px;\n"
 "}")
         self.ai_aircraft_rl1.setObjectName("ai_aircraft_rl1")
         self.ai_aircraft_rl1.addItem("")
@@ -2937,9 +2948,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png); \n"
-"    width: 18px;\n"
-"    height: 18px\n"
+"    image: url(icons/down_arrow_icon.svg); \n"
+"    width: 16px;\n"
+"    height: 16px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
@@ -2948,9 +2959,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    selection-background-color: transparent;\n"
-"    selection-color: blue;\n"
-"    border: 0px, solid black;\n"
+"    selection-background-color: rgb(200,200,200);\n"
+"    selection-color: black;\n"
+"    background: #f0f0f0;\n"
+"    border: 0px solid #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    margin: 5px 5px 5px 5px;\n"
 "}")
         self.ai_country_rl.setMaxVisibleItems(20)
         self.ai_country_rl.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToMinimumContentsLength)
@@ -2965,7 +2981,7 @@ class Ui_MainWindow(object):
         self.gridLayout_22.addLayout(self.verticalLayout_26, 3, 1, 1, 1)
         self.ai_number_lb = QtWidgets.QLabel(self.scrollAreaWidgetContents_4)
         self.ai_number_lb.setMinimumSize(QtCore.QSize(0, 0))
-        self.ai_number_lb.setMaximumSize(QtCore.QSize(100, 16777215))
+        self.ai_number_lb.setMaximumSize(QtCore.QSize(16777215, 16777215))
         font = QtGui.QFont()
         font.setFamily("fonts/SourceSansPro-Regular.ttf")
         font.setPointSize(10)
@@ -3025,41 +3041,19 @@ class Ui_MainWindow(object):
         self.horizontalLayout_14.addLayout(self.verticalLayout_32)
         self.verticalLayout_27 = QtWidgets.QVBoxLayout()
         self.verticalLayout_27.setObjectName("verticalLayout_27")
+        spacerItem35 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_27.addItem(spacerItem35)
         self.ai_image_bx = QtWidgets.QLabel(self.scrollAreaWidgetContents_4)
-        self.ai_image_bx.setMinimumSize(QtCore.QSize(500, 271))
-        self.ai_image_bx.setMaximumSize(QtCore.QSize(500, 271))
+        self.ai_image_bx.setMinimumSize(QtCore.QSize(500, 208))
+        self.ai_image_bx.setMaximumSize(QtCore.QSize(500, 208))
         self.ai_image_bx.setText("")
         self.ai_image_bx.setPixmap(QtGui.QPixmap("eufar_aircrafts/logo_eufar_emc.png"))
         self.ai_image_bx.setScaledContents(True)
         self.ai_image_bx.setAlignment(QtCore.Qt.AlignCenter)
         self.ai_image_bx.setObjectName("ai_image_bx")
         self.verticalLayout_27.addWidget(self.ai_image_bx)
-        self.horizontalLayout_44 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_44.setObjectName("horizontalLayout_44")
-        spacerItem35 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_44.addItem(spacerItem35)
-        self.ai_label_21 = QtWidgets.QLabel(self.scrollAreaWidgetContents_4)
-        self.ai_label_21.setMinimumSize(QtCore.QSize(17, 17))
-        self.ai_label_21.setMaximumSize(QtCore.QSize(17, 17))
-        self.ai_label_21.setText("")
-        self.ai_label_21.setPixmap(QtGui.QPixmap("icons/copyright_icon.png"))
-        self.ai_label_21.setScaledContents(True)
-        self.ai_label_21.setObjectName("ai_label_21")
-        self.horizontalLayout_44.addWidget(self.ai_label_21)
-        self.ai_label_12 = QtWidgets.QLabel(self.scrollAreaWidgetContents_4)
-        self.ai_label_12.setMinimumSize(QtCore.QSize(370, 15))
-        self.ai_label_12.setMaximumSize(QtCore.QSize(370, 15))
-        font = QtGui.QFont()
-        font.setFamily("fonts/SourceSansPro-Regular.ttf")
-        font.setPointSize(8)
-        font.setBold(False)
-        font.setWeight(50)
-        font.setStyleStrategy(QtGui.QFont.PreferAntialias)
-        self.ai_label_12.setFont(font)
-        self.ai_label_12.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.ai_label_12.setObjectName("ai_label_12")
-        self.horizontalLayout_44.addWidget(self.ai_label_12)
-        self.verticalLayout_27.addLayout(self.horizontalLayout_44)
+        spacerItem36 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_27.addItem(spacerItem36)
         self.horizontalLayout_14.addLayout(self.verticalLayout_27)
         self.verticalLayout_33.addLayout(self.horizontalLayout_14)
         self.verticalLayout_21 = QtWidgets.QVBoxLayout()
@@ -3279,9 +3273,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png); \n"
-"    width: 18px;\n"
-"    height: 18px\n"
+"    image: url(icons/down_arrow_icon.svg); \n"
+"    width: 16px;\n"
+"    height: 16px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
@@ -3290,9 +3284,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    selection-background-color: transparent;\n"
-"    selection-color: blue;\n"
-"    border: 0px, solid black;\n"
+"    selection-background-color: rgb(200,200,200);\n"
+"    selection-color: black;\n"
+"    background: #f0f0f0;\n"
+"    border: 0px solid #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    margin: 5px 5px 5px 5px;\n"
 "}")
         self.ai_instrument_rl1.setFrame(False)
         self.ai_instrument_rl1.setObjectName("ai_instrument_rl1")
@@ -3316,8 +3315,8 @@ class Ui_MainWindow(object):
         self.plusButton_4.setAutoRaise(False)
         self.plusButton_4.setObjectName("plusButton_4")
         self.horizontalLayout_3.addWidget(self.plusButton_4)
-        spacerItem36 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem36)
+        spacerItem37 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem37)
         self.infoButton_10 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_4)
         self.infoButton_10.setMinimumSize(QtCore.QSize(27, 27))
         self.infoButton_10.setMaximumSize(QtCore.QSize(27, 27))
@@ -3337,13 +3336,13 @@ class Ui_MainWindow(object):
         self.infoButton_10.setAutoRaise(False)
         self.infoButton_10.setObjectName("infoButton_10")
         self.horizontalLayout_3.addWidget(self.infoButton_10)
-        spacerItem37 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_3.addItem(spacerItem37)
+        spacerItem38 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem38)
         self.verticalLayout_22.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_15 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_15.setObjectName("horizontalLayout_15")
-        spacerItem38 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_15.addItem(spacerItem38)
+        spacerItem39 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_15.addItem(spacerItem39)
         self.ai_newname_lb = QtWidgets.QLabel(self.scrollAreaWidgetContents_4)
         self.ai_newname_lb.setMinimumSize(QtCore.QSize(0, 27))
         self.ai_newname_lb.setMaximumSize(QtCore.QSize(16777215, 27))
@@ -3376,8 +3375,8 @@ class Ui_MainWindow(object):
         self.ai_insName_ln.setFrame(False)
         self.ai_insName_ln.setObjectName("ai_insName_ln")
         self.horizontalLayout_15.addWidget(self.ai_insName_ln)
-        spacerItem39 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_15.addItem(spacerItem39)
+        spacerItem40 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_15.addItem(spacerItem40)
         self.ai_newmanufacturer_lb = QtWidgets.QLabel(self.scrollAreaWidgetContents_4)
         self.ai_newmanufacturer_lb.setMinimumSize(QtCore.QSize(0, 27))
         self.ai_newmanufacturer_lb.setMaximumSize(QtCore.QSize(16777215, 27))
@@ -3430,18 +3429,18 @@ class Ui_MainWindow(object):
         self.plusButton_9.setAutoRaise(False)
         self.plusButton_9.setObjectName("plusButton_9")
         self.horizontalLayout_15.addWidget(self.plusButton_9)
-        spacerItem40 = QtWidgets.QSpacerItem(18, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_15.addItem(spacerItem40)
+        spacerItem41 = QtWidgets.QSpacerItem(18, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_15.addItem(spacerItem41)
         self.verticalLayout_22.addLayout(self.horizontalLayout_15)
         self.verticalLayout_31 = QtWidgets.QVBoxLayout()
         self.verticalLayout_31.setObjectName("verticalLayout_31")
         self.verticalLayout_22.addLayout(self.verticalLayout_31)
         self.verticalLayout_34.addLayout(self.verticalLayout_22)
         self.gridLayout_25.addLayout(self.verticalLayout_34, 1, 1, 1, 1)
-        spacerItem41 = QtWidgets.QSpacerItem(0, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_25.addItem(spacerItem41, 1, 2, 1, 1)
-        spacerItem42 = QtWidgets.QSpacerItem(20, 49, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_25.addItem(spacerItem42, 2, 1, 1, 1)
+        spacerItem42 = QtWidgets.QSpacerItem(0, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_25.addItem(spacerItem42, 1, 2, 1, 1)
+        spacerItem43 = QtWidgets.QSpacerItem(20, 49, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_25.addItem(spacerItem43, 2, 1, 1, 1)
         self.ai_scrollArea.setWidget(self.scrollAreaWidgetContents_4)
         self.gridLayout_10.addWidget(self.ai_scrollArea, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage4, "")
@@ -3602,10 +3601,10 @@ class Ui_MainWindow(object):
         self.gridLayout_11 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_5)
         self.gridLayout_11.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_11.setObjectName("gridLayout_11")
-        spacerItem43 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_11.addItem(spacerItem43, 0, 1, 1, 1)
-        spacerItem44 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_11.addItem(spacerItem44, 1, 0, 1, 1)
+        spacerItem44 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_11.addItem(spacerItem44, 0, 1, 1, 1)
+        spacerItem45 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_11.addItem(spacerItem45, 1, 0, 1, 1)
         self.verticalLayout_24 = QtWidgets.QVBoxLayout()
         self.verticalLayout_24.setObjectName("verticalLayout_24")
         self.horizontalLayout_20 = QtWidgets.QHBoxLayout()
@@ -3624,8 +3623,8 @@ class Ui_MainWindow(object):
         self.gl_location_lb.setWordWrap(True)
         self.gl_location_lb.setObjectName("gl_location_lb")
         self.horizontalLayout_20.addWidget(self.gl_location_lb)
-        spacerItem45 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_20.addItem(spacerItem45)
+        spacerItem46 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_20.addItem(spacerItem46)
         self.gl_category_rl1 = QtWidgets.QComboBox(self.scrollAreaWidgetContents_5)
         self.gl_category_rl1.setMinimumSize(QtCore.QSize(160, 27))
         self.gl_category_rl1.setMaximumSize(QtCore.QSize(160, 27))
@@ -3676,9 +3675,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png); \n"
-"    width: 18px;\n"
-"    height: 18px\n"
+"    image: url(icons/down_arrow_icon.svg); \n"
+"    width: 16px;\n"
+"    height: 16px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
@@ -3687,9 +3686,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    selection-background-color: transparent;\n"
-"    selection-color: blue;\n"
-"    border: 0px, solid black;\n"
+"    selection-background-color: rgb(200,200,200);\n"
+"    selection-color: black;\n"
+"    background: #f0f0f0;\n"
+"    border: 0px solid #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    margin: 5px 5px 5px 5px;\n"
 "}")
         self.gl_category_rl1.setObjectName("gl_category_rl1")
         self.gl_category_rl1.addItem("")
@@ -3759,9 +3763,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png); \n"
-"    width: 18px;\n"
-"    height: 18px\n"
+"    image: url(icons/down_arrow_icon.svg); \n"
+"    width: 16px;\n"
+"    height: 16px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
@@ -3770,9 +3774,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    selection-background-color: transparent;\n"
-"    selection-color: blue;\n"
-"    border: 0px, solid black;\n"
+"    selection-background-color: rgb(200,200,200);\n"
+"    selection-color: black;\n"
+"    background: #f0f0f0;\n"
+"    border: 0px solid #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    margin: 5px 5px 5px 5px;\n"
 "}")
         self.gl_details_rl2.setMaxVisibleItems(20)
         self.gl_details_rl2.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToMinimumContentsLength)
@@ -3799,11 +3808,11 @@ class Ui_MainWindow(object):
         self.infoButton_11.setAutoRaise(False)
         self.infoButton_11.setObjectName("infoButton_11")
         self.horizontalLayout_20.addWidget(self.infoButton_11)
-        spacerItem46 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_20.addItem(spacerItem46)
+        spacerItem47 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_20.addItem(spacerItem47)
         self.verticalLayout_24.addLayout(self.horizontalLayout_20)
-        spacerItem47 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_24.addItem(spacerItem47)
+        spacerItem48 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_24.addItem(spacerItem48)
         self.horizontalLayout_24 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_24.setObjectName("horizontalLayout_24")
         self.gl_boundingBox_lb = QtWidgets.QLabel(self.scrollAreaWidgetContents_5)
@@ -3824,8 +3833,8 @@ class Ui_MainWindow(object):
         self.gridLayout_8.setObjectName("gridLayout_8")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        spacerItem48 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem48)
+        spacerItem49 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem49)
         self.gl_northBound_ln = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_5)
         self.gl_northBound_ln.setMinimumSize(QtCore.QSize(60, 27))
         self.gl_northBound_ln.setMaximumSize(QtCore.QSize(60, 27))
@@ -3846,13 +3855,13 @@ class Ui_MainWindow(object):
         self.gl_northBound_ln.setAlignment(QtCore.Qt.AlignCenter)
         self.gl_northBound_ln.setObjectName("gl_northBound_ln")
         self.horizontalLayout_2.addWidget(self.gl_northBound_ln)
-        spacerItem49 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_2.addItem(spacerItem49)
+        spacerItem50 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_2.addItem(spacerItem50)
         self.gridLayout_8.addLayout(self.horizontalLayout_2, 0, 1, 1, 1)
         self.verticalLayout_7 = QtWidgets.QVBoxLayout()
         self.verticalLayout_7.setObjectName("verticalLayout_7")
-        spacerItem50 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_7.addItem(spacerItem50)
+        spacerItem51 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_7.addItem(spacerItem51)
         self.gl_westBound_ln = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_5)
         self.gl_westBound_ln.setMinimumSize(QtCore.QSize(60, 27))
         self.gl_westBound_ln.setMaximumSize(QtCore.QSize(60, 27))
@@ -3872,8 +3881,8 @@ class Ui_MainWindow(object):
         self.gl_westBound_ln.setAlignment(QtCore.Qt.AlignCenter)
         self.gl_westBound_ln.setObjectName("gl_westBound_ln")
         self.verticalLayout_7.addWidget(self.gl_westBound_ln)
-        spacerItem51 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_7.addItem(spacerItem51)
+        spacerItem52 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_7.addItem(spacerItem52)
         self.gridLayout_8.addLayout(self.verticalLayout_7, 1, 0, 1, 1)
         self.gl_earth_im = QtWidgets.QLabel(self.scrollAreaWidgetContents_5)
         self.gl_earth_im.setMinimumSize(QtCore.QSize(250, 250))
@@ -3886,8 +3895,8 @@ class Ui_MainWindow(object):
         self.gridLayout_8.addWidget(self.gl_earth_im, 1, 1, 1, 1)
         self.verticalLayout_28 = QtWidgets.QVBoxLayout()
         self.verticalLayout_28.setObjectName("verticalLayout_28")
-        spacerItem52 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_28.addItem(spacerItem52)
+        spacerItem53 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_28.addItem(spacerItem53)
         self.gl_eastBound_ln = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_5)
         self.gl_eastBound_ln.setMinimumSize(QtCore.QSize(60, 27))
         self.gl_eastBound_ln.setMaximumSize(QtCore.QSize(60, 27))
@@ -3907,13 +3916,13 @@ class Ui_MainWindow(object):
         self.gl_eastBound_ln.setAlignment(QtCore.Qt.AlignCenter)
         self.gl_eastBound_ln.setObjectName("gl_eastBound_ln")
         self.verticalLayout_28.addWidget(self.gl_eastBound_ln)
-        spacerItem53 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_28.addItem(spacerItem53)
+        spacerItem54 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_28.addItem(spacerItem54)
         self.gridLayout_8.addLayout(self.verticalLayout_28, 1, 2, 1, 1)
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        spacerItem54 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem54)
+        spacerItem55 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem55)
         self.gl_southBound_ln = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_5)
         self.gl_southBound_ln.setMinimumSize(QtCore.QSize(60, 27))
         self.gl_southBound_ln.setMaximumSize(QtCore.QSize(60, 27))
@@ -3933,8 +3942,8 @@ class Ui_MainWindow(object):
         self.gl_southBound_ln.setAlignment(QtCore.Qt.AlignCenter)
         self.gl_southBound_ln.setObjectName("gl_southBound_ln")
         self.horizontalLayout_5.addWidget(self.gl_southBound_ln)
-        spacerItem55 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_5.addItem(spacerItem55)
+        spacerItem56 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_5.addItem(spacerItem56)
         self.gridLayout_8.addLayout(self.horizontalLayout_5, 2, 1, 1, 1)
         self.horizontalLayout_24.addLayout(self.gridLayout_8)
         self.infoButton_12 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_5)
@@ -3955,11 +3964,11 @@ class Ui_MainWindow(object):
         self.infoButton_12.setAutoRaise(False)
         self.infoButton_12.setObjectName("infoButton_12")
         self.horizontalLayout_24.addWidget(self.infoButton_12)
-        spacerItem56 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_24.addItem(spacerItem56)
+        spacerItem57 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_24.addItem(spacerItem57)
         self.verticalLayout_24.addLayout(self.horizontalLayout_24)
-        spacerItem57 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_24.addItem(spacerItem57)
+        spacerItem58 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_24.addItem(spacerItem58)
         self.horizontalLayout_16 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_16.setObjectName("horizontalLayout_16")
         self.gl_resolution_lb = QtWidgets.QLabel(self.scrollAreaWidgetContents_5)
@@ -3976,8 +3985,8 @@ class Ui_MainWindow(object):
         self.gl_resolution_lb.setFont(font)
         self.gl_resolution_lb.setObjectName("gl_resolution_lb")
         self.horizontalLayout_16.addWidget(self.gl_resolution_lb)
-        spacerItem58 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_16.addItem(spacerItem58)
+        spacerItem59 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem59)
         self.gl_resolution_rl1 = QtWidgets.QComboBox(self.scrollAreaWidgetContents_5)
         self.gl_resolution_rl1.setMinimumSize(QtCore.QSize(110, 27))
         self.gl_resolution_rl1.setMaximumSize(QtCore.QSize(110, 27))
@@ -4027,9 +4036,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png); \n"
-"    width: 18px;\n"
-"    height: 18px\n"
+"    image: url(icons/down_arrow_icon.svg); \n"
+"    width: 16px;\n"
+"    height: 16px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
@@ -4038,17 +4047,22 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    selection-background-color: transparent;\n"
-"    selection-color: blue;\n"
-"    border: 0px, solid black;\n"
+"    selection-background-color: rgb(200,200,200);\n"
+"    selection-color: black;\n"
+"    background: #f0f0f0;\n"
+"    border: 0px solid #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    margin: 5px 5px 5px 5px;\n"
 "}")
         self.gl_resolution_rl1.setFrame(False)
         self.gl_resolution_rl1.setObjectName("gl_resolution_rl1")
         self.gl_resolution_rl1.addItem("")
         self.gl_resolution_rl1.addItem("")
         self.horizontalLayout_16.addWidget(self.gl_resolution_rl1)
-        spacerItem59 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_16.addItem(spacerItem59)
+        spacerItem60 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem60)
         self.gl_resolution_ln = QtWidgets.QLineEdit(self.scrollAreaWidgetContents_5)
         self.gl_resolution_ln.setMinimumSize(QtCore.QSize(200, 27))
         self.gl_resolution_ln.setMaximumSize(QtCore.QSize(27, 27))
@@ -4132,9 +4146,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png); \n"
-"    width: 18px;\n"
-"    height: 18px\n"
+"    image: url(icons/down_arrow_icon.svg); \n"
+"    width: 16px;\n"
+"    height: 16px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
@@ -4143,9 +4157,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    selection-background-color: transparent;\n"
-"    selection-color: blue;\n"
-"    border: 0px, solid black;\n"
+"    selection-background-color: rgb(200,200,200);\n"
+"    selection-color: black;\n"
+"    background: #f0f0f0;\n"
+"    border: 0px solid #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    margin: 5px 5px 5px 5px;\n"
 "}")
         self.gl_unit_rl.setFrame(False)
         self.gl_unit_rl.setObjectName("gl_unit_rl")
@@ -4174,14 +4193,14 @@ class Ui_MainWindow(object):
         self.infoButton_13.setAutoRaise(False)
         self.infoButton_13.setObjectName("infoButton_13")
         self.horizontalLayout_16.addWidget(self.infoButton_13)
-        spacerItem60 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_16.addItem(spacerItem60)
+        spacerItem61 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_16.addItem(spacerItem61)
         self.verticalLayout_24.addLayout(self.horizontalLayout_16)
         self.gridLayout_11.addLayout(self.verticalLayout_24, 1, 1, 2, 2)
-        spacerItem61 = QtWidgets.QSpacerItem(294, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_11.addItem(spacerItem61, 2, 3, 1, 1)
-        spacerItem62 = QtWidgets.QSpacerItem(20, 34, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_11.addItem(spacerItem62, 3, 2, 1, 1)
+        spacerItem62 = QtWidgets.QSpacerItem(294, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_11.addItem(spacerItem62, 2, 3, 1, 1)
+        spacerItem63 = QtWidgets.QSpacerItem(20, 34, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_11.addItem(spacerItem63, 3, 2, 1, 1)
         self.gl_scrollArea.setWidget(self.scrollAreaWidgetContents_5)
         self.gridLayout_26.addWidget(self.gl_scrollArea, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage5, "")
@@ -4342,10 +4361,10 @@ class Ui_MainWindow(object):
         self.gridLayout_21 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_6)
         self.gridLayout_21.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_21.setObjectName("gridLayout_21")
-        spacerItem63 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_21.addItem(spacerItem63, 0, 1, 1, 1)
-        spacerItem64 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_21.addItem(spacerItem64, 1, 0, 1, 1)
+        spacerItem64 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_21.addItem(spacerItem64, 0, 1, 1, 1)
+        spacerItem65 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_21.addItem(spacerItem65, 1, 0, 1, 1)
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
@@ -4535,11 +4554,11 @@ class Ui_MainWindow(object):
         self.tr_dateCreation_lb.setObjectName("tr_dateCreation_lb")
         self.gridLayout_3.addWidget(self.tr_dateCreation_lb, 1, 0, 1, 1)
         self.horizontalLayout_4.addLayout(self.gridLayout_3)
-        spacerItem65 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_4.addItem(spacerItem65)
+        spacerItem66 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_4.addItem(spacerItem66)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
-        spacerItem66 = QtWidgets.QSpacerItem(17, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout.addItem(spacerItem66)
+        spacerItem67 = QtWidgets.QSpacerItem(17, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem67)
         self.line_2 = QtWidgets.QFrame(self.scrollAreaWidgetContents_6)
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -4682,14 +4701,14 @@ class Ui_MainWindow(object):
         self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line_2.setObjectName("line_2")
         self.verticalLayout.addWidget(self.line_2)
-        spacerItem67 = QtWidgets.QSpacerItem(17, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout.addItem(spacerItem67)
+        spacerItem68 = QtWidgets.QSpacerItem(17, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem68)
         self.horizontalLayout_67 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_67.setObjectName("horizontalLayout_67")
         self.verticalLayout_29 = QtWidgets.QVBoxLayout()
         self.verticalLayout_29.setObjectName("verticalLayout_29")
-        spacerItem68 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_29.addItem(spacerItem68)
+        spacerItem69 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_29.addItem(spacerItem69)
         self.horizontalLayout_55 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_55.setObjectName("horizontalLayout_55")
         self.tr_period_lb = QtWidgets.QLabel(self.scrollAreaWidgetContents_6)
@@ -4705,11 +4724,11 @@ class Ui_MainWindow(object):
         self.tr_period_lb.setFont(font)
         self.tr_period_lb.setObjectName("tr_period_lb")
         self.horizontalLayout_55.addWidget(self.tr_period_lb)
-        spacerItem69 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_55.addItem(spacerItem69)
+        spacerItem70 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_55.addItem(spacerItem70)
         self.verticalLayout_29.addLayout(self.horizontalLayout_55)
-        spacerItem70 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_29.addItem(spacerItem70)
+        spacerItem71 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_29.addItem(spacerItem71)
         self.horizontalLayout_67.addLayout(self.verticalLayout_29)
         self.verticalLayout_16 = QtWidgets.QVBoxLayout()
         self.verticalLayout_16.setObjectName("verticalLayout_16")
@@ -4727,8 +4746,8 @@ class Ui_MainWindow(object):
         self.label_7.setFont(font)
         self.label_7.setObjectName("label_7")
         self.horizontalLayout_32.addWidget(self.label_7)
-        spacerItem71 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_32.addItem(spacerItem71)
+        spacerItem72 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_32.addItem(spacerItem72)
         self.tr_dateStart_do4 = QtWidgets.QDateEdit(self.scrollAreaWidgetContents_6)
         self.tr_dateStart_do4.setMinimumSize(QtCore.QSize(130, 27))
         self.tr_dateStart_do4.setMaximumSize(QtCore.QSize(130, 27))
@@ -4791,8 +4810,8 @@ class Ui_MainWindow(object):
         self.tr_dateStart_do4.setDate(QtCore.QDate(2014, 10, 28))
         self.tr_dateStart_do4.setObjectName("tr_dateStart_do4")
         self.horizontalLayout_32.addWidget(self.tr_dateStart_do4)
-        spacerItem72 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_32.addItem(spacerItem72)
+        spacerItem73 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_32.addItem(spacerItem73)
         self.tr_dateEnd_do5 = QtWidgets.QDateEdit(self.scrollAreaWidgetContents_6)
         self.tr_dateEnd_do5.setMinimumSize(QtCore.QSize(130, 27))
         self.tr_dateEnd_do5.setMaximumSize(QtCore.QSize(130, 27))
@@ -4854,8 +4873,8 @@ class Ui_MainWindow(object):
         self.tr_dateEnd_do5.setDate(QtCore.QDate(2014, 10, 28))
         self.tr_dateEnd_do5.setObjectName("tr_dateEnd_do5")
         self.horizontalLayout_32.addWidget(self.tr_dateEnd_do5)
-        spacerItem73 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_32.addItem(spacerItem73)
+        spacerItem74 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_32.addItem(spacerItem74)
         self.delButton_10 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_6)
         self.delButton_10.setEnabled(False)
         self.delButton_10.setMinimumSize(QtCore.QSize(27, 27))
@@ -4882,17 +4901,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_15 = QtWidgets.QVBoxLayout()
         self.verticalLayout_15.setObjectName("verticalLayout_15")
         self.verticalLayout_16.addLayout(self.verticalLayout_15)
-        spacerItem74 = QtWidgets.QSpacerItem(20, 17, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_16.addItem(spacerItem74)
+        spacerItem75 = QtWidgets.QSpacerItem(20, 17, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_16.addItem(spacerItem75)
         self.horizontalLayout_67.addLayout(self.verticalLayout_16)
         self.verticalLayout_40 = QtWidgets.QVBoxLayout()
         self.verticalLayout_40.setObjectName("verticalLayout_40")
-        spacerItem75 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_40.addItem(spacerItem75)
+        spacerItem76 = QtWidgets.QSpacerItem(20, 1, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_40.addItem(spacerItem76)
         self.horizontalLayout_66 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_66.setObjectName("horizontalLayout_66")
-        spacerItem76 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_66.addItem(spacerItem76)
+        spacerItem77 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_66.addItem(spacerItem77)
         self.plusButton_3 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_6)
         self.plusButton_3.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_3.setMaximumSize(QtCore.QSize(27, 27))
@@ -4912,8 +4931,8 @@ class Ui_MainWindow(object):
         self.plusButton_3.setAutoRaise(False)
         self.plusButton_3.setObjectName("plusButton_3")
         self.horizontalLayout_66.addWidget(self.plusButton_3)
-        spacerItem77 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_66.addItem(spacerItem77)
+        spacerItem78 = QtWidgets.QSpacerItem(13, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_66.addItem(spacerItem78)
         self.infoButton_17 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_6)
         self.infoButton_17.setMaximumSize(QtCore.QSize(27, 27))
         self.infoButton_17.setStyleSheet("QToolButton {\n"
@@ -4933,15 +4952,15 @@ class Ui_MainWindow(object):
         self.infoButton_17.setObjectName("infoButton_17")
         self.horizontalLayout_66.addWidget(self.infoButton_17)
         self.verticalLayout_40.addLayout(self.horizontalLayout_66)
-        spacerItem78 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_40.addItem(spacerItem78)
+        spacerItem79 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_40.addItem(spacerItem79)
         self.horizontalLayout_67.addLayout(self.verticalLayout_40)
         self.verticalLayout.addLayout(self.horizontalLayout_67)
         self.gridLayout_21.addLayout(self.verticalLayout, 1, 1, 2, 2)
-        spacerItem79 = QtWidgets.QSpacerItem(102, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_21.addItem(spacerItem79, 2, 3, 1, 1)
-        spacerItem80 = QtWidgets.QSpacerItem(20, 294, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_21.addItem(spacerItem80, 3, 2, 1, 1)
+        spacerItem80 = QtWidgets.QSpacerItem(102, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_21.addItem(spacerItem80, 2, 3, 1, 1)
+        spacerItem81 = QtWidgets.QSpacerItem(20, 294, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_21.addItem(spacerItem81, 3, 2, 1, 1)
         self.tr_scrollArea.setWidget(self.scrollAreaWidgetContents_6)
         self.gridLayout_27.addWidget(self.tr_scrollArea, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage6, "")
@@ -4950,16 +4969,16 @@ class Ui_MainWindow(object):
         self.gridLayout_12 = QtWidgets.QGridLayout(self.tabWidgetPage7)
         self.gridLayout_12.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_12.setObjectName("gridLayout_12")
-        spacerItem81 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_12.addItem(spacerItem81, 0, 1, 1, 1)
-        spacerItem82 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_12.addItem(spacerItem82, 1, 0, 1, 1)
+        spacerItem82 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_12.addItem(spacerItem82, 0, 1, 1, 1)
+        spacerItem83 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_12.addItem(spacerItem83, 1, 0, 1, 1)
         self.verticalLayout_20 = QtWidgets.QVBoxLayout()
         self.verticalLayout_20.setObjectName("verticalLayout_20")
         self.horizontalLayout_56 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_56.setObjectName("horizontalLayout_56")
-        spacerItem83 = QtWidgets.QSpacerItem(60, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_56.addItem(spacerItem83)
+        spacerItem84 = QtWidgets.QSpacerItem(60, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_56.addItem(spacerItem84)
         self.plusButton_11 = QtWidgets.QToolButton(self.tabWidgetPage7)
         self.plusButton_11.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_11.setMaximumSize(QtCore.QSize(27, 27))
@@ -4991,8 +5010,8 @@ class Ui_MainWindow(object):
         self.qv_obsLab.setFont(font)
         self.qv_obsLab.setObjectName("qv_obsLab")
         self.horizontalLayout_56.addWidget(self.qv_obsLab)
-        spacerItem84 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_56.addItem(spacerItem84)
+        spacerItem85 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_56.addItem(spacerItem85)
         self.plusButton_12 = QtWidgets.QToolButton(self.tabWidgetPage7)
         self.plusButton_12.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_12.setMaximumSize(QtCore.QSize(27, 27))
@@ -5024,8 +5043,8 @@ class Ui_MainWindow(object):
         self.qv_insituLab.setFont(font)
         self.qv_insituLab.setObjectName("qv_insituLab")
         self.horizontalLayout_56.addWidget(self.qv_insituLab)
-        spacerItem85 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_56.addItem(spacerItem85)
+        spacerItem86 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_56.addItem(spacerItem86)
         self.infoButton_26 = QtWidgets.QToolButton(self.tabWidgetPage7)
         self.infoButton_26.setMaximumSize(QtCore.QSize(27, 27))
         self.infoButton_26.setStyleSheet("QToolButton {\n"
@@ -5044,11 +5063,11 @@ class Ui_MainWindow(object):
         self.infoButton_26.setAutoRaise(False)
         self.infoButton_26.setObjectName("infoButton_26")
         self.horizontalLayout_56.addWidget(self.infoButton_26)
-        spacerItem86 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_56.addItem(spacerItem86)
+        spacerItem87 = QtWidgets.QSpacerItem(30, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_56.addItem(spacerItem87)
         self.verticalLayout_20.addLayout(self.horizontalLayout_56)
-        spacerItem87 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_20.addItem(spacerItem87)
+        spacerItem88 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_20.addItem(spacerItem88)
         self.qv_tabWidget = QtWidgets.QTabWidget(self.tabWidgetPage7)
         self.qv_tabWidget.setEnabled(False)
         self.qv_tabWidget.setMinimumSize(QtCore.QSize(0, 0))
@@ -5134,10 +5153,10 @@ class Ui_MainWindow(object):
         self.qv_tabWidget.setObjectName("qv_tabWidget")
         self.verticalLayout_20.addWidget(self.qv_tabWidget)
         self.gridLayout_12.addLayout(self.verticalLayout_20, 1, 1, 1, 1)
-        spacerItem88 = QtWidgets.QSpacerItem(20, 90, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_12.addItem(spacerItem88, 0, 2, 2, 1)
-        spacerItem89 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_12.addItem(spacerItem89, 2, 1, 1, 1)
+        spacerItem89 = QtWidgets.QSpacerItem(20, 90, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_12.addItem(spacerItem89, 0, 2, 2, 1)
+        spacerItem90 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_12.addItem(spacerItem90, 2, 1, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage7, "")
         self.tabWidgetPage8 = QtWidgets.QWidget()
         self.tabWidgetPage8.setObjectName("tabWidgetPage8")
@@ -5296,18 +5315,18 @@ class Ui_MainWindow(object):
         self.gridLayout_6 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_8)
         self.gridLayout_6.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_6.setObjectName("gridLayout_6")
-        spacerItem90 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_6.addItem(spacerItem90, 0, 1, 1, 1)
-        spacerItem91 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_6.addItem(spacerItem91, 1, 0, 1, 1)
+        spacerItem91 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_6.addItem(spacerItem91, 0, 1, 1, 1)
+        spacerItem92 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_6.addItem(spacerItem92, 1, 0, 1, 1)
         self.verticalLayout_52 = QtWidgets.QVBoxLayout()
         self.verticalLayout_52.setObjectName("verticalLayout_52")
         self.horizontalLayout_82 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_82.setObjectName("horizontalLayout_82")
         self.verticalLayout_50 = QtWidgets.QVBoxLayout()
         self.verticalLayout_50.setObjectName("verticalLayout_50")
-        spacerItem92 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_50.addItem(spacerItem92)
+        spacerItem93 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_50.addItem(spacerItem93)
         self.horizontalLayout_80 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_80.setObjectName("horizontalLayout_80")
         self.au_conditions_lb = QtWidgets.QLabel(self.scrollAreaWidgetContents_8)
@@ -5324,8 +5343,8 @@ class Ui_MainWindow(object):
         self.au_conditions_lb.setObjectName("au_conditions_lb")
         self.horizontalLayout_80.addWidget(self.au_conditions_lb)
         self.verticalLayout_50.addLayout(self.horizontalLayout_80)
-        spacerItem93 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_50.addItem(spacerItem93)
+        spacerItem94 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_50.addItem(spacerItem94)
         self.horizontalLayout_82.addLayout(self.verticalLayout_50)
         self.verticalLayout_51 = QtWidgets.QVBoxLayout()
         self.verticalLayout_51.setObjectName("verticalLayout_51")
@@ -5376,12 +5395,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_82.addLayout(self.verticalLayout_51)
         self.verticalLayout_43 = QtWidgets.QVBoxLayout()
         self.verticalLayout_43.setObjectName("verticalLayout_43")
-        spacerItem94 = QtWidgets.QSpacerItem(20, 36, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_43.addItem(spacerItem94)
+        spacerItem95 = QtWidgets.QSpacerItem(20, 36, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_43.addItem(spacerItem95)
         self.horizontalLayout_81 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_81.setObjectName("horizontalLayout_81")
-        spacerItem95 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_81.addItem(spacerItem95)
+        spacerItem96 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_81.addItem(spacerItem96)
         self.plusButton_5 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_8)
         self.plusButton_5.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_5.setMaximumSize(QtCore.QSize(27, 27))
@@ -5401,8 +5420,8 @@ class Ui_MainWindow(object):
         self.plusButton_5.setAutoRaise(False)
         self.plusButton_5.setObjectName("plusButton_5")
         self.horizontalLayout_81.addWidget(self.plusButton_5)
-        spacerItem96 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_81.addItem(spacerItem96)
+        spacerItem97 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_81.addItem(spacerItem97)
         self.infoButton_18 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_8)
         self.infoButton_18.setMaximumSize(QtCore.QSize(27, 27))
         self.infoButton_18.setStyleSheet("QToolButton {\n"
@@ -5422,12 +5441,12 @@ class Ui_MainWindow(object):
         self.infoButton_18.setObjectName("infoButton_18")
         self.horizontalLayout_81.addWidget(self.infoButton_18)
         self.verticalLayout_43.addLayout(self.horizontalLayout_81)
-        spacerItem97 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_43.addItem(spacerItem97)
+        spacerItem98 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_43.addItem(spacerItem98)
         self.horizontalLayout_82.addLayout(self.verticalLayout_43)
         self.verticalLayout_52.addLayout(self.horizontalLayout_82)
-        spacerItem98 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_52.addItem(spacerItem98)
+        spacerItem99 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_52.addItem(spacerItem99)
         self.line = QtWidgets.QFrame(self.scrollAreaWidgetContents_8)
         palette = QtGui.QPalette()
         brush = QtGui.QBrush(QtGui.QColor(0, 0, 0))
@@ -5570,14 +5589,14 @@ class Ui_MainWindow(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.verticalLayout_52.addWidget(self.line)
-        spacerItem99 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_52.addItem(spacerItem99)
+        spacerItem100 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_52.addItem(spacerItem100)
         self.horizontalLayout_79 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_79.setObjectName("horizontalLayout_79")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout()
         self.verticalLayout_11.setObjectName("verticalLayout_11")
-        spacerItem100 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_11.addItem(spacerItem100)
+        spacerItem101 = QtWidgets.QSpacerItem(20, 25, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_11.addItem(spacerItem101)
         self.horizontalLayout_33 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_33.setObjectName("horizontalLayout_33")
         self.au_limitations_lb = QtWidgets.QLabel(self.scrollAreaWidgetContents_8)
@@ -5594,8 +5613,8 @@ class Ui_MainWindow(object):
         self.au_limitations_lb.setObjectName("au_limitations_lb")
         self.horizontalLayout_33.addWidget(self.au_limitations_lb)
         self.verticalLayout_11.addLayout(self.horizontalLayout_33)
-        spacerItem101 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_11.addItem(spacerItem101)
+        spacerItem102 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_11.addItem(spacerItem102)
         self.horizontalLayout_79.addLayout(self.verticalLayout_11)
         self.verticalLayout_9 = QtWidgets.QVBoxLayout()
         self.verticalLayout_9.setObjectName("verticalLayout_9")
@@ -5643,17 +5662,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_10 = QtWidgets.QVBoxLayout()
         self.verticalLayout_10.setObjectName("verticalLayout_10")
         self.verticalLayout_9.addLayout(self.verticalLayout_10)
-        spacerItem102 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_9.addItem(spacerItem102)
+        spacerItem103 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_9.addItem(spacerItem103)
         self.horizontalLayout_79.addLayout(self.verticalLayout_9)
         self.verticalLayout_12 = QtWidgets.QVBoxLayout()
         self.verticalLayout_12.setObjectName("verticalLayout_12")
-        spacerItem103 = QtWidgets.QSpacerItem(20, 36, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_12.addItem(spacerItem103)
+        spacerItem104 = QtWidgets.QSpacerItem(20, 36, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_12.addItem(spacerItem104)
         self.horizontalLayout_52 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_52.setObjectName("horizontalLayout_52")
-        spacerItem104 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_52.addItem(spacerItem104)
+        spacerItem105 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_52.addItem(spacerItem105)
         self.plusButton_6 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_8)
         self.plusButton_6.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_6.setMaximumSize(QtCore.QSize(27, 27))
@@ -5673,8 +5692,8 @@ class Ui_MainWindow(object):
         self.plusButton_6.setAutoRaise(False)
         self.plusButton_6.setObjectName("plusButton_6")
         self.horizontalLayout_52.addWidget(self.plusButton_6)
-        spacerItem105 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_52.addItem(spacerItem105)
+        spacerItem106 = QtWidgets.QSpacerItem(17, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_52.addItem(spacerItem106)
         self.infoButton_19 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_8)
         self.infoButton_19.setMaximumSize(QtCore.QSize(27, 27))
         self.infoButton_19.setStyleSheet("QToolButton {\n"
@@ -5694,15 +5713,15 @@ class Ui_MainWindow(object):
         self.infoButton_19.setObjectName("infoButton_19")
         self.horizontalLayout_52.addWidget(self.infoButton_19)
         self.verticalLayout_12.addLayout(self.horizontalLayout_52)
-        spacerItem106 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_12.addItem(spacerItem106)
+        spacerItem107 = QtWidgets.QSpacerItem(20, 18, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_12.addItem(spacerItem107)
         self.horizontalLayout_79.addLayout(self.verticalLayout_12)
         self.verticalLayout_52.addLayout(self.horizontalLayout_79)
         self.gridLayout_6.addLayout(self.verticalLayout_52, 1, 1, 1, 1)
-        spacerItem107 = QtWidgets.QSpacerItem(53, 20, QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_6.addItem(spacerItem107, 1, 2, 1, 1)
-        spacerItem108 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_6.addItem(spacerItem108, 2, 1, 1, 1)
+        spacerItem108 = QtWidgets.QSpacerItem(53, 20, QtWidgets.QSizePolicy.MinimumExpanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_6.addItem(spacerItem108, 1, 2, 1, 1)
+        spacerItem109 = QtWidgets.QSpacerItem(20, 10, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_6.addItem(spacerItem109, 2, 1, 1, 1)
         self.au_scrollArea.setWidget(self.scrollAreaWidgetContents_8)
         self.gridLayout_28.addWidget(self.au_scrollArea, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage8, "")
@@ -5863,10 +5882,10 @@ class Ui_MainWindow(object):
         self.gridLayout_14 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_9)
         self.gridLayout_14.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_14.setObjectName("gridLayout_14")
-        spacerItem109 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_14.addItem(spacerItem109, 0, 1, 1, 1)
-        spacerItem110 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_14.addItem(spacerItem110, 1, 0, 1, 1)
+        spacerItem110 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_14.addItem(spacerItem110, 0, 1, 1, 1)
+        spacerItem111 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_14.addItem(spacerItem111, 1, 0, 1, 1)
         self.verticalLayout_5 = QtWidgets.QVBoxLayout()
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.gridLayout_9 = QtWidgets.QGridLayout()
@@ -5968,8 +5987,8 @@ class Ui_MainWindow(object):
         self.infoButton_21.setAutoRaise(False)
         self.infoButton_21.setObjectName("infoButton_21")
         self.gridLayout_9.addWidget(self.infoButton_21, 1, 2, 1, 1)
-        spacerItem111 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_9.addItem(spacerItem111, 1, 3, 1, 1)
+        spacerItem112 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_9.addItem(spacerItem112, 1, 3, 1, 1)
         self.delButton_8 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_9)
         self.delButton_8.setEnabled(False)
         self.delButton_8.setMinimumSize(QtCore.QSize(27, 27))
@@ -5990,8 +6009,8 @@ class Ui_MainWindow(object):
         self.delButton_8.setAutoRaise(True)
         self.delButton_8.setObjectName("delButton_8")
         self.gridLayout_9.addWidget(self.delButton_8, 1, 4, 1, 1)
-        spacerItem112 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_9.addItem(spacerItem112, 1, 5, 1, 1)
+        spacerItem113 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_9.addItem(spacerItem113, 1, 5, 1, 1)
         self.plusButton_7 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_9)
         self.plusButton_7.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_7.setMaximumSize(QtCore.QSize(27, 27))
@@ -6077,9 +6096,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png); \n"
-"    width: 18px;\n"
-"    height: 18px\n"
+"    image: url(icons/down_arrow_icon.svg); \n"
+"    width: 16px;\n"
+"    height: 16px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
@@ -6088,9 +6107,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    selection-background-color: transparent;\n"
-"    selection-color: blue;\n"
-"    border: 0px, solid black;\n"
+"    selection-background-color: rgb(200,200,200);\n"
+"    selection-color: black;\n"
+"    background: #f0f0f0;\n"
+"    border: 0px solid #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    margin: 5px 5px 5px 5px;\n"
 "}")
         self.ro_responsibleRole_rl1.setObjectName("ro_responsibleRole_rl1")
         self.ro_responsibleRole_rl1.addItem("")
@@ -6128,10 +6152,10 @@ class Ui_MainWindow(object):
         self.verticalLayout_18.setObjectName("verticalLayout_18")
         self.verticalLayout_5.addLayout(self.verticalLayout_18)
         self.gridLayout_14.addLayout(self.verticalLayout_5, 1, 1, 1, 1)
-        spacerItem113 = QtWidgets.QSpacerItem(382, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_14.addItem(spacerItem113, 1, 2, 1, 1)
-        spacerItem114 = QtWidgets.QSpacerItem(20, 191, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_14.addItem(spacerItem114, 2, 1, 1, 1)
+        spacerItem114 = QtWidgets.QSpacerItem(382, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_14.addItem(spacerItem114, 1, 2, 1, 1)
+        spacerItem115 = QtWidgets.QSpacerItem(20, 191, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_14.addItem(spacerItem115, 2, 1, 1, 1)
         self.ro_scrollArea.setWidget(self.scrollAreaWidgetContents_9)
         self.gridLayout_29.addWidget(self.ro_scrollArea, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage9, "")
@@ -6292,10 +6316,10 @@ class Ui_MainWindow(object):
         self.gridLayout_7 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_10)
         self.gridLayout_7.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_7.setObjectName("gridLayout_7")
-        spacerItem115 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.gridLayout_7.addItem(spacerItem115, 0, 2, 1, 1)
-        spacerItem116 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_7.addItem(spacerItem116, 1, 0, 1, 1)
+        spacerItem116 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.gridLayout_7.addItem(spacerItem116, 0, 2, 1, 1)
+        spacerItem117 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_7.addItem(spacerItem117, 1, 0, 1, 1)
         self.verticalLayout_39 = QtWidgets.QVBoxLayout()
         self.verticalLayout_39.setObjectName("verticalLayout_39")
         self.horizontalLayout_37 = QtWidgets.QHBoxLayout()
@@ -6397,8 +6421,8 @@ class Ui_MainWindow(object):
         self.infoButton_23.setObjectName("infoButton_23")
         self.horizontalLayout_7.addWidget(self.infoButton_23)
         self.verticalLayout_6.addLayout(self.horizontalLayout_7)
-        spacerItem117 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_6.addItem(spacerItem117)
+        spacerItem118 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_6.addItem(spacerItem118)
         self.horizontalLayout_22 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_22.setObjectName("horizontalLayout_22")
         self.mm_language_lb = QtWidgets.QLabel(self.scrollAreaWidgetContents_10)
@@ -6461,9 +6485,9 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox::down-arrow {\n"
-"    image: url(icons/arrow_down.png); \n"
-"    width: 18px;\n"
-"    height: 18px\n"
+"    image: url(icons/down_arrow_icon.svg); \n"
+"    width: 16px;\n"
+"    height: 16px\n"
 "}\n"
 "\n"
 "QComboBox::down-arrow:on {\n"
@@ -6472,9 +6496,14 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
-"    selection-background-color: transparent;\n"
-"    selection-color: blue;\n"
-"    border: 0px, solid black;\n"
+"    selection-background-color: rgb(200,200,200);\n"
+"    selection-color: black;\n"
+"    background: #f0f0f0;\n"
+"    border: 0px solid #f0f0f0;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView::item {\n"
+"    margin: 5px 5px 5px 5px;\n"
 "}")
         self.mm_language_rl1.setObjectName("mm_language_rl1")
         self.mm_language_rl1.addItem("")
@@ -6521,17 +6550,17 @@ class Ui_MainWindow(object):
         self.horizontalLayout_22.addWidget(self.infoButton_24)
         self.verticalLayout_6.addLayout(self.horizontalLayout_22)
         self.horizontalLayout_37.addLayout(self.verticalLayout_6)
-        spacerItem118 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_37.addItem(spacerItem118)
+        spacerItem119 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_37.addItem(spacerItem119)
         self.verticalLayout_39.addLayout(self.horizontalLayout_37)
-        spacerItem119 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_39.addItem(spacerItem119)
+        spacerItem120 = QtWidgets.QSpacerItem(20, 30, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_39.addItem(spacerItem120)
         self.horizontalLayout_65 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_65.setObjectName("horizontalLayout_65")
         self.verticalLayout_19 = QtWidgets.QVBoxLayout()
         self.verticalLayout_19.setObjectName("verticalLayout_19")
-        spacerItem120 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_19.addItem(spacerItem120)
+        spacerItem121 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_19.addItem(spacerItem121)
         self.horizontalLayout_54 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_54.setObjectName("horizontalLayout_54")
         self.mm_label_3 = QtWidgets.QLabel(self.scrollAreaWidgetContents_10)
@@ -6546,11 +6575,11 @@ class Ui_MainWindow(object):
         self.mm_label_3.setFont(font)
         self.mm_label_3.setObjectName("mm_label_3")
         self.horizontalLayout_54.addWidget(self.mm_label_3)
-        spacerItem121 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_54.addItem(spacerItem121)
+        spacerItem122 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_54.addItem(spacerItem122)
         self.verticalLayout_19.addLayout(self.horizontalLayout_54)
-        spacerItem122 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.verticalLayout_19.addItem(spacerItem122)
+        spacerItem123 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
+        self.verticalLayout_19.addItem(spacerItem123)
         self.horizontalLayout_65.addLayout(self.verticalLayout_19)
         self.verticalLayout_13 = QtWidgets.QVBoxLayout()
         self.verticalLayout_13.setObjectName("verticalLayout_13")
@@ -6625,8 +6654,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_25.addWidget(self.mm_contactEmail_ln)
         self.verticalLayout_3.addLayout(self.horizontalLayout_25)
         self.horizontalLayout_26.addLayout(self.verticalLayout_3)
-        spacerItem123 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_26.addItem(spacerItem123)
+        spacerItem124 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_26.addItem(spacerItem124)
         self.delButton_7 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_10)
         self.delButton_7.setEnabled(False)
         self.delButton_7.setMinimumSize(QtCore.QSize(27, 27))
@@ -6651,17 +6680,17 @@ class Ui_MainWindow(object):
         self.verticalLayout_14 = QtWidgets.QVBoxLayout()
         self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.verticalLayout_13.addLayout(self.verticalLayout_14)
-        spacerItem124 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_13.addItem(spacerItem124)
+        spacerItem125 = QtWidgets.QSpacerItem(20, 13, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_13.addItem(spacerItem125)
         self.horizontalLayout_65.addLayout(self.verticalLayout_13)
         self.verticalLayout_38 = QtWidgets.QVBoxLayout()
         self.verticalLayout_38.setObjectName("verticalLayout_38")
-        spacerItem125 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
-        self.verticalLayout_38.addItem(spacerItem125)
+        spacerItem126 = QtWidgets.QSpacerItem(20, 15, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout_38.addItem(spacerItem126)
         self.horizontalLayout_59 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_59.setObjectName("horizontalLayout_59")
-        spacerItem126 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_59.addItem(spacerItem126)
+        spacerItem127 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_59.addItem(spacerItem127)
         self.plusButton_8 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_10)
         self.plusButton_8.setMinimumSize(QtCore.QSize(27, 27))
         self.plusButton_8.setMaximumSize(QtCore.QSize(27, 27))
@@ -6681,8 +6710,8 @@ class Ui_MainWindow(object):
         self.plusButton_8.setAutoRaise(False)
         self.plusButton_8.setObjectName("plusButton_8")
         self.horizontalLayout_59.addWidget(self.plusButton_8)
-        spacerItem127 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_59.addItem(spacerItem127)
+        spacerItem128 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_59.addItem(spacerItem128)
         self.infoButton_25 = QtWidgets.QToolButton(self.scrollAreaWidgetContents_10)
         self.infoButton_25.setMaximumSize(QtCore.QSize(27, 27))
         self.infoButton_25.setStyleSheet("QToolButton {\n"
@@ -6702,15 +6731,15 @@ class Ui_MainWindow(object):
         self.infoButton_25.setObjectName("infoButton_25")
         self.horizontalLayout_59.addWidget(self.infoButton_25)
         self.verticalLayout_38.addLayout(self.horizontalLayout_59)
-        spacerItem128 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
-        self.verticalLayout_38.addItem(spacerItem128)
+        spacerItem129 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.MinimumExpanding)
+        self.verticalLayout_38.addItem(spacerItem129)
         self.horizontalLayout_65.addLayout(self.verticalLayout_38)
         self.verticalLayout_39.addLayout(self.horizontalLayout_65)
         self.gridLayout_7.addLayout(self.verticalLayout_39, 1, 1, 1, 2)
-        spacerItem129 = QtWidgets.QSpacerItem(183, 17, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.gridLayout_7.addItem(spacerItem129, 1, 3, 1, 1)
-        spacerItem130 = QtWidgets.QSpacerItem(20, 154, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.gridLayout_7.addItem(spacerItem130, 2, 1, 1, 1)
+        spacerItem130 = QtWidgets.QSpacerItem(183, 17, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_7.addItem(spacerItem130, 1, 3, 1, 1)
+        spacerItem131 = QtWidgets.QSpacerItem(20, 154, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gridLayout_7.addItem(spacerItem131, 2, 1, 1, 1)
         self.mm_scrollArea.setWidget(self.scrollAreaWidgetContents_10)
         self.gridLayout_30.addWidget(self.mm_scrollArea, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tabWidgetPage10, "")
@@ -7091,7 +7120,6 @@ class Ui_MainWindow(object):
         self.ai_operator_lb.setText(_translate("MainWindow", "Operator:"))
         self.ai_country_lb.setText(_translate("MainWindow", "Country:"))
         self.ai_number_lb.setText(_translate("MainWindow", "Registration number:"))
-        self.ai_label_12.setText(_translate("MainWindow", "EUFAR"))
         self.ai_instrument_lb.setText(_translate("MainWindow", "Instrument:"))
         self.ai_newname_lb.setText(_translate("MainWindow", "Name:"))
         self.ai_newmanufacturer_lb.setText(_translate("MainWindow", "Manufacturer:"))
